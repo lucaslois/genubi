@@ -1,0 +1,219 @@
+@extends('layouts.main')
+
+
+@section('content')
+    <section class="section-campaign">
+        <div class="campaign_background"
+             style="background-image: url({{ $selected_campaign->getImage() }})">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="campaign_content">
+                    <h1 class="campaign_title">{{ $selected_campaign->name }}
+                        <span class="badge campaign_badge" style="background: {{ $selected_campaign->state->color }}">{{ $selected_campaign->state->name }}</span>
+                    </h1>
+                    <div class="campaign_aditional">
+                        Dirigda por <a href="{{ route('users.show', $selected_campaign->user->id) }}">{{ $selected_campaign->user->name }}</a>
+                    </div>
+                    <div class="campaign_description">
+                        <p>
+                            {{ $selected_campaign->description }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <section class="main news">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="fa fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('campaigns.index') }}">Partidas</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('campaigns.show', $selected_campaign->id) }}">Antiguo Mal</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('campaigns.sessions.index', $selected_campaign->id) }}">Sesiones</a></li>
+                            <li class="breadcrumb-item">{{ $session->name }}</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="col-md-4">
+                    <div class="buttons float-md-right">
+                        <a href="{{ route('sessions.edit', $session->id) }}" class="btn btn-warning btn-square">Editar sesión</a>
+                        <span class="dropdown">
+                                <a href="" data-toggle="dropdown" class="btn btn-warning btn-square"><i class="fas fa-caret-down"></i></a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="{{ route('sessions.assignments.index', $session->id) }}">Asignar npcs o enemigos</a>
+                                    <a class="dropdown-item" href="{{ route('sessions.milestones.index', $session->id) }}">Hitos</a>
+                                </div>
+                            </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-sessions">
+        <div class="container">
+            <h1>
+                {{ $session->name }}
+                <a href="{{ route('sessions.vote.positive', $session->id) }}" class="btn btn-success btn-square"><i class="fa fa-thumbs-up"></i> {{ $session->positives()->count() }}</a>
+                <a href="{{ route('sessions.vote.negative', $session->id) }}" class="btn btn-danger btn-square"><i class="fa fa-thumbs-down"></i> {{ $session->negatives()->count() }}</a>
+            </h1>
+            <div class="box box-border-top session-summary">
+                <img class="img-thumbnail session-image" src="{{ $session->getImage() }}" alt="">
+                <hr>
+                <div class="session-custom">
+                    {!! $session->text !!}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @if($session->milestones()->count() > 0)
+    <section>
+        <div class="container">
+            <h1>Hitos</h1>
+            <div class="box box-border-top">
+                @foreach($session->milestones as $milestone)
+                    <div class="milestone">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img style="width: 128px" src="{{ $milestone->getImage() }}" alt="">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="milestone-title">{{ $milestone->name }}</div>
+                                <div class="milestone-desc">{{ $milestone->description }}</div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    @endif
+
+    @if($session->npcs()->count() > 0 || $session->enemies()->count() > 0)
+        <section>
+        <div class="container">
+            <h1>Apariciones</h1>
+            <div class="box box-border-top session-summary">
+
+                @if($session->npcs()->count() > 0)
+                <h2 class="box-title">NPCs</h2>
+                <div class="row">
+                    @foreach($session->npcs as $npc)
+                        <div class="col-md-3">
+                            <div class="card" style="padding: 0; border-top: 3px solid cornflowerblue; margin-bottom: 6px;">
+                                <div class="card-body" style="padding: 0;">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <img class="img-thumbnail m-2" src="{{ $npc->getImage() }}" alt="">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <h5 class="card-title" style="padding: 16px 0;">{{ $npc->name }}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                @endif
+
+                @if($session->enemies()->count() > 0)
+                    <h2 class="box-title">Enemigos</h2>
+                    <div class="row">
+                        @foreach($session->enemies as $npc)
+                            <div class="col-md-3">
+                                <div class="card" style="padding: 0; border-top: 3px solid cornflowerblue; margin-bottom: 6px;">
+                                    <div class="card-body" style="padding: 0;">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <img class="img-thumbnail m-2" src="{{ $npc->getImage() }}" alt="">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <h5 class="card-title" style="padding: 16px 0;">{{ $npc->name }}</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+            </div>
+        </div>
+    </section>
+    @endif
+
+    <section>
+        <div class="container">
+            <h1>Diario de los personajes</h1>
+            <div class="box box-border-top session-summary">
+                <div class="journal">
+                    <div class="opener">Sarumo</div>
+                </div>
+                <div class="journal">
+                    <div class="opener">Sarumo</div>
+                </div>
+                <div class="journal">
+                    <div class="opener">Sarumo</div>
+                </div>
+                <a href="#" class="btn btn-primary btn-sm">Crear mi diario</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Large modal -->
+    <div id="voteModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="box">
+                    <h1 class="text-center">¡No te olvides de puntuar!</h1>
+                    <p>Tu feedback es muy importante para el DM. Por favor decinos a continuación qué te pareció la sesión. ¡No tendrás que escribir nada!</p>
+                    <div class="votes text-center">
+                        <a href="{{ route('sessions.vote.positive', $session->id) }}" class="btn btn-success btn-square"><i class="fa fa-thumbs-up"></i> Me gustó</a>
+                        <a href="{{ route('sessions.vote.negative', $session->id) }}" class="btn btn-danger btn-square"><i class="fa fa-thumbs-down"></i> No me gustó</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{{--    <section>--}}
+{{--        <div class="container">--}}
+{{--            <h1>Comentarios</h1>--}}
+{{--            <div class="box box-border-top session-summary">--}}
+{{--                <div class="card">--}}
+{{--                    <div class="card-body p-2">--}}
+{{--                        <div class="row">--}}
+{{--                            <div class="col-md-2">--}}
+{{--                                <img class="img-thumbnail" src="https://genubi.com.ar/uploads/personajes/thumb_sarumo-1528841378.jpeg" alt="">--}}
+{{--                                <h6 class="text-center">Lucas Lois</h6>--}}
+{{--                            </div>--}}
+{{--                            <div class="col-md-10">--}}
+{{--                                <p>                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est facere harum hic iure perspiciatis quo reprehenderit repudiandae temporibus ullam vitae! Deserunt eum fugit id nobis quaerat tempora, ut? Culpa, ipsa?--}}
+{{--                                </p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
+@endsection
+
+@push('js')
+    <script>
+        @auth
+            @if(auth()->user()->sessionVotes()->whereSessionId($session->id)->count() == 0)
+            $('#voteModal').modal();
+            @endif
+        @endauth
+    </script>
+@endpush

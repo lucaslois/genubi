@@ -1,0 +1,418 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700');
+
+body {
+  font-family: "Roboto Condensed", sans-serif;
+  background: url('../images/background.png') #fcfaf8;
+}
+
+h1 {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+}
+
+hr {
+  background: rgba(255, 255, 255, 0.05);
+  margin: 40px 0;
+}
+
+.topbar {
+  .navbar-brand {
+    padding: 3px;
+  }
+
+  .navbar-brand img {
+    width: 140px;
+  }
+
+  .nav-main {
+    background: #090809;
+    border-bottom: 1px solid #2a4488;
+    padding: 6px 2px;
+  }
+
+  .navbar-nav {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    line-height: 21px;
+    font-weight: 400;
+    position: relative;
+    top: 2px;
+  }
+
+  .nav-item {
+    margin-left: 3px;
+  }
+
+  .nav-main a {
+    color: #d5d9dc;
+  }
+  .nav-main a:hover {
+    color: white;
+  }
+
+  .nav-main .dropdown-menu {
+    background: #090809;
+    margin-top: 0px;
+    border-radius: 0;
+    font-family: "Roboto Condensed";
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+  .nav-main .dropdown-menu a {
+    padding: 14px 14px 14px 24px;
+    transition: .3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .nav-main .dropdown-menu a:hover {
+    background: #9b0400;
+  }
+}
+.secondbar {
+  .nav-main {
+    background: #26282a;
+  }
+
+  .navbar-nav {
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    position: relative;
+    top: -1px;
+    padding: 0px 4px;
+  }
+
+  .nav-main a {
+    color: #a5afba;
+  }
+  .nav-main a:hover {
+    color: white;
+  }
+  .nav-item {
+    margin-left: 6px;
+  }
+}
+
+.nav-item.partida {
+  border-right: 1px solid #353739;
+}
+
+.main {
+  margin-top: 20px;
+}
+
+.news .card {
+  margin: 0;
+  border-radius: 0;
+}
+
+.article {
+  padding-top: 20px;
+  font-family: "Roboto Condensed", sans-serif;
+
+  .details {
+    color: #888;
+    font-size: 14px;
+    margin-top: -5px;
+  }
+  .details .data {
+    margin-right: 5px;
+  }
+  .content {
+    margin-top: 6px;
+    font-family: "Roboto";
+  }
+
+  .article_title {
+    font-weight: 700;
+    font-size: 36px;
+  }
+}
+
+
+.box {
+  background: white;
+  border: 1px solid #eee;
+  padding: 16px;
+  margin-bottom: 14px;
+
+  .box-title {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 6px;
+  }
+}
+
+.box-border-top {
+  border-top: 3px solid #2a4488;
+}
+
+.footer {
+  padding: 40px 0;
+  margin-top: 80px;
+  background: #242527;
+  min-height: 160px;
+  color: #979aa4;
+
+  h6 {
+
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  a {
+    color: white;
+  }
+}
+
+.subfooter {
+  min-height: 50px;
+  background: #191a1b;
+  padding: 5px 0;
+
+  p {
+    position: relative;
+    top: 10px;
+    color: #979aa4;
+    font-size: 14px;
+    height: 0;
+    text-align: center;
+  }
+}
+
+.breadcrumb {
+  background: white;
+  border-radius: 2px;
+  border: 1px solid #eee;
+  padding: .375rem 1rem;
+}
+
+.btn-square {
+  border-radius: 2px;
+}
+
+.breadcrumb-item + .breadcrumb-item::before
+{
+  font-family: 'Font Awesome 5 Free';
+  content: "\f054" !important;
+  font-weight: 900;
+  position: relative;
+  top: 1px;
+}
+
+.campaigns .card {
+  margin-bottom: 20px;
+}
+
+.campaign h5 {
+  margin: 0;
+}
+
+.campaign .campaign_description {
+  margin-top: 6px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.campaign .campaign_details {
+  color: #888;
+  font-size: 14px;
+}
+
+.campaign_background {
+  background-position: top center;
+  height: 450px;
+  color: white;
+  padding: 0px 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  z-index: 2;
+}
+
+.campaign_title {
+  font-size: 40px;
+}
+
+.campaign_description {
+  width: 70%;
+  font-size: 20px;
+  margin-top: 8px;
+}
+
+.campaign_content {
+  position: relative;
+  top: 150px;
+  z-index: 3;
+}
+
+.campaign_badge {
+  font-size: 0.4em;
+  position: relative;
+  top: -5px;
+}
+
+.section-campaign {
+  margin-bottom: 20px;
+}
+
+.campaign_aditional {
+  background: rgba(0, 0, 0, 0.8);
+  display: inline;
+  padding: 6px 22px;
+  border-radius: 3px;
+  font-size: 15px;
+}
+
+.token {
+  background: #FEFEFE;
+  border: 1px dotted #eee;
+  padding: 8px;
+  font-size: 16px;
+  color: #444;
+}
+
+.character-list {
+  .character {
+    border-top: 3px solid #1b4b72;
+    padding: 1px;
+    margin-bottom: 10px;
+  }
+
+  .character-title {
+    font-size: 20px;
+    margin: 0;
+    font-weight: 800;
+  }
+
+  .character-data {
+    font-size: 12px;
+    margin: 2px 0;
+    color: #888;
+  }
+
+  .character-desc {
+    font-size: 14px;
+    margin: 2px 0;
+    color: #444;
+  }
+
+  .character-avatar {
+    margin: auto auto;
+    display: block;
+  }
+
+  .character-owner {
+    color: #888;
+    font-size: 0.7em;
+    font-weight: 400;
+  }
+}
+
+.section-sessions {
+  .session {
+    margin-bottom: 9px;
+  }
+  .session-title {
+    margin: 0;
+  }
+  .session-details {
+    font-size: 12px;
+    color: #888;
+  }
+  .session-description {
+    font-size: 14px;
+  }
+  .session-image {
+    width: 500px;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.reaction {
+  font-size: .8em;
+  color: white;
+  padding: 4px 8px;
+}
+
+.journal {
+  background: #f2f2f2;
+  padding: 2px;
+  margin-bottom: 6px;
+
+  .opener {
+    background: white;
+    border: 1px solid #eee;
+    padding: 4px 16px;
+  }
+}
+
+.box-login {
+  margin: 200px auto;
+  width: 600px;
+}
+
+.square {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  border-radius: 4px;
+  position: relative;
+  top: 2px;
+}
+
+.npc-avatar {
+  width: 128px;
+}
+
+.milestone{
+  border: 1px dashed goldenrod;
+  width: 600px;
+  border-radius: 6px;
+  margin: 4px auto;
+  padding: 8px;
+}
+
+.milestone-title{
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 600;
+}
+.milestone-desc {
+  font-size: 13px;
+  color: #888;
+}
+
+.character-profile-title {
+  font-size:  20px;
+  font-weight: 800;
+  font-family: 'Nunito', serif;
+}
+
+.character-profile-title::after {
+  display: block;
+  content: ' ';
+  background: #2a4488;
+  width: 80px;
+  height: 3px;
+  margin: 8px 0;
+}
