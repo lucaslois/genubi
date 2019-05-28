@@ -23,6 +23,7 @@ class CreateCharactersTable extends Migration
             $table->string('nationality')->nullable();
             $table->string('description')->nullable();
             $table->string('avatar')->nullable();
+            $table->string('color')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

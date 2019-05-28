@@ -2,27 +2,8 @@
 
 
 @section('content')
-    <section class="section-campaign">
-        {{--<div class="container">--}}
-        <div class="campaign_background">
-            <div class="container">
-                <div class="campaign_content">
-                    <h1 class="campaign_title">Antiguo mal</h1>
-                    <div class="campaign_aditional">
-                        Dirigda por <a href="#">Emma Rugiero</a>
-                    </div>
-                    <div class="campaign_description">
-                        <p>
-                            Un grupo de aventureros desquiciados que no comparten nada en común se juntan con el objetivo de detener al mal más poderoso del multiverso.
-                            Un grupo de aventureros desquiciados que no comparten nada en común se juntan con el objetivo de detener al mal más poderoso del multiverso.
-                        </p>
-                    </div>
-                </div>
-            </div>
+    @include('layouts.components.selected_campaign')
 
-        </div>
-        {{--</div>--}}
-    </section>
     <section class="main news">
         <div class="container">
             <div class="row">

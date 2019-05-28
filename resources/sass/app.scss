@@ -416,3 +416,87 @@ hr {
   height: 3px;
   margin: 8px 0;
 }
+
+.channel-character {
+  margin-top: 12px;
+  font-size: 18px;
+}
+
+.channel-user {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #888;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.channel-line {
+  width: 80px;
+  height: 4px;
+  margin: -4px auto;
+}
+
+.channel-sidebar {
+  background: #eee;
+  padding: 15px 0;
+  height: 100%;
+}
+
+.channel-content {
+  margin-top: -10px;
+  padding: 12px 8px;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
+.channel-content ul {
+  margin-top: -6px;
+}
+
+.channel-bar {
+  border-bottom: 1px solid #eee;
+  font-size: 12px;
+  padding: 4px 8px;
+}
+
+.channel-image {
+  max-width: 80%;
+}
+
+.channel-footer {
+  padding: 4px 30px;
+  width: 100%;
+}
+
+.channel-footer a {
+  color: #444;
+  font-weight: 600;
+  font-size: 14px;
+  text-align: right;
+}
+
+.quote {
+  border: 1px dashed #ccc;
+  background: #efefef;
+  font-size: 14px;
+  padding: 8px;
+}
+
+.tab-pane {
+  padding: 12px 8px;
+}
+
+.post-roll {
+  margin-top: 10px;
+}
+
+.roll {
+  color: #a06937;
+  font-weight: bold;
+}
+
+.only-dm {
+  margin-top: 10px;
+  color: #a02e39;
+  font-weight: bold;
+}

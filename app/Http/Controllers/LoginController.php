@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\Alert;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,6 +29,8 @@ class LoginController extends Controller
             return back()->withInput()->withErrors(['email' => 'El correo electrónico no fue validado. ¡Revisa tu email!']);
 
         Auth::login($user);
+
+        Alert::send("Bienvenido de nuevo, $user->name");
 
         return redirect()->route('index');
     }

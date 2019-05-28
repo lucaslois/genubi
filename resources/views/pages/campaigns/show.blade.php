@@ -29,24 +29,24 @@
     <section class="main news">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i></a></li>
-                            <li class="breadcrumb-item active"><a href="#">Partidas</a></li>
+                            <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="fa fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('campaigns.index') }}">Partidas</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Antiguo Mal</li>
                         </ol>
                     </nav>
                 </div>
 {{--                SECCIÓN DM--}}
-                @if($campaign->user->is(auth()->user()) || true)
-                    <div class="col-md-8">
+                @if($campaign->user->is(auth()->user()))
+                    <div class="col-md-6">
                         <div class="buttons float-md-right">
                             <a href="{{ route('campaigns.edit', $campaign->id) }}" class="btn btn-warning btn-square">Editar campaña</a>
                             <span class="dropdown">
                                 <a href="" data-toggle="dropdown" class="btn btn-warning btn-square"><i class="fas fa-caret-down"></i></a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">Repartir experiencias</a>
+                                    <a class="dropdown-item" href="{{ route('campaigns.experiences.index', $campaign->id) }}">Repartir experiencias</a>
                                     <a class="dropdown-item" href="{{ route('campaigns.link.index', $campaign->id) }}">Crear enlace de invitación</a>
                                 </div>
                             </span>
@@ -120,7 +120,12 @@
                                     </div>
                                     <div class="col-md-8">
                                         <h5 class="character-title">{{ $character->name }} <span class="character-owner">de {{ $character->user->name }}</span></h5>
-                                        <p class="character-data">{{ $character->race }}, oriundo de {{ $character->nationality }}</p>
+                                        <p class="character-data">{{ $character->race }} |
+                                            {{ $character->classes->implode('name', ', ')  }}
+                                        </p>
+                                        @if($character->nationality)
+                                        <p class="character-data">Oriundo de {{ $character->nationality }}</p>
+                                        @endif
                                         <p class="character-desc">{{ $character->description }}</p>
                                         <a href="{{ route('characters.show', $character->id) }}" class="btn btn-primary btn-sm">Ver personaje</a>
                                     </div>

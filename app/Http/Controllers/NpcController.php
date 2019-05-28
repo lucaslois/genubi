@@ -8,6 +8,7 @@ use App\Models\Npc;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 
 class NpcController extends Controller
 {
@@ -61,9 +62,12 @@ class NpcController extends Controller
         if($request->avatar) {
             $ext = $request->avatar->getClientOriginalExtension();
             $name = Str::slug($npc->name) . "_" . time() . "." . $ext;
-            $request->avatar->storeAs('public/npcs', $name);
+            $img = Image::make($request->avatar);
+            $img->fit(300);
+            $path = "public/npcs/$name";
+            Storage::put($path, $img->stream());
 
-            $npc->avatar = Storage::url("public/npcs/$name");
+            $npc->avatar = Storage::url($path);
             $npc->save();
         }
 
@@ -81,8 +85,9 @@ class NpcController extends Controller
     public function edit($id)
     {
         $npc = Npc::findOrFail($id);
+        $selected_campaign = $npc->campaign;
 
-        return view('pages.npcs.edit', compact('npc'));
+        return view('pages.npcs.edit', compact('npc', 'selected_campaign'));
     }
 
     /**
@@ -106,9 +111,12 @@ class NpcController extends Controller
         if($request->avatar) {
             $ext = $request->avatar->getClientOriginalExtension();
             $name = Str::slug($npc->name) . "_" . time() . "." . $ext;
-            $request->avatar->storeAs('public/npcs', $name);
+            $img = Image::make($request->avatar);
+            $img->fit(300);
+            $path = "public/npcs/$name";
+            Storage::put($path, $img->stream());
 
-            $npc->avatar = Storage::url("public/npcs/$name");
+            $npc->avatar = Storage::url($path);
             $npc->save();
         }
 

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Npc extends Model
+class Npc extends Model implements CanParticipateInChannel
 {
     protected $fillable = [
         'name',
@@ -22,5 +22,15 @@ class Npc extends Model
 
     public function campaign() {
         return $this->belongsTo('App\\Models\\Campaign');
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getColor()
+    {
+        return $this->color;
     }
 }

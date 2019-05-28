@@ -5,7 +5,7 @@
     <section class="main news">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i></a></li>
@@ -13,7 +13,7 @@
                         </ol>
                     </nav>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-6">
                     <div class="buttons float-md-right">
                         <a href="{{ route('campaigns.create') }}" class="btn btn-success btn-square">Crear personaje</a>
                     </div>

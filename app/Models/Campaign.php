@@ -31,15 +31,23 @@ class Campaign extends Model
     }
 
     public function sessions() {
-        return $this->hasMany('App\\Models\\Session');
+        return $this->hasMany('App\\Models\\Session')->orderByDesc('date');
     }
 
     public function characters() {
-        return $this->hasMany('App\\Models\\Character');
+        return $this->hasMany('App\\Models\\Character')->orderBy('name');
     }
 
     public function npcs() {
         return $this->hasMany('App\\Models\\Npc');
+    }
+
+    public function homebrews() {
+        return $this->hasMany('App\\Models\\Homebrew');
+    }
+
+    public function channels() {
+        return $this->hasMany('App\\Models\\Channel')->orderByDesc('order');
     }
 
     public function getImage() {

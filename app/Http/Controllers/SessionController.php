@@ -21,7 +21,7 @@ class SessionController extends Controller
     {
         $campaign = Campaign::findOrFail($id);
         $selected_campaign = $campaign;
-        $sessions = $campaign->sessions;
+        $sessions = $campaign->sessions()->paginate(9);
 
         return view('pages.sessions.index', compact(
             'sessions',

@@ -17,7 +17,6 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('characters.me') }}">Mis Personajes</a>
                             <a class="dropdown-item" href="{{ route('campaigns.me') }}">Mis Partidas</a>
-                            <a class="dropdown-item" href="#">Páginas</a>
                         </div>
                     </li>
                     @endauth
@@ -25,7 +24,7 @@
                         <a class="nav-link" href="{{ route('campaigns.index') }}">Partidas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Wiki</a>
+                        <a class="nav-link" target="_blank" href="http://wiki.genubi.com.ar">Wiki</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">

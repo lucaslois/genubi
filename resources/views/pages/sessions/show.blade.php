@@ -41,18 +41,20 @@
                         </ol>
                     </nav>
                 </div>
+                @if($selected_campaign->user->is(auth()->user()))
                 <div class="col-md-4">
                     <div class="buttons float-md-right">
                         <a href="{{ route('sessions.edit', $session->id) }}" class="btn btn-warning btn-square">Editar sesión</a>
                         <span class="dropdown">
-                                <a href="" data-toggle="dropdown" class="btn btn-warning btn-square"><i class="fas fa-caret-down"></i></a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="{{ route('sessions.assignments.index', $session->id) }}">Asignar npcs o enemigos</a>
-                                    <a class="dropdown-item" href="{{ route('sessions.milestones.index', $session->id) }}">Hitos</a>
-                                </div>
-                            </span>
+                            <a href="" data-toggle="dropdown" class="btn btn-warning btn-square"><i class="fas fa-caret-down"></i></a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="{{ route('sessions.assignments.index', $session->id) }}">Asignar npcs o enemigos</a>
+                                <a class="dropdown-item" href="{{ route('sessions.milestones.index', $session->id) }}">Hitos</a>
+                            </div>
+                        </span>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
     </section>
@@ -211,7 +213,7 @@
 @push('js')
     <script>
         @auth
-            @if(auth()->user()->sessionVotes()->whereSessionId($session->id)->count() == 0)
+            @if($selected_campaign->user->isNot(auth()->user()) &&auth()->user()->sessionVotes()->whereSessionId($session->id)->count() == 0)
             $('#voteModal').modal();
             @endif
         @endauth

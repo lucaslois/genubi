@@ -30,6 +30,9 @@ Route::get('campaigns/{id}/create-link/regenerate', 'CampaignController@linkRege
 Route::get('campaigns/{id}/create-link/disable', 'CampaignController@linkDisable')->name('campaigns.link.disable');
 Route::resource('/campaigns', 'CampaignController');
 
+Route::get('/campaigns/{id}/experiences', 'ExperienceController@index')->name('campaigns.experiences.index');
+Route::post('/campaigns/{id}/experiences', 'ExperienceController@store')->name('campaigns.experiencesds.store');
+
 // SESSIONS
 Route::resource('sessions', 'SessionController');
 Route::get('sessions/{id}/assign-characters', 'SessionController@showAssignments')->name('sessions.assignments.index');
@@ -47,16 +50,29 @@ Route::get('sessions/{id}/vote-negative', 'VoteController@negative')->name('sess
 Route::resource('npcs', 'NpcController');
 Route::get('campaigns/{id}/npcs', 'NpcController@index')->name('campaigns.npcs.index');
 
+// HOMEBREWS
+Route::resource('homebrews', 'HomebrewController');
+Route::get('homebrews/{id}/remove', 'HomebrewController@remove')->name('homebrews.remove');
+Route::get('campaigns/{id}/homebrews', 'HomebrewController@index')->name('campaigns.homebrews.index');
+
+// CANALES
+Route::resource('channels', 'ChannelController');
+Route::get('channels/{id}/last-post', 'ChannelController@lastPost');
+Route::get('channels/{id}/remove', 'ChannelController@remove')->name('channels.remove');
+Route::get('campaigns/{id}/channels', 'ChannelController@index')->name('campaigns.channels.index');
+Route::get('channels/{id}/create-post', 'PostController@create')->name('channels.posts.create');
+Route::post('channels/{id}/create-post', 'PostController@store')->name('channels.posts.store');
+Route::get('channels/{id}/roll-dices', 'PostController@createDices')->name('channels.dices.create');
+Route::post('channels/{id}/roll-dices', 'PostController@storeDices')->name('channels.dices.store');
+
+Route::get('posts/{id}', 'PostController@edit')->name('posts.edit');
+Route::put('posts/{id}', 'PostController@update')->name('posts.update');
+
 // CHARACTERS
 Route::get('characters/me', 'CharacterController@me')->name('characters.me');
+Route::post('characters/{id}/class', 'CharacterController@addClass')->name('characters.addclass');
+Route::get('characters/{id}/class/{class_id}/delete', 'CharacterController@removeClass')->name('characters.removeclass');
 Route::resource('/characters', 'CharacterController');
 
 // USERS
 Route::resource('/users', 'UserController');
-
-Route::view('/partidas', 'modules.campaigns.partidas');
-Route::view('/partida', 'modules.campaigns.partida');
-Route::view('/sesiones', 'modules.campaigns.sessions');
-Route::view('/sesion', 'modules.campaigns.session');
-Route::view('/homebrews', 'modules.campaigns.homebrews');
-Route::view('/homebrew', 'modules.campaigns.homebrew');

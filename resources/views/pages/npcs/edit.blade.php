@@ -2,6 +2,7 @@
 
 
 @section('content')
+    @include('layouts.components.selected_campaign')
 
     <section class="main news">
         <div class="container">
@@ -96,6 +97,9 @@
 
                             <input type="submit" value="Guardar" class="btn btn-primary">
                         </form>
+                    </div>
+                    <div class="col-4">
+                        <img class="img-thumbnail" src="{{ $npc->getImage() }}" alt="">
                     </div>
                 </div>
             </div>

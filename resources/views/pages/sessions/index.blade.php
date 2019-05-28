@@ -30,7 +30,7 @@
     <section class="main news">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ url('') }}"><i class="fa fa-home"></i></a></li>
@@ -40,11 +40,13 @@
                         </ol>
                     </nav>
                 </div>
-                <div class="col-md-8">
+                @if($campaign->user->is(auth()->user()))
+                <div class="col-md-6">
                     <div class="buttons float-md-right">
                         <a href="{{ route('sessions.create') }}" class="btn btn-success btn-square">Crear sesión</a>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
 
@@ -61,13 +63,14 @@
 
     <section class="main section-sessions">
         <div class="container">
+            {{ $sessions->links() }}
             <div class="row">
                 @foreach($sessions as $session)
                     <div class="col-md-4">
                         <div class="card session">
                             <img class="card-img-top" src="{{ $session->getImage() }}" alt="Card image cap">
                             <div class="card-body">
-                                <h5 class="session-title">{{ $session->name }}</h5>
+                                <h5 class="session-title">{{ str_limit($session->name, 30) }}</h5>
                                 <span class="session-details">{{ $session->date->diffForHumans() }} ({{ $session->date->format('d/M/Y') }}), <a href="{{ route('users.show', $session->user->id) }}">{{ $session->user->name }}</a></span>
                                 <p class="card-text session-description">
                                     {{ str_limit(strip_tags($session->text), 100) }}
@@ -84,6 +87,8 @@
                     </div>
                 @endforeach
             </div>
+
+            {{ $sessions->links() }}
         </div>
     </section>
 @endsection
