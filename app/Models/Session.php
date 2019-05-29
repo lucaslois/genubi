@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Session extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'name',
         'text',
@@ -33,6 +36,10 @@ class Session extends Model
 
     public function milestones() {
         return $this->hasMany('App\\Models\\Milestone');
+    }
+
+    public function posts() {
+        return $this->hasMany('App\\Models\\SessionPost');
     }
 
     public function getImage() {

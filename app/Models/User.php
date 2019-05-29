@@ -39,4 +39,8 @@ class User extends Authenticatable
     public function sessionVotes() {
         return $this->hasMany('App\\Models\\SessionVote');
     }
+
+    public function sessionPosts() {
+        return $this->hasMany('App\\Models\\SessionPost');
+    }
 }

@@ -12,16 +12,18 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ url('') }}"><i class="fa fa-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="{{ route('campaigns.index') }}">Partidas</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('campaigns.show', $selected_campaign->id) }}">Antiguo Mal</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('campaigns.show', $selected_campaign->id) }}">{{ $selected_campaign->name }}</a></li>
                             <li class="breadcrumb-item active">Reglas de la casa</li>
                         </ol>
                     </nav>
                 </div>
+                @if($selected_campaign->user->is(auth()->user()))
                 <div class="col-md-6">
                     <div class="buttons float-md-right">
                         <a href="{{ route('homebrews.create') }}" class="btn btn-success btn-square">Crear regla de la casa</a>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
 

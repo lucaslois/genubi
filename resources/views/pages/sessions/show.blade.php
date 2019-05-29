@@ -2,30 +2,7 @@
 
 
 @section('content')
-    <section class="section-campaign">
-        <div class="campaign_background"
-             style="background-image: url({{ $selected_campaign->getImage() }})">
-            <div class="overlay"></div>
-            <div class="container">
-                <div class="campaign_content">
-                    <h1 class="campaign_title">{{ $selected_campaign->name }}
-                        <span class="badge campaign_badge" style="background: {{ $selected_campaign->state->color }}">{{ $selected_campaign->state->name }}</span>
-                    </h1>
-                    <div class="campaign_aditional">
-                        Dirigda por <a href="{{ route('users.show', $selected_campaign->user->id) }}">{{ $selected_campaign->user->name }}</a>
-                    </div>
-                    <div class="campaign_description">
-                        <p>
-                            {{ $selected_campaign->description }}
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-
+    @include('layouts.components.selected_campaign')
 
     <section class="main news">
         <div class="container">
@@ -62,13 +39,15 @@
         <div class="container">
             <h1>
                 {{ $session->name }}
-                <a href="{{ route('sessions.vote.positive', $session->id) }}" class="btn btn-success btn-square"><i class="fa fa-thumbs-up"></i> {{ $session->positives()->count() }}</a>
-                <a href="{{ route('sessions.vote.negative', $session->id) }}" class="btn btn-danger btn-square"><i class="fa fa-thumbs-down"></i> {{ $session->negatives()->count() }}</a>
             </h1>
             <div class="box box-border-top session-summary">
+                <div class="votes text-center mb-2">
+                    <a href="{{ route('sessions.vote.positive', $session->id) }}" class="btn btn-success btn-square"><i class="fa fa-thumbs-up"></i> {{ $session->positives()->count() }}</a>
+                    <a href="{{ route('sessions.vote.negative', $session->id) }}" class="btn btn-danger btn-square"><i class="fa fa-thumbs-down"></i> {{ $session->negatives()->count() }}</a>
+                </div>
                 <img class="img-thumbnail session-image" src="{{ $session->getImage() }}" alt="">
-                <hr>
-                <div class="session-custom">
+                <div class="session-custom mt-3">
+                    <h4>Resumen</h4>
                     {!! $session->text !!}
                 </div>
             </div>
@@ -155,17 +134,40 @@
     <section>
         <div class="container">
             <h1>Diario de los personajes</h1>
-            <div class="box box-border-top session-summary">
-                <div class="journal">
-                    <div class="opener">Sarumo</div>
+            <div class="box box-border-top session-summary journal">
+                @foreach($session->posts as $post)
+                    <div class="session-post">
+                        <div class="journal-opener" data-toggle="collapse"
+                             data-target="#resumen_zaheera">
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <img class="journal-image-little img-thumbnail" src="https://genubi.com.ar/uploads/personajes/zaheera-1528849733.png"  alt="Zaheera">
+                                </div>
+                                <div class="col-11">
+                                    <div class="float-right">
+                                        <div class="journal-date">{{ $post->created_at->diffForHumans() }}</div>
+                                        @if($post->user->is(auth()->user()))
+                                        <div class="journal-buttons">
+                                            <a href="{{ route('sessions.posts.edit', $post->id) }}" class="mr-2">Editar</a>
+                                            <a href="{{ route('sessions.posts.remove', $post->id) }}">Borrar</a>
+                                        </div>
+                                        @endif
+                                    </div>
+                                    <h3 class="journal-character">{{ $post->character->name }}</h3>
+                                    <h4 class="journal-user">{{ $post->user->name }}</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="resumen_zaheera" class="collapse journal-content">
+                            {!! $post->text !!}
+                        </div>
+                    </div>
+                @endforeach
+
+
+                <div class="buttons m-2">
+                    <a href="{{ route('sessions.posts.create', $session->id) }}" class="btn btn-primary btn-sm">Crear nuevo diario</a>
                 </div>
-                <div class="journal">
-                    <div class="opener">Sarumo</div>
-                </div>
-                <div class="journal">
-                    <div class="opener">Sarumo</div>
-                </div>
-                <a href="#" class="btn btn-primary btn-sm">Crear mi diario</a>
             </div>
 
         </div>
@@ -213,7 +215,7 @@
 @push('js')
     <script>
         @auth
-            @if($selected_campaign->user->isNot(auth()->user()) &&auth()->user()->sessionVotes()->whereSessionId($session->id)->count() == 0)
+            @if($selected_campaign->user->isNot(auth()->user()) && auth()->user()->sessionVotes()->whereSessionId($session->id)->count() == 0)
             $('#voteModal').modal();
             @endif
         @endauth

@@ -3,13 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Character extends Model implements CanParticipateInChannel
 {
-    use XpTrait;
+    use XpTrait, SoftDeletes;
 
     protected $fillable = [
         'name',
+        'family',
         'race',
         'age',
         'description',
@@ -37,6 +39,10 @@ class Character extends Model implements CanParticipateInChannel
 
     public function experiences() {
         return $this->hasMany('App\\Models\\CharacterExperience')->orderByDesc('id');
+    }
+
+    public function state() {
+        return $this->belongsTo('App\\Models\\CharacterState');
     }
 
     public function getName()

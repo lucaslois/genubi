@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Exception;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ChannelPost extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'campaign_id',
         'user_id',

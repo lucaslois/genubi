@@ -30,9 +30,23 @@
             <h1>Partidas</h1>
             <div class="box box-border-top">
                 <p>Aquí se listan todas las partidas dadas de altas en Genubi. Estarán ordenadas en base a su popularidad.</p>
-                <div class="form-group">
-                    <input type="text"class="form-control" placeholder="Buscador...">
-                </div>
+                <form>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input name="search"
+                                       type="text"
+                                       class="form-control"
+                                       placeholder="Buscador..."
+                                       value="{{ request()->search }}"
+                                >
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="submit" class="btn btn-success" value="Buscar">
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
@@ -40,7 +54,7 @@
     <section class="main campaigns">
         <div class="container">
             <div class="row">
-                @foreach($campaigns as $campaign)
+                @forelse($campaigns as $campaign)
                     <div class="col-md-4">
                         <div class="card campaign">
                             <img class="card-img-top" src="{{ $campaign->getImage() }}" alt="Card image cap">
@@ -54,7 +68,13 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <div class="col-12">
+                        <div class="box">
+                            No se han encontrado campañas
+                        </div>
+                    </div>
+                @endforelse
             </div>
         </div>
     </section>

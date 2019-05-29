@@ -21,7 +21,9 @@ class CreateNpcsTable extends Migration
             $table->string('avatar')->nullable();
             $table->string('color')->nullable();
             $table->boolean('enemy')->default(false);
+            $table->boolean('public')->default(true);
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('campaign_id')->references('id')->on('campaigns');
         });

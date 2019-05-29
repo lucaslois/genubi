@@ -68,15 +68,21 @@
                             <dt>Director</dt>
                             <dd>{{ $campaign->user->name }}</dd>
                             <dt>Cantidad de personajes</dt>
-                            <dd>{{ $campaign->characters->count() }}</dd>
+                            <dd>{{ $characters->count() }}</dd>
                         </dl>
                     </div>
                     <div class="col-md-3">
                         <dl>
                             <dt>Fecha de inicio</dt>
-                            <dd>14 de agosto de 2014</dd>
+                            <dd>
+                                @if($campaign->sessions)
+                                {{ $campaign->sessions->first()->date->format('d F Y') }}
+                                @else
+                                    Aun no hay sesiones
+                                @endif
+                            </dd>
                             <dt>Estado</dt>
-                            <dd><span class="badge" style="background: {{ $campaign->state->color }}">{{ $campaign->state->name }}</span></dd>
+                            <dd><span class="badge badge-state" style="background: {{ $campaign->state->color }}">{{ $campaign->state->name }}</span></dd>
                         </dl>
                     </div>
                     <div class="col-md-3">
@@ -84,7 +90,15 @@
                             <dt>Fecha de la última sesión</dt>
                             <dd>
                                 @if($campaign->sessions()->count() > 0)
-                                    {{ $campaign->sessions->last()->date->format('d/M/Y') }} ({{ $campaign->sessions->last()->date->diffForHumans() }})
+                                    {{ $campaign->sessions->last()->date->format('d F Y') }} ({{ $campaign->sessions->last()->date->diffForHumans() }})
+                                @else
+                                    Aun no hay sesiones
+                                @endif
+                            </dd>
+                            <dt>Última sesión</dt>
+                            <dd>
+                                @if($campaign->sessions()->orderByDesc('date')->first())
+                                    {{ $campaign->sessions()->orderByDesc('date')->first()->name }}
                                 @else
                                     Aun no hay sesiones
                                 @endif
@@ -110,7 +124,7 @@
         <div class="container">
             <h1>Protagonistas</h1>
             <div class="row character-list">
-                @forelse($campaign->characters as $character)
+                @forelse($characters as $character)
                     <div class="col-sm-6">
                         <div class="card character">
                             <div class="card-body">
@@ -119,7 +133,8 @@
                                         <img class="img-thumbnail" src="{{ $character->getImage() }}" alt="">
                                     </div>
                                     <div class="col-md-8">
-                                        <h5 class="character-title">{{ $character->name }} <span class="character-owner">de {{ $character->user->name }}</span></h5>
+                                        <h5 class="character-title">{{ $character->name }} <span class="character-level">Nv. {{ $character->currentLevel() }}</span></h5>
+                                        <p class="character-data character-data-owner">de {{ $character->user->name }}</p>
                                         <p class="character-data">{{ $character->race }} |
                                             {{ $character->classes->implode('name', ', ')  }}
                                         </p>
@@ -133,9 +148,8 @@
                             </div>
                             @if($campaign->user->is(auth()->user()))
                             <div class="card-footer">
-                                <a href="#" class="btn btn-warning btn-sm">Editar personaje</a>
-                                <a href="#" class="btn btn-warning btn-sm">Dar experiencia</a>
-                            </div>
+                                <a href="{{ route('characters.dm.edit', $character->id) }}" class="btn btn-warning btn-sm">Editar personaje</a>
+                              </div>
                             @endif
                         </div>
                     </div>

@@ -95,11 +95,15 @@ class CharacterController extends Controller
     }
 
     public function addClass($id, Request $request) {
+        $this->validate($request, [
+            'class' => 'required|string',
+            'level' => 'required|numeric'
+        ]);
         $user = Auth::user();
         $character = $user->characters()->findOrFail($id);
 
         $class = new CharacterClass;
-        $class->name = $request->name;
+        $class->name = $request->class;
         $class->level = $request->level;
         $class->character_id = $character->id;
         $class->save();

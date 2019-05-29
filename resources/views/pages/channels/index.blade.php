@@ -42,6 +42,7 @@
             <div class="box box-border-top">
                 <div class="row">
                     <div class="col-12">
+                        {{ $channels->links() }}
                         <table class="table">
                             <thead>
                             <tr>

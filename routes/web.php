@@ -31,10 +31,17 @@ Route::get('campaigns/{id}/create-link/disable', 'CampaignController@linkDisable
 Route::resource('/campaigns', 'CampaignController');
 
 Route::get('/campaigns/{id}/experiences', 'ExperienceController@index')->name('campaigns.experiences.index');
-Route::post('/campaigns/{id}/experiences', 'ExperienceController@store')->name('campaigns.experiencesds.store');
+Route::post('/campaigns/{id}/experiences', 'ExperienceController@store')->name('campaigns.experiences.store');
 
 // SESSIONS
 Route::resource('sessions', 'SessionController');
+Route::get('sessions/{id}/posts', 'SessionPostController@create')->name('sessions.posts.create');
+Route::post('sessions/{id}/posts', 'SessionPostController@store')->name('sessions.posts.store');
+Route::get('sessions-posts/{id}', 'SessionPostController@edit')->name('sessions.posts.edit');
+Route::put('sessions-posts/{id}', 'SessionPostController@update')->name('sessions.posts.update');
+Route::get('sessions-posts/{id}/remove', 'SessionPostController@remove')->name('sessions.posts.remove');
+
+// SESSIONS ADMIN
 Route::get('sessions/{id}/assign-characters', 'SessionController@showAssignments')->name('sessions.assignments.index');
 Route::post('sessions/{id}/assign-characters', 'SessionController@storeAssignments')->name('sessions.assignments.store');
 Route::get('sessions/{id}/assign-characters/{npc_id}/delete', 'SessionController@deleteAssignments')->name('sessions.assignments.delete');
@@ -73,6 +80,8 @@ Route::get('characters/me', 'CharacterController@me')->name('characters.me');
 Route::post('characters/{id}/class', 'CharacterController@addClass')->name('characters.addclass');
 Route::get('characters/{id}/class/{class_id}/delete', 'CharacterController@removeClass')->name('characters.removeclass');
 Route::resource('/characters', 'CharacterController');
+Route::get('characters/{id}/edit-dm', 'CharacterController@editDm')->name('characters.dm.edit');
+Route::put('characters/{id}/edit-dm', 'CharacterController@updateDm')->name('characters.dm.update');
 
 // USERS
 Route::resource('/users', 'UserController');

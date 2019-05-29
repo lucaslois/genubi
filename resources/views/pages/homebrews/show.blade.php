@@ -18,6 +18,7 @@
                         </ol>
                     </nav>
                 </div>
+                @if($selected_campaign->user->is(auth()->user()))
                 <div class="col-6">
                     <div class="buttons float-md-right">
                         <a href="{{ route('homebrews.edit', $homebrew->id) }}" class="btn btn-warning btn-square">Editar</a>
@@ -29,6 +30,7 @@
                         </span>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
 

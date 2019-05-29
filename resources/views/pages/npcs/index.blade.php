@@ -2,35 +2,12 @@
 
 
 @section('content')
-    <section class="section-campaign">
-        {{--<div class="container">--}}
-        <div class="campaign_background"
-             style="background-image: url({{ $campaign->getImage() }})">
-            <div class="overlay"></div>
-            <div class="container">
-                <div class="campaign_content">
-                    <h1 class="campaign_title">{{ $campaign->name }}
-                        <span class="badge campaign_badge" style="background: {{ $campaign->state->color }}">{{ $campaign->state->name }}</span>
-                    </h1>
-                    <div class="campaign_aditional">
-                        Dirigda por <a href="{{ route('users.show', $campaign->user->id) }}">{{ $campaign->user->name }}</a>
-                    </div>
-                    <div class="campaign_description">
-                        <p>
-                            {{ $campaign->description }}
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        {{--</div>--}}
-    </section>
+    @include('layouts.components.selected_campaign')
 
     <section class="main news">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ url('') }}"><i class="fa fa-home"></i></a></li>
@@ -40,12 +17,13 @@
                         </ol>
                     </nav>
                 </div>
-                <div class="col-md-8">
+                @if($selected_campaign->user->is(auth()->user()))
+                <div class="col-md-6">
                     <div class="buttons float-md-right">
                         <a href="{{ route('npcs.create') }}" class="btn btn-success btn-square">Crear NPC</a>
-
                     </div>
                 </div>
+                @endif
             </div>
         </div>
 
@@ -56,6 +34,23 @@
             <h1>NPCs</h1>
             <div class="box box-border-top">
                 <p>Aquí se listan todas las sesiones que se fueron jugando en la campaña. Aquí se recopila información sobre qué sucedio en cada una de las sesiones. Se podrán encontrar detalles como un resumen, publicaciones de los personajes, la repartida de experiencia, cuales fueron los NPCs más relevantes, cuales fueron los enemigos abatidos, etc.</p>
+                <form>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input name="search"
+                                       type="text"
+                                       class="form-control"
+                                       placeholder="Buscador..."
+                                       value="{{ request()->search }}"
+                                >
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="submit" class="btn btn-success" value="Buscar">
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
@@ -65,10 +60,11 @@
             <div class="box box-border-top">
                 <div class="row">
                     <div class="col-12">
+                        {{ $npcs->links() }}
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>Foto</th>
+                                <th width="100">Foto</th>
                                 <th>Nombre</th>
                                 <th>Descripción</th>
                                 <th></th>
@@ -78,9 +74,22 @@
                             @forelse($npcs as $npc)
                                 <tr>
                                     <td><img class="img-thumbnail npc-avatar" src="{{ $npc->getImage() }}" alt=""></td>
-                                    <td><div class="square" style="background-color: {{ $npc->color }}"></div> {{ $npc->name }}</td>
+                                    <td>
+                                        <div class="square" style="background-color: {{ $npc->color }}"></div>
+                                        {{ $npc->name }}
+                                        @if($npc->enemy)
+                                            <span class="badge badge-danger">Enemigo</span>
+                                        @endif
+                                        @if(!$npc->public)
+                                            <span class="badge badge-primary">Privado</span>
+                                        @endif
+                                    </td>
                                     <td>{{ $npc->description }}</td>
-                                    <td><a href="{{ route('npcs.edit', $npc->id) }}">Editar</a></td>
+                                    <td>
+                                        @if($selected_campaign->user->is(auth()->user()))
+                                        <a href="{{ route('npcs.edit', $npc->id) }}">Editar</a>
+                                        @endif
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>

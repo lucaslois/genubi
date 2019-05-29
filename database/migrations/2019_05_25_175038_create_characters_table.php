@@ -18,17 +18,20 @@ class CreateCharactersTable extends Migration
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('campaign_id')->nullable();
             $table->string('name');
+            $table->string('family')->nullable();
             $table->string('race')->nullable();
             $table->string('age')->nullable();
             $table->string('nationality')->nullable();
             $table->string('description')->nullable();
             $table->string('avatar')->nullable();
             $table->string('color')->nullable();
+            $table->unsignedInteger('state_id');
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('campaign_id')->references('id')->on('campaigns');
+            $table->foreign('state_id')->references('id')->on('character_states');
         });
     }
 

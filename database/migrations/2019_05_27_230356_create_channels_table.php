@@ -21,6 +21,7 @@ class CreateChannelsTable extends Migration
             $table->text('text');
             $table->unsignedInteger('order')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

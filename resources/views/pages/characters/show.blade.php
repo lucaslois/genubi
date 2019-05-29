@@ -43,7 +43,12 @@
                     <div class="tab-pane fade show active" id="tab-default" role="tabpanel">
                         <div class="row">
                             <div class="col-4">
-                                <img class="img-thumbnail" src="{{ $character->getImage() }}" alt="">
+                                <div class="character-sidebar text-center">
+                                    <img class="img-thumbnail character-profile-avatar" src="{{ $character->getImage() }}" alt="">
+                                    <div>
+                                        <span class="badge badge-state" style="background: {{ $character->state->color }}">{{ $character->state->name }}</span>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-8">
                                 <h2 class="character-profile-title">Ficha de personaje</h2>
@@ -51,21 +56,30 @@
                                     <div class="col-4">
                                         <dl>
                                             <dt>Nombre</dt>
-                                            <dd>{{ $character->name }}</dd>
+                                            <dd>
+                                                @if($character->family)
+                                                {{ $character->family }},
+                                                @endif
+                                                {{ $character->name }}
+                                            </dd>
                                             <dt>Raza</dt>
                                             <dd>{{ $character->race }}</dd>
                                             <dt>Clases</dt>
-                                            <dd>{{ "Mago" }}</dd>
+                                            <dd>{{ $character->classes->implode('name', ', ')  }}</dd>
                                         </dl>
                                     </div>
                                     <div class="col-4">
                                         <dl>
                                             <dt>Nacionalidad</dt>
-                                            <dd>{{ $character->nationality }}</dd>
+                                            <dd>{{ $character->nationality ?? "-" }}</dd>
                                             <dt>Edad</dt>
-                                            <dd>{{ $character->age }} años</dd>
+                                            <dd>{{ $character->age ?? "-" }} años</dd>
                                             <dt>Partida</dt>
-                                            <dd>{{ $character->campaign->name ?? "-" }}</dd>
+                                            <dd>
+                                                @if($character->campaign)
+                                                    <a href="{{ route('campaigns.show', $character->campaign->id) }}">{{ $character->campaign->name }}</a>
+                                                @endif
+                                            </dd>
                                         </dl>
                                     </div>
                                 </div>
@@ -73,8 +87,8 @@
                                 <h2 class="character-profile-title">¿Quién soy?</h2>
                                 {!! $character->description !!}
 
-                                <h2 class="character-profile-title mt-4">Galería de fotos</h2>
-                                {!! $character->description !!}
+{{--                                <h2 class="character-profile-title mt-4">Galería de fotos</h2>--}}
+{{--                                {!! $character->description !!}--}}
                             </div>
                         </div>
                     </div>

@@ -23,6 +23,8 @@ class ExperienceController extends Controller
 
         $characters = Character::findOrFail($request->character_ids);
         foreach($characters as $character) {
+            if(!$request->value[$character->id])
+                continue;
             CharacterExperience::create([
                 'user_id' => $user->id,
                 'character_id' => $character->id,

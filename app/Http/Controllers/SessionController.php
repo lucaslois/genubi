@@ -6,7 +6,9 @@ use App\Facades\Alert;
 use App\Models\Campaign;
 use App\Models\Milestone;
 use App\Models\Session;
+use App\Models\SessionPost;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -17,11 +19,16 @@ class SessionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index($id, Request $request)
     {
         $campaign = Campaign::findOrFail($id);
         $selected_campaign = $campaign;
-        $sessions = $campaign->sessions()->paginate(9);
+        $query = $campaign->sessions();
+
+        if($request->search)
+            $query->where("name", "LIKE", "%$request->search%");
+
+        $sessions = $query->paginate(9);
 
         return view('pages.sessions.index', compact(
             'sessions',
@@ -210,4 +217,6 @@ class SessionController extends Controller
 
         return redirect()->route('sessions.milestones.index', $session->id);
     }
+
+
 }

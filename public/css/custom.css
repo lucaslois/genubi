@@ -247,6 +247,11 @@ hr {
   top: -5px;
 }
 
+.badge-state {
+  color: white;
+  font-weight: 400;
+}
+
 .section-campaign {
   margin-bottom: 20px;
 }
@@ -282,6 +287,14 @@ hr {
   margin: 2px 0;
   color: #888;
 }
+.character-list .character-data-owner {
+  margin-top: 0px;
+}
+.character-list .character-level {
+  text-transform: uppercase;
+  font-size: 0.75em;
+  color: #daa520;
+}
 .character-list .character-desc {
   font-size: 14px;
   margin: 2px 0;
@@ -295,6 +308,10 @@ hr {
   color: #888;
   font-size: 0.7em;
   font-weight: 400;
+}
+.character-list .character-profile-avatar {
+  display: block;
+  margin: 10px 0;
 }
 
 .section-sessions .session {
@@ -319,7 +336,7 @@ hr {
 .reaction {
   font-size: 0.8em;
   color: white;
-  padding: 4px 8px;
+  padding: 9px 8px;
 }
 
 .journal {
@@ -327,10 +344,42 @@ hr {
   padding: 2px;
   margin-bottom: 6px;
 }
-.journal .opener {
+
+.journal-opener {
   background: white;
   border: 1px solid #eee;
-  padding: 4px 16px;
+  padding: 8px 16px;
+}
+
+.journal-character {
+  font-size: 18px;
+  margin: 0;
+}
+
+.journal-image-little {
+  width: 64px;
+}
+
+.journal-user {
+  font-size: 14px;
+  color: #888;
+  margin: 0;
+}
+
+.journal-date {
+  font-size: 14px;
+  color: #888;
+}
+
+.journal-content {
+  font-size: 14px;
+  background: white;
+  border: 1px solid #eee;
+  padding: 12px 12px;
+}
+
+.journal-buttons {
+  font-size: 14px;
 }
 
 .box-login {
@@ -348,7 +397,7 @@ hr {
 }
 
 .npc-avatar {
-  width: 128px;
+  width: 64px;
 }
 
 .milestone {
@@ -467,6 +516,32 @@ hr {
   margin-top: 10px;
   color: #a02e39;
   font-weight: bold;
+}
+
+.card-title-mini {
+  font-size: 0.7em;
+  color: #888;
+}
+
+.feed-item {
+  font-size: 14px;
+  border-bottom: 1px dotted #ccc;
+  padding: 7px 0;
+}
+
+.feed-item p {
+  padding: 0;
+  margin: 0;
+}
+
+.feed-date {
+  font-size: 0.8em;
+  color: #888;
+}
+
+.checkbox-mini {
+  color: #888;
+  font-size: 0.8em;
 }
 
 /*# sourceMappingURL=custom.css.map */

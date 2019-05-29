@@ -23,12 +23,12 @@
                         <a href="{{ route('channels.dices.create', $channel->id) }}" class="btn btn-success btn-square"><i class="fas fa-dice-three"></i> Lanzar dados</a>
                         <a href="{{ route('channels.posts.create', $channel->id) }}" class="btn btn-success btn-square"><i class="fas fa-edit"></i> Crear post</a>
                         <a href="{{ route('homebrews.edit', $channel->id) }}" class="btn btn-warning btn-square">Editar</a>
-                        <span class="dropdown">
-                            <a href="" data-toggle="dropdown" class="btn btn-warning btn-square"><i class="fas fa-caret-down"></i></a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="{{ route('homebrews.remove', $channel->id) }}">Eliminar canal</a>
-                            </div>
-                        </span>
+{{--                        <span class="dropdown">--}}
+{{--                            <a href="" data-toggle="dropdown" class="btn btn-warning btn-square"><i class="fas fa-caret-down"></i></a>--}}
+{{--                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">--}}
+{{--                                <a class="dropdown-item" href="{{ route('homebrews.remove', $channel->id) }}">Eliminar canal</a>--}}
+{{--                            </div>--}}
+{{--                        </span>--}}
                     </div>
                 </div>
             </div>

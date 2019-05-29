@@ -48,6 +48,9 @@ class PostController extends Controller
 
         $post->save();
 
+        $channel->order = Channel::getLastOrder()->order + 1;
+        $channel->save();
+
         Alert::send('El post se ha enviado correctamente');
 
         return redirect()->route('channels.show', $channel->id);

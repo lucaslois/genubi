@@ -17,11 +17,18 @@ class NpcController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index($id, Request $request)
     {
         $campaign = Campaign::findOrFail($id);
         $selected_campaign = $campaign;
-        $npcs = $campaign->npcs()->paginate(20);
+        $query = $campaign->npcs();
+
+        if($request->search)
+            $query->where('name', 'LIKE', "%$request->search%");
+        if($campaign->user->isNot(auth()->user()))
+            $query->wherePublic(true);
+
+        $npcs = $query->orderBy('name')->paginate(10);
 
         return view('pages.npcs.index', compact(
             'npcs',
@@ -57,6 +64,7 @@ class NpcController extends Controller
         $npc = new Npc;
         $npc->fill($request->all());
         $npc->enemy = $request->has('enemy');
+        $npc->public = $request->has('public');
         $npc->save();
 
         if($request->avatar) {
@@ -106,6 +114,7 @@ class NpcController extends Controller
         $npc = Npc::findOrFail($id);
         $npc->fill($request->all());
         $npc->enemy = $request->has('enemy');
+        $npc->public = $request->has('public');
         $npc->save();
 
         if($request->avatar) {

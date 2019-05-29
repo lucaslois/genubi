@@ -40,6 +40,19 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="family">Familia</label>
+                                <input
+                                        id="family"
+                                        name="family"
+                                        type="text"
+                                        value="{{ old('family') }}"
+                                        class="form-control {!! $errors->first('family', 'is-invalid') !!}"
+                                        placeholder="Familia/Casa/Apellido/Clan"
+                                >
+                                {!! $errors->first('family', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+
+                            <div class="form-group">
                                 <label for="race">Raza</label>
                                 <input
                                         id="race"

@@ -11,7 +11,8 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="fa fa-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="{{ route('campaigns.index') }}">Partidas</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Antiguo Mal</li>
+                            <li class="breadcrumb-item"><a href="{{ route('campaigns.show', $selected_campaign->id) }}">Antiguo Mal</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Repartir experiencias</li>
                         </ol>
                     </nav>
                 </div>
@@ -40,16 +41,23 @@
                         <thead>
                         <tr>
                             <th>Personaje</th>
+                            <th>Nivel</th>
                             <th>Experiencia</th>
                             <th>Motivo</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($selected_campaign->characters as $character)
+                        @foreach($selected_campaign->activeCharacters() as $character)
+                            @php
+                                $xp_percentage = round($character->currentXp() * 100 / $character->xpForNextLevel($character->currentLevel()));
+                            @endphp
                             <tr>
                                 <td>
                                     {{ $character->name }}
                                     <input hidden name="character_ids[]" type="text" value="{{ $character->id }}">
+                                </td>
+                                <td>
+                                    Nv. {{ $character->currentLevel() }} ({{ $character->currentXp() }}/{{$character->xpForNextLevel($character->currentLevel())}}) - {{ $xp_percentage }}%
                                 </td>
                                 <td>
                                     <input name="value[{{ $character->id }}]" type="number" class="form-control">

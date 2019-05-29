@@ -12,7 +12,7 @@ class ChannelController extends Controller
 {
     public function index($id) {
         $selected_campaign = Campaign::findOrFail($id);
-        $channels = $selected_campaign->channels()->paginate(20);
+        $channels = $selected_campaign->channels()->paginate(10);
 
         return view('pages.channels.index', compact('channels', 'selected_campaign'));
     }

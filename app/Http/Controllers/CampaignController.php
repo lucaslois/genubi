@@ -15,8 +15,13 @@ use Illuminate\Support\Str;
 
 class CampaignController extends Controller
 {
-    public function index() {
-        $campaigns = Campaign::all();
+    public function index(Request $request) {
+        $query = Campaign::query();
+
+        if($request->search)
+            $query->where("name", "LIKE", "%$request->search%");
+
+        $campaigns = $query->get();
 
         return view('pages.campaigns.index', compact('campaigns'));
     }
@@ -25,7 +30,9 @@ class CampaignController extends Controller
         $campaign = Campaign::findOrFail($id);
         $selected_campaign = $campaign;
 
-        return view('pages.campaigns.show', compact('campaign', 'selected_campaign'));
+        $characters = $campaign->activeCharacters();
+
+        return view('pages.campaigns.show', compact('campaign', 'selected_campaign', 'characters'));
     }
 
     public function create() {

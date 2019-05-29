@@ -2,30 +2,7 @@
 
 
 @section('content')
-    <section class="section-campaign">
-        {{--<div class="container">--}}
-        <div class="campaign_background"
-             style="background-image: url({{ $campaign->getImage() }})">
-            <div class="overlay"></div>
-            <div class="container">
-                <div class="campaign_content">
-                    <h1 class="campaign_title">{{ $campaign->name }}
-                        <span class="badge campaign_badge" style="background: {{ $campaign->state->color }}">{{ $campaign->state->name }}</span>
-                    </h1>
-                    <div class="campaign_aditional">
-                        Dirigda por <a href="{{ route('users.show', $campaign->user->id) }}">{{ $campaign->user->name }}</a>
-                    </div>
-                    <div class="campaign_description">
-                        <p>
-                            {{ $campaign->description }}
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        {{--</div>--}}
-    </section>
+    @include('layouts.components.selected_campaign')
 
     <section class="main news">
         <div class="container">
@@ -57,6 +34,23 @@
             <h1>Sesiones</h1>
             <div class="box box-border-top">
                 <p>Aquí se listan todas las sesiones que se fueron jugando en la campaña. Aquí se recopila información sobre qué sucedio en cada una de las sesiones. Se podrán encontrar detalles como un resumen, publicaciones de los personajes, la repartida de experiencia, cuales fueron los NPCs más relevantes, cuales fueron los enemigos abatidos, etc.</p>
+                <form>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input name="search"
+                                       type="text"
+                                       class="form-control"
+                                       placeholder="Buscador..."
+                                       value="{{ request()->search }}"
+                                >
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="submit" class="btn btn-success" value="Buscar">
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
@@ -65,7 +59,7 @@
         <div class="container">
             {{ $sessions->links() }}
             <div class="row">
-                @foreach($sessions as $session)
+                @forelse($sessions as $session)
                     <div class="col-md-4">
                         <div class="card session">
                             <img class="card-img-top" src="{{ $session->getImage() }}" alt="Card image cap">
@@ -85,7 +79,13 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <div class="col-12">
+                        <div class="box">
+                            No hemos encontrado sesiones
+                        </div>
+                    </div>
+                @endforelse
             </div>
 
             {{ $sessions->links() }}

@@ -149,10 +149,10 @@
                                 @method("POST")
                                 <div class="row">
                                     <div class="col-4">
-                                        <input name="class" type="text" class="form-control" placeholder="Clase">
+                                        <input name="name" type="text" class="form-control" placeholder="Clase">
                                     </div>
                                     <div class="col-2">
-                                        <input name="level" type="number" class="form-control" placeholder="Nivel">
+                                        <input name="level" type="text" class="form-control" placeholder="Nivel">
                                     </div>
                                     <div class="col-2">
                                         <input type="submit" value="Agregar clase" class="btn btn-primary">

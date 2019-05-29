@@ -25,7 +25,7 @@
             <h1>Creación de regla de la casa</h1>
             <div class="box box-border-top">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-12">
                         <form action="{{ route('homebrews.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method("POST")

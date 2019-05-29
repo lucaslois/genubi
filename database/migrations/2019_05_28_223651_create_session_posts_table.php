@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCharacterExperiencesTable extends Migration
+class CreateSessionPostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,17 @@ class CreateCharacterExperiencesTable extends Migration
      */
     public function up()
     {
-        Schema::create('character_experiences', function (Blueprint $table) {
+        Schema::create('session_posts', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('session_id');
             $table->unsignedInteger('character_id');
-            $table->unsignedInteger('session_id')->nullable();
             $table->unsignedInteger('user_id');
-            $table->integer('value');
-            $table->string('reason')->nullable();
+            $table->longText('text');
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('character_id')->references('id')->on('characters');
             $table->foreign('session_id')->references('id')->on('sessions');
+            $table->foreign('character_id')->references('id')->on('characters');
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
@@ -36,6 +35,6 @@ class CreateCharacterExperiencesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('character_experiences');
+        Schema::dropIfExists('session_posts');
     }
 }

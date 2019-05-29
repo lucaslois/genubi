@@ -84,15 +84,32 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="enemy">Enemigo</label>
-                                <input
-                                        id="enemy"
-                                        name="enemy"
-                                        type="checkbox"
-                                        class="{!! $errors->first('enemy', 'is-invalid') !!}"
-                                        {{ $npc->enemy ? 'checked' : '' }}
-                                >
+                                <div class="pretty p-default p-round">
+                                    <input type="checkbox"
+                                           name="enemy"
+                                           id="enemy"
+                                           {{ $npc->enemy ? 'checked' : 'selected' }}
+                                    />
+                                    <div class="state p-danger">
+                                        <label>Es un enemigo</label>
+                                    </div>
+                                </div>
                                 {!! $errors->first('enemy', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+
+                            <div class="form-group">
+                                <div class="pretty p-default p-round">
+                                    <input type="checkbox"
+                                           name="public"
+                                           id="public"
+                                            {{ $npc->public ? 'checked' : '' }}
+                                    />
+                                    <div class="state p-danger">
+                                        <label>Público</label>
+                                    </div>
+                                </div>
+                                {!! $errors->first('public', '<div class="invalid-feedback">:message</div>') !!}
+                                <div class="checkbox-mini">* Si el personaje es público, aparecerá en la lista de NPCs de tu campaña.</div>
                             </div>
 
                             <input type="submit" value="Guardar" class="btn btn-primary">

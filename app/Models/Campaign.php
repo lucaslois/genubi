@@ -38,6 +38,10 @@ class Campaign extends Model
         return $this->hasMany('App\\Models\\Character')->orderBy('name');
     }
 
+    public function activeCharacters() {
+        return $this->characters()->whereStateId(1)->get();
+    }
+
     public function npcs() {
         return $this->hasMany('App\\Models\\Npc');
     }
