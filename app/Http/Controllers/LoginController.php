@@ -35,6 +35,10 @@ class LoginController extends Controller
         return redirect()->route('index');
     }
 
+    public function forgotPassword(Request $request) {
+
+    }
+
     public function logout() {
         Auth::logout();
 

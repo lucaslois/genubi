@@ -19,6 +19,12 @@ Route::get('/login', 'LoginController@index')->name('login.index');
 Route::post('/login', 'LoginController@login')->name('login');
 Route::get('/logout', 'LoginController@logout')->name('logout');
 
+Route::get('/forgot-password', 'ForgotPasswordController@index')->name('forgot_password.index');
+Route::post('/forgot-password', 'ForgotPasswordController@store')->name('forgot_password.store');
+
+Route::get('/recovery-password/{token}', 'RecoveryPasswordController@index')->name('recovery_password.index');
+Route::post('/recovery-password/{token}', 'RecoveryPasswordController@store')->name('recovery_password.store');
+
 Route::get('profile', 'ProfileController@show')->name('profile.show');
 
 // CAMPAIGNS

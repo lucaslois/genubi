@@ -31,7 +31,7 @@
                 </div>
 
                 <input type="submit" class="btn btn-primary" value="Iniciar sesión">
-                <a class="ml-3" href="">Olvidé mi contraseña</a>
+                <a class="ml-3" href="{{ route('forgot_password.index') }}">Olvidé mi contraseña</a>
 
             </form>
         </div>
