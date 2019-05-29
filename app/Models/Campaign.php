@@ -42,6 +42,10 @@ class Campaign extends Model
         return $this->characters()->whereStateId(1)->get();
     }
 
+    public function inactiveCharacters() {
+        return $this->characters()->where('state_id', '!=', 1)->get();
+    }
+
     public function npcs() {
         return $this->hasMany('App\\Models\\Npc');
     }

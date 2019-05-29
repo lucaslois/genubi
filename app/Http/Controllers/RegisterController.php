@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Facades\Alert;
+use App\Mail\RegisterConfirmationMail;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class RegisterController extends Controller
@@ -36,6 +38,11 @@ class RegisterController extends Controller
 
         Cache::put($token, $user->id, 1);
 
+        Mail::to($user)->send(new RegisterConfirmationMail($user, $token));
+
+        Alert::send("Hemos enviado un correo electrónico a $user->email para validar tu cuenta.");
+
+        return redirect()->route('login.index');
     }
 
     public function check($token) {

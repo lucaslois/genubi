@@ -27,15 +27,12 @@
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#tab-default" role="tab" >Perfil</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#tab-class" role="tab" >Clases</a>
-                    </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="tab-default" role="tabpanel">
                         <div class="row">
                             <div class="col-8">
-                                <form action="{{ route('characters.update', $character->id) }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('characters.dm.update', $character->id) }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method("PUT")
                                     <div class="form-group">
@@ -123,6 +120,22 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label for="state_id">Estado</label>
+                                        <select
+                                                id="state_id"
+                                                name="state_id"
+                                                type="file"
+                                                value="{{ old('state_id') }}"
+                                                class="form-control {!! $errors->first('state_id', 'is-invalid') !!}"
+                                        >
+                                            @foreach($states as $state)
+                                                <option value="{{ $state->id }}" {{ $state->is($character->state) ? 'selected' : '' }}>{{ $state->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        {!! $errors->first('state_id', '<div class="invalid-feedback">:message</div>') !!}
+                                    </div>
+
+                                    <div class="form-group">
                                         <label for="description">Resumen</label>
                                         <textarea
                                                 id="description"
@@ -141,49 +154,6 @@
                                 <img class="img-thumbnail" src="{{ $character->getImage() }}" alt="">
                             </div>
                         </div>
-                    </div>
-                    <div class="tab-pane fade" id="tab-class" role="tabpanel">
-                        <div class="form-group">
-                            <form action="{{ route('characters.addclass', $character->id) }}" method="POST">
-                                @csrf
-                                @method("POST")
-                                <div class="row">
-                                    <div class="col-4">
-                                        <input name="name" type="text" class="form-control" placeholder="Clase">
-                                    </div>
-                                    <div class="col-2">
-                                        <input name="level" type="text" class="form-control" placeholder="Nivel">
-                                    </div>
-                                    <div class="col-2">
-                                        <input type="submit" value="Agregar clase" class="btn btn-primary">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>Clase</th>
-                                <th>Nivel</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @forelse($character->classes as $class)
-                                <tr>
-                                    <td>{{ $class->name }}</td>
-                                    <td>{{ $class->level }}</td>
-                                    <td>
-                                        <a href="{{ route('characters.removeclass', [$character->id, $class->id]) }}">Quitar</a></td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="3">Aun no hay clases asignadas a este personaje</td>
-                                </tr>
-                            @endforelse
-                            </tbody>
-                        </table>
-
                     </div>
                 </div>
             </div>

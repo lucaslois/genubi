@@ -164,10 +164,13 @@
                     </div>
                 @endforeach
 
-
-                <div class="buttons m-2">
-                    <a href="{{ route('sessions.posts.create', $session->id) }}" class="btn btn-primary btn-sm">Crear nuevo diario</a>
-                </div>
+                @auth
+                    @if(auth()->user()->isPlayingCampaign($selected_campaign))
+                    <div class="buttons m-2">
+                        <a href="{{ route('sessions.posts.create', $session->id) }}" class="btn btn-primary btn-sm">Crear nuevo diario</a>
+                    </div>
+                    @endif
+                @endauth
             </div>
 
         </div>

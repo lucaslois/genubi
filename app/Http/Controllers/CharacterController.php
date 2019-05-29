@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Facades\Alert;
 use App\Models\Character;
 use App\Models\CharacterClass;
+use App\Models\CharacterState;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -30,10 +31,12 @@ class CharacterController extends Controller
             'avatar' => 'file|mimes:jpg,jpeg,png',
             'description' => 'string|max:100'
         ]);
+        $user = Auth::user();
 
         $character = new Character;
         $character->fill($request->all());
-        $character->user_id = 1;
+        $character->user_id = $user->id;
+        $character->state_id = 1;
         $character->save();
 
         if($request->avatar) {
@@ -121,5 +124,40 @@ class CharacterController extends Controller
         $character->classes()->find($class_id)->delete();
 
         return back();
+    }
+
+    public function editDm($id) {
+        $character = Character::findOrFail($id);
+        $states = CharacterState::all();
+
+        return view('pages.characters.edit_dm', compact('character', 'states'));
+    }
+
+    public function updateDm($id, Request $request) {
+        $this->validate($request, [
+            'name' => 'required|string|min:3',
+            'avatar' => 'file|mimes:jpg,jpeg,png',
+            'description' => 'string|max:100'
+        ]);
+
+        $character = Character::findOrFail($id);
+        $character->fill($request->all());
+        $character->save();
+
+        if($request->avatar) {
+            $ext = $request->avatar->getClientOriginalExtension();
+            $name = Str::slug($character->name) . "_" . time() . "." . $ext;
+            $img = Image::make($request->avatar);
+            $img->fit(300);
+            $path = "public/characters/$name";
+            Storage::put($path, $img->stream());
+
+            $character->avatar = Storage::url($path);
+            $character->save();
+        }
+
+        Alert::send('El personaje se ha actualizado correctamente');
+
+        return redirect()->route('campaigns.show', $character->campaign->id);
     }
 }

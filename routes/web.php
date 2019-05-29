@@ -80,6 +80,7 @@ Route::get('characters/me', 'CharacterController@me')->name('characters.me');
 Route::post('characters/{id}/class', 'CharacterController@addClass')->name('characters.addclass');
 Route::get('characters/{id}/class/{class_id}/delete', 'CharacterController@removeClass')->name('characters.removeclass');
 Route::resource('/characters', 'CharacterController');
+
 Route::get('characters/{id}/edit-dm', 'CharacterController@editDm')->name('characters.dm.edit');
 Route::put('characters/{id}/edit-dm', 'CharacterController@updateDm')->name('characters.dm.update');
 

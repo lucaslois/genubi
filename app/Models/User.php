@@ -43,4 +43,12 @@ class User extends Authenticatable
     public function sessionPosts() {
         return $this->hasMany('App\\Models\\SessionPost');
     }
+
+    public function isPlayingCampaign(Campaign $campaign) {
+        foreach($this->characters as $character)
+            if($character->campaign->is($campaign))
+                return true;
+
+        return false;
+    }
 }

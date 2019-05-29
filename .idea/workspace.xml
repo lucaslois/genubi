@@ -27,11 +27,47 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/mails/register_confirmation.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="110">
+              <caret line="5" column="106" selection-start-line="5" selection-start-column="106" selection-end-line="5" selection-end-column="106" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/pages/campaigns/show.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="150" column="69" selection-start-line="150" selection-start-column="69" selection-end-line="150" selection-end-column="69" />
+            <state relative-caret-position="-22">
+              <caret line="167" column="13" lean-forward="true" selection-start-line="167" selection-start-column="13" selection-end-line="167" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/pages/sessions/show.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="370">
+              <caret line="167" column="24" selection-start-line="167" selection-start-column="24" selection-end-line="167" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Models/User.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="412">
+              <caret line="46" column="37" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/pages/characters/edit_dm.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-116">
+              <caret line="34" column="69" selection-start-line="34" selection-start-column="69" selection-end-line="34" selection-end-column="69" />
             </state>
           </provider>
         </entry>
@@ -39,17 +75,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="566">
-              <caret line="83" column="97" selection-start-line="83" selection-start-column="97" selection-end-line="83" selection-end-column="97" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/pages/campaigns/experiences.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="596">
-              <caret line="41" column="28" lean-forward="true" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
+            <state relative-caret-position="500">
+              <caret line="82" selection-start-line="82" selection-end-line="82" />
             </state>
           </provider>
         </entry>
@@ -86,6 +113,7 @@
       <find>npc-avatar</find>
       <find>badge</find>
       <find>character-</find>
+      <find>crear</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -94,23 +122,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Models/Dices/Stack.php" />
-        <option value="$PROJECT_DIR$/app/Models/Dices/Valor.php" />
-        <option value="$PROJECT_DIR$/resources/views/pages/channels/create_post.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/LoginController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" />
-        <option value="$PROJECT_DIR$/resources/views/pages/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/pages/campaigns/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/sass/components/_variables.scss" />
         <option value="$PROJECT_DIR$/resources/views/pages/sessions/index.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_28_223651_create_session_posts_table.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SessionController.php" />
-        <option value="$PROJECT_DIR$/app/Models/User.php" />
         <option value="$PROJECT_DIR$/app/Models/SessionPost.php" />
-        <option value="$PROJECT_DIR$/resources/views/pages/sessions/show.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/sessions/edit_post.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/characters/create.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/pages/characters/edit.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_27_230356_create_channels_table.php" />
         <option value="$PROJECT_DIR$/app/Models/ChannelPost.php" />
         <option value="$PROJECT_DIR$/app/Models/Session.php" />
@@ -129,7 +146,6 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/NpcController.php" />
         <option value="$PROJECT_DIR$/app/Models/CharacterState.php" />
         <option value="$PROJECT_DIR$/resources/sass/app.scss" />
-        <option value="$PROJECT_DIR$/app/Models/Character.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_25_175038_create_characters_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_29_202409_create_character_states_table.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/characters/show.blade.php" />
@@ -138,13 +154,25 @@
         <option value="$PROJECT_DIR$/resources/views/pages/homebrews/edit.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/homebrews/show.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/npcs/index.blade.php" />
-        <option value="$PROJECT_DIR$/app/Models/Campaign.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/CampaignController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ExperienceController.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_28_030858_create_character_experiences_table.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/campaigns/experiences.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/pages/characters/edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/mails/register_confimation.blade.php" />
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/resources/views/mails/register_confirmation.blade.php" />
+        <option value="$PROJECT_DIR$/app/Mail/RegisterConfirmationMail.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/RegisterController.php" />
+        <option value="$PROJECT_DIR$/resources/views/mails/layout.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/pages/characters/edit_dm.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/CharacterController.php" />
+        <option value="$PROJECT_DIR$/app/Models/Character.php" />
+        <option value="$PROJECT_DIR$/app/Models/Campaign.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/campaigns/show.blade.php" />
+        <option value="$PROJECT_DIR$/app/Models/User.php" />
+        <option value="$PROJECT_DIR$/resources/views/pages/sessions/show.blade.php" />
       </list>
     </option>
   </component>
@@ -262,7 +290,13 @@
             <path>
               <item name="GenubiReborn" type="b2602c69:ProjectViewProjectNode" />
               <item name="GenubiReborn" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GenubiReborn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GenubiReborn" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="GenubiReborn" type="b2602c69:ProjectViewProjectNode" />
@@ -280,15 +314,7 @@
               <item name="GenubiReborn" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GenubiReborn" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GenubiReborn" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="characters" type="462c0819:PsiDirectoryNode" />
+              <item name="mails" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -307,19 +333,19 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Desarrollo\Lucky\GenubiReborn\resources\views\pages\sessions" />
-      <recent name="D:\Desarrollo\Lucky\GenubiReborn\resources\views\pages\campaigns" />
-      <recent name="D:\Desarrollo\Lucky\GenubiReborn\resources\views\pages\channels" />
-      <recent name="D:\Desarrollo\Lucky\GenubiReborn\resources\views\pages\homebrews" />
-      <recent name="D:\Desarrollo\Lucky\GenubiReborn\resources\views\pages" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Desarrollo\Lucky\GenubiReborn\app\Models\Dices" />
       <recent name="D:\Desarrollo\Lucky\GenubiReborn\resources\views\pages\sessions" />
       <recent name="D:\Desarrollo\Lucky\GenubiReborn\resources\views\pages" />
       <recent name="D:\Desarrollo\Lucky\GenubiReborn\app\Models" />
       <recent name="D:\Desarrollo\Lucky\GenubiReborn\resources\views\modules\campaigns" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Desarrollo\Lucky\GenubiReborn\resources\views\pages\characters" />
+      <recent name="D:\Desarrollo\Lucky\GenubiReborn\resources\views\pages\sessions" />
+      <recent name="D:\Desarrollo\Lucky\GenubiReborn\resources\views\pages\campaigns" />
+      <recent name="D:\Desarrollo\Lucky\GenubiReborn\resources\views\pages\channels" />
+      <recent name="D:\Desarrollo\Lucky\GenubiReborn\resources\views\pages\homebrews" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -362,12 +388,12 @@
       <workItem from="1558918068498" duration="18871000" />
       <workItem from="1558993507719" duration="23788000" />
       <workItem from="1559078928251" duration="9508000" />
-      <workItem from="1559159645718" duration="3885000" />
+      <workItem from="1559159645718" duration="7376000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87063000" />
+    <option name="totallyTimeSpent" value="90554000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -410,82 +436,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Models/SessionPost.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="24" column="56" selection-start-line="24" selection-start-column="56" selection-end-line="24" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SessionController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="220" selection-start-line="220" selection-end-line="220" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_28_223651_create_session_posts_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/pages/sessions/show.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="11" column="16" lean-forward="true" selection-start-line="11" selection-start-column="16" selection-end-line="17" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/pages/sessions/edit_post.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_27_230356_create_channels_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_27_230404_create_channel_posts_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="23" column="55" lean-forward="true" selection-start-line="23" selection-start-column="55" selection-end-line="23" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/ChannelPost.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-          <folding>
-            <element signature="e#30#44#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/pages/characters/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="41" selection-start-line="41" selection-end-line="52" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Session.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-          <folding>
-            <element signature="e#30#69#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_25_175028_create_sessions_table.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -643,33 +593,6 @@
     <entry file="file://$PROJECT_DIR$/app/Models/CampaignState.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Character.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="36" column="30" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
-          <folding>
-            <element signature="e#30#69#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/pages/characters/show.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1116">
-          <caret line="79" column="87" selection-start-line="79" selection-start-column="87" selection-end-line="79" selection-end-column="87" />
-          <folding>
-            <element signature="e#2194#2226#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/pages/characters/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1276">
-          <caret line="58" column="90" selection-start-line="58" selection-start-column="90" selection-end-line="58" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_29_202409_create_character_states_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
@@ -722,13 +645,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Models/Campaign.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Models/XpTrait.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -757,24 +673,121 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/pages/campaigns/experiences.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/pages/characters/edit.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="596">
-          <caret line="41" column="28" lean-forward="true" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
+        <state relative-caret-position="346">
+          <caret line="151" column="58" selection-start-line="151" selection-start-column="53" selection-end-line="151" selection-end-column="58" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
+    <entry file="file://$PROJECT_DIR$/public/images/logo.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/pages/campaigns/experiences.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="566">
-          <caret line="83" column="97" selection-start-line="83" selection-start-column="97" selection-end-line="83" selection-end-column="97" />
+        <state relative-caret-position="596">
+          <caret line="41" column="28" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Mail/RegisterConfirmationMail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="34" column="88" selection-start-line="34" selection-start-column="88" selection-end-line="34" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/RegisterController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="42" column="95" selection-start-line="42" selection-start-column="95" selection-end-line="42" selection-end-column="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="572">
+          <caret line="32" column="39" selection-start-line="32" selection-start-column="39" selection-end-line="32" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/mails/layout.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="596">
+          <caret line="37" column="16" selection-start-line="37" selection-start-column="16" selection-end-line="37" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/pages/characters/show.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="79" column="87" selection-start-line="79" selection-start-column="87" selection-end-line="79" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CharacterController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2222">
+          <caret line="33" column="29" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Character.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="45" column="72" selection-start-line="45" selection-start-column="72" selection-end-line="45" selection-end-column="72" />
+          <folding>
+            <element signature="e#30#69#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/Campaign.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="45" column="61" selection-start-line="45" selection-start-column="61" selection-end-line="45" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/mails/register_confirmation.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="106" selection-start-line="5" selection-start-column="106" selection-end-line="5" selection-end-column="106" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/pages/campaigns/show.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="150" column="69" selection-start-line="150" selection-start-column="69" selection-end-line="150" selection-end-column="69" />
+        <state relative-caret-position="-22">
+          <caret line="167" column="13" lean-forward="true" selection-start-line="167" selection-start-column="13" selection-end-line="167" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="82" selection-start-line="82" selection-end-line="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/pages/characters/edit_dm.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-116">
+          <caret line="34" column="69" selection-start-line="34" selection-start-column="69" selection-end-line="34" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Models/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="46" column="37" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/pages/sessions/show.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="167" column="24" selection-start-line="167" selection-start-column="24" selection-end-line="167" selection-end-column="24" />
         </state>
       </provider>
     </entry>

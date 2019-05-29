@@ -16,7 +16,8 @@ class Character extends Model implements CanParticipateInChannel
         'age',
         'description',
         'nationality',
-        'color'
+        'color',
+        'state_id'
     ];
 
     public function user() {
@@ -42,7 +43,7 @@ class Character extends Model implements CanParticipateInChannel
     }
 
     public function state() {
-        return $this->belongsTo('App\\Models\\CharacterState');
+        return $this->belongsTo('App\\Models\\CharacterState', 'state_id');
     }
 
     public function getName()
