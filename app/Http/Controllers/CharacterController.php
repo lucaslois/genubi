@@ -65,7 +65,7 @@ class CharacterController extends Controller
     public function update($id, Request $request) {
         $this->validate($request, [
             'name' => 'required|string|min:3',
-            'avatar' => 'file|mimes:jpg,jpeg,png',
+            'avatar' => 'file|mimes:jpg,jpeg,png|',
             'description' => 'string'
         ]);
 
