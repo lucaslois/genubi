@@ -71,7 +71,6 @@ class CharacterController extends Controller
 
         $character = Character::findOrFail($id);
         $character->fill($request->all());
-        $character->user_id = 1;
         $character->save();
 
         if($request->avatar) {
