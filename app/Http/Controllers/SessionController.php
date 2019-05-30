@@ -178,6 +178,8 @@ class SessionController extends Controller
         else
             $session->npcs()->attach($request->npc_id);
 
+        Alert::send('Las asignaciones se han guardado correctamente');
+
         return redirect()->route('sessions.assignments.index', $session->id);
     }
 
@@ -217,6 +219,8 @@ class SessionController extends Controller
             $milestone->avatar = Storage::url("public/milestones/$name");
         }
         $milestone->save();
+
+        Alert::send('El hito se ha guardado correctamente');
 
         return redirect()->route('sessions.milestones.index', $session->id);
     }

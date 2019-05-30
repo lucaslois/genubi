@@ -48,6 +48,8 @@
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item" href="{{ route('campaigns.experiences.index', $campaign->id) }}">Repartir experiencias</a>
                                     <a class="dropdown-item" href="{{ route('campaigns.link.index', $campaign->id) }}">Crear enlace de invitación</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{ route('campaigns.remove', $campaign->id) }}"><i class="fas fa-trash"></i> Eliminar partida</a>
                                 </div>
                             </span>
                         </div>

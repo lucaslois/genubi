@@ -23,9 +23,11 @@ class ExperienceController extends Controller
         $selected_campaign = $user->campaigns()->findOrFail($id);
 
         $characters = Character::findOrFail($request->character_ids);
+        $counter = 0;
         foreach($characters as $character) {
             if(!$request->value[$character->id])
                 continue;
+            $counter++;
             CharacterExperience::create([
                 'user_id' => $user->id,
                 'character_id' => $character->id,
@@ -42,7 +44,7 @@ class ExperienceController extends Controller
             ]);
         }
 
-        Alert::send("La experiencia se ha entregado correctamente a {$characters->count()} personajes");
+        Alert::send("La experiencia se ha entregado correctamente a {$counter} personajes");
 
         return redirect()->route('campaigns.show', $selected_campaign->id);
     }

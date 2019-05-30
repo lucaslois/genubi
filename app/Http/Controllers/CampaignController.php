@@ -121,6 +121,17 @@ class CampaignController extends Controller
         return redirect()->route('campaigns.show', $campaign->id);
     }
 
+    public function remove($id) {
+        $user = Auth::user();
+        $campaign = $user->campaigns()->findOrFail($id);
+
+        $campaign->delete();
+
+        Alert::send("La campaña se ha eliminado correctamente");
+
+        return redirect()->route('campaigns.me');
+    }
+
     public function me() {
         $user = Auth::user();
         $campaigns = $user->campaigns;

@@ -94,7 +94,24 @@
                     </div>
                     <div class="tab-pane fade" id="tab-experience" role="tabpanel">
                         <div class="alert alert-success">
-                            Nivel: {{ $character->currentLevel() }}
+                            <div class="row">
+                                <div class="col-md-2 text-center">
+                                    Nivel: {{ $character->currentLevel() }}
+                                </div>
+                                <div class="col-md-10">
+                                    @php
+                                        $xp_percentage = round($character->currentXp() * 100 / $character->xpForNextLevel($character->currentLevel()));
+                                    @endphp
+                                    <div class="progress progress-level-bar">
+                                        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%">
+                                            {{ $xp_percentage }}%
+                                        </div>
+                                    </div>
+                                    <div class="progress-level-text">
+                                        Nv. {{ $character->currentLevel() }} ({{ $character->currentXp() }}/{{$character->xpForNextLevel($character->currentLevel())}}) - {{ $xp_percentage }}%
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <table class="table">
                             <thead>

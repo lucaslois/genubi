@@ -635,4 +635,20 @@ hr {
   font-size: 0.8em;
 }
 
+.progress-level-bar {
+  border: 1px solid #b7e1c1;
+  background: white;
+  height: 24px;
+}
+
+.progress-level-bar .progress-bar {
+  background: #e3bb00;
+  color: #b68a1b;
+  font-weight: 600;
+}
+
+.progress-level-text {
+  font-size: 0.8em;
+}
+
 /*# sourceMappingURL=custom.css.map */

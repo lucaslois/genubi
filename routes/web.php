@@ -39,6 +39,7 @@ Route::get('campaigns/{id}/create-link', 'CampaignController@linkIndex')->name('
 Route::get('campaigns/{id}/create-link/regenerate', 'CampaignController@linkRegenerate')->name('campaigns.link.regenerate');
 Route::get('campaigns/{id}/create-link/disable', 'CampaignController@linkDisable')->name('campaigns.link.disable');
 Route::resource('/campaigns', 'CampaignController');
+Route::get('campaigns/{id}/remove', 'CampaignController@remove')->name('campaigns.remove');
 
 Route::get('/campaigns/{id}/experiences', 'ExperienceController@index')->name('campaigns.experiences.index');
 Route::post('/campaigns/{id}/experiences', 'ExperienceController@store')->name('campaigns.experiences.store');

@@ -509,3 +509,19 @@ hr {
   color: #888;
   font-size: 0.8em;
 }
+
+.progress-level-bar  {
+  border: 1px solid darken(#d4edda, 8);
+  background: white;
+  height: 24px;
+}
+
+.progress-level-bar .progress-bar  {
+  background: $main_yellow;
+  color: darken($main_dark_yellow, 8);
+  font-weight: 600;
+}
+
+.progress-level-text {
+  font-size: 0.8em;
+}
