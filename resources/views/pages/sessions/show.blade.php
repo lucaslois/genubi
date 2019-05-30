@@ -169,7 +169,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="#journal_{{ str_slug($post->character->name) }}" class="collapse journal-content">
+                        <div id="journal_{{ str_slug($post->character->name) }}" class="collapse journal-content">
                             {!! $post->text !!}
                         </div>
                     </div>
