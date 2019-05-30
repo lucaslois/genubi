@@ -108,7 +108,9 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/sass/components/_navbars.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1056" />
+            <state relative-caret-position="374">
+              <caret line="68" column="21" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
+            </state>
           </provider>
         </entry>
       </file>
@@ -199,12 +201,12 @@
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/CampaignController.php" />
         <option value="$PROJECT_DIR$/app/Models/Campaign.php" />
-        <option value="$PROJECT_DIR$/resources/sass/components/_navbars.scss" />
         <option value="$PROJECT_DIR$/resources/views/pages/campaigns/show.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/components/topbar.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/components/navbar.blade.php" />
         <option value="$PROJECT_DIR$/resources/sass/app.scss" />
         <option value="$PROJECT_DIR$/resources/views/layouts/main.blade.php" />
+        <option value="$PROJECT_DIR$/resources/sass/components/_navbars.scss" />
       </list>
     </option>
   </component>
@@ -438,12 +440,12 @@
       <workItem from="1558918068498" duration="18871000" />
       <workItem from="1558993507719" duration="23788000" />
       <workItem from="1559078928251" duration="9508000" />
-      <workItem from="1559159645718" duration="26863000" />
+      <workItem from="1559159645718" duration="27106000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110041000" />
+    <option name="totallyTimeSpent" value="110284000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -456,7 +458,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23400854" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -829,7 +830,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/sass/components/_navbars.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1056" />
+        <state relative-caret-position="374">
+          <caret line="68" column="21" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
+        </state>
       </provider>
     </entry>
   </component>

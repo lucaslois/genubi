@@ -103,7 +103,7 @@
                                         $xp_percentage = round($character->currentXp() * 100 / $character->xpForNextLevel($character->currentLevel()));
                                     @endphp
                                     <div class="progress progress-level-bar">
-                                        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%">
+                                        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: {{ $xp_percentage }}%">
                                             {{ $xp_percentage }}%
                                         </div>
                                     </div>
