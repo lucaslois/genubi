@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 
 class CampaignController extends Controller
 {
@@ -60,9 +61,16 @@ class CampaignController extends Controller
         if($request->background_image) {
             $ext = $request->background_image->getClientOriginalExtension();
             $name = Str::slug($campaign->name) . "_" . time() . "." . $ext;
+            $name_mini = Str::slug($campaign->name) . "_mini_" . time() . "." . $ext;
             $request->background_image->storeAs('public/campaigns', $name);
 
             $campaign->background_image = Storage::url("public/campaigns/$name");
+            $img = Image::make($request->background_image);
+            $img->fit(350, 200);
+            $path = "public/characters/$name_mini";
+            Storage::$name_mini($path, $img->stream());
+
+            $campaign->background_image_mini = Storage::url($path);
             $campaign->save();
         }
 
@@ -94,9 +102,17 @@ class CampaignController extends Controller
         if($request->background_image) {
             $ext = $request->background_image->getClientOriginalExtension();
             $name = Str::slug($campaign->name) . "_" . time() . "." . $ext;
+            $name_mini = Str::slug($campaign->name) . "_mini_" . time() . "." . $ext;
             $request->background_image->storeAs('public/campaigns', $name);
 
             $campaign->background_image = Storage::url("public/campaigns/$name");
+
+            $img = Image::make($request->background_image);
+            $img->fit(350, 200);
+            $path = "public/characters/$name_mini";
+            Storage::put($path, $img->stream());
+
+            $campaign->background_image_mini = Storage::url($path);
             $campaign->save();
         }
 

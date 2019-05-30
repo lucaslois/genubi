@@ -71,6 +71,13 @@ class Campaign extends Model
         return asset('images/default_campaign.jpg');
     }
 
+    public function getImageMini() {
+        if($this->background_image_mini)
+            return asset($this->background_image_mini);
+
+        return asset('images/default_campaign.jpg');
+    }
+
     public function positives() {
         $query = SessionVote::query();
         return $query->join('sessions', 'sessions.id', '=', 'session_votes.session_id')

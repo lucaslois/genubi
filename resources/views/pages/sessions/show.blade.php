@@ -149,10 +149,10 @@
                 @foreach($session->posts as $post)
                     <div class="session-post">
                         <div class="journal-opener" data-toggle="collapse"
-                             data-target="#resumen_zaheera">
+                             data-target="#journal_{{ str_slug($post->character->name) }}">
                             <div class="row">
                                 <div class="col-md-1">
-                                    <img class="journal-image-little img-thumbnail" src="https://genubi.com.ar/uploads/personajes/zaheera-1528849733.png"  alt="Zaheera">
+                                    <img class="journal-image-little img-thumbnail" src="{{ $post->character->getImage() }}"  alt="Zaheera">
                                 </div>
                                 <div class="col-11">
                                     <div class="float-right">
@@ -169,7 +169,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="resumen_zaheera" class="collapse journal-content">
+                        <div id="#journal_{{ str_slug($post->character->name) }}" class="collapse journal-content">
                             {!! $post->text !!}
                         </div>
                     </div>
