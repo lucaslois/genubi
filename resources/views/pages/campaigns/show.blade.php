@@ -1,30 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <section class="section-campaign">
-        {{--<div class="container">--}}
-            <div class="campaign_background"
-                 style="background-image: url({{ $campaign->getImage() }})">
-                <div class="overlay"></div>
-                <div class="container">
-                    <div class="campaign_content">
-                        <h1 class="campaign_title">{{ $campaign->name }}
-                            <span class="badge campaign_badge" style="background: {{ $campaign->state->color }}">{{ $campaign->state->name }}</span>
-                        </h1>
-                        <div class="campaign_aditional">
-                            Dirigda por <a href="{{ route('users.show', $campaign->user->id) }}">{{ $campaign->user->name }}</a>
-                        </div>
-                        <div class="campaign_description">
-                            <p>
-                                {{ $campaign->description }}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        {{--</div>--}}
-    </section>
+    @include('layouts.components.selected_campaign')
 
     <section class="main news">
         <div class="container">

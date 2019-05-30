@@ -1,6 +1,6 @@
 @if(isset($selected_campaign))
     <div class="secondbar">
-    <nav class="navbar nav-main navbar-expand-sm">
+    <nav id="secondbar" class="navbar nav-main navbar-expand-sm">
         <div class="container">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">

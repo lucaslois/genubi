@@ -62,6 +62,7 @@
   position: relative;
   top: -1px;
   padding: 0px 4px;
+  line-height: 1.2;
 }
 .secondbar .nav-main a {
   color: #a5afba;
@@ -649,6 +650,10 @@ hr {
 
 .progress-level-text {
   font-size: 0.8em;
+}
+
+.fixed-top {
+  transition: all ease 2s;
 }
 
 /*# sourceMappingURL=custom.css.map */

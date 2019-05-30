@@ -40,6 +40,17 @@
     }, function() {
         $(this).find('.dropdown-menu').hide();
     });
+
+    $(window).scroll(function (event) {
+        let scroll = $(window).scrollTop();
+        let check = false;
+        let secondbar = $('#secondbar');
+        if(secondbar.length == 0) return;
+        if(scroll > 120)
+            secondbar.addClass('fixed-top');
+        else
+            secondbar.removeClass('fixed-top');
+    });
 </script>
 <!-- Starts Alert (alert.blade.php) -->
 <script>
