@@ -48,7 +48,10 @@
                                     </div>
                                     <div class="col-md-8">
                                         <h5 class="character-title">{{ $character->name }} <span class="character-level">Nv. {{ $character->currentLevel() }}</span></h5>
+                                        @if($character->campaign)
                                         <p class="character-data character-data-owner">en {{ $character->campaign->name }}</p>
+                                        @endif
+
                                         <p class="character-data">{{ $character->race }} |
                                             {{ $character->classes->implode('name', ', ')  }}
                                         </p>

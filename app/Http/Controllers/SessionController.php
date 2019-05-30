@@ -45,7 +45,8 @@ class SessionController extends Controller
      */
     public function create()
     {
-        $campaigns = Campaign::all();
+        $user = Auth::user();
+        $campaigns = $user->campaigns;
         return view('pages.sessions.create', compact('campaigns'));
     }
 

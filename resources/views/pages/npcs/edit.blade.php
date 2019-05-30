@@ -10,9 +10,11 @@
                 <div class="col-md-4">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i></a></li>
-                            <li class="breadcrumb-item active"><a href="#">NPCs</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Editar</li>
+                            <li class="breadcrumb-item"><a href="{{ url('') }}"><i class="fa fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('campaigns.index') }}">Partidas</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('campaigns.show', $campaign->id) }}">{{ $campaign->name }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('campaigns.npcs.index', $campaign->id) }}">Lista de npcs</a></li>
+                            <li class="breadcrumb-item active">Editar Npc</li>
                         </ol>
                     </nav>
                 </div>

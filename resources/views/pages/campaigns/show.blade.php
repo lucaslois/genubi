@@ -75,7 +75,7 @@
                         <dl>
                             <dt>Fecha de inicio</dt>
                             <dd>
-                                @if($campaign->sessions)
+                                @if($campaign->sessions->count() > 0)
                                 {{ $campaign->sessions->first()->date->format('d F Y') }}
                                 @else
                                     Aun no hay sesiones
@@ -141,7 +141,7 @@
                                         @if($character->nationality)
                                         <p class="character-data">Oriundo de {{ $character->nationality }}</p>
                                         @endif
-                                        <p class="character-desc">{{ $character->description }}</p>
+                                        <p class="character-desc">{{ str_limit($character->description, 200) }}</p>
                                         <a href="{{ route('characters.show', $character->id) }}" class="btn btn-primary btn-sm">Ver personaje</a>
                                     </div>
                                 </div>
@@ -186,7 +186,7 @@
                                         @if($character->nationality)
                                             <p class="character-data">Oriundo de {{ $character->nationality }}</p>
                                         @endif
-                                        <p class="character-desc">{{ $character->description }}</p>
+                                        <p class="character-desc">{{ str_limit($character->description, 200) }}</p>
                                         <a href="{{ route('characters.show', $character->id) }}" class="btn btn-primary btn-sm">Ver personaje</a>
                                     </div>
                                 </div>

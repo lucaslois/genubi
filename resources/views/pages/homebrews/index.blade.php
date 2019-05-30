@@ -33,7 +33,7 @@
         <div class="container">
             <h1>Reglas de la casa</h1>
             <div class="box box-border-top">
-                <p>Aquí se listan todas las sesiones que se fueron jugando en la campaña. Aquí se recopila información sobre qué sucedio en cada una de las sesiones. Se podrán encontrar detalles como un resumen, publicaciones de los personajes, la repartida de experiencia, cuales fueron los NPCs más relevantes, cuales fueron los enemigos abatidos, etc.</p>
+                <p>Aquí se listan todas las reglas de la casa creadas por el DM para la campaña.</p>
             </div>
         </div>
     </section>

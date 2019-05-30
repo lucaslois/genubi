@@ -12,8 +12,8 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ url('') }}"><i class="fa fa-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="{{ route('campaigns.index') }}">Partidas</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('campaigns.show', $campaign->id) }}">Antiguo Mal</a></li>
-                            <li class="breadcrumb-item active">Sesiones</li>
+                            <li class="breadcrumb-item"><a href="{{ route('campaigns.show', $campaign->id) }}">{{ $campaign->name }}</a></li>
+                            <li class="breadcrumb-item active">Npcs</li>
                         </ol>
                     </nav>
                 </div>
@@ -33,7 +33,7 @@
         <div class="container">
             <h1>NPCs</h1>
             <div class="box box-border-top">
-                <p>Aquí se listan todas las sesiones que se fueron jugando en la campaña. Aquí se recopila información sobre qué sucedio en cada una de las sesiones. Se podrán encontrar detalles como un resumen, publicaciones de los personajes, la repartida de experiencia, cuales fueron los NPCs más relevantes, cuales fueron los enemigos abatidos, etc.</p>
+                <p>Aquí se listan todos los NPCs dados de alta en el sistema.</p>
                 <form>
                     <div class="row">
                         <div class="col-md-6">

@@ -10,8 +10,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i></a></li>
-                            <li class="breadcrumb-item active"><a href="#">NPCs</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Crear sesión</li>
+                            <li class="breadcrumb-item active">Crear NPC</li>
                         </ol>
                     </nav>
                 </div>

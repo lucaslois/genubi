@@ -58,8 +58,8 @@ class PostController extends Controller
                 continue;
             Notification::create([
                 'user_id' => $participant->id,
-                'text' => "{$user->name} ha dejado un post en el canal {$channel->name} como {$post->participant()->getName}",
-                'image' => $post->participant()->getName,
+                'text' => "{$user->name} ha dejado un post en el canal {$channel->name} como {$post->participant()->getName()}",
+                'image' => $post->participant()->getName(),
                 'link' => route('channels.show', $channel->id)
             ]);
         }

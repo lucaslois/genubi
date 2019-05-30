@@ -52,6 +52,12 @@
                 </div>
                 <img class="img-thumbnail session-image" src="{{ $session->getImage() }}" alt="">
                 <div class="session-custom mt-3">
+                    <dl>
+                        <dt>Autor</dt>
+                        <dd>{{ $session->user->name }}</dd>
+                        <dt>Fecha de juego</dt>
+                        <dd>{{ $session->date->format('d F Y') }}</dd>
+                    </dl>
                     <h4>Resumen</h4>
                     {!! $session->text !!}
                 </div>
@@ -115,7 +121,7 @@
                     <div class="row">
                         @foreach($session->enemies as $npc)
                             <div class="col-md-3">
-                                <div class="card" style="padding: 0; border-top: 3px solid cornflowerblue; margin-bottom: 6px;">
+                                <div class="card" style="padding: 0; border-top: 3px solid #ed1429; margin-bottom: 6px;">
                                     <div class="card-body" style="padding: 0;">
                                         <div class="row">
                                             <div class="col-md-4">
@@ -223,7 +229,9 @@
 @push('js')
     <script>
         @auth
-            @if($selected_campaign->user->isNot(auth()->user()) && auth()->user()->sessionVotes()->whereSessionId($session->id)->count() == 0)
+            @if($selected_campaign->user->isNot(auth()->user()) &&
+            auth()->user()->sessionVotes()->whereSessionId($session->id)->count() == 0 &&
+            now()->diffInDays($session->date)  < 10)
             $('#voteModal').modal();
             @endif
         @endauth

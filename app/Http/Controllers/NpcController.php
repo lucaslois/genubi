@@ -6,6 +6,7 @@ use App\Facades\Alert;
 use App\Models\Campaign;
 use App\Models\Npc;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
@@ -44,7 +45,8 @@ class NpcController extends Controller
      */
     public function create()
     {
-        $campaigns = Campaign::all();
+        $user = Auth::user();
+        $campaigns = $user->campaigns;
         return view('pages.npcs.create', compact('campaigns'));
     }
 

@@ -1,3 +1,4 @@
+@if(isset($selected_campaign))
 <section class="section-campaign">
     {{--<div class="container">--}}
     <div class="campaign_background"
@@ -22,3 +23,4 @@
     </div>
     {{--</div>--}}
 </section>
+@endif
