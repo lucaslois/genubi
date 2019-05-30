@@ -44,17 +44,18 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <img class="img-thumbnail character-avatar" src="{{ $character->getImage() }}" alt="">
+                                        <img class="img-thumbnail" src="{{ $character->getImage() }}" alt="">
                                     </div>
                                     <div class="col-md-8">
-                                        <h5 class="character-title">{{ $character->name }}
-                                            @if($character->campaign)
-                                            <span class="character-owner">de {{ $character->campaign->name }}</span>
-                                            @endif
-                                        </h5>
-                                        <p class="character-data">{{ $character->race }}, oriundo de {{ $character->nationality }}</p>
+                                        <h5 class="character-title">{{ $character->name }} <span class="character-level">Nv. {{ $character->currentLevel() }}</span></h5>
+                                        <p class="character-data character-data-owner">en {{ $character->campaign->name }}</p>
+                                        <p class="character-data">{{ $character->race }} |
+                                            {{ $character->classes->implode('name', ', ')  }}
+                                        </p>
+                                        @if($character->nationality)
+                                            <p class="character-data">Oriundo de {{ $character->nationality }}</p>
+                                        @endif
                                         <p class="character-desc">{{ $character->description }}</p>
-                                        <a href="{{ route('characters.edit', $character->id) }}" class="btn btn-warning btn-sm">Editar</a>
                                         <a href="{{ route('characters.show', $character->id) }}" class="btn btn-primary btn-sm">Ver personaje</a>
                                     </div>
                                 </div>

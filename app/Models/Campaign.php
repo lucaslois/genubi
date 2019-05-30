@@ -58,6 +58,12 @@ class Campaign extends Model
         return $this->hasMany('App\\Models\\Channel')->orderByDesc('order');
     }
 
+    public function usersPlaying() {
+        return $this->characters->map(function($character) {
+            return $this->user;
+        })->unique('id');
+    }
+
     public function getImage() {
         if($this->background_image)
             return asset($this->background_image);

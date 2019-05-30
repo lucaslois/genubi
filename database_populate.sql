@@ -11,31 +11,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Volcando estructura para tabla genubi_reborn.campaigns
-CREATE TABLE IF NOT EXISTS `campaigns` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `background_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_id` int(10) unsigned NOT NULL,
-  `game_id` int(10) unsigned NOT NULL,
-  `mode_id` int(10) unsigned NOT NULL,
-  `state_id` int(10) unsigned NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `campaigns_user_id_foreign` (`user_id`),
-  KEY `campaigns_game_id_foreign` (`game_id`),
-  KEY `campaigns_mode_id_foreign` (`mode_id`),
-  KEY `campaigns_state_id_foreign` (`state_id`),
-  CONSTRAINT `campaigns_game_id_foreign` FOREIGN KEY (`game_id`) REFERENCES `games` (`id`),
-  CONSTRAINT `campaigns_mode_id_foreign` FOREIGN KEY (`mode_id`) REFERENCES `modes` (`id`),
-  CONSTRAINT `campaigns_state_id_foreign` FOREIGN KEY (`state_id`) REFERENCES `campaign_states` (`id`),
-  CONSTRAINT `campaigns_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 -- Volcando datos para la tabla genubi_reborn.campaigns: ~8 rows (aproximadamente)
 /*!40000 ALTER TABLE `campaigns` DISABLE KEYS */;
 INSERT INTO `campaigns` (`id`, `name`, `description`, `background_image`, `token`, `user_id`, `game_id`, `mode_id`, `state_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -49,17 +24,6 @@ INSERT INTO `campaigns` (`id`, `name`, `description`, `background_image`, `token
 	(9, 'Nave espacial omega 6', 'Graves misericordias', NULL, NULL, 3, 1, 1, 1, '2018-06-12 22:36:49', '2018-06-12 23:02:42', '2018-06-12 00:00:00');
 /*!40000 ALTER TABLE `campaigns` ENABLE KEYS */;
 
--- Volcando estructura para tabla genubi_reborn.campaign_states
-CREATE TABLE IF NOT EXISTS `campaign_states` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `color` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 -- Volcando datos para la tabla genubi_reborn.campaign_states: ~5 rows (aproximadamente)
 /*!40000 ALTER TABLE `campaign_states` DISABLE KEYS */;
 INSERT INTO `campaign_states` (`id`, `name`, `slug`, `color`, `created_at`, `updated_at`) VALUES
@@ -70,91 +34,72 @@ INSERT INTO `campaign_states` (`id`, `name`, `slug`, `color`, `created_at`, `upd
 	(5, 'Inactiva', 'inactive', '#005500', NULL, NULL);
 /*!40000 ALTER TABLE `campaign_states` ENABLE KEYS */;
 
--- Volcando estructura para tabla genubi_reborn.channels
-CREATE TABLE IF NOT EXISTS `channels` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `campaign_id` int(10) unsigned NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `text` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `order` int(10) unsigned NOT NULL DEFAULT '0',
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Volcando datos para la tabla genubi_reborn.channels: ~41 rows (aproximadamente)
+-- Volcando datos para la tabla genubi_reborn.channels: ~45 rows (aproximadamente)
 /*!40000 ALTER TABLE `channels` DISABLE KEYS */;
-INSERT INTO `channels` (`id`, `campaign_id`, `user_id`, `name`, `text`, `order`, `created_at`, `updated_at`, `deleted_at`) VALUES
-	(1, 2, 1, 'Canal de prueba', '<p>Esto es un cala de pruebas. Se utilizará para describir la vaina cósmica. Jejejejojojojejoxjejox</p>', 227, '2018-07-04 17:47:59', '2018-07-19 00:56:13', NULL),
-	(2, 2, 2, 'Calabozo de Olidammara', '<p>Xie Xie negoció con Sinn una prueba para verificar si es adecuado agregarlo a su "organización". Este, luego de varios días de aventura, decidió que era momento de completar dicha prueba. Formó un grupo con los integrantes que le parecían mas adecuados para este tipo de misión.</p>', 73, '2018-07-04 18:00:43', '2018-07-16 13:02:31', NULL),
-	(3, 2, 12, 'Identificar tareas', '<p>Después de la charla con Ilfrin, Elena se dirige al cuarto de Sinn a realizarle algunas consultas técnicas sobre sus tareas de creación.</p>', 66, '2018-07-05 19:59:07', '2018-07-18 13:12:12', NULL),
-	(4, 2, 1, 'Hablando con Vidith', '<p>Luego de que <strong>Vidith </strong>le haya encargado a <strong>Sarumo </strong>y <strong>Zaheera </strong>acompañar a <strong>Lauren </strong>al refugio para guardar a sepultura, Sarumo desea hablar a solas con Vidith.</p>', 67, '2018-07-08 17:12:52', '2018-07-16 13:03:28', '2018-07-16 13:03:28'),
-	(5, 2, 6, 'Ahora que estamos todos juntos', '<p><strong>Zaheera </strong>cayó desmayada en su nueva cama apenas regresó del cuarto secreto de <strong>Vidith</strong>. Ahora que es un nuevo día, tiene que organizar en su mente todos los increíbles eventos de los últimos días y prepararse para el próximo viaje. Pero primero, tiene unas cosas que comentarles a sus compañeros ahora que todos viven bajo un mismo techo.</p>', 72, '2018-07-09 03:56:31', '2018-07-16 20:41:40', '2018-07-16 20:41:40'),
-	(6, 2, 7, 'Los negocios son primero, la oferta de Xie', '<p>Luego de haber conseguido el guante para Xie Xie Sinn debe de evaluar que hacer con él. ¿Será un buen negocio el de Xie? ¿O quizás convenga vender este nuevo producto? ¿Qué deparará el futuro de negocios?</p>', 421, '2018-07-16 12:09:03', '2018-07-21 18:45:37', NULL),
-	(7, 2, 6, 'Comienza el estudio intensivo', '<p>Luego de regresar de la organización de <i>Los Cartógrafos,</i> <strong>Zaheera </strong>se dirigió a la biblioteca de <i>Arcania </i>para abastecerse de material de estudio.&nbsp;</p>', 145, '2018-07-16 20:50:44', '2018-07-17 19:57:24', NULL),
-	(8, 2, 12, 'El guantelete rebelde', '<p>Elena intenta en su taller volver a usar el guante que Sinn le llevó a estudiar. Después de 8 horas de trabajo donde comenzó un nuevo constructora ayudante y un pergamino de resurrección.</p>', 168, '2018-07-17 17:27:45', '2018-07-18 12:22:35', NULL),
-	(9, 2, 4, 'A empezar de nuevo', '<p>Luego de haber cenado el festín que preparo Leonard llego el momento del el viaje a Silentium. Ilfrin fue a dormir bajo las estrellas en el patio del semiplano de grupo y al despertar comenzó su viaje de la forma que ya había averiguado.&nbsp;</p>', 545, '2018-07-17 18:52:36', '2018-07-25 02:06:29', NULL),
-	(10, 2, 8, 'La Cena "II"', '<p>Luego de cocinar todo el día, Leonard se dispuso a servir el banquete que había preparado.&nbsp;</p><p>En el habían diferentes platos, como: Salchichas, Paella de pescado(17),<strong> </strong>Estofado de res, Diferentes tipos de pastas(30), Pescado (33), Jabalí a la cerveza con limón y stevia (25), Jabalí (17), Brochetas de cordero <strong>SUPER</strong> picantes (32), y por último, al fondo de la mesa un plato que llamaba un poco más la atención pese a no ser algo muy extravagante: <strong>Estofado de natsa </strong>(20 natural, 44)</p>', 682, '2018-07-17 23:07:51', '2018-08-02 12:13:40', NULL),
-	(11, 2, 12, 'Ortopedia mágica', '<p>Luego de descubrir cómo funciona el guante que Sinn le llevó a Elena a analizar, y luego de su jornada laboral, la gnoma se dedica al estudio e investigación acerca de los objetos mágicos basados en dragones.</p>', 801, '2018-07-18 21:06:24', '2018-07-30 22:06:08', NULL),
-	(12, 2, 6, 'Tantos Nuevos Mundos por Descubrir', '<p><strong>Zaheera </strong>tiene una larga semana por delante y no va a dejar que se le apilen los quehaceres. Tiene planeado comenzar su investigación sobre ese extraño plano para poder ingresar a <i>Los Cartógrafos</i>.</p>', 871, '2018-07-19 19:20:24', '2018-08-02 01:03:55', NULL),
-	(13, 2, 7, 'La familia de joyeros', '<p>Luego de hablar con Xie me dirijo a la tienda está en la tercer capa de la zona mercantil. Debo buscar el local número 87 para hablar con la familia de <strong>Elena </strong>y lograr trabajar las joyas que encontramos.</p><p>&nbsp;</p>', 420, '2018-07-19 21:58:25', '2018-07-21 19:02:47', NULL),
-	(14, 2, 7, 'Negocios, Negocios, Negocios', '<p>Habiendo puesto a trabajar las joyas es momento de vender y <strong>Sinn </strong>lo sabe. Quiere terminar vender los objetos y poner a trabajar el objeto especial de <strong>Ilfrin </strong>cuanto antes.</p>', 708, '2018-07-21 18:50:33', '2018-07-27 23:25:52', NULL),
-	(15, 2, 5, 'Mision: Lectura', '<p>Determinada a poner inicio a su investigación, <strong>Shraza</strong> decide tomarse su tiempo para leer los libros que trajo de la biblioteca. Mas por interés propio que por deber, ella busca no solo saber sobre <strong>Barimos, </strong>sino tambien descubrir sus origenes y ver con que se encontrara en un futuro.</p>', 470, '2018-07-24 00:23:13', '2018-07-24 17:50:01', '2018-07-24 17:50:01'),
-	(16, 2, 1, 'Averiguando sobre la orden de paladines', '<p>Sarumo intentará averiguar información sobre el paradero de los compañeros de Leonard a través del conjuro Escudriñar.</p>', 637, '2018-07-24 16:30:14', '2018-08-09 16:11:24', NULL),
-	(17, 2, 4, 'Planes, estrategias y algunas sorpresas', '<p>Luego de despedirme del hermano Wan a tempranas horas del quinto día. Ilfrin regresa al plano-hogar.</p>', 712, '2018-07-25 01:40:06', '2018-08-02 12:13:11', NULL),
-	(18, 2, 8, 'Retomando el camino "I"', '<p>En el segundo día, <strong>Leonard </strong>se dedico a estudiar el estado actual de Larunor, y más específicamente de la <strong>Orden de caballeros de Heironeous.</strong></p>', 753, '2018-07-25 22:03:32', '2018-08-09 16:11:10', NULL),
-	(19, 2, 6, 'Regresando a las viejas técnicas', '<p><strong>Zaheera </strong>estuvo pensando mucho en su pasado como <i>Incantatriz </i>últimamente y quiere volver a practicar sus viejas habilidades junto con <strong>Sarumo</strong>.</p>', 956, '2018-07-27 16:27:52', '2018-08-07 22:49:04', NULL),
-	(20, 2, 12, 'Odisea de estudio', '<p>Elena se da un tiempo para búsqueda y estudio de variedad de temáticas en la biblioteca. Tales como: objetos inteligentes, conjuros específicos y técnicas mejoradas de creación.</p>', 763, '2018-07-27 19:45:46', '2018-07-30 13:50:42', NULL),
-	(21, 2, 7, 'Nuevas habilidades ¿O era mejorar las viejas?', '<p>Dispuesto a mejorar y lograr que pueda sacar el máximo potencial a sus poderes <strong>Sinn </strong>debe estudiar y aprender de maestros. Entonces <strong>Myriam</strong>, la maestra ilusionista,<strong> </strong>será la primera persona con quién hablar, creo que debe refinar mis habilidades.</p>', 760, '2018-07-27 23:30:15', '2018-07-30 14:07:15', NULL),
-	(22, 2, 6, 'Nuevas Herramientas', '<p>Con sus nuevas técnicas de <i>Incantatriz, </i><strong>Zaheera </strong>debe mejorar su entendimiento de la magia que maneja y necesitará la ayuda de algunos objetos para lograrlo. Además, ahora que cada uno se organizará por su parte en el combate, quiere fortalecerse aún más para no preocupar a sus compañeros, y en especial a <strong>Leonard</strong>. Pero antes, una visita a la biblioteca para no perder la costumbre.</p>', 903, '2018-07-28 19:40:02', '2018-08-06 12:23:31', NULL),
-	(23, 2, 7, 'Más estudio y algunas joyas', '<p>Luego de haber pasado el tercer día estudiando al parecer será lo que suceda este cuarto día, excepto por un cierto viaje a Thormheim para recuperar las joyas y "los sapos" de <strong>Elena</strong>.</p>', 821, '2018-07-29 00:47:16', '2018-07-31 12:18:01', NULL),
-	(24, 2, 12, 'Ortopedia mágica "II"', '<p>Arcania abre a Elena la posibilidad de darle nuevos usos a los objetos mágicos. Ya no sólo para combate y estudio, sino también en salud en prótesis "permanentes". Arlete se encarga de enseñarle aquellas protesis provenientes de criaturas muertas y Elena debe deshacer algunas dudas con ella.</p>', 785, '2018-07-30 18:42:44', '2018-07-31 05:10:51', '2018-07-31 05:10:51'),
-	(25, 2, 12, 'Ortopedia mágica "II"', '<p>Nuevos objetos mágicos e inventos son descubiertos en Arcania. Elena decide dedicar buena parte de su tiempo libre a aprender los usos avanzados de la magia en Arcania. En principio, pretende hablar con Arlete para consultas de su más reciente proyecto. Las ortopedias mágicas.</p>', 872, '2018-07-30 23:10:48', '2018-08-01 19:44:15', NULL),
-	(26, 2, 7, 'La misión y los negocios', '<p>Al séptimo día, luego de hablar de cómo nos moveriamos en grupo, <strong>Sinn </strong>decidio hablar con <strong>Ilfrin</strong> de sus negocios y con <strong>Natsa</strong> con respecto a la información que él maneja.</p>', 1023, '2018-07-31 12:37:26', '2018-08-23 18:38:01', NULL),
-	(27, 2, 7, 'La misión y los negocios', '<p>Luego de hablar de cómo nos moveriamos en grupo, <strong>Sinn </strong>decidio hablar con <strong>Ilfrin</strong> de sus negocios y con <strong>Natsa</strong> con respecto a la información que él maneja.</p>', 823, '2018-07-31 12:37:26', '2018-07-31 12:37:26', '2018-07-31 00:00:00'),
-	(28, 2, 7, 'La misión y los negocios', '<p>Luego de hablar de cómo nos moveriamos en grupo, <strong>Sinn </strong>decidio hablar con <strong>Ilfrin</strong> de sus negocios y con <strong>Natsa</strong> con respecto a la información que él maneja.</p>', 824, '2018-07-31 12:37:27', '2018-07-31 12:37:27', '2018-07-31 00:00:00'),
-	(29, 2, 7, 'Las enseñanzas de Lord Byron', '<p>Luego de haber estudiado bastante con <strong>Myriam</strong>, <strong>Sinn </strong>se dedicó a buscar otro tipo de magia, algo que pueda combinar con sus habilidades con las manos. Fue entonces que recurrió en la biblioteca a un viejo conocido, <strong>Lord Byron</strong>. Habiendo investigado y siguiendo los pasos de alguno de sus seguidores encontró un alumno de <strong>Ivan </strong>que tenia el tipo de trucos que el buscaba. Después de mucha práctica creía estar listo para probar sus nuevas habilidades con alguien ilustrado en la magia y en el <i>sexto día de descanso </i>encontro con quién...</p>', 1024, '2018-08-06 13:21:21', '2018-08-14 20:22:04', NULL),
-	(30, 2, 12, 'Primera clase con Lauren', '<p>Durante la semana de descanso se acordó que <strong>Elena</strong> asistiera a una clase con Lauren para comprender más acerca de la magia en estado puro. Para ello iría acompañada por <strong>Zaheera</strong>.</p>', 1064, '2018-08-06 14:11:01', '2018-09-19 00:37:28', NULL),
-	(31, 2, 12, 'Decisiones importantes', '<p>Tarde en la noche el séptimo día de descanso antes de la visita a Alvirad, <strong>Elena</strong> decide hablar con <strong>Natsa</strong> para comunicarle algunas determinaciones que tomó.</p>', 1037, '2018-08-08 22:25:06', '2018-09-18 19:25:19', NULL),
-	(32, 2, 7, '¿Y ahora qué?', '<p>Luego de derrotar a <strong>La Sombra</strong>, llega un momento de reflexión para <strong>Sinn</strong>. Cumplió con su venganza, quizás no de la manera más satisfactoria, pero estaba hecha ¿Entonces que necesita ver? ¿Cómo debe continuar de aquí en adelante? Las posibilidades están allí para tomarlas, ir con Xie, seguir con el grupo, simplemente irse...</p><p>La decisión está en sus manos...</p>', 1069, '2018-09-17 12:00:56', '2018-09-23 15:59:05', NULL),
-	(33, 2, 6, 'Enterrando el pasado antes de avanzar', '<p>Con la <strong>Sombra</strong> ya derrotada, el grupo puede encaminarse hacia <i>Alvirad</i> con una preocupación menos, pero <strong>Zaheera</strong> no está convencida de que <strong>Natsa</strong> se haya quedado tan tranquila luego de lo que le dijo su viejo enemigo y quiere tener una conversación con ella antes de partir en un nuevo viaje.</p>', 1101, '2018-09-22 19:09:57', '2018-10-04 15:25:56', NULL),
-	(34, 2, 12, 'Carrera contra el tiempo', '<p>Disponiendo en principio 6 horas antes de partir a ver a los Daion junto a Sinn y Leonard, Elena pone manos a la obra en preparar recursos útiles para futuros encuentros con el enemigo. Pero antes, deberá hablar con algunos de sus compañeros en busca de información adicional.</p>', 1143, '2019-02-13 21:39:07', '2019-02-16 02:01:30', NULL),
-	(35, 2, 6, 'Un Paso Adelante', '<p><strong>Zaheera</strong>, aún estremecida por el abrumador combate y la matanza, no quiere desperdiciar un segundo más. Preocupada por el futuro de <strong>Hanali</strong>, el de <strong>Alvirad </strong>y el de ella misma, intentará ocupar su cabeza en prepararse para el próximo ataque de <strong>Uziel</strong>.</p>', 1270, '2019-02-15 01:02:23', '2019-03-03 02:26:12', NULL),
-	(36, 2, 12, 'Análisis exahustivo', '<p>En las batallas que Elena presenció y con los consejos de sus compañeros, la gnoma se da una idea de cómo mejorar las habilidades de sus compañeros. Sin embargo, deberá saber exactamente como están equipados actualmente. Entre análisis y análisis se toma un descanso para hablar con el sirviente de Pelor.</p>', 1174, '2019-02-15 12:55:27', '2019-02-18 10:43:21', NULL),
-	(37, 2, 4, 'Entrenando con el puño de Vidith', '<p>Luego de la asunción de los nuevos espada plateada es tiempo para que Ivan e Ilfrin se pongan al corriente con el entrenamiento adeudado. Ilfrin tenia la idea de comenzar de inmediato para optimizar el corto tiempo de respiro que deja Uzziel, aunque el gran maestro de transmutación parece tener otras cosas en mente...</p>', 1477, '2019-05-06 22:20:26', '2019-05-11 18:06:53', NULL),
-	(38, 2, 4, 'conversación de camino a el territorio Hinta', '<p>Mientras Ilfrin lleva a Sinn para cerrar el acuerdo con Himo aprovecha para culminar de hablar ciertos asuntos en relación a su trato</p>', 1297, '2019-05-06 22:47:38', '2019-05-07 14:59:04', NULL),
-	(39, 2, 6, 'Una Aliada Inesperada', '<p><strong>Zaheera </strong>quiere conocer un poco mejor a esta ex-guardia de los <strong>Landa </strong>que le juró su lealtad. Si bien está dispuesta a cumplir con su palabra y aceptarla bajo su servicio, procurará hacerlo sin causarle más problemas al grupo o provocar la ira de <strong>Natsa</strong>.</p>', 1489, '2019-05-06 23:26:52', '2019-05-12 02:26:01', NULL),
-	(40, 2, 12, 'Preparando la disección', '<p>Viendo cómo la corrupción del antiguo alcanza cada vez a más compañeros, Elena decide hacer caso al estudio de la nigromancia y la anatomía. La sorpresa es grata al saber que tanto Zeref como Zaheera y Leonard están también interesados en el mismo tema. La gnoma buscará entonces algún sujeto de análisis.</p>', 1476, '2019-05-07 13:15:14', '2019-05-11 17:29:16', NULL),
-	(41, 2, 12, 'Medida extrema en situación extrema', '<p>La inesperada muerte de Ilfrin vuelve a centrar la atención de Elena en el trabajo. Y a pesar de los consejos de Natsa, buscará recursos de manos de Sinn.</p>', 1503, '2019-05-14 14:45:21', '2019-05-14 23:56:32', NULL);
+INSERT INTO `channels` (`id`, `campaign_id`, `user_id`, `name`, `text`, `order`, `closed`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, 2, 1, 'Canal de prueba', '<p>Esto es un cala de pruebas. Se utilizará para describir la vaina cósmica. Jejejejojojojejoxjejox</p>', 227, 0, '2018-07-04 17:47:59', '2018-07-19 00:56:13', NULL),
+	(2, 2, 2, 'Calabozo de Olidammara', '<p>Xie Xie negoció con Sinn una prueba para verificar si es adecuado agregarlo a su "organización". Este, luego de varios días de aventura, decidió que era momento de completar dicha prueba. Formó un grupo con los integrantes que le parecían mas adecuados para este tipo de misión.</p>', 73, 1, '2018-07-04 18:00:43', '2018-07-16 13:02:31', NULL),
+	(3, 2, 12, 'Identificar tareas', '<p>Después de la charla con Ilfrin, Elena se dirige al cuarto de Sinn a realizarle algunas consultas técnicas sobre sus tareas de creación.</p>', 66, 1, '2018-07-05 19:59:07', '2018-07-18 13:12:12', NULL),
+	(4, 2, 1, 'Hablando con Vidith', '<p>Luego de que <strong>Vidith </strong>le haya encargado a <strong>Sarumo </strong>y <strong>Zaheera </strong>acompañar a <strong>Lauren </strong>al refugio para guardar a sepultura, Sarumo desea hablar a solas con Vidith.</p>', 67, 0, '2018-07-08 17:12:52', '2018-07-16 13:03:28', '2018-07-16 13:03:28'),
+	(5, 2, 6, 'Ahora que estamos todos juntos', '<p><strong>Zaheera </strong>cayó desmayada en su nueva cama apenas regresó del cuarto secreto de <strong>Vidith</strong>. Ahora que es un nuevo día, tiene que organizar en su mente todos los increíbles eventos de los últimos días y prepararse para el próximo viaje. Pero primero, tiene unas cosas que comentarles a sus compañeros ahora que todos viven bajo un mismo techo.</p>', 72, 1, '2018-07-09 03:56:31', '2018-07-16 20:41:40', '2018-07-16 20:41:40'),
+	(6, 2, 7, 'Los negocios son primero, la oferta de Xie', '<p>Luego de haber conseguido el guante para Xie Xie Sinn debe de evaluar que hacer con él. ¿Será un buen negocio el de Xie? ¿O quizás convenga vender este nuevo producto? ¿Qué deparará el futuro de negocios?</p>', 421, 1, '2018-07-16 12:09:03', '2018-07-21 18:45:37', NULL),
+	(7, 2, 6, 'Comienza el estudio intensivo', '<p>Luego de regresar de la organización de <i>Los Cartógrafos,</i> <strong>Zaheera </strong>se dirigió a la biblioteca de <i>Arcania </i>para abastecerse de material de estudio.&nbsp;</p>', 145, 1, '2018-07-16 20:50:44', '2018-07-17 19:57:24', NULL),
+	(8, 2, 12, 'El guantelete rebelde', '<p>Elena intenta en su taller volver a usar el guante que Sinn le llevó a estudiar. Después de 8 horas de trabajo donde comenzó un nuevo constructora ayudante y un pergamino de resurrección.</p>', 168, 1, '2018-07-17 17:27:45', '2018-07-18 12:22:35', NULL),
+	(9, 2, 4, 'A empezar de nuevo', '<p>Luego de haber cenado el festín que preparo Leonard llego el momento del el viaje a Silentium. Ilfrin fue a dormir bajo las estrellas en el patio del semiplano de grupo y al despertar comenzó su viaje de la forma que ya había averiguado.&nbsp;</p>', 545, 1, '2018-07-17 18:52:36', '2018-07-25 02:06:29', NULL),
+	(10, 2, 8, 'La Cena "II"', '<p>Luego de cocinar todo el día, Leonard se dispuso a servir el banquete que había preparado.&nbsp;</p><p>En el habían diferentes platos, como: Salchichas, Paella de pescado(17),<strong> </strong>Estofado de res, Diferentes tipos de pastas(30), Pescado (33), Jabalí a la cerveza con limón y stevia (25), Jabalí (17), Brochetas de cordero <strong>SUPER</strong> picantes (32), y por último, al fondo de la mesa un plato que llamaba un poco más la atención pese a no ser algo muy extravagante: <strong>Estofado de natsa </strong>(20 natural, 44)</p>', 682, 1, '2018-07-17 23:07:51', '2018-08-02 12:13:40', NULL),
+	(11, 2, 12, 'Ortopedia mágica', '<p>Luego de descubrir cómo funciona el guante que Sinn le llevó a Elena a analizar, y luego de su jornada laboral, la gnoma se dedica al estudio e investigación acerca de los objetos mágicos basados en dragones.</p>', 801, 1, '2018-07-18 21:06:24', '2018-07-30 22:06:08', NULL),
+	(12, 2, 6, 'Tantos Nuevos Mundos por Descubrir', '<p><strong>Zaheera </strong>tiene una larga semana por delante y no va a dejar que se le apilen los quehaceres. Tiene planeado comenzar su investigación sobre ese extraño plano para poder ingresar a <i>Los Cartógrafos</i>.</p>', 871, 1, '2018-07-19 19:20:24', '2018-08-02 01:03:55', NULL),
+	(13, 2, 7, 'La familia de joyeros', '<p>Luego de hablar con Xie me dirijo a la tienda está en la tercer capa de la zona mercantil. Debo buscar el local número 87 para hablar con la familia de <strong>Elena </strong>y lograr trabajar las joyas que encontramos.</p><p>&nbsp;</p>', 420, 1, '2018-07-19 21:58:25', '2018-07-21 19:02:47', NULL),
+	(14, 2, 7, 'Negocios, Negocios, Negocios', '<p>Habiendo puesto a trabajar las joyas es momento de vender y <strong>Sinn </strong>lo sabe. Quiere terminar vender los objetos y poner a trabajar el objeto especial de <strong>Ilfrin </strong>cuanto antes.</p>', 708, 1, '2018-07-21 18:50:33', '2018-07-27 23:25:52', NULL),
+	(15, 2, 5, 'Mision: Lectura', '<p>Determinada a poner inicio a su investigación, <strong>Shraza</strong> decide tomarse su tiempo para leer los libros que trajo de la biblioteca. Mas por interés propio que por deber, ella busca no solo saber sobre <strong>Barimos, </strong>sino tambien descubrir sus origenes y ver con que se encontrara en un futuro.</p>', 470, 0, '2018-07-24 00:23:13', '2018-07-24 17:50:01', '2018-07-24 17:50:01'),
+	(16, 2, 1, 'Averiguando sobre la orden de paladines', '<p>Sarumo intentará averiguar información sobre el paradero de los compañeros de Leonard a través del conjuro Escudriñar.</p>', 637, 1, '2018-07-24 16:30:14', '2018-08-09 16:11:24', NULL),
+	(17, 2, 4, 'Planes, estrategias y algunas sorpresas', '<p>Luego de despedirme del hermano Wan a tempranas horas del quinto día. Ilfrin regresa al plano-hogar.</p>', 712, 1, '2018-07-25 01:40:06', '2018-08-02 12:13:11', NULL),
+	(18, 2, 8, 'Retomando el camino "I"', '<p>En el segundo día, <strong>Leonard </strong>se dedico a estudiar el estado actual de Larunor, y más específicamente de la <strong>Orden de caballeros de Heironeous.</strong></p>', 753, 1, '2018-07-25 22:03:32', '2018-08-09 16:11:10', NULL),
+	(19, 2, 6, 'Regresando a las viejas técnicas', '<p><strong>Zaheera </strong>estuvo pensando mucho en su pasado como <i>Incantatriz </i>últimamente y quiere volver a practicar sus viejas habilidades junto con <strong>Sarumo</strong>.</p>', 956, 0, '2018-07-27 16:27:52', '2018-08-07 22:49:04', NULL),
+	(20, 2, 12, 'Odisea de estudio', '<p>Elena se da un tiempo para búsqueda y estudio de variedad de temáticas en la biblioteca. Tales como: objetos inteligentes, conjuros específicos y técnicas mejoradas de creación.</p>', 763, 1, '2018-07-27 19:45:46', '2018-07-30 13:50:42', NULL),
+	(21, 2, 7, 'Nuevas habilidades ¿O era mejorar las viejas?', '<p>Dispuesto a mejorar y lograr que pueda sacar el máximo potencial a sus poderes <strong>Sinn </strong>debe estudiar y aprender de maestros. Entonces <strong>Myriam</strong>, la maestra ilusionista,<strong> </strong>será la primera persona con quién hablar, creo que debe refinar mis habilidades.</p>', 760, 1, '2018-07-27 23:30:15', '2018-07-30 14:07:15', NULL),
+	(22, 2, 6, 'Nuevas Herramientas', '<p>Con sus nuevas técnicas de <i>Incantatriz, </i><strong>Zaheera </strong>debe mejorar su entendimiento de la magia que maneja y necesitará la ayuda de algunos objetos para lograrlo. Además, ahora que cada uno se organizará por su parte en el combate, quiere fortalecerse aún más para no preocupar a sus compañeros, y en especial a <strong>Leonard</strong>. Pero antes, una visita a la biblioteca para no perder la costumbre.</p>', 903, 1, '2018-07-28 19:40:02', '2018-08-06 12:23:31', NULL),
+	(23, 2, 7, 'Más estudio y algunas joyas', '<p>Luego de haber pasado el tercer día estudiando al parecer será lo que suceda este cuarto día, excepto por un cierto viaje a Thormheim para recuperar las joyas y "los sapos" de <strong>Elena</strong>.</p>', 821, 1, '2018-07-29 00:47:16', '2018-07-31 12:18:01', NULL),
+	(24, 2, 12, 'Ortopedia mágica "II"', '<p>Arcania abre a Elena la posibilidad de darle nuevos usos a los objetos mágicos. Ya no sólo para combate y estudio, sino también en salud en prótesis "permanentes". Arlete se encarga de enseñarle aquellas protesis provenientes de criaturas muertas y Elena debe deshacer algunas dudas con ella.</p>', 785, 0, '2018-07-30 18:42:44', '2018-07-31 05:10:51', '2018-07-31 05:10:51'),
+	(25, 2, 12, 'Ortopedia mágica "II"', '<p>Nuevos objetos mágicos e inventos son descubiertos en Arcania. Elena decide dedicar buena parte de su tiempo libre a aprender los usos avanzados de la magia en Arcania. En principio, pretende hablar con Arlete para consultas de su más reciente proyecto. Las ortopedias mágicas.</p>', 872, 1, '2018-07-30 23:10:48', '2018-08-01 19:44:15', NULL),
+	(26, 2, 7, 'La misión y los negocios', '<p>Al séptimo día, luego de hablar de cómo nos moveriamos en grupo, <strong>Sinn </strong>decidio hablar con <strong>Ilfrin</strong> de sus negocios y con <strong>Natsa</strong> con respecto a la información que él maneja.</p>', 1023, 1, '2018-07-31 12:37:26', '2018-08-23 18:38:01', NULL),
+	(27, 2, 7, 'La misión y los negocios', '<p>Luego de hablar de cómo nos moveriamos en grupo, <strong>Sinn </strong>decidio hablar con <strong>Ilfrin</strong> de sus negocios y con <strong>Natsa</strong> con respecto a la información que él maneja.</p>', 823, 0, '2018-07-31 12:37:26', '2018-07-31 12:37:26', '2018-07-31 00:00:00'),
+	(28, 2, 7, 'La misión y los negocios', '<p>Luego de hablar de cómo nos moveriamos en grupo, <strong>Sinn </strong>decidio hablar con <strong>Ilfrin</strong> de sus negocios y con <strong>Natsa</strong> con respecto a la información que él maneja.</p>', 824, 0, '2018-07-31 12:37:27', '2018-07-31 12:37:27', '2018-07-31 00:00:00'),
+	(29, 2, 7, 'Las enseñanzas de Lord Byron', '<p>Luego de haber estudiado bastante con <strong>Myriam</strong>, <strong>Sinn </strong>se dedicó a buscar otro tipo de magia, algo que pueda combinar con sus habilidades con las manos. Fue entonces que recurrió en la biblioteca a un viejo conocido, <strong>Lord Byron</strong>. Habiendo investigado y siguiendo los pasos de alguno de sus seguidores encontró un alumno de <strong>Ivan </strong>que tenia el tipo de trucos que el buscaba. Después de mucha práctica creía estar listo para probar sus nuevas habilidades con alguien ilustrado en la magia y en el <i>sexto día de descanso </i>encontro con quién...</p>', 1024, 1, '2018-08-06 13:21:21', '2018-08-14 20:22:04', NULL),
+	(30, 2, 12, 'Primera clase con Lauren', '<p>Durante la semana de descanso se acordó que <strong>Elena</strong> asistiera a una clase con Lauren para comprender más acerca de la magia en estado puro. Para ello iría acompañada por <strong>Zaheera</strong>.</p>', 1064, 1, '2018-08-06 14:11:01', '2018-09-19 00:37:28', NULL),
+	(31, 2, 12, 'Decisiones importantes', '<p>Tarde en la noche el séptimo día de descanso antes de la visita a Alvirad, <strong>Elena</strong> decide hablar con <strong>Natsa</strong> para comunicarle algunas determinaciones que tomó.</p>', 1037, 1, '2018-08-08 22:25:06', '2018-09-18 19:25:19', NULL),
+	(32, 2, 7, '¿Y ahora qué?', '<p>Luego de derrotar a <strong>La Sombra</strong>, llega un momento de reflexión para <strong>Sinn</strong>. Cumplió con su venganza, quizás no de la manera más satisfactoria, pero estaba hecha ¿Entonces que necesita ver? ¿Cómo debe continuar de aquí en adelante? Las posibilidades están allí para tomarlas, ir con Xie, seguir con el grupo, simplemente irse...</p><p>La decisión está en sus manos...</p>', 1069, 1, '2018-09-17 12:00:56', '2018-09-23 15:59:05', NULL),
+	(33, 2, 6, 'Enterrando el pasado antes de avanzar', '<p>Con la <strong>Sombra</strong> ya derrotada, el grupo puede encaminarse hacia <i>Alvirad</i> con una preocupación menos, pero <strong>Zaheera</strong> no está convencida de que <strong>Natsa</strong> se haya quedado tan tranquila luego de lo que le dijo su viejo enemigo y quiere tener una conversación con ella antes de partir en un nuevo viaje.</p>', 1101, 1, '2018-09-22 19:09:57', '2018-10-04 15:25:56', NULL),
+	(34, 2, 12, 'Carrera contra el tiempo', '<p>Disponiendo en principio 6 horas antes de partir a ver a los Daion junto a Sinn y Leonard, Elena pone manos a la obra en preparar recursos útiles para futuros encuentros con el enemigo. Pero antes, deberá hablar con algunos de sus compañeros en busca de información adicional.</p>', 1143, 1, '2019-02-13 21:39:07', '2019-02-16 02:01:30', NULL),
+	(35, 2, 6, 'Un Paso Adelante', '<p><strong>Zaheera</strong>, aún estremecida por el abrumador combate y la matanza, no quiere desperdiciar un segundo más. Preocupada por el futuro de <strong>Hanali</strong>, el de <strong>Alvirad </strong>y el de ella misma, intentará ocupar su cabeza en prepararse para el próximo ataque de <strong>Uziel</strong>.</p>', 1270, 1, '2019-02-15 01:02:23', '2019-03-03 02:26:12', NULL),
+	(36, 2, 12, 'Análisis exahustivo', '<p>En las batallas que Elena presenció y con los consejos de sus compañeros, la gnoma se da una idea de cómo mejorar las habilidades de sus compañeros. Sin embargo, deberá saber exactamente como están equipados actualmente. Entre análisis y análisis se toma un descanso para hablar con el sirviente de Pelor.</p>', 1174, 1, '2019-02-15 12:55:27', '2019-02-18 10:43:21', NULL),
+	(37, 2, 4, 'Entrenando con el puño de Vidith', '<p>Luego de la asunción de los nuevos espada plateada es tiempo para que Ivan e Ilfrin se pongan al corriente con el entrenamiento adeudado. Ilfrin tenia la idea de comenzar de inmediato para optimizar el corto tiempo de respiro que deja Uzziel, aunque el gran maestro de transmutación parece tener otras cosas en mente...</p>', 1477, 0, '2019-05-06 22:20:26', '2019-05-11 18:06:53', NULL),
+	(38, 2, 4, 'conversación de camino a el territorio Hinta', '<p>Mientras Ilfrin lleva a Sinn para cerrar el acuerdo con Himo aprovecha para culminar de hablar ciertos asuntos en relación a su trato</p>', 1297, 1, '2019-05-06 22:47:38', '2019-05-07 14:59:04', NULL),
+	(39, 2, 6, 'Una Aliada Inesperada', '<p><strong>Zaheera </strong>quiere conocer un poco mejor a esta ex-guardia de los <strong>Landa </strong>que le juró su lealtad. Si bien está dispuesta a cumplir con su palabra y aceptarla bajo su servicio, procurará hacerlo sin causarle más problemas al grupo o provocar la ira de <strong>Natsa</strong>.</p>', 1489, 0, '2019-05-06 23:26:52', '2019-05-12 02:26:01', NULL),
+	(40, 2, 12, 'Preparando la disección', '<p>Viendo cómo la corrupción del antiguo alcanza cada vez a más compañeros, Elena decide hacer caso al estudio de la nigromancia y la anatomía. La sorpresa es grata al saber que tanto Zeref como Zaheera y Leonard están también interesados en el mismo tema. La gnoma buscará entonces algún sujeto de análisis.</p>', 1476, 1, '2019-05-07 13:15:14', '2019-05-11 17:29:16', NULL),
+	(41, 2, 12, 'Medida extrema en situación extrema', '<p>La inesperada muerte de Ilfrin vuelve a centrar la atención de Elena en el trabajo. Y a pesar de los consejos de Natsa, buscará recursos de manos de Sinn.</p>', 1503, 0, '2019-05-14 14:45:21', '2019-05-30 01:10:04', NULL),
+	(42, 2, 2, 'La maravillita', '<p>123123123</p>', 0, 0, '2019-05-30 01:10:32', '2019-05-30 01:10:32', NULL),
+	(43, 2, 2, 'Escape Games', '<p>123</p>', 0, 0, '2019-05-30 01:11:36', '2019-05-30 01:11:36', NULL),
+	(44, 2, 2, 'Farifa', '<p>123123123</p>', 0, 0, '2019-05-30 01:16:35', '2019-05-30 01:16:35', NULL),
+	(45, 2, 2, 'Farifa', '<p>123123123</p>', 1504, 0, '2019-05-30 01:17:07', '2019-05-30 01:22:07', NULL);
 /*!40000 ALTER TABLE `channels` ENABLE KEYS */;
 
--- Volcando estructura para tabla genubi_reborn.channel_posts
-CREATE TABLE IF NOT EXISTS `channel_posts` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `channel_id` int(10) unsigned NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
-  `character_id` int(10) unsigned DEFAULT NULL,
-  `npc_id` int(10) unsigned DEFAULT NULL,
-  `text` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `is_roll` tinyint(1) NOT NULL DEFAULT '0',
-  `only_dm` tinyint(1) NOT NULL DEFAULT '0',
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `channel_posts_channel_id_foreign` (`channel_id`),
-  KEY `channel_posts_user_id_foreign` (`user_id`),
-  KEY `channel_posts_character_id_foreign` (`character_id`),
-  KEY `channel_posts_npc_id_foreign` (`npc_id`),
-  CONSTRAINT `channel_posts_channel_id_foreign` FOREIGN KEY (`channel_id`) REFERENCES `channels` (`id`),
-  CONSTRAINT `channel_posts_character_id_foreign` FOREIGN KEY (`character_id`) REFERENCES `characters` (`id`),
-  CONSTRAINT `channel_posts_npc_id_foreign` FOREIGN KEY (`npc_id`) REFERENCES `npcs` (`id`),
-  CONSTRAINT `channel_posts_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1463 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- Volcando datos para la tabla genubi_reborn.channel_characters: ~10 rows (aproximadamente)
+/*!40000 ALTER TABLE `channel_characters` DISABLE KEYS */;
+INSERT INTO `channel_characters` (`channel_id`, `character_id`) VALUES
+	(40, 10),
+	(41, 2),
+	(41, 15),
+	(41, 8),
+	(43, 15),
+	(43, 10),
+	(44, 2),
+	(44, 10),
+	(45, 2),
+	(45, 10);
+/*!40000 ALTER TABLE `channel_characters` ENABLE KEYS */;
 
--- Volcando datos para la tabla genubi_reborn.channel_posts: ~1.462 rows (aproximadamente)
+-- Volcando datos para la tabla genubi_reborn.channel_posts: ~1.463 rows (aproximadamente)
 /*!40000 ALTER TABLE `channel_posts` DISABLE KEYS */;
 INSERT INTO `channel_posts` (`id`, `channel_id`, `user_id`, `character_id`, `npc_id`, `text`, `is_roll`, `only_dm`, `created_at`, `updated_at`, `deleted_at`) VALUES
 	(1, 1, 1, 3, NULL, '<p>Esto es una prueba de mensaje de un canal!</p>', 0, 0, '2018-07-04 17:48:23', '2018-07-04 17:48:23', NULL),
@@ -1618,105 +1563,54 @@ INSERT INTO `channel_posts` (`id`, `channel_id`, `user_id`, `character_id`, `npc
 	(1459, 41, 7, 9, NULL, '<p><strong>Hago una expresion seria.</strong></p><ul><li>Tengo otra condición. No harás preguntas sobre mis negocios. ¿Entendido? Yo me haré cargo de conseguir los medios para lo que quieres pero necesito esa libertad.</li></ul><p><strong>Relajo el rostro y suspiro profundo.</strong></p><ul><li>Hare lo que sea necesario Elena. Solo tendrás que seguir mis ordenes cuando viajemos y cuando te diga que te quedes en un lugar, lo harás. Tengo mis medios para lo que necesites.</li></ul>', 0, 0, '2019-05-14 23:11:40', '2019-05-14 23:11:40', NULL),
 	(1460, 41, 12, 15, NULL, '<p><strong>Me sonrío de lado apenas y niego con la cabeza.</strong></p><p>- Nunca te hice preguntas Sinn. Al menos no que recuerde. Confío en que no perjudicarías la misión. Si tu eres felíz así yo no tengo problema. Y sí te hare caso. Yo estaré felíz siempre y cuando todos... -.</p><p><strong>Me silencio un momento y cambio de tema.</strong></p><p>- Bueno. Recuerda que los objetos muy caros necesitan oro extra por la magia que se consume de un objeto secundario. Quien avisa no traiciona -.</p><p><strong>Extiendo la mano.</strong></p><p>- Tenemos un trato -.</p>', 0, 0, '2019-05-14 23:31:36', '2019-05-14 23:31:36', NULL),
 	(1461, 41, 7, 9, NULL, '<ul><li>Tenemos un trato.</li></ul><p><strong>Le estrecho a mano y me sonrio.</strong></p><ul><li>¿Tienes algo en mente o primero tienes que pensarlo?</li></ul>', 0, 0, '2019-05-14 23:41:22', '2019-05-14 23:41:22', NULL),
-	(1462, 41, 12, 15, NULL, '<ul><li>Zeref necesita unas botas de velocidad o algo que le permita volar al doble de su velocidad, y algo que le de el efecto del conjuro libre movimiento . También una poción del conjuro postura de montaña evitaría que salga volando. Le compré una montura que me salió más que las botas y olvidé que no se puede llevar a nadie -.</li></ul><p><strong>Pateo una piedrita frunciendo los labios.</strong></p><ul><li>Me da pena ahora quitársela para cambiarla y que luego sea necesaria. Yo quería un grifo pero no tenían -.</li></ul><p><strong>Me cruzo de brazos.</strong></p><ul><li>Luego está Leonard. Una capa como la mía le podría ser útil. Está bastante bien equipado.</li><li>A Zaheera le vendría bien un cinturón que da movimientos extras en batalla. Yo necesito mejorar la efectividad de mis conjuros en general para apresar enemigos con manos de roca.</li><li>A Natsa le vendría bien un objeto con conjuro de desplazamiento, o en la armadura -.</li><li>Aún te debo unos lentes como estos -.</li></ul><p><strong>Me medio sonrío de lado señalando los lentes de artífice.</strong></p>', 0, 0, '2019-05-14 23:56:32', '2019-05-14 23:58:44', NULL);
+	(1462, 41, 12, 15, NULL, '<ul><li>Zeref necesita unas botas de velocidad o algo que le permita volar al doble de su velocidad, y algo que le de el efecto del conjuro libre movimiento . También una poción del conjuro postura de montaña evitaría que salga volando. Le compré una montura que me salió más que las botas y olvidé que no se puede llevar a nadie -.</li></ul><p><strong>Pateo una piedrita frunciendo los labios.</strong></p><ul><li>Me da pena ahora quitársela para cambiarla y que luego sea necesaria. Yo quería un grifo pero no tenían -.</li></ul><p><strong>Me cruzo de brazos.</strong></p><ul><li>Luego está Leonard. Una capa como la mía le podría ser útil. Está bastante bien equipado.</li><li>A Zaheera le vendría bien un cinturón que da movimientos extras en batalla. Yo necesito mejorar la efectividad de mis conjuros en general para apresar enemigos con manos de roca.</li><li>A Natsa le vendría bien un objeto con conjuro de desplazamiento, o en la armadura -.</li><li>Aún te debo unos lentes como estos -.</li></ul><p><strong>Me medio sonrío de lado señalando los lentes de artífice.</strong></p>', 0, 0, '2019-05-14 23:56:32', '2019-05-14 23:58:44', NULL),
+	(1463, 45, 2, NULL, 8, '<p>PUTA BARATA</p>', 0, 0, '2019-05-30 01:22:07', '2019-05-30 01:22:07', NULL);
 /*!40000 ALTER TABLE `channel_posts` ENABLE KEYS */;
 
--- Volcando estructura para tabla genubi_reborn.characters
-CREATE TABLE IF NOT EXISTS `characters` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(10) unsigned NOT NULL,
-  `campaign_id` int(10) unsigned DEFAULT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `family` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `race` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `age` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `nationality` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `state_id` int(10) unsigned NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `characters_user_id_foreign` (`user_id`),
-  KEY `characters_campaign_id_foreign` (`campaign_id`),
-  KEY `characters_state_id_foreign` (`state_id`),
-  CONSTRAINT `characters_campaign_id_foreign` FOREIGN KEY (`campaign_id`) REFERENCES `campaigns` (`id`),
-  CONSTRAINT `characters_state_id_foreign` FOREIGN KEY (`state_id`) REFERENCES `character_states` (`id`),
-  CONSTRAINT `characters_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- Volcando datos para la tabla genubi_reborn.channel_suscribers: ~2 rows (aproximadamente)
+/*!40000 ALTER TABLE `channel_suscribers` DISABLE KEYS */;
+INSERT INTO `channel_suscribers` (`channel_id`, `user_id`) VALUES
+	(42, 2),
+	(45, 2);
+/*!40000 ALTER TABLE `channel_suscribers` ENABLE KEYS */;
 
 -- Volcando datos para la tabla genubi_reborn.characters: ~29 rows (aproximadamente)
 /*!40000 ALTER TABLE `characters` DISABLE KEYS */;
 INSERT INTO `characters` (`id`, `user_id`, `campaign_id`, `name`, `family`, `race`, `age`, `nationality`, `description`, `avatar`, `color`, `state_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-	(2, 3, 2, 'Arimila', NULL, 'Gnomo verde', '33 años', NULL, 'Tenemos un Miedo control', NULL, NULL, 0, '2017-06-08 01:30:47', '2018-06-30 01:14:49', NULL),
-	(3, 1, 2, 'Sarumo', NULL, 'Humano', '31', NULL, '123', NULL, NULL, 0, '2017-06-08 01:30:47', '2018-06-30 01:39:20', NULL),
-	(8, 8, 2, 'Leonard', NULL, 'Humano', '0', NULL, '', NULL, NULL, 0, '2017-07-13 03:24:17', '2018-07-18 04:45:41', NULL),
-	(9, 7, 2, 'Sinn', NULL, 'Gnomo', '33', NULL, '', NULL, NULL, 0, '2017-07-13 03:29:21', '2018-06-30 01:12:08', NULL),
-	(10, 4, 2, 'Ilfrin', NULL, 'Elfo', '213', NULL, '', NULL, NULL, 0, '2017-07-13 03:29:25', '2018-06-13 17:51:36', NULL),
-	(11, 10, 2, 'Zero', NULL, 'Humano', '0', NULL, '', NULL, NULL, 0, '2017-07-13 03:29:31', '2018-06-30 01:19:10', NULL),
-	(12, 5, 2, 'Shraza', NULL, 'Semi-Elfo', '0', NULL, '', NULL, NULL, 0, '2017-07-13 03:29:34', '2018-06-28 07:05:25', NULL),
-	(13, 6, 2, 'Zaheera', NULL, 'Cansin', '27', NULL, 'Perseverante y trabajadora, aunque algo despistada, Zaheera se dedica fervientemente al estudio de la composición del cosmos y la magia en todas sus formas. Su fuerza de voluntad es solo superada por su insaciable curiosidad, que es a la vez, su mayor vir', NULL, NULL, 0, '2017-07-13 03:30:03', '2018-07-04 18:24:45', NULL),
-	(14, 11, 2, 'Zeref', NULL, 'Humano', '0', NULL, '', NULL, NULL, 0, '2017-11-05 00:31:41', '2018-07-17 11:54:32', NULL),
-	(15, 12, 2, 'Elena', NULL, 'Gnomo', '0', NULL, '', NULL, NULL, 0, '2018-01-13 14:49:00', '2018-12-17 18:11:22', NULL),
-	(16, 16, 5, 'Euxalium ', NULL, 'Enano', '0', NULL, '', NULL, NULL, 0, '2018-01-22 11:20:15', NULL, NULL),
-	(17, 17, 5, 'Navarro', NULL, 'Elfo', '0', NULL, '', NULL, NULL, 0, '2018-01-28 19:50:17', NULL, NULL),
-	(18, 18, 5, 'Facundo', NULL, 'Humano', '0', NULL, '', NULL, NULL, 0, '2018-01-29 09:50:14', NULL, NULL),
-	(19, 8, 5, 'Vacante', NULL, '', '0', NULL, '', NULL, NULL, 0, '2018-01-29 09:53:33', '2018-06-12 22:22:27', '2018-06-12 22:22:27'),
-	(20, 2, 6, 'Caliran Astrid Elren', NULL, 'Semi-Elfa', '24', NULL, '', NULL, NULL, 0, '2018-04-03 14:52:43', '2018-06-13 03:08:31', NULL),
-	(21, 12, 6, 'Mordai Amnon', NULL, 'Tiefling', '32', NULL, '', NULL, NULL, 0, '2018-04-03 14:57:24', '2018-11-22 18:38:15', NULL),
-	(22, 14, 6, 'Eöl de Kahenath', NULL, 'Elfo del Bosque', '0', NULL, 'Hijo mayor del rey Bregöl, rechazado y negado por su padre, amado por su madre (Thirändis), considerado una deshonra para su hermano menor (Tregöl) y para su nación. Y considerado un infame por un reino intolerante de otras razas no elfas. \r\nDesde joven m', NULL, NULL, 0, '2018-04-03 15:09:18', '2018-09-16 09:10:38', NULL),
-	(23, 15, 6, 'Vaeran Therai', NULL, 'Tiefling', '24', NULL, '', NULL, NULL, 0, '2018-04-03 15:51:43', '2018-11-20 19:54:57', NULL),
-	(24, 8, 6, 'Boris, la Bestia', NULL, 'Enano', '0', NULL, '', NULL, NULL, 0, '2018-04-05 01:14:03', '2018-11-20 19:54:32', NULL),
-	(25, 5, 6, 'Semiramis', NULL, 'Humana', '0', NULL, '', NULL, NULL, 0, '2018-04-17 12:30:57', '2018-06-28 07:06:59', NULL),
-	(26, 8, NULL, 'Pepepe', NULL, '', '0', NULL, '', NULL, NULL, 0, '2018-06-12 22:30:36', '2018-06-12 22:30:36', NULL),
-	(27, 3, NULL, 'Nº636', NULL, 'Experimento', '745 años', NULL, 'Un bichito azul', NULL, NULL, 0, '2018-06-12 22:31:52', '2018-06-12 22:33:47', NULL),
-	(28, 3, NULL, 'Calvo', NULL, '', '0', NULL, '', NULL, NULL, 0, '2018-06-12 23:00:07', '2018-06-12 23:00:16', '2018-06-12 23:00:16'),
-	(29, 12, 8, 'Daza Nantine', NULL, 'Elfo', '123', NULL, 'Bravo destino revela el sacrificio y la entrega que abrazo ferviente.', NULL, NULL, 0, '2018-08-11 12:27:48', '2018-08-26 21:24:54', NULL),
-	(30, 4, 8, 'Titor Van Bau', NULL, 'Humano', '17', NULL, '', NULL, NULL, 0, '2018-08-11 12:50:57', '2018-08-17 18:24:16', NULL),
-	(31, 8, 8, 'Demios Von Boro', NULL, 'Humano', '27', NULL, '', NULL, NULL, 0, '2018-08-11 13:31:32', '2018-08-11 14:03:21', NULL),
-	(32, 6, 6, 'Iorgen', NULL, 'Semi-Elfo', '30', NULL, '', NULL, NULL, 0, '2018-10-28 00:39:55', '2018-11-20 20:33:45', NULL),
-	(33, 14, 6, 'Tregöl', NULL, 'Alto Elfo', '433', NULL, 'Hijo menor del rey Bregöl y hermano de Eöl el infame, orgullo de su reino y de su gente, futuro heredero de la corona, desplazando del derecho intrínseco de Eöl. Un hombre muy parecido físicamente a este, con la excepción de que poseía un cabello rubio y ', NULL, NULL, 0, '2018-10-29 19:52:55', '2018-10-29 21:14:47', NULL),
-	(34, 8, 6, 'Neugier Lago Plateado (Neu)', NULL, 'Tabaxi', '23', NULL, '', NULL, NULL, 0, '2018-11-24 01:30:13', '2018-11-24 03:13:56', NULL);
+	(2, 3, 2, 'Arimila', NULL, 'Gnomo verde', '33 años', NULL, 'Tenemos un Miedo control', NULL, NULL, 1, '2017-06-08 01:30:47', '2018-06-30 01:14:49', NULL),
+	(3, 1, 2, 'Sarumo', NULL, 'Humano', '31', NULL, '123', NULL, NULL, 1, '2017-06-08 01:30:47', '2018-06-30 01:39:20', NULL),
+	(8, 8, 2, 'Leonard', NULL, 'Humano', '0', NULL, '', NULL, NULL, 1, '2017-07-13 03:24:17', '2018-07-18 04:45:41', NULL),
+	(9, 7, 2, 'Sinn', NULL, 'Gnomo', '33', NULL, '', NULL, NULL, 1, '2017-07-13 03:29:21', '2018-06-30 01:12:08', NULL),
+	(10, 4, 2, 'Ilfrin', NULL, 'Elfo', '213', NULL, '', NULL, NULL, 1, '2017-07-13 03:29:25', '2018-06-13 17:51:36', NULL),
+	(11, 10, 2, 'Zero', NULL, 'Humano', '0', NULL, '', NULL, NULL, 1, '2017-07-13 03:29:31', '2018-06-30 01:19:10', NULL),
+	(12, 5, 2, 'Shraza', NULL, 'Semi-Elfo', '0', NULL, '', NULL, NULL, 1, '2017-07-13 03:29:34', '2018-06-28 07:05:25', NULL),
+	(13, 6, 2, 'Zaheera', NULL, 'Cansin', '27', NULL, 'Perseverante y trabajadora, aunque algo despistada, Zaheera se dedica fervientemente al estudio de la composición del cosmos y la magia en todas sus formas. Su fuerza de voluntad es solo superada por su insaciable curiosidad, que es a la vez, su mayor vir', NULL, NULL, 1, '2017-07-13 03:30:03', '2018-07-04 18:24:45', NULL),
+	(14, 11, 2, 'Zeref', NULL, 'Humano', '0', NULL, '', NULL, NULL, 1, '2017-11-05 00:31:41', '2018-07-17 11:54:32', NULL),
+	(15, 12, 2, 'Elena', NULL, 'Gnomo', '0', NULL, '', NULL, NULL, 1, '2018-01-13 14:49:00', '2018-12-17 18:11:22', NULL),
+	(16, 16, 5, 'Euxalium ', NULL, 'Enano', '0', NULL, '', NULL, NULL, 1, '2018-01-22 11:20:15', NULL, NULL),
+	(17, 17, 5, 'Navarro', NULL, 'Elfo', '0', NULL, '', NULL, NULL, 1, '2018-01-28 19:50:17', NULL, NULL),
+	(18, 18, 5, 'Facundo', NULL, 'Humano', '0', NULL, '', NULL, NULL, 1, '2018-01-29 09:50:14', NULL, NULL),
+	(19, 8, 5, 'Vacante', NULL, '', '0', NULL, '', NULL, NULL, 1, '2018-01-29 09:53:33', '2018-06-12 22:22:27', '2018-06-12 22:22:27'),
+	(20, 2, 6, 'Caliran Astrid Elren', NULL, 'Semi-Elfa', '24', NULL, '', NULL, NULL, 1, '2018-04-03 14:52:43', '2018-06-13 03:08:31', NULL),
+	(21, 12, 6, 'Mordai Amnon', NULL, 'Tiefling', '32', NULL, '', NULL, NULL, 1, '2018-04-03 14:57:24', '2018-11-22 18:38:15', NULL),
+	(22, 14, 6, 'Eöl de Kahenath', NULL, 'Elfo del Bosque', '0', NULL, 'Hijo mayor del rey Bregöl, rechazado y negado por su padre, amado por su madre (Thirändis), considerado una deshonra para su hermano menor (Tregöl) y para su nación. Y considerado un infame por un reino intolerante de otras razas no elfas. \r\nDesde joven m', NULL, NULL, 1, '2018-04-03 15:09:18', '2018-09-16 09:10:38', NULL),
+	(23, 15, 6, 'Vaeran Therai', NULL, 'Tiefling', '24', NULL, '', NULL, NULL, 1, '2018-04-03 15:51:43', '2018-11-20 19:54:57', NULL),
+	(24, 8, 6, 'Boris, la Bestia', NULL, 'Enano', '0', NULL, '', NULL, NULL, 1, '2018-04-05 01:14:03', '2018-11-20 19:54:32', NULL),
+	(25, 5, 6, 'Semiramis', NULL, 'Humana', '0', NULL, '', NULL, NULL, 1, '2018-04-17 12:30:57', '2018-06-28 07:06:59', NULL),
+	(26, 8, NULL, 'Pepepe', NULL, '', '0', NULL, '', NULL, NULL, 1, '2018-06-12 22:30:36', '2018-06-12 22:30:36', NULL),
+	(27, 3, NULL, 'Nº636', NULL, 'Experimento', '745 años', NULL, 'Un bichito azul', NULL, NULL, 1, '2018-06-12 22:31:52', '2018-06-12 22:33:47', NULL),
+	(28, 3, NULL, 'Calvo', NULL, '', '0', NULL, '', NULL, NULL, 1, '2018-06-12 23:00:07', '2018-06-12 23:00:16', '2018-06-12 23:00:16'),
+	(29, 12, 8, 'Daza Nantine', NULL, 'Elfo', '123', NULL, 'Bravo destino revela el sacrificio y la entrega que abrazo ferviente.', NULL, NULL, 1, '2018-08-11 12:27:48', '2018-08-26 21:24:54', NULL),
+	(30, 4, 8, 'Titor Van Bau', NULL, 'Humano', '17', NULL, '', NULL, NULL, 1, '2018-08-11 12:50:57', '2018-08-17 18:24:16', NULL),
+	(31, 8, 8, 'Demios Von Boro', NULL, 'Humano', '27', NULL, '', NULL, NULL, 1, '2018-08-11 13:31:32', '2018-08-11 14:03:21', NULL),
+	(32, 6, 6, 'Iorgen', NULL, 'Semi-Elfo', '30', NULL, '', NULL, NULL, 1, '2018-10-28 00:39:55', '2018-11-20 20:33:45', NULL),
+	(33, 14, 6, 'Tregöl', NULL, 'Alto Elfo', '433', NULL, 'Hijo menor del rey Bregöl y hermano de Eöl el infame, orgullo de su reino y de su gente, futuro heredero de la corona, desplazando del derecho intrínseco de Eöl. Un hombre muy parecido físicamente a este, con la excepción de que poseía un cabello rubio y ', NULL, NULL, 1, '2018-10-29 19:52:55', '2018-10-29 21:14:47', NULL),
+	(34, 8, 6, 'Neugier Lago Plateado (Neu)', NULL, 'Tabaxi', '23', NULL, '', NULL, NULL, 1, '2018-11-24 01:30:13', '2018-11-24 03:13:56', NULL);
 /*!40000 ALTER TABLE `characters` ENABLE KEYS */;
-
--- Volcando estructura para tabla genubi_reborn.character_classes
-CREATE TABLE IF NOT EXISTS `character_classes` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `character_id` int(10) unsigned NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `level` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `character_classes_character_id_foreign` (`character_id`),
-  CONSTRAINT `character_classes_character_id_foreign` FOREIGN KEY (`character_id`) REFERENCES `characters` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla genubi_reborn.character_classes: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `character_classes` DISABLE KEYS */;
 /*!40000 ALTER TABLE `character_classes` ENABLE KEYS */;
-
--- Volcando estructura para tabla genubi_reborn.character_experiences
-CREATE TABLE IF NOT EXISTS `character_experiences` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `character_id` int(10) unsigned NOT NULL,
-  `session_id` int(10) unsigned DEFAULT NULL,
-  `user_id` int(10) unsigned NOT NULL,
-  `value` int(11) NOT NULL,
-  `reason` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `character_experiences_character_id_foreign` (`character_id`),
-  KEY `character_experiences_session_id_foreign` (`session_id`),
-  KEY `character_experiences_user_id_foreign` (`user_id`),
-  CONSTRAINT `character_experiences_character_id_foreign` FOREIGN KEY (`character_id`) REFERENCES `characters` (`id`),
-  CONSTRAINT `character_experiences_session_id_foreign` FOREIGN KEY (`session_id`) REFERENCES `sessions` (`id`),
-  CONSTRAINT `character_experiences_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=383 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla genubi_reborn.character_experiences: ~332 rows (aproximadamente)
 /*!40000 ALTER TABLE `character_experiences` DISABLE KEYS */;
@@ -2055,17 +1949,6 @@ INSERT INTO `character_experiences` (`id`, `character_id`, `session_id`, `user_i
 	(382, 13, 59, 2, 1000, '', '2019-04-25 12:25:14', '2019-04-25 12:25:14', NULL);
 /*!40000 ALTER TABLE `character_experiences` ENABLE KEYS */;
 
--- Volcando estructura para tabla genubi_reborn.character_states
-CREATE TABLE IF NOT EXISTS `character_states` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `color` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 -- Volcando datos para la tabla genubi_reborn.character_states: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `character_states` DISABLE KEYS */;
 INSERT INTO `character_states` (`id`, `name`, `slug`, `color`, `created_at`, `updated_at`) VALUES
@@ -2073,16 +1956,6 @@ INSERT INTO `character_states` (`id`, `name`, `slug`, `color`, `created_at`, `up
 	(2, 'Muerto', 'dead', '#FE5D26', NULL, NULL),
 	(3, 'Abandonado', 'abandoned', '#222725', NULL, NULL);
 /*!40000 ALTER TABLE `character_states` ENABLE KEYS */;
-
--- Volcando estructura para tabla genubi_reborn.games
-CREATE TABLE IF NOT EXISTS `games` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla genubi_reborn.games: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `games` DISABLE KEYS */;
@@ -2092,36 +1965,11 @@ INSERT INTO `games` (`id`, `key`, `name`, `created_at`, `updated_at`) VALUES
 	(3, 'PATH1', 'Pathfinder 1', NULL, NULL);
 /*!40000 ALTER TABLE `games` ENABLE KEYS */;
 
--- Volcando estructura para tabla genubi_reborn.homebrews
-CREATE TABLE IF NOT EXISTS `homebrews` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `campaign_id` int(10) unsigned NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `text` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `homebrews_campaign_id_foreign` (`campaign_id`),
-  KEY `homebrews_user_id_foreign` (`user_id`),
-  CONSTRAINT `homebrews_campaign_id_foreign` FOREIGN KEY (`campaign_id`) REFERENCES `campaigns` (`id`),
-  CONSTRAINT `homebrews_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 -- Volcando datos para la tabla genubi_reborn.homebrews: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `homebrews` DISABLE KEYS */;
 /*!40000 ALTER TABLE `homebrews` ENABLE KEYS */;
 
--- Volcando estructura para tabla genubi_reborn.migrations
-CREATE TABLE IF NOT EXISTS `migrations` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Volcando datos para la tabla genubi_reborn.migrations: ~21 rows (aproximadamente)
+-- Volcando datos para la tabla genubi_reborn.migrations: ~24 rows (aproximadamente)
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(1, '2014_10_12_000000_create_users_table', 1),
@@ -2144,37 +1992,15 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(18, '2019_05_27_230404_create_channel_posts_table', 1),
 	(19, '2019_05_28_025159_create_character_classes_table', 1),
 	(20, '2019_05_28_030858_create_character_experiences_table', 1),
-	(21, '2019_05_28_223651_create_session_posts_table', 1);
+	(21, '2019_05_28_223651_create_session_posts_table', 1),
+	(22, '2019_05_29_233537_create_notifications_table', 1),
+	(23, '2019_05_30_001320_create_channel_characters_table', 1),
+	(24, '2019_05_30_001341_create_channel_suscribers_table', 1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
-
--- Volcando estructura para tabla genubi_reborn.milestones
-CREATE TABLE IF NOT EXISTS `milestones` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `session_id` int(10) unsigned NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `milestones_session_id_foreign` (`session_id`),
-  CONSTRAINT `milestones_session_id_foreign` FOREIGN KEY (`session_id`) REFERENCES `sessions` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla genubi_reborn.milestones: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `milestones` DISABLE KEYS */;
 /*!40000 ALTER TABLE `milestones` ENABLE KEYS */;
-
--- Volcando estructura para tabla genubi_reborn.modes
-CREATE TABLE IF NOT EXISTS `modes` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `key` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla genubi_reborn.modes: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `modes` DISABLE KEYS */;
@@ -2183,25 +2009,13 @@ INSERT INTO `modes` (`id`, `key`, `name`, `created_at`, `updated_at`) VALUES
 	(2, 'presencial', 'Presencial', NULL, NULL);
 /*!40000 ALTER TABLE `modes` ENABLE KEYS */;
 
--- Volcando estructura para tabla genubi_reborn.npcs
-CREATE TABLE IF NOT EXISTS `npcs` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `campaign_id` int(10) unsigned NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `color` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `enemy` tinyint(1) NOT NULL DEFAULT '0',
-  `public` tinyint(1) NOT NULL DEFAULT '1',
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `npcs_campaign_id_foreign` (`campaign_id`),
-  CONSTRAINT `npcs_campaign_id_foreign` FOREIGN KEY (`campaign_id`) REFERENCES `campaigns` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- Volcando datos para la tabla genubi_reborn.notifications: ~1 rows (aproximadamente)
+/*!40000 ALTER TABLE `notifications` DISABLE KEYS */;
+INSERT INTO `notifications` (`id`, `user_id`, `link`, `text`, `image`, `viewed`, `clicked`, `created_at`, `updated_at`, `deleted_at`) VALUES
+	(1, 2, 'http://127.0.0.1:8000/channels/45', 'Emmanuel ha creado el canal Farifa en Antiguo Mal', 'http://127.0.0.1:8000/images/avatar.png', 1, 0, '2019-05-30 01:17:07', '2019-05-30 01:21:40', NULL);
+/*!40000 ALTER TABLE `notifications` ENABLE KEYS */;
 
--- Volcando datos para la tabla genubi_reborn.npcs: ~16 rows (aproximadamente)
+-- Volcando datos para la tabla genubi_reborn.npcs: ~17 rows (aproximadamente)
 /*!40000 ALTER TABLE `npcs` DISABLE KEYS */;
 INSERT INTO `npcs` (`id`, `campaign_id`, `name`, `description`, `avatar`, `color`, `enemy`, `public`, `created_at`, `updated_at`, `deleted_at`) VALUES
 	(6, 2, 'Natsa', NULL, 'natsa-1530728783.png', NULL, 0, 1, '0000-00-00 00:00:00', '2018-07-04 18:26:23', NULL),
@@ -2219,42 +2033,13 @@ INSERT INTO `npcs` (`id`, `campaign_id`, `name`, `description`, `avatar`, `color
 	(18, 2, 'Hanali', NULL, 'hanali-1550211118.png', NULL, 0, 1, '2019-02-15 03:11:59', '2019-02-15 03:11:59', NULL),
 	(19, 2, 'Ignatius Landa', NULL, 'ignatius-landa-1550512272.png', NULL, 0, 1, '2019-02-18 14:51:12', '2019-02-18 14:51:12', NULL),
 	(20, 2, 'Ak\'sum', NULL, 'aksum-1551547441.png', NULL, 0, 1, '2019-03-02 14:24:01', '2019-03-02 14:24:01', NULL),
-	(21, 2, 'Liadryn Landa', NULL, 'liadryn-landa-1557243955.png', NULL, 0, 1, '2019-05-07 12:45:56', '2019-05-07 12:45:56', NULL);
+	(21, 2, 'Liadryn Landa', NULL, 'liadryn-landa-1557243955.png', NULL, 0, 1, '2019-05-07 12:45:56', '2019-05-07 12:45:56', NULL),
+	(100, 2, 'Narrador', NULL, 'liadryn-landa-1557243955.png', NULL, 0, 1, '2019-05-07 12:45:56', '2019-05-07 12:45:56', NULL);
 /*!40000 ALTER TABLE `npcs` ENABLE KEYS */;
-
--- Volcando estructura para tabla genubi_reborn.password_resets
-CREATE TABLE IF NOT EXISTS `password_resets` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla genubi_reborn.password_resets: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
 /*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
-
--- Volcando estructura para tabla genubi_reborn.sessions
-CREATE TABLE IF NOT EXISTS `sessions` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `campaign_id` int(10) unsigned NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `text` longtext COLLATE utf8mb4_unicode_ci,
-  `background_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `date` date DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `sessions_campaign_id_foreign` (`campaign_id`),
-  KEY `sessions_user_id_foreign` (`user_id`),
-  CONSTRAINT `sessions_campaign_id_foreign` FOREIGN KEY (`campaign_id`) REFERENCES `campaigns` (`id`),
-  CONSTRAINT `sessions_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla genubi_reborn.sessions: ~52 rows (aproximadamente)
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
@@ -2313,64 +2098,17 @@ INSERT INTO `sessions` (`id`, `campaign_id`, `user_id`, `name`, `text`, `backgro
 	(61, 2, 2, '24', '<p>Zaheera aun necesita curarse de la corrupción, luego de una calurosa charla con Lyadrin y Natsa, Zaheera, vuelve con Arlette para realizar el ritual donde podrá curar sus brazos.</p>', NULL, '2019-05-13', '2019-05-13 22:15:58', '2019-05-13 22:18:22', NULL);
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 
--- Volcando estructura para tabla genubi_reborn.session_characters
-CREATE TABLE IF NOT EXISTS `session_characters` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 -- Volcando datos para la tabla genubi_reborn.session_characters: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `session_characters` DISABLE KEYS */;
 /*!40000 ALTER TABLE `session_characters` ENABLE KEYS */;
-
--- Volcando estructura para tabla genubi_reborn.session_enemies
-CREATE TABLE IF NOT EXISTS `session_enemies` (
-  `npc_id` int(10) unsigned NOT NULL,
-  `session_id` int(10) unsigned NOT NULL,
-  KEY `session_enemies_npc_id_foreign` (`npc_id`),
-  KEY `session_enemies_session_id_foreign` (`session_id`),
-  CONSTRAINT `session_enemies_npc_id_foreign` FOREIGN KEY (`npc_id`) REFERENCES `npcs` (`id`),
-  CONSTRAINT `session_enemies_session_id_foreign` FOREIGN KEY (`session_id`) REFERENCES `sessions` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla genubi_reborn.session_enemies: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `session_enemies` DISABLE KEYS */;
 /*!40000 ALTER TABLE `session_enemies` ENABLE KEYS */;
 
--- Volcando estructura para tabla genubi_reborn.session_npcs
-CREATE TABLE IF NOT EXISTS `session_npcs` (
-  `npc_id` int(10) unsigned NOT NULL,
-  `session_id` int(10) unsigned NOT NULL,
-  KEY `session_npcs_npc_id_foreign` (`npc_id`),
-  KEY `session_npcs_session_id_foreign` (`session_id`),
-  CONSTRAINT `session_npcs_npc_id_foreign` FOREIGN KEY (`npc_id`) REFERENCES `npcs` (`id`),
-  CONSTRAINT `session_npcs_session_id_foreign` FOREIGN KEY (`session_id`) REFERENCES `sessions` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 -- Volcando datos para la tabla genubi_reborn.session_npcs: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `session_npcs` DISABLE KEYS */;
 /*!40000 ALTER TABLE `session_npcs` ENABLE KEYS */;
-
--- Volcando estructura para tabla genubi_reborn.session_posts
-CREATE TABLE IF NOT EXISTS `session_posts` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `session_id` int(10) unsigned NOT NULL,
-  `character_id` int(10) unsigned NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
-  `text` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `session_posts_session_id_foreign` (`session_id`),
-  KEY `session_posts_character_id_foreign` (`character_id`),
-  KEY `session_posts_user_id_foreign` (`user_id`),
-  CONSTRAINT `session_posts_character_id_foreign` FOREIGN KEY (`character_id`) REFERENCES `characters` (`id`),
-  CONSTRAINT `session_posts_session_id_foreign` FOREIGN KEY (`session_id`) REFERENCES `sessions` (`id`),
-  CONSTRAINT `session_posts_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Volcando datos para la tabla genubi_reborn.session_posts: ~39 rows (aproximadamente)
 /*!40000 ALTER TABLE `session_posts` DISABLE KEYS */;
@@ -2416,59 +2154,29 @@ INSERT INTO `session_posts` (`id`, `session_id`, `character_id`, `user_id`, `tex
 	(60, 59, 13, 0, '<p>La suerte aún no me abandonaba. A pesar de los incesantes intentos de <strong>Uziel</strong> y mi hermana, todavía conservaba mi libertad y, aunque mis desplumadas alas ya no me permitían volar, mis piernas sí me permitían correr. Tomé el cuerpo de <strong>Arlete</strong> por uno de sus brazos y, esforzándome por bloquear la grotesca imagen de lo que había sido su cabeza, lo cargué sobre mis hombros.</p><p>Giré para ver al maestro <strong>Iván</strong>, que no apartaba la vista de <strong>Uziel</strong> mientras este se retorcía y convulsionaba sobre el muro en el que había quedado estrellado. El maestro se veía tan imponente y decidido como siempre, pero por vez primera dejé de creer que era invencible. En estos últimos días <strong>Uziel</strong> había acabado con la vida de varias personas que seguramente eran tan idolatradas y respetadas como los maestros de <strong>Arcania</strong>. Una inquietante sensación de inseguridad comenzó a crecer en mi pecho y me obligó a decir algo, lo que sea, en caso de que esto fuese una despedida.</p><p>- <i>Espero tener la oportunidad de volver a ver algo como eso, maestro. – </i>fue todo lo que pude balbucear entremedio de una risa nerviosa -.</p><p><strong>Iván</strong> solo me respondió con una confiada sonrisa mientras avanzaba lentamente hacia su oponente. Apenas abandoné la habitación, los guardias <strong>Landa</strong> me rodearon adoptando algún tipo de formación. Aunque mantenían su característica profesionalidad, sus rostros no podían ocultar del todo su consternación. No me extrañaría que esta fuera la primera vez que alguien se hubiese infiltrado en este lugar, al menos con tal facilidad. Por un momento, se quedaron observando el cuerpo inerte de <strong>Arlete</strong>.</p><p>- <i>No se preocupen, esto es normal.</i> – expliqué con torpeza mientras comenzábamos a trotar por los pasillos - <i>¡Lo más importante ahora es proteger a la sacerdotisa!</i></p><p>- <i>No se preocupe, ya la tomamos en custodia. </i>– me aseguró la líder del grupo -.</p><p>- <i>¡Bien! Es muy importante que nos lleven a ambas al mismo lugar, pero que aun así podamos estar separadas. Al menos, en habitaciones distintas.</i></p><p>La elfa solo asintió con el ceño algo fruncido. No podía terminar de organizar mis ideas, no estaba en condiciones de dar indicaciones a nadie.</p><p>Un dedo helado se posó sobre mi hombro y di un respingo que casi me hizo caer. La mano de <strong>Arlete</strong>, como si se tratase de un espeluznante show de marionetas, señaló a su hermana enguantada tratando de indicarme algo. Mi primera reacción fue intentar remover el guante con mis dientes sin dejar de correr, pero la palma de <strong>Arlete</strong> negó con un simple gesto y apunto con su índice hacia uno de mis brazos.</p><p>- <i>¡Cierto!</i> – exclamé al detenerme en el lugar -.</p><p>Con un rápido tirón separé el brazo del resto de su cuerpo, al que dejé caer detrás de mí. Sorprendida por el mínimo esfuerzo que me tomó arrancar una extremidad y el cadáver decapitado que yacía a mis pies, me quedé inmóvil por unos momentos. Una proyección fantasmal de <strong>Arlete</strong>, emergió desde su brazo y tomo forma detrás de mí, sacándome de mi estupefacción.</p><p>- <i>Esto… también es normal. – </i>exclamé ante las caras extrañadas de los <strong>Landa</strong>, aunque estoy bastante segura de que mi expresión no daba ningún tipo de certeza. Hay cosas a las cuales una nunca se acostumbra -.</p><p>Al retomar la huida, ahora solo con un brazo aferrado a mi espalda, los sepulcrales susurros de la maestra rozaron mis oídos.</p><p>- <i>Es bastante escurridizo, no me percaté de su presencia.</i></p><p><i>- Es lo que estaba por decirte, <strong>Arlete</strong>. Si tú no pudiste verlo venir, ¿quién podría? – </i>contesté entre jadeos – <i>Aunque él tampoco los vio venir a ustedes, luego hablaremos de eso.</i></p><p>- <i>¿A dónde piensas ir? – </i>su voz se mantenía monótona, incluso en esta situación -.</p><p>- <i>No lo sé. – </i>respondí en voz baja. En realidad, no estaba segura si los demás podían escucharla en este estado – <i>No parece haber forma de escapar. ¿Tú qué propones?</i></p><p>- Ve al salón principal. – contestó luego de una corta pausa -.</p><p>De haber estado yo sola, le hubiera hecho caso de inmediato, pero no podía separarme demasiado de <strong>Hanali</strong>. Por otro lado, los estrepitosos ruidos de derrumbe que se escuchaban a nuestras espaldas, con la batalla pisándonos los talones, tampoco daban lugar a pensar en otra cosa que no fuera correr.</p><p><i>- ¿A dónde iremos ahora? </i>– inquirí a la elfa -.</p><p>- <i>A un lugar más seguro. – </i>me replicó sin más explicación -.</p><p>Me detuve de inmediato, tratando de centrarme y elegir mejor mis palabras esta vez.</p><p>- <i>Ya estuvimos en cuatro lugares distintos que eran “de los más seguros en Alvirad” y <strong>Uziel</strong> nos encontró en todos y cada uno.</i> – afirmé con seriedad – <i>No es por faltarles el respeto, pero no creo que esconderse sea una opción, no en esta ciudad al menos. <strong>Uziel</strong> la conoce demasiado bien.</i></p><p>La elfa miró algo dubitativa a sus subordinados antes de dirigirse a mí.</p><p>- <i>¿Qué propone hacer, entonces?</i></p><p><i>- Vamos al salón principal, donde me recibieron. Por favor, confíen en mí.</i></p><p>Las miradas de los guardias se clavaron en su líder y no dieron un paso hasta que esta asintió y cambió el rumbo. Los pasillos parecían ser el cuádruple de largos de lo que habían sido cuando los recorrí la noche anterior. Al girar en cada esquina esperaba ver el altísimo techo de vidrio del recibidor, solo para encontrarme con otro corredor interminable.</p><p>Estaba tan concentrada en mantener el ritmo de mis escoltas que apenas si logré voltearme a tiempo para verle el rostro a un guardia mientras nos advertía de un ataque inminente. Antes de que pudiésemos reaccionar, una delgada línea de líquido carmesí se dibujó cruzando su torso de un extremo a otro. No fue hasta que impactó con el suelo que su cuerpo se dividió en dos. Sin desperdiciar un segundo, <strong>Uziel</strong> ya se abalanzaba sobre nosotros, blandiendo su palma abierta como si fuese a atravesarnos con una lanza. La líder de los guardias se interpuso entre nosotros en un intento casi suicida de defenderme. Cerré los ojos esperando un sonido similar al que escuché cuando traté de prevenir a <strong>Arlete</strong> en mi cuarto y el inconfundible olor metálico de la sangre derramada. Para mi alivio, lo que oí se asemejaba más al sonido de un plato partiéndose contra una pared. El suelo se había alzado, formando una densa barrera de mármol a tan solo unos centímetros de la nariz de la elfa. Notablemente exasperado, <strong>Uziel</strong> partió el muro con ambas manos y se preparó para atacarnos de nuevo.</p><p>Esta vez su brazo no llegó a descender. <strong>Iván</strong> emergió de una pesada pared, derrumbándola con tal facilidad que esta parecía estar hecha de papel. Llegó a interceptar el golpe de <strong>Uziel</strong> en el momento justo y los brazos de ambos impactaron como dos barras de peltre renegrido. Un momento. ¿” Renegridos”? ¡Por supuesto! ¿Cómo no lo noté antes?</p><p>- <i>¡Maestro! ¡<strong>Uziel</strong> solo tiene una fracción de su poder! ¡No se contenga!</i> – grité por impulso -.</p><p>Dudo que el maestro se estuviese conteniendo de todas formas. Su cuerpo estaba lleno de moretones y pequeños cortes, aunque no aparentaba estar dolorido en lo más mínimo. ¿Por qué no se regeneraba esas lastimaduras superficiales? ¿Será que no podía prescindir ni de esa pequeña cantidad de energía?</p><p>Los dos parecían haber dejado de prestar atención a sus alrededores por un instante. Se miraban fijamente y caminaban despacio, midiendo los pasos del otro.</p><p>- <i>Debo cumplir con mi palabra. – </i>se inmutó <strong>Uziel</strong>. Creo que hasta ahora no lo había escuchado alzar la voz por encima de un murmullo y de pronto parecía algo… impaciente -.</p><p>- <i>Admiro tus habilidades, pero mientras yo esté aquí no tocaras a una de mis mejores alumnas. </i>– replicó el maestro sin apartar la mirada del ascendido. Pese a la situación, los halagos de <strong>Iván</strong> no dejaron de llenarme de orgullo -.</p><p>- <i>¡No vas a evitar que cumpla mi objetivo!</i> – vociferó furioso - <i>¡Soy <strong>Uziel Cessair</strong>, el puño del <strong>Antiguo</strong>!</i></p><p><i>- Vas a tener que matarme primero. Porque yo soy el gran maestro de transmutación de Arcania... el... puño de <strong>Vidith</strong>.</i></p><p>Casi como si hubiese sido impulsado por ese último comentario, <strong>Uziel</strong> saltó hacia <strong>Iván</strong> a una impresionante agilidad. Sus puñetazos y patadas ganaban tal velocidad que daban la sensación de estar cortando el aire, pero ninguno de estos ataques fue certero. Es muy probable que el maestro ya haya usado este tipo de magia en mi presencia, pero esta fue la primera vez que comprendí cómo esquivaba a su oponente con tal eficacia. Solo eran perceptibles por unas fracciones de segundo, pero unas siluetas transparentes estaban recibiendo todos los golpes de <strong>Uziel</strong> en lugar del maestro. Seguramente por medio de alguna transmutación temporal, <strong>Iván</strong> estaba “<i>decidiendo</i>” no recibir esos ataques. A su vez, otra de estas figuras unos metros apartada de la pelea, gesticulaba rápidamente. Casi no me di cuenta de que estaba conjurando. De golpe, el piso debajo de los pies de <strong>Uziel</strong> cedió, derritiéndose y formando un charco de roca fundida en el que se hundió rápidamente hasta la cintura.</p><p>Si no me perdí de nada, el maestro <strong>Iván</strong> conjuro tres veces en simultáneo mientras eludía los golpes de <strong>Uziel</strong> sin fallo. Acto seguido la roca ardiente volvió a solidificarse, dejando atrapado al elfo. Antes de que pudiese liberarse, el maestro voló hacia él con la espalda arqueada y una pierna lista para embestirlo.</p><p>- <i>¿Alguna vez te habían pateado a la velocidad de un relámpago? </i>– preguntó retóricamente el maestro mientras su pie, cubierto de electricidad y con la piel tan dura y oscura como la de su brazo, desfiguraba el rostro de su oponente -.</p><p><strong>Uziel</strong> salió despedido por el pasillo hasta que casi lo perdimos de vista. Las lujosas ventanas que iluminaban el lugar estallaron debido al fuerte estruendo del impacto. <strong>Iván</strong> se volteó y nos aceleró a todos con diestro movimiento de sus puños. Siempre me extrañó la forma en la que el maestro conjura, parece como si quisiera atacarte física y mágicamente al mismo tiempo, y ahora entiendo por qué.</p><p>- <i>¡Váyanse! – </i>fue todo lo que dijo antes de salir disparado por el corredor -.</p><p>Mientras corría, el maestro mantenía los brazos extendidos hacia los costados, rozando las paredes. Pude notar como el pasillo se angostaba lentamente y el material de sus muros era reemplazado por algún tipo de roca reforzada. Lo que hace segundos era evidentemente una pieza de arquitectura élfica, ahora encajaría mejor en las profundidades de <i>Thormheim</i>.</p><p>Gracias a la magia del maestro, llegamos por fin a nuestro destino. El recibidor se encontraba tan atestado como lo había estado en la mañana y mis advertencias de peligro no provocaron más que algunas caras disgustadas entre las filas de impacientados elfos. Sin embargo, bastó una simple orden directa de la líder de los guardias para que la congregación comenzase a evacuar el recinto. Más adelante, otro grupo de guardias contenía a <strong>Hanali</strong> que giraba la cabeza hacia un lado y otro con la mirada perdida y los ojos vidriosos. ¿Cuánto más tiempo va a tener que vivir atormentada?</p><p>- <i>¿Qué piensas hacer exactamente, <strong>Arlete</strong>? – </i>pregunté por encima de mi hombro -.</p><p><i>- Aún no lo sé. – </i>por primera vez, pude percibir un leve dejo de inseguridad en su voz -.</p><p>Una brisa familiar movió mis cabellos y la difuminada figura de <strong>Ak’sum</strong> se posicionó sobre mi cabeza. Me sigue dando algo de pánico verlo en esta “media forma”, pero puede que haya sido gracias a ella que <strong>Uziel</strong> no se percató de él al aparecer en el cuarto.</p><p>- <i><strong>Ak’sum</strong>, mantente cerca, pero trata de que no te vean. Es mejor si nadie sabe que estás aquí.</i></p><p>Sin decir una palabra, volvió a su forma casi completamente traslúcida, aún más difícil de percibir que de costumbre.</p><p>Volví mi atención hacia <strong>Arlete</strong>, que ahora señalaba el escritorio de recepción con la única parte física de su cuerpo.</p><p>- <i>Allí… -</i> exclamó entrecerrando los ojos, como si estuviese buscando algo que escapaba a su visión -.</p><p>- <i>¿Qué estamos buscando, <strong>Arlete</strong>? </i>– la apresuré mientras me acercaba al mostrador. Los estruendos de los muros y techos colapsando en otras habitaciones se sentían cada vez más cerca -.</p><p>- <i>Hmm… Elige tú, <strong>Zaheera</strong>. </i>– proclamó, tomándome por sorpresa - <i>¿Izquierda o derecha?</i></p><p><i>- ¿Pero por qué? Ehm… no importa. Iz-Izquierda, vamos por la izquierda.</i></p><p>No tenía idea de lo que planeaba. ¿Uno de sus túneles? ¿Algún tipo de invocación? Como fuese, ya me encontraba rodeando el escritorio cuando una puerta explotó en miles de astillas mientras el cuerpo de <strong>Uziel</strong> salía nuevamente despedido por el aire. Otra vez comenzaron sus extrañas convulsiones, pero esta vez esa grotesca demostración no parecía ayudarlo a recomponerse. Se tomó con fuerza la garganta como si tratase de evitar que sus propias arcadas lo asfixiaran. Alzó la cabeza hacia al techo con los ojos desorbitados por el dolor.</p><p><i>- ¡No! ¡Por favor! ¡Necesito más tiempo! ¡Solo un poco más de tiempo! ¡Yo…!</i></p><p>Fue lo último que llegó a decir. Cada vena de su cuerpo comenzó a retorcerse bajo su piel, los espasmos involuntarios de sus músculos se volvieron aún más violentos, al punto de que seguramente fracturaron alguno de sus huesos. Su estómago se hinchó y varias otras protuberancias brotaron de sus brazos y piernas. De alguna forma, no fue eso lo que me hizo apartar la mirada, sino los desesperados gritos de <strong>Uziel</strong>. Lo estaban torturando.</p><p>Al principio, creí que lo estaba imaginando, pero detrás del ascendido, la pared en la que se había estrellado estaba… palpitando. El pulido mármol y la refinada madera lustrada se tornaron en viscosos y latentes trozos de carne viva. Bocas y ojos aberrantes rasgaban el tejido para salir a la superficie y antes de que nos diéramos cuenta todo el recinto se convirtió en un repugnante escenario para la agonía de <strong>Uziel</strong>. Las bocas que brotaban de los muros empezaron a recitar con una voz profunda y gutural una única oración. La voz era demasiado inhumana como para que pudiese reconocerla, pero sí conocía esas palabras. Solo las había escuchado una vez, en los recuerdos de <strong>Natsa</strong>. Repitieron esas tres palabras una y otra vez hasta que una sola voz, proveniente de la boca del estómago de <strong>Uziel </strong>las pronunció una última vez.</p><h3><i>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Ubo Zett Lah</i></h3><p>No quería admitirlo, pero esta vez sí reconocí esa voz. Me obligué a mirar el deformado cuerpo de <strong>Uziel</strong>, ahora suspendido en al aire por una fuerza invisible. En su torso se lucía un rostro que, tal vez, en mis más terribles pesadillas podría haber asociado con <strong>Yue</strong>. Carente de cejas, con sus labios adheridos a la maltrecha piel del elfo y sus ojos pálidos casi salidos de sus cuencas, esta abominación no podía estar más removida de la humanidad. Unos diminutos y delgados brazos con cuatro dedos en cada mano crecieron desde el abdomen de <strong>Uziel</strong> y los ojos de este ser, que solo existía como una burla del recuerdo que tengo de <strong>Yue</strong>, se tornaron hacia mí.</p><p>- <i>¡Ahí estás!</i> – exclamó con una voz sibilante y compungida - <i>¡Por fin te encontré! </i>– sus brazos se abrieron como los de un niño pidiendo un abrazo -.</p><p>Justo entonces, un destello de luz cálida y amarillenta me encandiló los ojos y me distrajo de esa terrible imagen. <strong>Zeref</strong> emergió del destello, mirando confundido a su alrededor.</p><p>- <i><strong>Zaheera</strong>, ¿qué sucede? Sentí que estabas en peligro. –</i> dijo mientras observaba desconfiado a nuestro oponente - <i>¿Ese es <strong>Uziel</strong>?</i></p><p><i>- Sí, <strong>Zeref</strong>. <strong>Uziel</strong> y <strong>Yue</strong>. –</i> le respondí, aunque yo misma no terminaba de creerlo -.</p><p>- <i>Así que esa es tu hermana.</i></p><p><strong>Zeref</strong> se interpuso enfrente mío y mientras blandía su maza, le rezó al sol casi susurrando. Su armadura resplandeció como nunca lo había hecho antes y una enorme y radiante figura nació de esa luz. Cuando conocimos a <strong>Pelor</strong> en el <i>mundo espiritual</i> sus ojos se veían tristes y cansados, pero este avatar, si bien era una réplica casi exacta, conservaba la serena mirada compasiva de <strong>Zeref</strong>.</p><p>- <i>Gracias, <strong>Zeref</strong>. Por favor, ten cuidado.</i></p><p>- <i>Solo tienen que llamar su atención.</i> – interfirió la líder de los guardias que ya se encontraba desenfundando una alargada espada -.</p><p><strong>Yue</strong> comenzó a tironear con fuerza, arrastrando a <strong>Uziel</strong> hacia nosotros sin que este pudiera imponer resistencia. Me hice a un costado tratando de no poner a nadie más en la línea de fuego si es que intentaba hacerme algo. Mientras se acercaba, acaricié mi <i>Anillo de Batalla Sortílega</i> con el pulgar. Mi último haz bajo la manga. De forma instintiva, mi otra mano se posó sobre el mango de la espada que me obsequió <strong>Leonard</strong>. “<i>Bueno, tal vez no el último</i>”, pensé.</p><p>- <i>Por favor… ven. Te lo suplico, ven conmigo. – </i>lágrimas oscuras cuál tinta brotaron de sus ojos lechosos, mientras se le rompía la voz por la angustia -.</p><p><strong>Zeref </strong>le hizo frente mientras que la guardia <strong>Landa</strong> la flanqueó con el filo de su arma. La criatura alzó sus raquíticos brazos y abrió su malformada boca liberando dos chirriantes aullidos. La elfa y el seguidor del sol volaron hacia distintos extremos del cuarto como hojas en el viento. Intenté aprovechar la oportunidad para activar los anillos de mis alas, pero tan solo una inofensiva estática surgió de mis dedos.</p><p>La abominación cerró uno de sus puños y unas rosadas vainas sanguinolentas crecieron del suelo y se inyectaron en la carne de la líder de la guardia, alzándola en el aire y obligándola a soltar su arma.</p><p>- <i>¡Tenemos que extraerle eso del cuerpo! – </i>me urgió <strong>Arlete</strong> desde mi espalda -.</p><p>La última vez que intenté blandir una espada aún vivía en una granja, cualquier técnica que pudiese haber tenido se había perdido en los años. “<i>El que no arriesga…</i>”</p><p>Corrí tan rápido como mis piernas me lo permitieron, casi derrapando por el grotesco y desigual terreno de carne y cartílago, y asesté esa enredadera viviente con toda la fuerza que me quedaba, gritando con cada golpe como si eso lo hiciera más certero. Llegué a cortar las suficientes como para que la elfa cayera al suelo y pudiese empezar a liberarse, cuando un nuevo chillido de <i>banshee </i>me arrojó contra al piso. Fue como si el viento se convirtiera por un momento en cientos de pequeñas agujas metálicas que me rasgaron la piel. Ahora el monstruo, llorando con aún más dolor, retrajo sus brazos con una mueca casi suplicante.</p><p>- <i>¡Lo siento! ¡Lo siento! – </i>jadeó - <i>¡No quería lastimarte! ¡Discúlpame!</i></p><p><i>- Está bien… <strong>Yue</strong>. No es nada. – </i>contesté despacio mientras me levantaba, limpiando la sangre de mi rostro -.</p><p>“<i>Creo que otra vez seré más útil como carnada</i>”, me dije para mis adentros. Dejé caer la espada a mis pies y alcé los brazos, invitando a <strong>Yue</strong>.</p><p>- <i>Ven, hermana. No luches más. Llévame contigo. – </i>fue todo lo que pude obligarme a decir -.</p><p>- <i>¡Sí! ¡Al fin! ¡Al fin vamos a estar juntas! – </i>estaba casi gritando del alivio que le provocaba -.</p><p>Sentía repulsión, miedo, resentimiento… y hasta odio. Me arrepiento mucho de esto, pero por un momento, odié a esa cosa. La odié por hacerme fingir que estaba hablando con mi hermana. Por más que intentase, no podía estar triste, ni por ella ni por mí. No quería creer que era <strong>Yue</strong> la que se aproximaba con los ojos de desorbitados y la boca babeando y jadeando. En realidad, no quería sentir nada.</p><p><strong>Iván</strong> emergió de la puerta por la que había entrado <strong>Uziel</strong> y, sin dudarlo, se abalanzó sobre él.</p><p>- <i>¡Maestro! Es <strong>Yue</strong>, tenemos que sacársela del estómago. – </i>al decir esto, solo por un segundo, pude ver verdadera tristeza en los ojos de <strong>Yue</strong>, antes de que volviera a gritar desaforadamente mientras el maestro la sujetaba -.</p><p>Con su mano desnuda, <strong>Iván</strong> tiró comenzó a tirar de la cara de <strong>Yue</strong>. El delgado brazo vestigial que le quedaba libre a la criatura se aferró al del maestro, fusionándose con su piel y ennegreciendo su carne.</p><p>- <i>¡Es corrupción! ¡No llegará a extraerla a tiempo! – </i>advirtió <strong>Arlete</strong> ahora sí realmente alterada -.</p><p>Volví a recoger la espada y, con un último esfuerzo, amputé el brazo de la criatura que se retorció en un último grotesco intento por liberarse. <strong>Iván</strong> la extirpó del torso de <strong>Uziel</strong>, que cayó arrodillado al suelo sujetándose su agujereado abdomen.</p><p>En ese instante, tan rápido como habían aparecido, los muros vivientes se evaporaron en el aire y la central <strong>Landa </strong>regresó a su estado normal. El trozo de carne deforme cayó al suelo de mármol y comenzó a arrastrarse usando su único brazo, aun buscándome.</p><p>- <i>¡Por favor, hermana! ¡Ven! ¡Tenemos que estar juntas! – </i>gemía con la misma desesperación -.</p><p><i>- Sí, <strong>Yue</strong>. Vamos a estar juntas. </i>– le respondí mirándola fijo a los ojos<i> – Pero no así, no ahora.</i></p><p>Di un paso hacia atrás cuando su mano estaba por tocar uno de mis pies. La espada de la guardia <strong>Landa</strong> atravesó la cabeza de la criatura inmediatamente después y ésta finalmente cesó de moverse. Podía llamarla monstruo o abominación, pero sabía que no era verdad. Era mi hermana la que yacía inerte en el suelo. Quise llorar, tenía ganas de llorar, pero ni una lágrima salió de mis ojos.</p><p>- <i>Podría retirar su espada, por favor.</i> – le pedí a la elfa sin dejar de ver el rostro de <strong>Yue</strong> -.</p><p>Con un ágil movimiento la mujer desenterró la hoja, dejando ver una profunda herida abierta que apenas si sangró. Es como si el tejido de este ser hubiese estado muerto desde hace tiempo. Detrás de mí, <strong>Uziel</strong> por fin logró ponerse de pie.</p><p>- <i>No te fuerces más, no puedes seguir peleando en esas condiciones. – </i>le aconsejó <strong>Iván</strong> -.</p><p>- <i>Por ahora, solo diré… gracias. –</i> respondió el ascendido aun sosteniéndose el estómago antes de que desplegar sus alas y salir disparado, atravesando el techo de vidrio y desapareciendo de nuestra vista -.</p><p>Solo por unos segundos me quedé observando el cielo de <i>Alvirad</i> y los leves rayos de sol que se escapaban entra las nubes. Ansiosa, <strong>Arlete</strong> llamó nuevamente mi atención.</p><p>- <i>¡Toma la muestra, <strong>Zaheera</strong>! – </i>me apresuró -.</p><p>Envolví con un pañuelo la cabeza <strong>Yue</strong> casi por completo, dejando solo una pequeña parte de su rostro visible, pero sin importar lo que hiciera, no iba a lograr que se pareciera a ella. La dejé sobre la mesa y no volví a mirarla por el resto del día.</p><p>- <i>¿Cómo te encuentras, <strong>Iván</strong>? </i>– preguntó <strong>Arlete</strong>, haciéndome volver en sí -.</p><p>- <i>Estoy bien</i>. – contestó el maestro, seguido de un suspiro – <i>Tendré que cortarlo, ¿verdad?</i></p><p>Su brazo había sido corrompido hasta por encima del codo, pero no parecía haberse propagado a otro lugar de su cuerpo. <strong>Arlete</strong> solo asintió con la cabeza.</p><p>- <i>Está bien, está bien. No es grave. Podría haber sido mi cabeza, pero solo se trata de un brazo. Soy el gran maestro de transmutación después de todo. Es solo que… era un buen brazo.</i></p><p>Con su mano izquierda se amputó el brazo contrario con un corte impecable, ni una gota de sangre. Luego, por el bajo costo de uno solo de sus cabellos, recreo su brazo derecho en un santiamén. Las diminutas hebras de cabello castaño, crecieron y se endurecieron. Formaron hueso, músculo, venas y una capa de piel del tono ligeramente moreno de <strong>Iván</strong>. Todo el día, el maestro hizo que este tipo de magia tan impresionantemente avanzada, se viese en extremo simple. Quisiera creer que el hecho de poder comprender al menos una buena parte de las técnicas que utilizó es fruto de mi estudio y no solo del anillo que obtuvimos debajo de <i>Thormheim</i>. La próxima vez, prestaré aún más atención a sus movimientos. Afortunada y lamentablemente, sé que no tendré que esperar demasiado para verlos en acción otra vez.</p><p>- <i>Eso también me servirá como muestra, <strong>Iván</strong>. Ponlo con el resto. –</i> pidió <strong>Arlete </strong>mientras señalaba el miembro cercenado, ya sumida en sus propios pensamientos – <i>¿Y podrías traerme me cuerpo también, por favor? No podré hacer mucho sin él. Ah y, <strong>Zaheera</strong>, deja mi brazo sobre la mesa.</i></p><p><i>- Parece que aun tienes trabajo por hacer</i>. – bromeó <strong>Iván</strong> con su propio brazo – Enseguida lo traigo, <strong>Arlete</strong>. Solo déjame… acomodar un poco el lugar.</p><p>A medida que regresaba al pasillo por el que habíamos venido, <strong>Iván</strong> iba reconstruyendo el arruinado edificio a su gusto, aunque no cambió mucho la estructura a comparación de lo que era previamente. Como si se tratara de las piezas de un rompecabezas, las partidas tablas de madera, los trozos de vidrio roto y los pedazos de mármol desperdigados por el suelo, comenzaron a ensamblarse unos con otros volviendo a su forma original.</p><p>Solo en ese momento que me percaté de <strong>Hanali</strong>, forcejeando con los guardias para que la dejaran venir conmigo. Miré <strong>Arlete</strong> como una niña pidiendo permiso a su madre. En este momento yo la necesitaba tanto como ella a mí. La maestra solo me devolvió una mirada seria.</p><p>- <i>No, <strong>Hanali</strong>. Por favor, es solo un tiempo más. Hasta que todo termine.</i> – le pedí mientras negaba con la cabeza -.</p><p>- <i>Pero, ¿cuándo? ¿¡Cuándo van a mejorar las cosas!? – </i>dijo rompiendo a llorar mientras los guardias la alejaban más -.</p><p><i>- No te preocupes, ya paso lo peor. – </i>le mentí, cabizbaja. Se me encoje el corazón al verla así, me cuesta demasiado creer que estoy haciendo lo mejor para ella -.</p><p>Sentí el pesado guantelete de <strong>Zeref</strong> en mi hombro.</p><p>- <i>Ánimo, <strong>Zaheera</strong>.</i> – exclamó con su característica voz compasiva – <i>Ya no nos falta mucho para terminar con esto. <strong>Uziel</strong> tuvo que huir después de todo.</i></p><p><i>- Sí, ¿pero por cuánto tiempo? ¿Cuánto va a pasar hasta que vuelva tratando de llevarme a mí o a <strong>Ilfrin</strong> o a <strong>Hanali</strong>?</i></p><p><i>- Yo lo vi bastante herido. Puede que no aparezca por un tiempo. Puede que ni siquiera sobreviva.</i></p><p><i>- Hm, tienes razón. – </i>le contesté con una sonrisa, aunque no podía ocultar mi cansancio - <i>Supongo que tendremos que aprovechar todo el tiempo que tengamos, aunque solo sean unos días. Tendremos que adelantarnos a <strong>Uziel</strong> de una buena vez. Gracias por protegerme, por cierto.</i></p><p><i>- En realidad no pude hacer mucho. – </i>me respondió, encogiéndose de hombros – <i>Parece que nuestros se enemigos se empeñan en mantenerme alejado de ellos.</i></p><p><i>- Viniste a ayudarme, eso es más que suficiente.</i></p><p>Fue entonces que los espada plateada arribaron a la central, encabezados por <strong>Ignatius</strong>. Había un elfo entre ellos que no reconocí, vestido muy formalmente; puede que aún más que los <strong>Landa</strong>. El espada de los <strong>Daion</strong>, asumo, que venía acompañado <strong>Sinn</strong>, <strong>Elena</strong>, <strong>Rilgar</strong> y <strong>Leonard</strong>. Parecían haber tenido algún tipo de batalla y ni valía la pena preguntar contra quién. Los elfos se quedaron observando la obra de <strong>Iván</strong> por un momento, preocupados e impresionados al mismo tiempo.</p><p>Antes de que me diera cuenta, <strong>Elena</strong> se había aferrado a mi pierna.</p><p>- <i>A mí también me alegra verte. </i>– le dije sonriente mientras sacudía su cabello – <i>Me alivia que todos estén bien. Tuvieron que pelar contra los sirvientes de <strong>Uziel</strong>, ¿verdad?</i></p><p>- <i>Contra las medianas, sí.</i> – se adelantó <strong>Sinn</strong> -.</p><p>- <i>Eso significa que a los demás, les tocó el gigante muy seguramente. </i>– pensé en voz alta -. <i><strong>Rilgar</strong>, tengo algo muy importante que hablar contigo. Ahora ve con <strong>Hanali</strong>, por favor. Te necesita. Cuando se quede dormida, ven a mi cuarto. Esto no puede pasar de esta noche.</i></p><p>El buscador solo asintió y fue consolar a su sacerdotisa. Gracias a los dioses que <strong>Hanali</strong> aún tiene a alguien con quién contar. Gracias a <strong>Corellon Larethian</strong>, supongo que debería decir.</p><p><strong>Ignatius</strong> se acercó rápidamente hacia la líder de su guardia mientras sus subordinados trataban de atender sus heridas. La elfa se inclinó apenas vio a <strong>Ignatius</strong> caminando hacia ella y este le exigió inmediatamente un reporte de lo sucedido. La guardia le respondió con completa diligencia y se podía notar la vergüenza en su voz. Desde el punto de vista de un <strong>Landa</strong> esto había sido un fracaso. Mientras conversaban, <strong>Arlete</strong> y yo nos intercambiamos una simple mirada, solo para confirmar lo obvio: la elfa estaba corrompida. Cuando <strong>Ignatius</strong> se volteó, me interpuse en su camino.</p><p>- <i><strong>Lord Ignatius</strong>, disculpe.</i></p><p><i>- Dime, <strong>Zaheera</strong>. – </i>contesto conservando su temple -.</p><p><i>- Esta señorita me protegió muy valientemente, no hubiera sobrevivido de no ser por ella. Desafortunadamente, en el medio de la batalla sufrió heridas muy… particulares. Es el tipo de herida de la que le había hablado antes. Sé que debe tener a profesionales muy capacitados aquí, pero no tienen las herramientas para tratarla. Si nos permite, estoy segura de que nosotros podríamos ayudarla.</i></p><p>La líder de la guardia e <strong>Ignatius</strong> se observaron en un corto, pero incómodo silencio.</p><p>- <i>Mis subordinados saben cuáles son los riesgos de su trabajo, así como sus obligaciones. Preocúpate por los tuyos, <strong>Zaheera</strong> y por tu propio bienestar. – </i>respondió cortante antes de regresar con los espada plateada -.</p><p><strong>Zeref</strong> se quedó mirándolo con desaprobación.</p><p>- <i>¿Crees que puedas lanzar otro de esos conjuros con lo que llegaste hasta aquí, <strong>Zeref</strong>? Sobre <strong>Ak’sum</strong>, ¿tal vez? – </i>le pregunté en susurros -.</p><p>- <i>Desgraciadamente no, ya casi no me queda magia. No he tenido oportunidad de descansar.</i></p><p><i>- Maldición. ¿<strong>Arlete</strong>, no tenemos alguna forma de seguirla o de saber dónde se encuentra? – </i>dije mientras señalaba a la líder de la guardia con la cabeza <i>– Sabemos que no podrán ayudarla aquí.</i></p><p><i>- Hmm… tócala con mi mano. – </i>contestó la maestra algo dubitativa<i> -.</i></p><p>Con una evidente falta de naturalidad me acerqué a la elfa, apoyando la cadavérica mano de <strong>Arlete </strong>sobre su hombro.</p><p>- <i>¡Peleo con gran valentía, señorita! Se lo agradezco.</i></p><p><i>- …Gracias… - </i>fue todo lo que dijo mientras se alejaba lentamente -.</p><p><strong>Iván</strong> regresó con el cuerpo de <strong>Arlete</strong> en brazos y tuvo un intercambio de miradas con el resto de los elfos, muy similar al que yo había tenido hace un rato.</p><p>- <i>Ehm, no se preocupen. Ella estará bien. – </i>dijo mientras depositaba el cuerpo de <strong>Arlete</strong> a un costado del escritorio y le adhería su brazo faltante -. <i>Usted debe ser <strong>Lord…</strong> <strong>Ignatius</strong>.</i></p><p><i>- Sí, y usted es uno de los enviados de Arcania, presumo. – </i>respondió el arcaico <strong>Landa</strong> con genuina curiosidad -.</p><p>- <i>Mi nombre <strong>Iván</strong>, gran maestro de transmutación de Arcania, puño de <strong>Vidith </strong>y posible amante de <strong>Arlete</strong>, gran maestra de nigromancia… de Arcania. Posible dado que… una de las partes aún no se decide.</i></p><p>Ante esto último, sacudí la cabeza y solo miré el cuerpo de <strong>Arlete</strong> algo confundida y luego a <strong>Iván</strong>. En un día donde ya creía que nada podía sorprenderme… Estoy feliz por ellos si es así, pero no puedo ni imaginarlo.</p><p>La cabeza de la maestra comenzó a formarse lentamente. Espero algún día tener el estómago para prestarle más atención a este tipo de cosas, pero hoy no es ese día. Ni bien la maestra se recompuso, se puso de pie y saludo cordialmente a los elfos que aún la miraban con desconfianza. Sacó luego uno de sus grandes frascos para poder guardar… sus muestras.</p><p>Llegó el último de los espada plateada, que tenía una curiosa apariencia. Su pequeño cuerpo daba la impresión de pertenecer a un niño, pero su rostro serio y severo evidenciaba muchos más años de lo que una supondría. Detrás de él venían <strong>Natsa</strong>, <strong>Shraza</strong> e <strong>Ilfrin</strong>. Bien, ahora estábamos todos. Cuando me vio, <strong>Natsa</strong> dio un suspiro y fue la primera en acercarse.</p><p>- <i>¿Estás bien?</i> – me preguntó con unos ojos tan agotados como los míos -.</p><p>- <i>No y asumo que tú tampoco. ¿Lucharon contra el gigante otra vez?</i></p><p><i>- Sí, y contra el hombre de cabello negro. – </i>intercedió <strong>Ilfrin</strong> -.</p><p>La mujer de las cintas no se había presentado. ¿<strong>Uziel</strong> la estaba guardando para el momento adecuado? Contra <strong>Iván</strong> le hubiese sido muy útil.</p><p>Los puse al día tan sucintamente como pude, inevitablemente mencionando la aparición de <strong>Yue</strong>.</p><p>- <i>¿<strong>Yue</strong> estuvo aquí?</i> – interrumpió <strong>Natsa</strong> -.</p><p>- <i>Podría decirse que sí. – </i>contesté cabizbaja, señalando el frasco que <strong>Arlete</strong> estaba observando minuciosamente<i> -.</i></p><p>Los rostros de todos adoptaron un semblante de confusión, curiosidad y algo de comprensible repulsión, pero yo me atreví a voltear.</p><p><i>- ¿Quieres hablar de ello? –</i> me preguntó <strong>Natsa</strong>, preocupada -.</p><p>- <i>No lo sé. No sé si hay algo de qué hablar.</i> – respondí con sinceridad. No quería preocuparla, pero ya no tenía más energía como para fingir – <i>Lo importante ahora es prepararnos para cuando <strong>Uziel</strong> regrese. Está herido, así que puede que nos de algo de tiempo.</i></p><p><i>- ¿Llegaron a descubrir algo más con <strong>Arlete</strong>? </i>– prosiguió <strong>Natsa</strong>, cambiando de tema -.</p><p>-<i> Lo más preocupante es que confirmamos nuestros miedos. <strong>Hanali</strong> está corrompida de alguna forma, al igual que yo. – </i>dije alzando los brazos – <i>Nuestras formas de corrupción son distintas, pero si estamos muy cerca la una de la otra, es probable que podamos empeorar nuestras condiciones. Hablaré con <strong>Rilgar</strong> esta noche sobre… nuestro secreto. Tengo que convencerlo de comentárselo a <strong>Arlete</strong> y al resto del grupo.</i></p><p><i>- ¿Y por qué no lo hacemos ahora? – </i>protestó <strong>Natsa</strong>, claramente molesta – <i>Cada momento que pasa nos ponen más en peligro con sus secretos.</i></p><p><i>- Solo confía en mí. – </i>le rogué<i> – Lo entenderás pronto. Por favor, no quiero tener esta discusión ahora.</i></p><p><i>- <strong>Zaheera</strong>… - </i>me llamó <strong>Elena</strong> con discreción – <i>Tengo lo que me pediste.</i></p><p>Sacó de sus bolsillos un pergamino enrollado y me lo entregó. <strong>Elena</strong>, la que nunca para trabajar.</p><p>- <i>Sí… ¡Esto es justo lo que necesitábamos! –</i> exclamé con renovado entusiasmo – <i>Nos será de gran utilidad, <strong>Elena</strong>. Estás mejorando muy rápidamente.</i></p><p>Fue entonces que<strong> Arlete </strong>finalmente apartó su atención de sus nuevos especímenes y<strong> </strong>se acercó a los espada plateada e <strong>Ignatius</strong> que aún estaban algo confundidos por su peculiar forma de regenerarse. Después de una formal presentación, la maestra reveló el verdadero propósito de su visita, lo que me dio un ápice de esperanza en un día en el que esta me hacía mucha falta. Tan característico de ella como era de esperarse, el discurso de la maestra fue corto y directo. Dejó en claro la gravedad de la situación en la que nos encontramos y les hizo a los elfos una oferta que no podían darse el lujo de ignorar.</p><p>- <i>He venido aquí como embajadora de Arcania. <strong>Magna Vidith</strong>, así como otros varios miembros de nuestra organización creemos que es momento de formalizar nuestra alianza con Alvirad. – </i>fue la declaración que concluyó su monologo -.</p><p>Los espada plateada comenzaron a debatir entre ellos vigorosamente, procurando mantenerse precavidos ante lo que implicaba aceptar la propuesta de <strong>Arlete</strong>. Sin embargo, sus voces no eran más que ecos lejanos para mí. Solo puedo suponer que pasaron unos minutos mientras discutían, pero bien podrían haber sido horas. Es como si me hubiese quedado dormida parada. En mi mente solo retumbaban los aullidos de <strong>Yue</strong> y las bizarras recitaciones de las paredes. Intercambié algunas palabras con <strong>Ilfrin</strong>, tratando de darle la esperanza por <strong>Uziel</strong> que yo apenas podía mantener por mi hermana, pero todo lo demás se perdió entre mi estupor hasta que el consejo de elfos llegó a un consenso. <i>Alvirad</i> y <i>Arcania</i> se convertirían en aliadas.</p><p>No todos los espadas estaban quedaron satisfechos con la decisión, pero <strong>Ignatius</strong> les recordó un detalle muy importante: <i>“estamos en guerra, caballeros y no podemos prescindir de ningún tipo de ayuda”.</i></p><p><i>- Parece que los convencí. – </i>concluyó la maestra, mostrándome una leve sonrisa<i> -.</i></p><p>Le devolví el gesto, aliviada. Pero el pesar de todo lo sucedido el día de hoy no me abandonaba.</p><p>- <i><strong>Maestro Iván</strong>, ¿de casualidad llegó a reconstruir mi cuarto también? </i>– pregunté agitada -.</p><p>- <i>Sí, reconstruí gran parte del -</i></p><p>- <i>Muchas gracias.</i> – lo interrumpí -.</p><p>Me di media vuelta y regresé de inmediato a los pasillos de la central. Estaba sumida en una especie de transe mientras arrastraba los pies por los corredores levemente iluminados por la pálida luz del día nublado. Los muros aún parecían expandirse y contraerse, respirando. “<i>Ubo Zett Lah… Ubo Zett Lah…</i>”</p><p>- <i>¿En serio no vas a decirme nada?</i> – escuché reclamar a <strong>Natsa</strong> mientras abría la puerta de mi habitación. Ni había notado que estaba siguiéndome -.</p><p>- <i>Un momento</i>…</p><p>Me dio lástima arruinar la impecable vajilla de los <strong>Landa</strong>. Como si pudiese así expulsar cada mal recuerdo, cada terrible sensación, vomité lo poco que había desayunado esta mañana en un pequeño cuenco de cerámica blanca. Cuando terminé de regurgitar los últimos trozos de fruta me enjuagué la boca y fui a reposar en el sillón. Sentía como si tuviera pesas encadenadas a la cintura.</p><p>- <i>No creo que tenga mucho para decirte, <strong>Natsa</strong>.</i></p><p><i>- No puedo ayudarte si no hablas. Y no sé qué decir para sacarte las palabras.</i></p><p><i>- Bueno, hoy vi a mi hermana salir del estómago de otra persona. ¿Qué hay para decir? – </i>negué con la cabeza con la mirada perdida en el piso alfombrado<i> – Casi no pude reconocerla, <strong>Natsa</strong>. Ni siquiera podía sentir lástima por ella. Es como si ya la hubiera perdido.</i></p><p><i>- No sé qué pueda decirte que no sea obvio… que no suene cruel. – </i>se veía muy frustrada. Solo quería hacerme sentir mejor, pero yo estaba demasiado sumida en mis preocupaciones como para dejarla. Debería pedirle disculpas mañana -.</p><p><i>- Ahora lo que importa es aprovechar el tiempo que tengamos hasta que <strong>Uziel</strong> se recupere. Dentro un rato hablaré con <strong>Rilgar</strong> y le pediré que comparta su secreto con <strong>Arlete</strong>, así podrá asistir mejor a <strong>Hanali</strong>.</i></p><p><i>- Tampoco vas a hablarme de eso, ¿verdad? – </i>me reprochó. Yo solo me encogí de hombros -.</p><p>No entraba en pánico solo por lo cansada que estaba, pero en realidad estaba desesperada. Me preguntaba qué hubiera pasado si hubiera aceptado que <strong>Yue</strong> y <strong>Uziel</strong> me llevaran. Al menos estaría con ella. Al menos estaría segura de que alguna parte de mi hermana aún está en algún lugar, esperándome.</p><p>-<i> Hoy perdí el control. Hace mucho que no me pasaba.</i> – declaró <strong>Natsa</strong>, rompiendo el tenso silencio -.</p><p>- <i>¿Qué? Fue por esa hacha, ¿verdad? Te dije que dejaras -</i></p><p><i>- ¡No tiene nada que ver con el hacha! Es más, me ayuda. Es una advertencia. – </i>hizo una pausa, contemplando su mano vendada, abriéndola y cerrándola como si estuviera exprimiendo algo invisible – <i>Lastimé a <strong>Ilfrin</strong>, lo lastimé en serio. No voy a mentirte, lo disfruté. Pero en esta ocasión no se lo merecía.</i></p><p>-<i> ¿Pero por qué? ¿Qué te hizo entrar en ese estado? ¿Te está pasando algo?</i></p><p>- <i>No lo sé. Tal vez sea porque todos parecen estar muy metidos en sus propios asuntos, hacen lo que les place, hasta tú me guardas secretos. Tal vez sea solo mi carácter, me molesta no poder controlar la situación.</i></p><p><i>- Nadie tiene control sobre lo que está pasando, <strong>Natsa</strong>. Ya lo habíamos hablado, tienes que dejar de preocuparte por todo lo que se te escapa de las manos. <strong>Sarumo</strong> hacía eso todo el tiempo y tuvo que terminar pidiéndome mi magia para no volverse loco del estrés.</i></p><p><strong>Natsa</strong> se desplomó sobre la cama y resopló, cansada.</p><p>- <i>Yo, por ahora, voy a descansar. Espero poder conciliar el sueño de una buena vez y me ayudaría que tú también lo hicieras.</i></p><p><i>- Lo haré en un momento. – </i>contesté sin moverme del sillón<i> – Solo tengo que hablar con <strong>Rilgar</strong> antes.</i></p><p><strong>Natsa</strong> se durmió en cuestión de segundos. Yo salí de la habitación y me quedé en el pasillo, esperando al buscador. Un tiempo más tarde, el elfo apareció con <strong>Hanali</strong> en brazos. La pobre aún estaba sollozando, inconsolable. Parece que se había olvidado de que estaba cargando a la niña o de lo que pasaría si yo estaba cerca de ella. Sin decir nada, <strong>Rilgar</strong> volvió sobre sus pasos.</p><p>- Iré a dejarla con <strong>Zeref</strong>. – escuché a través del anillo cuando el clérigo ya había escapado de mi vista -.</p><p>Regresó inmediatamente, esta vez solo y menos preocupado.</p><p>- <i>¿Tenías que decirme algo? – </i>me preguntó con ese tono susurrante. Parece como si le molestara alzar la voz -.</p><p><i>- Sí, <strong>Rilgar</strong>. Es sobre tu secreto. – </i>el rostro del hombre se tensó, como si me juzgara por sacar el tema a la luz – <i>Escucha, entiendo por qué lo guardaste por todo este tiempo, de verdad. Y me parece muy noble de tu parte. Sé que solo piensas en lo que es mejor para <strong>Hanali </strong>y por eso tengo que pedirte que se lo confíes a otra persona, como lo hiciste conmigo.</i></p><p>Su respiración se aceleró y se llevó los dedos a los labios, pensativo.</p><p><i>- Ya te lo comenté antes, pero la maestra <strong>Arlete</strong> es la única persona con los conocimientos necesarios para tratar a <strong>Hanali</strong>. Ocultarle esto, solo la pone en un mayor riesgo. Te juro que no permitiré que la ponga en ningún tipo de peligro. Es solo que trabajará mejor si tiene toda la información a su disposición.</i></p><p>No estaba nada feliz con la propuesta, pero por suerte decidió confiar en mí otra vez. Solo espero que no tenga que arrepentirse.</p><p>Sin perder más tiempo, fui a la habitación en la que se estaba hospedando la maestra y pasé una nota por debajo de su puerta. Mañana tendremos mucho de qué hablar, estoy segura.</p>', '2019-05-06 01:28:22', '2019-05-06 01:32:05', NULL);
 /*!40000 ALTER TABLE `session_posts` ENABLE KEYS */;
 
--- Volcando estructura para tabla genubi_reborn.session_votes
-CREATE TABLE IF NOT EXISTS `session_votes` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(10) unsigned NOT NULL,
-  `session_id` int(10) unsigned NOT NULL,
-  `vote` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `session_votes_user_id_foreign` (`user_id`),
-  KEY `session_votes_session_id_foreign` (`session_id`),
-  CONSTRAINT `session_votes_session_id_foreign` FOREIGN KEY (`session_id`) REFERENCES `sessions` (`id`),
-  CONSTRAINT `session_votes_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 -- Volcando datos para la tabla genubi_reborn.session_votes: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `session_votes` DISABLE KEYS */;
 /*!40000 ALTER TABLE `session_votes` ENABLE KEYS */;
 
--- Volcando estructura para tabla genubi_reborn.users
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 -- Volcando datos para la tabla genubi_reborn.users: ~16 rows (aproximadamente)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `avatar`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-	(1, 'Lucas', 'lucaslois95@gmail.com', NULL, '$2y$10$n.umgeU0rwoc3SUfCWFStOju3lcORMoWmztQjqPtHHwRFzZBxvFA6', NULL, NULL, '2017-06-22 16:34:31', '2019-05-13 23:38:54', NULL),
-	(2, 'Emmanuel', 'teremm77@gmail.com', NULL, '$2y$10$LZ9wx2zJS7OQFPKIPyt0P.L77nrbzLIn4XGHoc58pZ8mL56pkIMl2', NULL, NULL, '2017-06-22 16:34:33', '2019-05-13 22:15:58', NULL),
-	(3, 'Leandro', 'viana.leandro@hotmail.com.ar', NULL, '$2y$10$xGj81mdUJH0MyL21bozjteUfeg/vEuHgkCiIOQtg6eZXpoOtt68te', NULL, NULL, '2017-07-13 00:43:55', '2018-10-05 00:39:40', NULL),
-	(4, 'Matias', 'bieli_matias@hotmail.com', NULL, '$2y$10$jru/jrRESnBJNeswTQn79.PPWXNeSkUDdGqpE5LJSF7uFSga/R6F.', NULL, NULL, '2017-07-13 12:57:42', '2019-05-19 17:10:32', NULL),
-	(5, 'Andy', 'andres.segovia.salinas@gmail.com', NULL, '$2y$10$9XtfqaOfz7pwqZHtoDtBauJ2ny6nB0yC04L4ZwOd3CTpun20t6Jv2', NULL, NULL, '2017-07-13 13:41:59', '2019-04-09 18:34:14', NULL),
-	(6, 'Juan pablo', 'jp_crespo@live.com.ar', NULL, '$2y$10$8Z0UW4R.9a7JjIpvacvEj.V1lfr05wqkeMWFIs8RNG5QmfFAIenNy', NULL, NULL, '2017-07-13 17:18:07', '2019-05-23 18:30:12', NULL),
-	(7, 'Lautaro', 'yeticumbia@gmail.com', NULL, '$2y$10$xVEuDh5ZIQqT45jPZIl22ePBmBPMOAkDJrNndwHz5ZaCMJOA0F3KO', NULL, NULL, '2017-07-16 20:35:51', '2019-05-14 23:41:22', NULL),
-	(8, 'Cristian', 'gunzman@hotmail.es', NULL, '$2y$10$3rUv0sXOf97.S.dcZ0SNmebkUgXvVBIPdKnkdZvwRTYsY2YwJyRq2', NULL, NULL, '2017-07-17 20:52:10', '2019-05-11 03:38:45', NULL),
-	(10, 'Aarón', 'aaronicolasgomez@gmail.com', NULL, '$2y$10$mdEGQrn2CpB5ia2KADZZ7Oiklo769Oh9F9ACT5IOHPd4.CYDKKlJy', NULL, NULL, '2017-07-17 22:39:35', NULL, NULL),
-	(11, 'Matias', 'matias.cai.94@gmail.com', NULL, '$2y$10$mdEGQrn2CpB5ia2KADZZ7Oiklo769Oh9F9ACT5IOHPd4.CYDKKlJy', NULL, NULL, '2017-10-08 00:55:49', NULL, NULL),
-	(12, 'Aura', 'noelialedesma88@gmail.com', NULL, '$2y$10$5hRn.d9O04GtGibFskht5eWUG5LqGt0n8xYlkkInvXiGou/GsEebG', NULL, NULL, '2018-01-11 21:46:58', '2019-05-22 13:20:52', NULL),
-	(14, 'Federico', 'dontitox@gmail.com', NULL, '$2y$10$oHX/apNCcAX.DZ.az.0Ez.IQLz.01MrHwZqkrpvsYV7Asdmu8DrOy', NULL, NULL, '2018-04-03 13:44:51', '2018-11-21 21:14:18', NULL),
-	(15, 'Julian', 'julian-lasa@hotmail.com', NULL, '$2y$10$rhpjhbBijRvxE3TvOCYTQOvWbE/Vfjm.Yjdd5DXpYED3AYePymcLW', NULL, NULL, '2018-04-03 15:48:00', '2018-08-23 23:03:04', NULL),
-	(16, 'Max', 'max_y_dmk@hotmail.com', NULL, '$2y$10$mdEGQrn2CpB5ia2KADZZ7Oiklo769Oh9F9ACT5IOHPd4.CYDKKlJy', NULL, NULL, '2018-04-17 15:40:44', NULL, NULL),
-	(17, 'Xerophan', 'xerophan6@gmail.com', NULL, '$2y$10$mdEGQrn2CpB5ia2KADZZ7Oiklo769Oh9F9ACT5IOHPd4.CYDKKlJy', NULL, NULL, '2018-04-17 15:43:06', NULL, NULL),
-	(18, 'Facu', 'facurivas@hotmail.com', NULL, '$2y$10$mdEGQrn2CpB5ia2KADZZ7Oiklo769Oh9F9ACT5IOHPd4.CYDKKlJy', NULL, NULL, '2018-04-17 15:45:44', NULL, NULL);
+	(1, 'Lucas', 'lucaslois95@gmail.com', '2019-05-29 22:31:07', '$2y$10$ClAgjavzEnl3AaPVV42ON.pYTbzFwKpHcC7D9hTSyVxzmBK6m8tf.', NULL, 'n743OKfxMOaSeZlOSpyZgPxMtJ6ak2vs8huVE5h6jZrzm2T0NfSDiS49011a', '2017-06-22 16:34:31', '2019-05-30 01:37:44', NULL),
+	(2, 'Emmanuel', 'teremm77@gmail.com', '2019-05-29 22:31:07', '$2y$10$ClAgjavzEnl3AaPVV42ON.pYTbzFwKpHcC7D9hTSyVxzmBK6m8tf.', NULL, '3VjUrRosGvWLFcvcmAxikmxfYdF1ECZesbG689w8oM1V22WlChab1vVbBP8d', '2017-06-22 16:34:33', '2019-05-13 22:15:58', NULL),
+	(3, 'Leandro', 'viana.leandro@hotmail.com.ar', '2019-05-29 22:31:07', '$2y$10$ClAgjavzEnl3AaPVV42ON.pYTbzFwKpHcC7D9hTSyVxzmBK6m8tf.', NULL, NULL, '2017-07-13 00:43:55', '2018-10-05 00:39:40', NULL),
+	(4, 'Matias', 'bieli_matias@hotmail.com', '2019-05-29 22:31:07', '$2y$10$ClAgjavzEnl3AaPVV42ON.pYTbzFwKpHcC7D9hTSyVxzmBK6m8tf.', NULL, NULL, '2017-07-13 12:57:42', '2019-05-19 17:10:32', NULL),
+	(5, 'Andy', 'andres.segovia.salinas@gmail.com', '2019-05-29 22:31:07', '$2y$10$ClAgjavzEnl3AaPVV42ON.pYTbzFwKpHcC7D9hTSyVxzmBK6m8tf.', NULL, NULL, '2017-07-13 13:41:59', '2019-04-09 18:34:14', NULL),
+	(6, 'Juan pablo', 'jp_crespo@live.com.ar', '2019-05-29 22:31:07', '$2y$10$ClAgjavzEnl3AaPVV42ON.pYTbzFwKpHcC7D9hTSyVxzmBK6m8tf.', NULL, NULL, '2017-07-13 17:18:07', '2019-05-23 18:30:12', NULL),
+	(7, 'Lautaro', 'yeticumbia@gmail.com', '2019-05-29 22:31:07', '$2y$10$ClAgjavzEnl3AaPVV42ON.pYTbzFwKpHcC7D9hTSyVxzmBK6m8tf.', NULL, NULL, '2017-07-16 20:35:51', '2019-05-14 23:41:22', NULL),
+	(8, 'Cristian', 'gunzman@hotmail.es', '2019-05-20 19:00:00', '$2y$10$ClAgjavzEnl3AaPVV42ON.pYTbzFwKpHcC7D9hTSyVxzmBK6m8tf.', NULL, NULL, '2017-07-17 20:52:10', '2019-05-11 03:38:45', NULL),
+	(10, 'Aarón', 'aaronicolasgomez@gmail.com', '2019-05-29 22:31:07', '$2y$10$ClAgjavzEnl3AaPVV42ON.pYTbzFwKpHcC7D9hTSyVxzmBK6m8tf.', NULL, NULL, '2017-07-17 22:39:35', NULL, NULL),
+	(11, 'Matias', 'matias.cai.94@gmail.com', '2019-05-29 22:31:07', '$2y$10$ClAgjavzEnl3AaPVV42ON.pYTbzFwKpHcC7D9hTSyVxzmBK6m8tf.', NULL, NULL, '2017-10-08 00:55:49', NULL, NULL),
+	(12, 'Aura', 'noelialedesma88@gmail.com', '2019-05-29 22:31:07', '$2y$10$ClAgjavzEnl3AaPVV42ON.pYTbzFwKpHcC7D9hTSyVxzmBK6m8tf.', NULL, NULL, '2018-01-11 21:46:58', '2019-05-22 13:20:52', NULL),
+	(14, 'Federico', 'dontitox@gmail.com', '2019-05-29 22:31:07', '$2y$10$ClAgjavzEnl3AaPVV42ON.pYTbzFwKpHcC7D9hTSyVxzmBK6m8tf.', NULL, NULL, '2018-04-03 13:44:51', '2018-11-21 21:14:18', NULL),
+	(15, 'Julian', 'julian-lasa@hotmail.com', '2019-05-29 22:31:07', '$2y$10$ClAgjavzEnl3AaPVV42ON.pYTbzFwKpHcC7D9hTSyVxzmBK6m8tf.', NULL, NULL, '2018-04-03 15:48:00', '2018-08-23 23:03:04', NULL),
+	(16, 'Max', 'max_y_dmk@hotmail.com', '2019-05-29 22:31:07', '$2y$10$ClAgjavzEnl3AaPVV42ON.pYTbzFwKpHcC7D9hTSyVxzmBK6m8tf.', NULL, NULL, '2018-04-17 15:40:44', NULL, NULL),
+	(17, 'Xerophan', 'xerophan6@gmail.com', '2019-05-29 22:31:07', '$2y$10$ClAgjavzEnl3AaPVV42ON.pYTbzFwKpHcC7D9hTSyVxzmBK6m8tf.', NULL, NULL, '2018-04-17 15:43:06', NULL, NULL),
+	(18, 'Facu', 'facurivas@hotmail.com', '2019-05-29 22:31:07', '$2y$10$ClAgjavzEnl3AaPVV42ON.pYTbzFwKpHcC7D9hTSyVxzmBK6m8tf.', NULL, NULL, '2018-04-17 15:45:44', NULL, NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

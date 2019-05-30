@@ -8,6 +8,7 @@ use App\Models\CampaignState;
 use App\Models\Character;
 use App\Models\Game;
 use App\Models\Mode;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -120,6 +121,7 @@ class CampaignController extends Controller
     }
 
     public function joinStore($token, Request $request) {
+        $user = Auth::user();
         $campaign = Campaign::whereToken($token)->first();
         abort_if(is_null($campaign), 404);
 
@@ -128,6 +130,13 @@ class CampaignController extends Controller
         $character->save();
 
         Alert::send("Has ingresado en $campaign->name. Bienvenido, aventurero.");
+
+        Notification::create([
+            'user_id' => $campaign->user->id,
+            'text' => "{$user->name} ha ingresado en {$campaign->name} como $character->name usando un link de acceso",
+            'image' => $character->getImage(),
+            'link' => route('campaigns.show', $campaign->id)
+        ]);
 
         return redirect()->route('campaigns.show', $campaign->id);
     }

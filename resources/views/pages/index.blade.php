@@ -2,47 +2,47 @@
 
 
 @section('content')
-    <section class="main feed-list">
-        <div class="container">
-            <div class="box">
-                <div class="feed-item">
-                    <p><a href="#">Lucas Lois</a> ha dejado un comentario en <a href="#">Antiguo mal</a> con <a
-                                href="#">Sarumo</a> <span class="feed-date">hace 1 semana</span></p>
-                </div>
-                <div class="feed-item">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto blanditiis delectus ipsa non porro rerum! Ab ad id ipsa ipsam, neque perferendis possimus quidem quos, repellendus, unde velit vero voluptatum!</p>
-                </div>
-                <div class="feed-item">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto blanditiis delectus ipsa non porro rerum! Ab ad id ipsa ipsam, neque perferendis possimus quidem quos, repellendus, unde velit vero voluptatum!</p>
-                </div>
-            </div>
-        </div>
-    </section>
+{{--    <section class="main feed-list">--}}
+{{--        <div class="container">--}}
+{{--            <div class="box">--}}
+{{--                <div class="feed-item">--}}
+{{--                    <p><a href="#">Lucas Lois</a> ha dejado un comentario en <a href="#">Antiguo mal</a> con <a--}}
+{{--                                href="#">Sarumo</a> <span class="feed-date">hace 1 semana</span></p>--}}
+{{--                </div>--}}
+{{--                <div class="feed-item">--}}
+{{--                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto blanditiis delectus ipsa non porro rerum! Ab ad id ipsa ipsam, neque perferendis possimus quidem quos, repellendus, unde velit vero voluptatum!</p>--}}
+{{--                </div>--}}
+{{--                <div class="feed-item">--}}
+{{--                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto blanditiis delectus ipsa non porro rerum! Ab ad id ipsa ipsam, neque perferendis possimus quidem quos, repellendus, unde velit vero voluptatum!</p>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
 
-    <section class="main news">
+{{--    <section class="main news">--}}
 
-        <div class="container">
-            <div class="box">
-                <div class="article">
-                    <h1 class="article_title">¡Bienvenidos a Genubi!</h1>
-                    <div class="details">
-                        <span class="data author">Escrito por <a href="#">Lucas Lois</a> | 15/01/2019 (hace 4 dias)</span>
-                    </div>
-                    <div class="content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio doloremque eligendi esse eveniet facere fugit, inventore modi neque obcaecati quaerat quibusdam, repellat sequi temporibus vitae voluptatibus! Sequi tempora, totam. Adipisci?</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio doloremque eligendi esse eveniet facere fugit, inventore modi neque obcaecati quaerat quibusdam, repellat sequi temporibus vitae voluptatibus! Sequi tempora, totam. Adipisci?</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio doloremque eligendi esse eveniet facere fugit, inventore modi neque obcaecati quaerat quibusdam, repellat sequi temporibus vitae voluptatibus! Sequi tempora, totam. Adipisci?</p>
-                    </div>
-                </div>
-            </div>
+{{--        <div class="container">--}}
+{{--            <div class="box">--}}
+{{--                <div class="article">--}}
+{{--                    <h1 class="article_title">¡Bienvenidos a Genubi!</h1>--}}
+{{--                    <div class="details">--}}
+{{--                        <span class="data author">Escrito por <a href="#">Lucas Lois</a> | 15/01/2019 (hace 4 dias)</span>--}}
+{{--                    </div>--}}
+{{--                    <div class="content">--}}
+{{--                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio doloremque eligendi esse eveniet facere fugit, inventore modi neque obcaecati quaerat quibusdam, repellat sequi temporibus vitae voluptatibus! Sequi tempora, totam. Adipisci?</p>--}}
+{{--                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio doloremque eligendi esse eveniet facere fugit, inventore modi neque obcaecati quaerat quibusdam, repellat sequi temporibus vitae voluptatibus! Sequi tempora, totam. Adipisci?</p>--}}
+{{--                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio doloremque eligendi esse eveniet facere fugit, inventore modi neque obcaecati quaerat quibusdam, repellat sequi temporibus vitae voluptatibus! Sequi tempora, totam. Adipisci?</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
-            <div class="view-more text-center">
-                <a href="#">Ver todas las noticias</a>
-            </div>
-            <hr>
-        </div>
+{{--            <div class="view-more text-center">--}}
+{{--                <a href="#">Ver todas las noticias</a>--}}
+{{--            </div>--}}
+{{--            <hr>--}}
+{{--        </div>--}}
 
-    </section>
+{{--    </section>--}}
 
     <section class="main partidas">
         <div class="container">

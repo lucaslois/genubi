@@ -2,6 +2,7 @@
 
 
 @section('content')
+    @include('layouts.components.selected_campaign')
 
     <section class="main news">
         <div class="container">
@@ -21,25 +22,22 @@
 
     <section>
         <div class="container">
-            <h1>Creación de nuevo canal</h1>
+            <h1>Edición canal</h1>
             <div class="box box-border-top">
                 <div class="row">
                     <div class="col-8">
-                        <form action="{{ route('channels.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('channels.update', $channel->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            @method("POST")
+                            @method("PUT")
                             <div class="form-group">
                                 <label for="campaign_id">Partida</label>
-                                <select
+                                <input
                                         id="campaign_id"
-                                        name="campaign_id"
                                         type="text"
-                                        class="form-control {!! $errors->first('campaign_id', 'is-invalid') !!}">
-                                    @foreach($campaigns as $campaign)
-                                        <option value="{{ $campaign->id }}">{{ $campaign->name }}</option>
-                                    @endforeach
-                                </select>
-                                {!! $errors->first('campaign_id', '<div class="invalid-feedback">:message</div>') !!}
+                                        class="form-control"
+                                        value="{{ $channel->campaign->name }}"
+                                        disabled
+                                >
                             </div>
 
                             <div class="form-group">
@@ -48,7 +46,7 @@
                                         id="name"
                                         name="name"
                                         type="text"
-                                        value="{{ old('name') }}"
+                                        value="{{ old('name', $channel->name) }}"
                                         class="form-control {!! $errors->first('name', 'is-invalid') !!}"
                                         placeholder="Título de tu canal"
                                 >
@@ -64,8 +62,8 @@
                                         class="form-control {!! $errors->first('character_ids', 'is-invalid') !!}"
                                         multiple
                                 >
-                                    @foreach($campaign->characters as $character)
-                                        <option value="{{ $character->id }}">{{ $character->name }}</option>
+                                    @foreach($channel->campaign->characters as $character)
+                                        <option value="{{ $character->id }}" {{ $channel->characters->contains($character) ? 'selected' : '' }}>{{ $character->name }}</option>
                                     @endforeach
                                 </select>
                                 {!! $errors->first('character_ids', '<div class="invalid-feedback">:message</div>') !!}
@@ -79,7 +77,7 @@
                                         type="text"
                                         class="form-control {!! $errors->first('text', 'is-invalid') !!}"
                                         placeholder="Escribe un resumen sobre qué tratará tu canal"
-                                >{{ old('text') }}</textarea>
+                                >{{ old('text', $channel->text) }}</textarea>
                                 {!! $errors->first('text', '<div class="invalid-feedback">:message</div>') !!}
                             </div>
 
@@ -90,6 +88,7 @@
             </div>
         </div>
     </section>
+
 @endsection
 
 @push('js')
@@ -105,4 +104,3 @@
             } );
     </script>
 @endpush
-

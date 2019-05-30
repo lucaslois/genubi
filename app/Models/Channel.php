@@ -30,4 +30,12 @@ class Channel extends Model
     public static function getLastOrder() {
         return Channel::orderByDesc('order')->first();
     }
+
+    public function suscribedUsers() {
+        return $this->belongsToMany('App\\Models\\User', 'channel_suscribers');
+    }
+
+    public function characters() {
+        return $this->belongsToMany('App\\Models\\Character', 'channel_characters');
+    }
 }

@@ -6,6 +6,7 @@ use App\Facades\Alert;
 use App\Models\Channel;
 use App\Models\ChannelPost;
 use App\Models\Dices\TiradaDado;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,6 +37,7 @@ class PostController extends Controller
 
         $user = Auth::user();
         $channel = Channel::findOrFail($id);
+        $campaign = $channel->campaign;
 
         $post = new ChannelPost;
         $post->fill($request->all());
@@ -50,6 +52,17 @@ class PostController extends Controller
 
         $channel->order = Channel::getLastOrder()->order + 1;
         $channel->save();
+
+        foreach($channel->suscribedUsers as $participant) {
+            if($participant->is($user))
+                continue;
+            Notification::create([
+                'user_id' => $participant->id,
+                'text' => "{$user->name} ha dejado un post en el canal {$channel->name} como {$post->participant()->getName}",
+                'image' => $post->participant()->getName,
+                'link' => route('channels.show', $channel->id)
+            ]);
+        }
 
         Alert::send('El post se ha enviado correctamente');
 

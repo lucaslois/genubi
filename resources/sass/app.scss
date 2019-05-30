@@ -3,6 +3,8 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700');
 
 @import 'components/variables.scss';
+@import 'components/navbars.scss';
+@import 'components/notifications.scss';
 
 body {
   font-family: "Roboto Condensed", sans-serif;
@@ -20,87 +22,6 @@ hr {
   margin: 40px 0;
 }
 
-.topbar {
-  .navbar-brand {
-    padding: 3px;
-  }
-
-  .navbar-brand img {
-    width: 140px;
-  }
-
-  .nav-main {
-    background: #090809;
-    border-bottom: 1px solid #2a4488;
-    padding: 6px 2px;
-  }
-
-  .navbar-nav {
-    font-family: 'Nunito', sans-serif;
-    font-size: 16px;
-    line-height: 21px;
-    font-weight: 400;
-    position: relative;
-    top: 2px;
-  }
-
-  .nav-item {
-    margin-left: 3px;
-  }
-
-  .nav-main a {
-    color: #d5d9dc;
-  }
-  .nav-main a:hover {
-    color: white;
-  }
-
-  .nav-main .dropdown-menu {
-    background: #090809;
-    margin-top: 0px;
-    border-radius: 0;
-    font-family: "Roboto Condensed";
-    text-transform: uppercase;
-    font-size: 14px;
-  }
-  .nav-main .dropdown-menu a {
-    padding: 14px 14px 14px 24px;
-    transition: .3s ease;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  .nav-main .dropdown-menu a:hover {
-    background: #9b0400;
-  }
-}
-.secondbar {
-  .nav-main {
-    background: #26282a;
-  }
-
-  .navbar-nav {
-    font-family: 'Nunito', sans-serif;
-    font-size: 15px;
-    font-weight: 400;
-    position: relative;
-    top: -1px;
-    padding: 0px 4px;
-  }
-
-  .nav-main a {
-    color: #a5afba;
-  }
-  .nav-main a:hover {
-    color: white;
-  }
-  .nav-item {
-    margin-left: 6px;
-  }
-}
-
-.nav-item.partida {
-  border-right: 1px solid #353739;
-}
-
 .main {
   margin-top: 20px;
 }
@@ -112,8 +33,6 @@ hr {
 
 .article {
   padding-top: 20px;
-  font-family: "Roboto Condensed", sans-serif;
-
   .details {
     color: #888;
     font-size: 14px;
@@ -468,6 +387,13 @@ hr {
   width: 80px;
   height: 3px;
   margin: 8px 0;
+}
+
+.channel-icon {
+  font-size: 0.7em;
+  color: white;
+  position: relative;
+  top: -2px;
 }
 
 .channel-character {

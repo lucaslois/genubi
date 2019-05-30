@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Facades\Alert;
 use App\Models\Character;
 use App\Models\CharacterExperience;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,6 +32,13 @@ class ExperienceController extends Controller
                 'value' => $request->value[$character->id],
                 'reason' => $request->reason[$character->id],
                 'session_id' => $request->session_id
+            ]);
+
+            Notification::create([
+                'user_id' => $character->user->id,
+                'text' => "{$user->name} le ha dado experiencia a {$character->name} en {$character->campaign->name}",
+                'image' => $character->getImage(),
+                'link' => route('characters.show', $character->id)
             ]);
         }
 

@@ -1,0 +1,84 @@
+
+.notify-title {
+
+}
+
+.notify-drop {
+  min-height: 300px;
+  min-width: 400px;
+  position: relative;
+  left: -300px;
+  border-radius: 1px;
+  margin-top: 1px;
+  padding: 2px 0;
+}
+
+.notify-drop-content {
+  font-family: 'Roboto Condensed', serif;
+}
+
+.notify-bar {
+  background: #eee;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  color: #888;
+  font-size: 12px;
+  text-transform: uppercase;
+  padding: 0 6px;
+}
+
+.notify-title {
+  padding: 2px 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.notify-notif {
+  padding: 6px 6px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.notify-notif:hover {
+  background: #eee;
+}
+
+.notify-icon {
+  width: 100%;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+.notify-link {
+  display: block;
+  color: #222;
+  font-weight: 400 !important;
+}
+
+.notify-link:hover {
+  color: #222 !important;
+  text-decoration: none;
+}
+
+.notify-mini {
+  font-size: 0.7em;
+  color: #888;
+}
+
+.notify-bell-number {
+  background: $main_dark_yellow;
+  border-radius: 6px;
+  position: absolute;
+  font-size: 9px;
+  color: white;
+  top: 10px;
+  left: 12px;
+  padding: 1px 2px;
+  display: block;
+  line-height: 1rem;
+}
+
+.notify-bell-link {
+  position: relative;
+}

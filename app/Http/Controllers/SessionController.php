@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Facades\Alert;
 use App\Models\Campaign;
 use App\Models\Milestone;
+use App\Models\Notification;
 use App\Models\Session;
 use App\Models\SessionPost;
 use Illuminate\Http\Request;
@@ -61,6 +62,7 @@ class SessionController extends Controller
             'name' => 'required|min:3|string',
             'date' => 'required|date'
         ]);
+        $user = Auth::user();
         $session = new Session;
         $session->fill($request->all());
         $session->user_id = 1;
@@ -75,6 +77,14 @@ class SessionController extends Controller
             $session->background_image = Storage::url("public/sessions/$name");
             $session->save();
         }
+
+        foreach($session->campaign->usersPlaying() as $participant)
+            Notification::create([
+                'user_id' => $participant->id,
+                'text' => "{$user->name} ha creado la sesión {$session->name} en {$session->campaign->name}",
+                'image' => $user->getImage(),
+                'link' => route('sessions.show', $session->id)
+            ]);
 
         Alert::send('La sesión se ha creado correctamente');
 

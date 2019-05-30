@@ -14,7 +14,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Mi contenido
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu navbar-dropdown-black">
                             <a class="dropdown-item" href="{{ route('characters.me') }}">Mis Personajes</a>
                             <a class="dropdown-item" href="{{ route('campaigns.me') }}">Mis Partidas</a>
                         </div>
@@ -29,13 +29,7 @@
                 </ul>
                 <ul class="navbar-nav">
                     @auth
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" data-toggle="dropdown" href="{{ route('login.index') }}">{{ auth()->user()->name }} <i class="fa fa-caret-down"></i></a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('profile.show') }}">Mi perfil</a>
-                            <a class="dropdown-item" href="{{ route('logout') }}">Cerrar sesión</a>
-                        </div>
-                    </li>
+                        @include('layouts.components.navbar_user_login')
                     @endauth
                     @guest
                     <li class="nav-item">

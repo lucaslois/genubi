@@ -26,6 +26,10 @@ Route::get('/recovery-password/{token}', 'RecoveryPasswordController@index')->na
 Route::post('/recovery-password/{token}', 'RecoveryPasswordController@store')->name('recovery_password.store');
 
 Route::get('profile', 'ProfileController@show')->name('profile.show');
+Route::get('profile/change-password', 'PasswordController@index')->name('password.index');
+Route::post('profile/change-password', 'PasswordController@store')->name('password.store');
+
+Route::get('notifications/{id}', 'NotificationController@click')->name('notifications.click');
 
 // CAMPAIGNS
 Route::get('campaigns/me', 'CampaignController@me')->name('campaigns.me');
@@ -70,8 +74,12 @@ Route::get('campaigns/{id}/homebrews', 'HomebrewController@index')->name('campai
 
 // CANALES
 Route::resource('channels', 'ChannelController');
-Route::get('channels/{id}/last-post', 'ChannelController@lastPost');
+Route::get('channels/{id}/suscribe', 'ChannelController@suscribe')->name('channels.suscribe');
+Route::get('channels/{id}/unsuscribe', 'ChannelController@unsuscribe')->name('channels.unsuscribe');
 Route::get('channels/{id}/remove', 'ChannelController@remove')->name('channels.remove');
+Route::get('channels/{id}/open', 'ChannelController@open')->name('channels.open');
+Route::get('channels/{id}/close', 'ChannelController@close')->name('channels.close');
+Route::get('channels/{id}/last-post', 'ChannelController@lastPost');
 Route::get('campaigns/{id}/channels', 'ChannelController@index')->name('campaigns.channels.index');
 Route::get('channels/{id}/create-post', 'PostController@create')->name('channels.posts.create');
 Route::post('channels/{id}/create-post', 'PostController@store')->name('channels.posts.store');

@@ -20,15 +20,27 @@
                 </div>
                 <div class="col-6">
                     <div class="buttons float-md-right">
+                        @if(auth()->check() && !$channel->closed)
                         <a href="{{ route('channels.dices.create', $channel->id) }}" class="btn btn-success btn-square"><i class="fas fa-dice-three"></i> Lanzar dados</a>
                         <a href="{{ route('channels.posts.create', $channel->id) }}" class="btn btn-success btn-square"><i class="fas fa-edit"></i> Crear post</a>
-                        <a href="{{ route('homebrews.edit', $channel->id) }}" class="btn btn-warning btn-square">Editar</a>
-{{--                        <span class="dropdown">--}}
-{{--                            <a href="" data-toggle="dropdown" class="btn btn-warning btn-square"><i class="fas fa-caret-down"></i></a>--}}
-{{--                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">--}}
-{{--                                <a class="dropdown-item" href="{{ route('homebrews.remove', $channel->id) }}">Eliminar canal</a>--}}
-{{--                            </div>--}}
-{{--                        </span>--}}
+                        @endif
+                        @if($channel->user->is(auth()->user()) || $channel->campaign->user->is(auth()->user()))
+                        <a href="{{ route('channels.edit', $channel->id) }}" class="btn btn-warning btn-square">Editar</a>
+                        @endif
+                        @if($channel->campaign->user->is(auth()->user()))
+                        <span class="dropdown">
+                            <a href="" data-toggle="dropdown" class="btn btn-warning btn-square"><i class="fas fa-caret-down"></i></a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                @if($channel->closed)
+                                    <a class="dropdown-item" href="{{ route('channels.open', $channel->id) }}"><i class="fas fa-unlock"></i> Abrir canal</a>
+                                @else
+                                    <a class="dropdown-item" href="{{ route('channels.close', $channel->id) }}"><i class="fas fa-lock"></i> Cerrar canal</a>
+                                @endif
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{ route('channels.remove', $channel->id) }}"><i class="fas fa-trash"></i> Eliminar canal</a>
+                            </div>
+                        </span>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -38,7 +50,12 @@
 
     <section>
         <div class="container">
-            <h1>{{ $channel->name }}</h1>
+            <h1>
+                @if($channel->closed)
+                    <span class="badge badge-pill bg-danger channel-icon"><i class="fas fa-lock"></i></span>
+                @endif
+                {{ $channel->name }}
+            </h1>
             <div class="box box-border-top">
                 <div class="content">
                     <div class="row">
@@ -46,19 +63,42 @@
                             <dl>
                                 <dt>Título del canal</dt>
                                 <dd>{{ $channel->name }}</dd>
+                                <dt>Autor</dt>
+                                <dd>{{ $channel->user->name }}</dd>
                                 <dt>Fecha de creación</dt>
-                                <dd>{{ $channel->created_at->format('d/M/Y') }}</dd>
+                                <dd>{{ $channel->created_at->format('d F Y') }}</dd>
+                                <dt>Usuarios suscritos</dt>
+                                <dd>{{ $channel->suscribedUsers->pluck('name')->implode(', ') }}</dd>
                             </dl>
                         </div>
                         <div class="col-6">
                             <dl>
                                 <dt>Cantidad de posts</dt>
-                                <dd>{{ $channel->name }}</dd>
+                                <dd>{{ $channel->posts()->count() }}</dd>
                                 <dt>Estado</dt>
                                 <dd>{{ $channel->created_at->format('d/M/Y') }}</dd>
+                                <dt>Participantes</dt>
+                                <dd>{!! $channel->characters->map(function($character) {
+                                    return "<span style='background: {$character->color}' class='badge badge-pill'>{$character->name}</span>";
+                                })->implode(', ') !!}</dd>
                             </dl>
                         </div>
                     </div>
+
+                    <div class="description">
+                        <b>Resumen</b>
+                        {!! $channel->text  !!}
+                    </div>
+
+                    @auth
+                    <div class="buttons mb-5">
+                        @if($channel->suscribedUsers->contains(auth()->user()))
+                            <a href="{{ route('channels.unsuscribe', $channel->id) }}" class="btn btn-primary btn-sm float-right"><i class="fas fa-bell-slash"></i> Desuscribirme</a>
+                        @else
+                            <a href="{{ route('channels.suscribe', $channel->id) }}" class="btn btn-primary btn-sm float-right"><i class="fas fa-bell"></i> Suscribirme</a>
+                        @endif
+                    </div>
+                    @endauth
                 </div>
             </div>
         </div>

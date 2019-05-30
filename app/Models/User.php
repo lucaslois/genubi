@@ -36,6 +36,10 @@ class User extends Authenticatable
         return $this->hasMany('App\\Models\\Character');
     }
 
+    public function channels() {
+        return $this->hasMany('App\\Models\\Channel');
+    }
+
     public function sessionVotes() {
         return $this->hasMany('App\\Models\\SessionVote');
     }
@@ -44,11 +48,29 @@ class User extends Authenticatable
         return $this->hasMany('App\\Models\\SessionPost');
     }
 
+    public function notifications() {
+        return $this->hasMany('App\\Models\\Notification')->orderByDesc('id');
+    }
+
+    public function viewedNotifications() {
+        return $this->notifications()->whereViewed(1)->get();
+    }
+
+    public function notViewedNotifications() {
+        return $this->notifications()->whereViewed(0)->get();
+    }
+
     public function isPlayingCampaign(Campaign $campaign) {
         foreach($this->characters as $character)
             if($character->campaign->is($campaign))
                 return true;
 
         return false;
+    }
+
+    public function getImage() {
+        if($this->avatar)
+            return asset($this->avatar);
+        return asset('images/avatar.png');
     }
 }

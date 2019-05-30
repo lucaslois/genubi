@@ -32,6 +32,9 @@ class LoginController extends Controller
 
         Alert::send("Bienvenido de nuevo, $user->name");
 
+        if(Hash::check('genubi', $user->password))
+            return redirect()->route('password.index');
+
         return redirect()->route('index');
     }
 

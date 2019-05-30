@@ -55,7 +55,12 @@
                             @forelse($channels as $channel)
                                 <tr>
                                     <td width="60%">
-                                        <a href="{{ route('channels.show', $channel->id) }}">{{ $channel->name }}</a>
+                                        <a href="{{ route('channels.show', $channel->id) }}">
+                                            @if($channel->closed)
+                                                <span class="badge badge-pill bg-danger channel-icon"><i class="fas fa-lock"></i></span>
+                                            @endif
+                                            {{ $channel->name }}
+                                        </a>
                                         <p style="font-size: 14px; ">{{ strip_tags($channel->text) }}</p>
                                     </td>
                                     <td>{{ $channel->user->name }}</td>

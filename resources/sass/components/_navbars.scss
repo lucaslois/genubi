@@ -1,0 +1,84 @@
+.topbar {
+  font-family: 'Nunito', serif;
+
+  .navbar-brand {
+    padding: 3px;
+  }
+
+  .navbar-brand img {
+    width: 140px;
+  }
+
+  .nav-main {
+    background: #090809;
+    border-bottom: 1px solid #2a4488;
+    padding: 0 2px;
+  }
+
+  .navbar-nav {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    line-height: 21px;
+    font-weight: 400;
+  }
+
+  .nav-item {
+    margin-left: 3px;
+    height: 100%;
+  }
+
+  .nav-main .nav-link {
+    color: #d5d9dc;
+    height: 100%;
+    padding: 1.2rem 1rem;
+  }
+  .nav-main a:hover {
+    color: white;
+  }
+
+  .nav-main .navbar-dropdown-black {
+    background: #090809;
+    margin-top: 1px;
+    border-radius: 0;
+    font-family: "Roboto Condensed", serif;
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+  .nav-main .navbar-dropdown-black a {
+    padding: 14px 14px 14px 24px;
+    transition: .3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #d5d9dc;
+  }
+  .nav-main .navbar-dropdown-black a:hover {
+    background: #9b0400;
+  }
+}
+.secondbar {
+  .nav-main {
+    background: #26282a;
+  }
+
+  .navbar-nav {
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    position: relative;
+    top: -1px;
+    padding: 0px 4px;
+  }
+
+  .nav-main a {
+    color: #a5afba;
+  }
+  .nav-main a:hover {
+    color: white;
+  }
+  .nav-item {
+    margin-left: 6px;
+  }
+}
+
+.nav-item.partida {
+  border-right: 1px solid #353739;
+}
