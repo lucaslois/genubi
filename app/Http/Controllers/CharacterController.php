@@ -66,7 +66,7 @@ class CharacterController extends Controller
         $this->validate($request, [
             'name' => 'required|string|min:3',
             'avatar' => 'file|mimes:jpg,jpeg,png',
-            'description' => 'string|max:100'
+            'description' => 'string'
         ]);
 
         $character = Character::findOrFail($id);
