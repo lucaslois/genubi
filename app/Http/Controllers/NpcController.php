@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Npc;
 use App\Facades\Alert;
 use App\Models\Campaign;
-use App\Models\Npc;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 class NpcController extends Controller
 {
@@ -60,7 +60,7 @@ class NpcController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|min:5'
+            'name' => 'required|min:1'
         ]);
         $campaign = Campaign::findOrFail($request->campaign_id);
         $npc = new Npc;
@@ -111,7 +111,7 @@ class NpcController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required|min:5'
+            'name' => 'required|min:1'
         ]);
         $npc = Npc::findOrFail($id);
         $npc->fill($request->all());
