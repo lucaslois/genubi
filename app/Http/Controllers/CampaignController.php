@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Facades\Alert;
-use App\Models\Campaign;
-use App\Models\CampaignState;
-use App\Models\Character;
 use App\Models\Game;
 use App\Models\Mode;
+use App\Facades\Alert;
+use App\Models\Campaign;
+use App\Models\Character;
+use Illuminate\Support\Str;
 use App\Models\Notification;
 use Illuminate\Http\Request;
+use App\Models\CampaignState;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 class CampaignController extends Controller
 {
@@ -141,6 +141,8 @@ class CampaignController extends Controller
 
     public function joinIndex($token) {
         $user = Auth::user();
+        if(!$user)
+            abort(401);
         $campaign = Campaign::whereToken($token)->first();
         abort_if(is_null($campaign), 404);
 
@@ -150,6 +152,8 @@ class CampaignController extends Controller
 
     public function joinStore($token, Request $request) {
         $user = Auth::user();
+        if(!$user)
+            abort(401);
         $campaign = Campaign::whereToken($token)->first();
         abort_if(is_null($campaign), 404);
 
