@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Facades\Alert;
 use App\Models\Character;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use App\Models\CharacterClass;
 use App\Models\CharacterState;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 class CharacterController extends Controller
 {
@@ -136,7 +136,7 @@ class CharacterController extends Controller
         $this->validate($request, [
             'name' => 'required|string|min:3',
             'avatar' => 'file|mimes:jpg,jpeg,png',
-            'description' => 'string|max:100'
+            'description' => 'string'
         ]);
 
         $character = Character::findOrFail($id);
