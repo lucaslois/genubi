@@ -8,10 +8,10 @@
                 <div class="col-md-4">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i></a></li>
-                            <li class="breadcrumb-item"><a href="#">Partidas</a></li>
-                            <li class="breadcrumb-item"><a href="">Antiguo Mal</a></li>
-                            <li class="breadcrumb-item active">Editar</li>
+                            <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="fa fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('campaigns.index') }}">Partidas</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('campaigns.show', $campaign->id) }}">Antiguo Mal</a></li>
+                            <li class="breadcrumb-item">Editar</li>
                         </ol>
                     </nav>
                 </div>

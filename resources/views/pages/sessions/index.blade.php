@@ -20,7 +20,7 @@
                 @if($campaign->user->is(auth()->user()))
                 <div class="col-md-6">
                     <div class="buttons float-md-right">
-                        <a href="{{ route('sessions.create') }}" class="btn btn-success btn-square">Crear sesión</a>
+                        <a href="{{ route('sessions.create') }}" class="btn btn-success btn-upper">Crear sesión</a>
                     </div>
                 </div>
                 @endif
@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <input type="submit" class="btn btn-success" value="Buscar">
+                            <input type="submit" class="btn btn-yellow btn-upper" value="Buscar">
                         </div>
                     </div>
                 </form>

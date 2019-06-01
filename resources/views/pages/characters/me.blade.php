@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-md-8">
                     <div class="buttons float-md-right">
-                        <a href="{{ route('characters.create') }}" class="btn btn-success btn-square">Crear personaje</a>
+                        <a href="{{ route('characters.create') }}" class="btn btn-success btn-square btn-upper">Crear personaje</a>
                     </div>
                 </div>
             </div>
@@ -28,9 +28,23 @@
             <h1>Mis personajes</h1>
             <div class="box box-border-top">
                 <p>Aquí se listan todos tus personajes.</p>
-                <div class="form-group">
-                    <input type="text"class="form-control" placeholder="Buscador...">
-                </div>
+                <form action="">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input name="search"
+                                       type="text"
+                                       class="form-control"
+                                       placeholder="Buscador..."
+                                       value="{{ request()->search }}"
+                                >
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="submit" class="btn btn-yellow btn-upper" value="Buscar">
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
@@ -49,7 +63,8 @@
                                     <div class="col-md-8">
                                         <h5 class="character-title">{{ $character->name }} <span class="character-level">Nv. {{ $character->currentLevel() }}</span></h5>
                                         @if($character->campaign)
-                                        <p class="character-data character-data-owner">en {{ $character->campaign->name }}</p>
+{{--                                        <p class="character-data character-data-owner">en {{ $character->campaign->name }}</p>--}}
+                                        <span class="badge badge-pill badge-success">{{ $character->campaign->name }}</span>
                                         @endif
 
                                         <p class="character-data">{{ $character->race }} |
@@ -58,7 +73,6 @@
                                         @if($character->nationality)
                                             <p class="character-data">Oriundo de {{ $character->nationality }}</p>
                                         @endif
-                                        <p class="character-desc">{{ $character->description }}</p>
                                         <a href="{{ route('characters.show', $character->id) }}" class="btn btn-primary btn-sm">Ver personaje</a>
                                     </div>
                                 </div>

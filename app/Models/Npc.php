@@ -12,6 +12,7 @@ class Npc extends Model implements CanParticipateInChannel
     protected $fillable = [
         'name',
         'description',
+        'text',
         'color',
         'campaign_id',
     ];

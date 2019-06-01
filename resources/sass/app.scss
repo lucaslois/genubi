@@ -5,6 +5,7 @@
 @import 'components/variables.scss';
 @import 'components/navbars.scss';
 @import 'components/notifications.scss';
+@import 'components/buttons.scss';
 
 body {
   font-family: "Roboto Condensed", sans-serif;
@@ -20,6 +21,10 @@ h1 {
 hr {
   background: rgba(255, 255, 255, 0.05);
   margin: 40px 0;
+}
+
+.form-control {
+  border-radius: 0.1rem;
 }
 
 .main {
@@ -354,6 +359,12 @@ hr {
 
 .npc-avatar {
   width: 64px;
+}
+
+.npc-description {
+  display: block;
+  font-size: 12px;
+  color: #888;
 }
 
 .milestone{

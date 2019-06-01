@@ -16,7 +16,7 @@
                 <div class="col-md-8">
                     <div class="buttons float-md-right">
                         @auth
-                        <a href="{{ route('campaigns.create') }}" class="btn btn-success btn-square">Crear campaña</a>
+                        <a href="{{ route('campaigns.create') }}" class="btn btn-success btn-square btn-upper">Crear campaña</a>
                         @endauth
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <input type="submit" class="btn btn-success" value="Buscar">
+                            <input type="submit" class="btn btn-yellow btn-upper" value="Buscar">
                         </div>
                     </div>
                 </form>

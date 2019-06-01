@@ -20,7 +20,7 @@
                 @if($selected_campaign->user->is(auth()->user()))
                 <div class="col-md-6">
                     <div class="buttons float-md-right">
-                        <a href="{{ route('npcs.create') }}" class="btn btn-success btn-square">Crear NPC</a>
+                        <a href="{{ route('npcs.create') }}" class="btn btn-success btn-square btn-upper">Crear NPC</a>
                     </div>
                 </div>
                 @endif
@@ -66,8 +66,6 @@
                             <tr>
                                 <th width="100">Foto</th>
                                 <th>Nombre</th>
-                                <th>Descripción</th>
-                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -76,19 +74,14 @@
                                     <td><img class="img-thumbnail npc-avatar" src="{{ $npc->getImage() }}" alt=""></td>
                                     <td>
                                         <div class="square" style="background-color: {{ $npc->color }}"></div>
-                                        {{ $npc->name }}
+                                        <span class="npc-name"><a href="{{ route('npcs.show', $npc->id) }}">{{ $npc->name }}</a></span>
                                         @if($npc->enemy)
                                             <span class="badge badge-danger">Enemigo</span>
                                         @endif
                                         @if(!$npc->public)
                                             <span class="badge badge-primary">Privado</span>
                                         @endif
-                                    </td>
-                                    <td>{{ $npc->description }}</td>
-                                    <td>
-                                        @if($selected_campaign->user->is(auth()->user()))
-                                        <a href="{{ route('npcs.edit', $npc->id) }}">Editar</a>
-                                        @endif
+                                        <span class="npc-description">{{ $npc->description }}</span>
                                     </td>
                                 </tr>
                             @empty

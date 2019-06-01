@@ -14,9 +14,14 @@ use Illuminate\Support\Facades\Storage;
 
 class CharacterController extends Controller
 {
-    public function me() {
+    public function me(Request $request) {
         $user = Auth::user();
-        $characters = $user->characters;
+        $query = $user->characters();
+
+        if($request->search)
+            $query->where('name', 'LIKE', "%$request->search%");
+
+        $characters = $query->get();
 
         return view('pages.characters.me', compact('characters'));
     }
@@ -57,7 +62,11 @@ class CharacterController extends Controller
     }
 
     public function edit($id, Request $request) {
+        $user = Auth::user();
         $character = Character::findOrFail($id);
+
+        if($character->user->isNot($user))
+            abort(401);
 
         return view('pages.characters.edit', compact('character'));
     }
@@ -70,6 +79,11 @@ class CharacterController extends Controller
         ]);
 
         $character = Character::findOrFail($id);
+        $user = Auth::user();
+
+        if($character->user->isNot($user))
+            abort(401);
+
         $character->fill($request->all());
         $character->save();
 
@@ -103,6 +117,10 @@ class CharacterController extends Controller
         ]);
         $user = Auth::user();
         $character = $user->characters()->findOrFail($id);
+        $user = Auth::user();
+
+        if($character->user->isNot($user))
+            abort(401);
 
         $class = new CharacterClass;
         $class->name = $request->class;
@@ -128,6 +146,10 @@ class CharacterController extends Controller
     public function editDm($id) {
         $character = Character::findOrFail($id);
         $states = CharacterState::all();
+        $user = Auth::user();
+
+        if($character->campaign->user->isNot($user))
+            abort(401);
 
         return view('pages.characters.edit_dm', compact('character', 'states'));
     }
@@ -140,6 +162,11 @@ class CharacterController extends Controller
         ]);
 
         $character = Character::findOrFail($id);
+        $user = Auth::user();
+
+        if($character->campaign->user->isNot($user))
+            abort(401);
+
         $character->fill($request->all());
         $character->save();
 

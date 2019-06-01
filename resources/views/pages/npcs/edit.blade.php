@@ -7,13 +7,13 @@
     <section class="main news">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ url('') }}"><i class="fa fa-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="{{ route('campaigns.index') }}">Partidas</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('campaigns.show', $selected_campaign->id) }}">{{ $selected_campaign->name }}</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('campaigns.npcs.index', $selected_campaign->id) }}">Lista de npcs</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('campaigns.npcs.index', $selected_campaign->id) }}">Npcs</a></li>
                             <li class="breadcrumb-item active">Editar Npc</li>
                         </ol>
                     </nav>
@@ -76,13 +76,14 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="text">Descripción</label>
+                                <label for="description">¿Quién es?</label>
                                 <textarea
-                                        id="text"
-                                        name="text"
-                                        type="text"
-                                        class="form-control {!! $errors->first('text', 'is-invalid') !!}">{{ old('text', $npc->text) }}</textarea>
-                                {!! $errors->first('text', '<div class="invalid-feedback">:message</div>') !!}
+                                        id="description"
+                                        name="description"
+                                        type="description"
+                                        placeholder="Por ejemplo: Director de Arcania, Herrero de Molten, Miembro de los Espada Plateada, etc."
+                                        class="form-control {!! $errors->first('description', 'is-invalid') !!}">{{ old('description', $npc->description) }}</textarea>
+                                {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
                             </div>
 
                             <div class="form-group">
@@ -114,6 +115,16 @@
                                 <div class="checkbox-mini">* Si el personaje es público, aparecerá en la lista de NPCs de tu campaña.</div>
                             </div>
 
+                            <div class="form-group">
+                                <label for="text">Lore</label>
+                                <textarea
+                                        id="text"
+                                        name="text"
+                                        type="text"
+                                        class="form-control {!! $errors->first('text', 'is-invalid') !!}">{{ old('text', $npc->text) }}</textarea>
+                                {!! $errors->first('text', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+
                             <input type="submit" value="Guardar" class="btn btn-primary">
                         </form>
                     </div>
@@ -127,3 +138,16 @@
 
 @endsection
 
+@push('js')
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#text' ) )
+            .then( editor => {
+                console.log( editor );
+            } )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+@endpush

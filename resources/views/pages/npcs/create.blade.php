@@ -76,13 +76,14 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="text">Descripción</label>
+                                <label for="description">¿Quién es?</label>
                                 <textarea
-                                        id="text"
-                                        name="text"
-                                        type="text"
-                                        class="form-control {!! $errors->first('text', 'is-invalid') !!}">{{ old('text') }}</textarea>
-                                {!! $errors->first('text', '<div class="invalid-feedback">:message</div>') !!}
+                                        id="description"
+                                        name="description"
+                                        type="description"
+                                        placeholder="Por ejemplo: Director de Arcania, Herrero de Molten, Miembro de los Espada Plateada, etc."
+                                        class="form-control {!! $errors->first('description', 'is-invalid') !!}">{{ old('description') }}</textarea>
+                                {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
                             </div>
 
                             <div class="form-group">
@@ -111,6 +112,16 @@
                                 </div>
                                 {!! $errors->first('public', '<div class="invalid-feedback">:message</div>') !!}
                                 <div class="checkbox-mini">* Si el personaje es público, aparecerá en la lista de NPCs de tu campaña.</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="text">Lore</label>
+                                <textarea
+                                        id="text"
+                                        name="text"
+                                        type="text"
+                                        class="form-control {!! $errors->first('text', 'is-invalid') !!}">{{ old('text') }}</textarea>
+                                {!! $errors->first('text', '<div class="invalid-feedback">:message</div>') !!}
                             </div>
 
                             <input type="submit" value="Guardar" class="btn btn-primary">

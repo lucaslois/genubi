@@ -46,6 +46,7 @@ class NpcController extends Controller
     public function create()
     {
         $user = Auth::user();
+        abort_if(!$user, 401);
         $campaigns = $user->campaigns;
         return view('pages.npcs.create', compact('campaigns'));
     }
@@ -62,6 +63,9 @@ class NpcController extends Controller
         $this->validate($request, [
             'name' => 'required|min:1'
         ]);
+        $user = Auth::user();
+        abort_if(!$user, 401);
+
         $campaign = Campaign::findOrFail($request->campaign_id);
         $npc = new Npc;
         $npc->fill($request->all());
@@ -95,7 +99,9 @@ class NpcController extends Controller
     public function edit($id)
     {
         $npc = Npc::findOrFail($id);
+        $user = Auth::user();
         $selected_campaign = $npc->campaign;
+        abort_if($selected_campaign->user->isNot($user), 401);
 
         return view('pages.npcs.edit', compact('npc', 'selected_campaign'));
     }
@@ -114,6 +120,9 @@ class NpcController extends Controller
             'name' => 'required|min:1'
         ]);
         $npc = Npc::findOrFail($id);
+        $user = Auth::user();
+        abort_if($npc->campaign->user->isNot($user), 401);
+
         $npc->fill($request->all());
         $npc->enemy = $request->has('enemy');
         $npc->public = $request->has('public');
@@ -135,6 +144,13 @@ class NpcController extends Controller
         Alert::send('El NPC se ha guardado correctamente');
 
         return redirect()->route('campaigns.npcs.index', $campaign->id);
+    }
+
+    public function show($id) {
+        $npc = Npc::findOrFail($id);
+        $selected_campaign = $npc->campaign;
+
+        return view('pages.npcs.show', compact('npc', 'selected_campaign'));
     }
 
     /**

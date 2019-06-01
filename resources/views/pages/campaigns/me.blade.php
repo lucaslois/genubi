@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-md-8">
                     <div class="buttons float-md-right">
-                        <a href="{{ route('campaigns.create') }}" class="btn btn-success btn-square">Crear campaña</a>
+                        <a href="{{ route('campaigns.create') }}" class="btn btn-success btn-square btn-upper">Crear campaña</a>
                     </div>
                 </div>
             </div>
@@ -25,12 +25,26 @@
 
     <section>
         <div class="container">
-            <h1>Mis Partidas</h1>
+            <h1>Mis campañas</h1>
             <div class="box box-border-top">
                 <p>Aquí se listan todas tus partidas.</p>
-                <div class="form-group">
-                    <input type="text"class="form-control" placeholder="Buscador...">
-                </div>
+                <form>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input name="search"
+                                       type="text"
+                                       class="form-control"
+                                       placeholder="Buscador..."
+                                       value="{{ request()->search }}"
+                                >
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="submit" class="btn btn-yellow btn-upper" value="Buscar">
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </section>

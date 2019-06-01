@@ -80,10 +80,13 @@ class CampaignController extends Controller
     }
 
     public function edit($id) {
+        $user = Auth::user();
         $campaign = Campaign::findOrFail($id);
         $games = Game::all();
         $modes = Mode::all();
         $states = CampaignState::all();
+
+        abort_if($campaign->user->isNot($user), 401);
 
         return view('pages.campaigns.edit', compact('campaign', 'games', 'modes', 'states'));
     }
@@ -95,7 +98,9 @@ class CampaignController extends Controller
             'background_image' => 'file|mimes:jpeg,jpg,png'
         ]);
 
+        $user = Auth::user();
         $campaign = Campaign::findOrFail($id);
+        abort_if($campaign->user->isNot($user), 401);
         $campaign->fill($request->all());
         $campaign->save();
 
@@ -132,17 +137,22 @@ class CampaignController extends Controller
         return redirect()->route('campaigns.me');
     }
 
-    public function me() {
+    public function me(Request $request) {
         $user = Auth::user();
-        $campaigns = $user->campaigns;
+        $query = $user->campaigns();
+
+        if($request->search)
+            $query->where('name', 'LIKE', "%$request->search%");
+
+        $campaigns = $query->get();
 
         return view('pages.campaigns.me', compact('campaigns'));
     }
 
     public function joinIndex($token) {
         $user = Auth::user();
-        if(!$user)
-            abort(401);
+        abort_if(!$user, 401);
+
         $campaign = Campaign::whereToken($token)->first();
         abort_if(is_null($campaign), 404);
 
@@ -174,7 +184,9 @@ class CampaignController extends Controller
     }
 
     public function linkIndex($id) {
+        $user = Auth::user();
         $campaign = Campaign::findOrFail($id);
+        abort_if($campaign->user->isNot($user), 401);
 
         return view('pages.campaigns.create_link', compact('campaign'));
     }

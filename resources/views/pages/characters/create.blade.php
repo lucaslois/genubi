@@ -34,7 +34,7 @@
                                         id="name"
                                         name="name"
                                         type="text"
-                                        value="{{ old('name') }}"
+                                        value="{{ old('name', "Personaje de " . auth()->user()->name) }}"
                                         class="form-control {!! $errors->first('name', 'is-invalid') !!}">
                                 {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
                             </div>

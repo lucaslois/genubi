@@ -146,7 +146,7 @@
         <div class="container">
             <h1>Diario de los personajes</h1>
             <div class="box box-border-top session-summary journal">
-                @foreach($session->posts as $post)
+                @forelse($session->posts as $post)
                     <div class="session-post">
                         <div class="journal-opener" data-toggle="collapse"
                              data-target="#journal_{{ str_slug($post->character->name) }}">
@@ -173,7 +173,11 @@
                             {!! $post->text !!}
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <div class="pt-2 pl-2">
+                        <p>Aun no hay diarios creados para esta sesión</p>
+                    </div>
+                @endforelse
 
                 @auth
                     @if(auth()->user()->isPlayingCampaign($selected_campaign))

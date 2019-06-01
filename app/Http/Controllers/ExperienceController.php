@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Facades\Alert;
+use App\Models\Campaign;
 use App\Models\Character;
 use App\Models\CharacterExperience;
 use App\Models\Notification;
@@ -13,7 +14,8 @@ class ExperienceController extends Controller
 {
     public function index($id) {
         $user = Auth::user();
-        $selected_campaign = $user->campaigns()->findOrFail($id);
+        $selected_campaign = Campaign::findOrFail($id);
+        abort_if($selected_campaign->user->isNot($user), 401);
 
         return view('pages.campaigns.experiences', compact('selected_campaign'));
     }

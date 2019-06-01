@@ -187,6 +187,13 @@
                     </div>
                 </div>
             </div>
+
+            @if($character->campaign)
+            <div class="alert alert-warning">
+                <strong>Atención!</strong> Este personaje pertenece a la campañas <strong> {{ $character->campaign->name }}</strong>. El director de la campaña puede editar este personaje cuando lo desee y habilitarlo o deshabilitarlo en su campaña. Los personajes adheridos a una campaña no pueden ser removidos de la misma.
+            </div>
+            @endif
+
         </div>
     </section>
 

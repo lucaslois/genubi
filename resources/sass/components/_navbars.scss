@@ -11,7 +11,7 @@
 
   .nav-main {
     background: #090809;
-    border-bottom: 1px solid #2a4488;
+    border-bottom: 1px solid desaturate($main_yellow, 80%);
     padding: 0 2px;
   }
 
@@ -38,7 +38,7 @@
 
   .nav-main .navbar-dropdown-black {
     background: #090809;
-    margin-top: 1px;
+    margin-top: 0px;
     border-radius: 0;
     font-family: "Roboto Condensed", serif;
     text-transform: uppercase;
@@ -52,6 +52,9 @@
   }
   .nav-main .navbar-dropdown-black a:hover {
     background: #9b0400;
+  }
+  .nav-main .dropdown-menu {
+    padding: 0 0;
   }
 }
 .secondbar {
