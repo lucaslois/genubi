@@ -10,7 +10,7 @@ class IndexController extends Controller
 {
     public function index() {
         $campaigns = Campaign::all()->take(3);
-        $sessions = Session::all()->take(3);
+        $sessions = Session::all()->reverse()->take(3);
         return view('pages.index', compact('campaigns', 'sessions'));
     }
 }

@@ -50,14 +50,15 @@
             <div class="row">
                 @foreach($campaigns as $campaign)
                     <div class="col-md-4">
-                        <div class="card">
-                            <img class="card-img-top" src="{{ $campaign->getImage() }}" alt="Card image cap">
+                        <div class="card campaign">
+                            <img class="card-img-top" src="{{ $campaign->getImageMini() }}" alt="{{ $campaign->name }}">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $campaign->name }}</h5>
-                                <p class="card-text">
+                                <span class="campaign_details">{{ $campaign->game->name }}, por <a href="">{{ $campaign->user->name }}</a></span>
+                                <p class="card-text campaign campaign_description">
                                     {{ $campaign->description }}
                                 </p>
-                                <a href="{{ route('campaigns.show', $campaign->id) }}" class="btn btn-primary">Ver partida</a>
+                                <a href="{{ route('campaigns.show', $campaign->id) }}" class="btn btn-primary btn-sm">Ver partida</a>
                             </div>
                         </div>
                     </div>
