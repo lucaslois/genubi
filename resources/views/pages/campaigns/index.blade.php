@@ -64,7 +64,13 @@
                                 <p class="card-text campaign campaign_description">
                                     {{ $campaign->description }}
                                 </p>
+                            </div>
+                            <div class="card-footer">
                                 <a href="{{ route('campaigns.show', $campaign->id) }}" class="btn btn-primary btn-sm">Ver partida</a>
+                                <div class="float-md-right">
+                                    <span class="badge bg-success reaction"><i class="fa fa-thumbs-up"></i> {{ $campaign->positives() }}</span>
+                                    <span class="badge bg-danger reaction"><i class="fa fa-thumbs-down"></i> {{ $campaign->negatives() }}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
