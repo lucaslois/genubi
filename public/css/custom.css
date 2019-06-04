@@ -685,4 +685,10 @@ hr {
   transition: all ease 2s;
 }
 
+.visites {
+  font-size: 12px;
+  color: #888;
+  margin-top: 20px;
+}
+
 /*# sourceMappingURL=custom.css.map */

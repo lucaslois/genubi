@@ -56,4 +56,8 @@ class Session extends Model
     public function negatives() {
         return $this->hasMany('App\\Models\\SessionVote')->where('vote', -1)->get();
     }
+
+    public function visites() {
+        return $this->belongsToMany('App\\Models\\User', 'session_visites');
+    }
 }

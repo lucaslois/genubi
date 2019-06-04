@@ -102,6 +102,9 @@ class SessionController extends Controller
     {
         $session = Session::findOrFail($id);
         $selected_campaign = $session->campaign;
+        $user = Auth::user();
+        if($user)
+            $session->visites()->syncWithoutDetaching($user);
 
         return view('pages.sessions.show', compact('session', 'selected_campaign'));
     }

@@ -58,7 +58,13 @@
                                 <p class="card-text campaign campaign_description">
                                     {{ $campaign->description }}
                                 </p>
+                            </div>
+                            <div class="card-footer">
                                 <a href="{{ route('campaigns.show', $campaign->id) }}" class="btn btn-primary btn-sm">Ver partida</a>
+                                <div class="float-md-right">
+                                    <span class="badge bg-success reaction"><i class="fa fa-thumbs-up"></i> {{ $campaign->positives() }}</span>
+                                    <span class="badge bg-danger reaction"><i class="fa fa-thumbs-down"></i> {{ $campaign->negatives() }}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -67,20 +73,27 @@
             <hr>
         </div>
     </section>
-    <section class="main partidas">
+    <section class="main partidas section-sessions">
         <div class="container">
             <h1>Últimas sesiones</h1>
             <div class="row">
                 @foreach($sessions as $session)
                     <div class="col-md-4">
-                        <div class="card">
+                        <div class="card session">
                             <img class="card-img-top" src="{{ $session->getImage() }}" alt="Card image cap">
                             <div class="card-body">
-                                <h5 class="card-title">{{ $session->name }} <div class="card-title-mini">de {{ $session->campaign->name }}</div></h5>
-                                <p class="card-text">
+                                <h5 class="session-title">{{ str_limit($session->name, 30) }}</h5>
+                                <span class="session-details">{{ $session->date->diffForHumans() }} ({{ $session->date->format('d/M/Y') }}), <a href="{{ route('users.show', $session->user->id) }}">{{ $session->user->name }}</a></span>
+                                <p class="card-text session-description">
                                     {{ str_limit(strip_tags($session->text), 100) }}
                                 </p>
-                                <a href="{{ route('sessions.show', $session->id) }}" class="btn btn-primary">Ver sesión</a>
+                            </div>
+                            <div class="card-footer">
+                                <a href="{{ route('sessions.show', $session->id) }}" class="btn btn-primary btn-sm">Ver sesión</a>
+                                <div class="float-md-right">
+                                    <span class="badge bg-success reaction"><i class="fa fa-thumbs-up"></i> {{ $session->positives()->count() }}</span>
+                                    <span class="badge bg-danger reaction"><i class="fa fa-thumbs-down"></i> {{ $session->negatives()->count() }}</span>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -43,8 +43,14 @@
             <div class="box box-border-top session-summary">
                 <div class="votes text-center mb-2">
                     @auth
-                        <a href="{{ route('sessions.vote.positive', $session->id) }}" class="btn btn-success btn-square"><i class="fa fa-thumbs-up"></i> {{ $session->positives()->count() }}</a>
-                        <a href="{{ route('sessions.vote.negative', $session->id) }}" class="btn btn-danger btn-square"><i class="fa fa-thumbs-down"></i> {{ $session->negatives()->count() }}</a>
+                        <a href="{{ route('sessions.vote.positive', $session->id) }}"
+                           class="btn btn-success btn-square">
+                            <i class="fa fa-thumbs-up"></i> {{ $session->positives()->count() }}
+                        </a>
+                        <a href="{{ route('sessions.vote.negative', $session->id) }}"
+                           class="btn btn-danger btn-square">
+                            <i class="fa fa-thumbs-down"></i> {{ $session->negatives()->count() }}
+                        </a>
                     @else
                         <span class="btn btn-success btn-square"><i class="fa fa-thumbs-up"></i> {{ $session->positives()->count() }}</span>
                         <span class="btn btn-danger btn-square"><i class="fa fa-thumbs-down"></i> {{ $session->negatives()->count() }}</span>
@@ -190,6 +196,12 @@
 
         </div>
     </section>
+
+    @if($session->visites->count() > 0)
+    <div class="container">
+        <p class="visites">Esta página ha sido visitada por {{ $session->visites->pluck('name')->implode(', ') }}</p>
+    </div>
+    @endif
 
     <!-- Large modal -->
     <div id="voteModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog">
