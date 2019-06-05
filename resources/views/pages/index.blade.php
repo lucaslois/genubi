@@ -2,22 +2,18 @@
 
 
 @section('content')
-{{--    <section class="main feed-list">--}}
-{{--        <div class="container">--}}
-{{--            <div class="box">--}}
-{{--                <div class="feed-item">--}}
-{{--                    <p><a href="#">Lucas Lois</a> ha dejado un comentario en <a href="#">Antiguo mal</a> con <a--}}
-{{--                                href="#">Sarumo</a> <span class="feed-date">hace 1 semana</span></p>--}}
-{{--                </div>--}}
-{{--                <div class="feed-item">--}}
-{{--                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto blanditiis delectus ipsa non porro rerum! Ab ad id ipsa ipsam, neque perferendis possimus quidem quos, repellendus, unde velit vero voluptatum!</p>--}}
-{{--                </div>--}}
-{{--                <div class="feed-item">--}}
-{{--                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto blanditiis delectus ipsa non porro rerum! Ab ad id ipsa ipsam, neque perferendis possimus quidem quos, repellendus, unde velit vero voluptatum!</p>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </section>--}}
+    <section class="main feed-list">
+        <div class="container">
+            <h1>Actividad</h1>
+            <div class="box">
+                @foreach($activities as $activity)
+                    <div class="feed-item">
+                        <p>{!! $activity->formatted_text !!} <span class="feed-date">{{ $activity->created_at->diffForHumans() }}</span></p>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
 
 {{--    <section class="main news">--}}
 

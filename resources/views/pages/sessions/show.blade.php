@@ -42,7 +42,7 @@
             </h1>
             <div class="box box-border-top session-summary">
                 <div class="votes text-center mb-2">
-                    @auth
+                    @if(auth()->check() && now()->diffInDays($session->date)  < 10)
                         <a href="{{ route('sessions.vote.positive', $session->id) }}"
                            class="btn btn-success btn-square">
                             <i class="fa fa-thumbs-up"></i> {{ $session->positives()->count() }}
@@ -54,7 +54,7 @@
                     @else
                         <span class="btn btn-success btn-square"><i class="fa fa-thumbs-up"></i> {{ $session->positives()->count() }}</span>
                         <span class="btn btn-danger btn-square"><i class="fa fa-thumbs-down"></i> {{ $session->negatives()->count() }}</span>
-                    @endauth
+                    @endif
                 </div>
                 <img class="img-thumbnail session-image" src="{{ $session->getImage() }}" alt="">
                 <div class="session-custom mt-3">
