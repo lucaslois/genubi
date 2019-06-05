@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Facades\Alert;
+use App\Models\Activity;
 use App\Models\Character;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -56,6 +57,7 @@ class CharacterController extends Controller
             $character->save();
         }
 
+        Activity::send($user, "<b>$user->name</b> ha creado al personaje <b>{{ $character->name}}</b>");
         Alert::send('El personaje se ha creado correctamente');
 
         return redirect()->route('characters.me', $character->id);

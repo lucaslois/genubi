@@ -25,7 +25,8 @@ Route::post('/forgot-password', 'ForgotPasswordController@store')->name('forgot_
 Route::get('/recovery-password/{token}', 'RecoveryPasswordController@index')->name('recovery_password.index');
 Route::post('/recovery-password/{token}', 'RecoveryPasswordController@store')->name('recovery_password.store');
 
-Route::get('profile', 'ProfileController@show')->name('profile.show');
+Route::get('profile', 'ProfileController@edit')->name('profile.edit');
+Route::put('profile', 'ProfileController@update')->name('profile.update');
 Route::get('profile/change-password', 'PasswordController@index')->name('password.index');
 Route::post('profile/change-password', 'PasswordController@store')->name('password.store');
 

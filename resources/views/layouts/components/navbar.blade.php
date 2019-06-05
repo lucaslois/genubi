@@ -16,18 +16,20 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('campaigns.homebrews.index', $selected_campaign->id) }}">Reglas de la casa</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('campaigns.npcs.index', $selected_campaign->id) }}">NPCs</a>
+                    <li class="nav-item dropdown">
+                        <a  data-toggle="dropdown"
+                            class="nav-link"
+                            href="{{ route('campaigns.npcs.index', $selected_campaign->id) }}">
+                            Mundo <i class="fas fa-caret-down"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-grey" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{ route('campaigns.npcs.index', $selected_campaign->id) }}">NPCs</a>
+                            <a class="dropdown-item disabled" href="#">Locaciones</a>
+                            <a class="dropdown-item disabled" href="#">Lore</a>
+                            <a class="dropdown-item disabled" href="#">Monstruos</a>
+                            <a class="dropdown-item disabled" href="#">Objetos</a>
+                        </div>
                     </li>
-{{--                    <li class="nav-item">--}}
-{{--                        <a class="nav-link" href="#">Objetos</a>--}}
-{{--                    </li>--}}
-{{--                    <li class="nav-item">--}}
-{{--                        <a class="nav-link" href="#">Artículos</a>--}}
-{{--                    </li>--}}
-{{--                    <li class="nav-item">--}}
-{{--                        <a class="nav-link" href="#">Galería</a>--}}
-{{--                    </li>--}}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('campaigns.channels.index', $selected_campaign->id) }}">Canales</a>
                     </li>

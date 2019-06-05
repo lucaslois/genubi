@@ -59,6 +59,7 @@
     <a class="nav-link" data-toggle="dropdown" href="{{ route('login.index') }}">{{ auth()->user()->name }} <i class="fa fa-caret-down"></i></a>
     <div class="dropdown-menu navbar-dropdown-black" aria-labelledby="navbarDropdown">
 {{--        <a class="dropdown-item" href="{{ route('profile.show') }}">Mi perfil</a>--}}
+        <a class="dropdown-item" href="{{ route('users.show', auth()->user()->id) }}">Mi perfil</a>
         <a class="dropdown-item" href="{{ route('logout') }}">Cerrar sesión</a>
     </div>
 </li>

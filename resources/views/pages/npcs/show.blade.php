@@ -13,7 +13,9 @@
                             <li class="breadcrumb-item"><a href="{{ url('') }}"><i class="fa fa-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="{{ route('campaigns.index') }}">Partidas</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('campaigns.show', $selected_campaign->id) }}">{{ $selected_campaign->name }}</a></li>
-                            <li class="breadcrumb-item active">Npcs</li>
+                            <li class="breadcrumb-item"><a
+                                        href="{{ route('campaigns.npcs.index', $selected_campaign->id) }}">Npcs</a></li>
+                            <li class="breadcrumb-item active">{{ $npc->name }}</li>
                         </ol>
                     </nav>
                 </div>
@@ -33,7 +35,10 @@
         <div class="container">
             <h1>{{ $npc->name }}</h1>
             <div class="box box-border-top">
-                 {!! $npc->text !!}
+                <img src="{{ $npc->getImage() }}" alt="">
+                <div class="text mt-3">
+                    {!! $npc->text !!}
+                </div>
             </div>
         </div>
     </section>

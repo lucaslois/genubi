@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Facades\Alert;
+use App\Models\Activity;
 use App\Models\Session;
 use App\Models\SessionVote;
 use Illuminate\Http\Request;
@@ -22,6 +23,7 @@ class VoteController extends Controller
         ]);
 
         Alert::send('Gracias por enviar tu voto :)');
+        Activity::send($user, "<b>$user->name</b> ha dado <b>me gusta</b> a la sesión <b>$session->name</b>");
 
         return redirect()->route('sessions.show', $session->id);
     }
@@ -38,6 +40,7 @@ class VoteController extends Controller
         ]);
 
         Alert::send('Gracias por enviar tu voto :)');
+        Activity::send($user, "<b>$user->name</b> ha dado <b>no me gusta</b> a la sesión <b>$session->name</b>");
 
         return redirect()->route('sessions.show', $session->id);
     }

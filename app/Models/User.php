@@ -62,7 +62,7 @@ class User extends Authenticatable
 
     public function isPlayingCampaign(Campaign $campaign) {
         foreach($this->characters as $character)
-            if($character->campaign->is($campaign))
+            if($character->campaign && $character->campaign->is($campaign))
                 return true;
 
         return false;
@@ -72,5 +72,9 @@ class User extends Authenticatable
         if($this->avatar)
             return asset($this->avatar);
         return asset('images/avatar.png');
+    }
+
+    public function activities() {
+        return $this->hasMany('App\\Models\\Activity')->orderByDesc('id');
     }
 }

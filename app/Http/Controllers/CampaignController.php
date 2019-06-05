@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activity;
 use App\Models\Game;
 use App\Models\Mode;
 use App\Facades\Alert;
@@ -56,6 +57,7 @@ class CampaignController extends Controller
         $campaign->fill($request->all());
         $campaign->user_id = $user->id;
         $campaign->state_id = CampaignState::whereSlug('active')->first()->id;
+        $campaign->score = 0;
         $campaign->save();
 
         if($request->background_image) {
@@ -73,6 +75,8 @@ class CampaignController extends Controller
             $campaign->background_image_mini = Storage::url($path);
             $campaign->save();
         }
+
+        Activity::send($user, "<b>$user->name</b> ha creado la campaña <b>$campaign->name.</b>");
 
         Alert::send('La campaña se ha creado correctamente');
 
@@ -133,6 +137,7 @@ class CampaignController extends Controller
         $campaign->delete();
 
         Alert::send("La campaña se ha eliminado correctamente");
+        Activity::send($user, "<b>$user->name</b> ha eliminado la campaña <b>$campaign->name</b>");
 
         return redirect()->route('campaigns.me');
     }
@@ -179,6 +184,9 @@ class CampaignController extends Controller
             'image' => $character->getImage(),
             'link' => route('campaigns.show', $campaign->id)
         ]);
+
+        Activity::send($user, "<b>$user->name</b> ha entrado a la campaña <b>$campaign->name</b> con <b>{{ $character->name}}</b>");
+
 
         return redirect()->route('campaigns.show', $campaign->id);
     }

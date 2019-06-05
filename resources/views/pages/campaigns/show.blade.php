@@ -113,7 +113,7 @@
                                     </div>
                                     <div class="col-md-8">
                                         <h5 class="character-title">{{ $character->name }} <span class="character-level">Nv. {{ $character->currentLevel() }}</span></h5>
-                                        <p class="character-data character-data-owner">de {{ $character->user->name }}</p>
+                                        <p class="character-data character-data-owner">de <a href="{{ route('users.show', $character->user->id) }}">{{ $character->user->name }}</a></p>
                                         <p class="character-data">{{ $character->race }} |
                                             {{ $character->classes->implode('name', ', ')  }}
                                         </p>

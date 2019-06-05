@@ -86,3 +86,25 @@
 .nav-item.partida {
   border-right: 1px solid #353739;
 }
+
+.dropdown-grey {
+  margin: 0 0;
+  background-color: #26282a;
+  border: 0;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 0;
+}
+
+.dropdown-grey .dropdown-item {
+  padding: 0.6rem 1.2rem;
+  border-bottom: 1px solid darken(#353739, .7);
+}
+.dropdown-grey .dropdown-item:hover {
+  background: $main_dark_yellow;
+}
+.dropdown-grey .disabled {
+  text-decoration: line-through;
+}
+.dropdown-grey .disabled:hover {
+  cursor: not-allowed;
+}

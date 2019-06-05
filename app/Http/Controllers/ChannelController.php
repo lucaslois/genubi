@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Facades\Alert;
+use App\Models\Activity;
 use App\Models\Campaign;
 use App\Models\Channel;
 use App\Models\Notification;
@@ -50,6 +51,8 @@ class ChannelController extends Controller
                 'link' => route('channels.show', $channel->id)
             ]);
         }
+
+        Activity::send($user, "<b>$user->name</b> ha creado el canal <b>$channel->name</b> en la campaña <b>{$campaign->name}</b>");
 
         return redirect()->route('channels.show', $channel->id);
     }
@@ -105,6 +108,8 @@ class ChannelController extends Controller
 
         Alert::send("Te has suscrito correctamente a $channel->name correctamente");
 
+        Activity::send($user, "<b>$user->name</b> se ha suscrito al canal <b>$channel->name</b>");
+
         return back();
     }
 
@@ -114,6 +119,7 @@ class ChannelController extends Controller
         $channel->suscribedUsers()->detach($user->id);
 
         Alert::send("Te has desuscrito correctamente a $channel->name correctamente");
+        Activity::send($user, "<b>$user->name</b> se ha desuscrito del canal <b>$channel->name</b>");
 
         return back();
     }
@@ -126,6 +132,7 @@ class ChannelController extends Controller
         $channel->save();
 
         Alert::send("El canal $channel->name ha sido abierto");
+        Activity::send($user, "<b>$user->name</b> ha abierto el canal <b>$channel->name</b>");
 
         return back();
     }
@@ -138,6 +145,7 @@ class ChannelController extends Controller
         $channel->save();
 
         Alert::send("El canal $channel->name ha sido cerrado");
+        Activity::send($user, "<b>$user->name</b> ha cerrado el canal <b>$channel->name</b>");
 
         return back();
     }

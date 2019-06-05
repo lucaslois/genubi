@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Facades\Alert;
+use App\Models\Activity;
 use App\Models\Campaign;
 use App\Models\Character;
 use App\Models\CharacterExperience;
@@ -47,6 +48,8 @@ class ExperienceController extends Controller
         }
 
         Alert::send("La experiencia se ha entregado correctamente a {$counter} personajes");
+        Activity::send($user, "<b>$user->name</b> ha repartido experiencias en la campaña <b>$selected_campaign->name</b>");
+
 
         return redirect()->route('campaigns.show', $selected_campaign->id);
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Facades\Alert;
+use App\Models\Activity;
 use App\Models\Channel;
 use App\Models\ChannelPost;
 use App\Models\Dices\TiradaDado;
@@ -65,6 +66,7 @@ class PostController extends Controller
         }
 
         Alert::send('El post se ha enviado correctamente');
+        Activity::send($user, "<b>$user->name</b> ha posteado como <b>{$post->participant()->getName()}</b> en el canal <b>$channel->name</b>");
 
         return redirect()->route('channels.show', $channel->id);
     }
@@ -153,6 +155,7 @@ class PostController extends Controller
         $post->save();
 
         Alert::send('La tirada de dados se ha enviado correctamente');
+        Activity::send($user, "<b>$user->name</b> ha lanzado los dados como <b>{$post->participant()->getName()}</b> en el canal <b>$channel->name</b>");
 
         return redirect()->route('channels.show', $channel->id);
     }

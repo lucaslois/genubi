@@ -546,3 +546,31 @@ hr {
   color: #888;
   margin-top: 20px;
 }
+
+.user-avatar {
+  display: block;
+  margin: 0 auto;
+  max-width: 200px;
+  width: inherit;
+}
+
+.user-title {
+  font-size: 1.4em;
+  font-weight: 600;
+}
+
+.user-staff {
+  font-weight: 600;
+  color: $main_dark_yellow;
+  font-size: 14px;
+  margin-top: -6px;
+}
+
+.user-desc {
+  font-size: 14px;
+}
+
+.activity-date {
+  font-size: 0.8em;
+  color: #888;
+}

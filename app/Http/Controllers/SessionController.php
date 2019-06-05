@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Facades\Alert;
+use App\Models\Activity;
 use App\Models\Campaign;
 use App\Models\Milestone;
 use App\Models\Notification;
@@ -88,6 +89,7 @@ class SessionController extends Controller
             ]);
 
         Alert::send('La sesión se ha creado correctamente');
+        Activity::send($user, "<b>$user->name</b> ha creado la sesión <b>$session->name</b> en la campaña <b>{$session->campaign->name}</b>");
 
         return redirect()->route('sessions.show', $session->id);
     }
@@ -210,6 +212,7 @@ class SessionController extends Controller
             'description' => 'required'
         ]);
         $session = Session::findOrFail($id);
+        $user = Auth::user();
 
         $milestone = new Milestone;
         $milestone->fill($request->all());
@@ -224,6 +227,7 @@ class SessionController extends Controller
         $milestone->save();
 
         Alert::send('El hito se ha guardado correctamente');
+        Activity::send($user, "<b>$user->name</b> ha creado el hito <b>$milestone->name</b> en la sesión <b>{$session->name}</b>");
 
         return redirect()->route('sessions.milestones.index', $session->id);
     }

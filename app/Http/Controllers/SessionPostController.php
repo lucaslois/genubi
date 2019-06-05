@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Facades\Alert;
+use App\Models\Activity;
+use App\Models\Character;
 use App\Models\Session;
 use App\Models\SessionPost;
 use Illuminate\Http\Request;
@@ -27,6 +29,7 @@ class SessionPostController extends Controller
         $session = Session::findOrFail($id);
         $selected_campaign = $session->campaign;
         $user = Auth::user();
+        $character = Character::findOrFail($request->character_id);
 
         $post = SessionPost::create([
             'user_id' => $user->id,
@@ -36,6 +39,7 @@ class SessionPostController extends Controller
         ]);
 
         Alert::send('El post se ha guardado correctamente');
+        Activity::send($user, "<b>$user->name</b> ha creado un diario con <b>$character->name</b> en la sesión <b>{$session->name}</b>");
 
         return redirect()->route('sessions.show', $session->id);
     }

@@ -81,6 +81,31 @@
   border-right: 1px solid #353739;
 }
 
+.dropdown-grey {
+  margin: 0 0;
+  background-color: #26282a;
+  border: 0;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 0;
+}
+
+.dropdown-grey .dropdown-item {
+  padding: 0.6rem 1.2rem;
+  border-bottom: 1px solid #333537;
+}
+
+.dropdown-grey .dropdown-item:hover {
+  background: #daa520;
+}
+
+.dropdown-grey .disabled {
+  text-decoration: line-through;
+}
+
+.dropdown-grey .disabled:hover {
+  cursor: not-allowed;
+}
+
 .notify-drop {
   min-height: 300px;
   min-width: 400px;
@@ -689,6 +714,34 @@ hr {
   font-size: 12px;
   color: #888;
   margin-top: 20px;
+}
+
+.user-avatar {
+  display: block;
+  margin: 0 auto;
+  max-width: 200px;
+  width: inherit;
+}
+
+.user-title {
+  font-size: 1.4em;
+  font-weight: 600;
+}
+
+.user-staff {
+  font-weight: 600;
+  color: #daa520;
+  font-size: 14px;
+  margin-top: -6px;
+}
+
+.user-desc {
+  font-size: 14px;
+}
+
+.activity-date {
+  font-size: 0.8em;
+  color: #888;
 }
 
 /*# sourceMappingURL=custom.css.map */
