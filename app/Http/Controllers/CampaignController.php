@@ -70,7 +70,7 @@ class CampaignController extends Controller
             $img = Image::make($request->background_image);
             $img->fit(350, 200);
             $path = "public/characters/$name_mini";
-            Storage::$name_mini($path, $img->stream());
+            Storage::put($path, $img->stream());
 
             $campaign->background_image_mini = Storage::url($path);
             $campaign->save();

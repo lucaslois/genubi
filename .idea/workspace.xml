@@ -30,8 +30,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/pages/sessions/show.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="44" column="43" selection-start-line="44" selection-start-column="43" selection-end-line="44" selection-end-column="43" />
+            <state relative-caret-position="492">
+              <caret line="55" column="25" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -225,6 +225,7 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
       <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
       <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/laraveles/spanish" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
@@ -251,6 +252,19 @@
               <item name="GenubiReborn" type="b2602c69:ProjectViewProjectNode" />
               <item name="GenubiReborn" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GenubiReborn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GenubiReborn" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Console" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GenubiReborn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GenubiReborn" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Console" type="462c0819:PsiDirectoryNode" />
+              <item name="Commands" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="GenubiReborn" type="b2602c69:ProjectViewProjectNode" />
@@ -381,12 +395,13 @@
       <workItem from="1559402201315" duration="352000" />
       <workItem from="1559422962531" duration="2551000" />
       <workItem from="1559604852133" duration="3866000" />
-      <workItem from="1559695759456" duration="5738000" />
+      <workItem from="1559695759456" duration="6405000" />
+      <workItem from="1559783177614" duration="26000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="128531000" />
+    <option name="totallyTimeSpent" value="129224000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -399,9 +414,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24733475" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -416,7 +430,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.2086331" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.2086331" />
       <window_info anchor="bottom" id="Inspection Results" order="12" weight="0.3299075" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -792,8 +806,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/pages/sessions/show.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="44" column="43" selection-start-line="44" selection-start-column="43" selection-end-line="44" selection-end-column="43" />
+        <state relative-caret-position="492">
+          <caret line="55" column="25" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
         </state>
       </provider>
     </entry>
