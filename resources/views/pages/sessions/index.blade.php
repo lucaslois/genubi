@@ -62,7 +62,9 @@
                 @forelse($sessions as $session)
                     <div class="col-md-4">
                         <div class="card session">
-                            <img class="card-img-top" src="{{ $session->getImage() }}" alt="Card image cap">
+                            <div style="background-image: url('{{ $session->getImage() }}')"
+                                 class="campaign-card-header">
+                            </div>
                             <div class="card-body">
                                 <h5 class="session-title">{{ str_limit($session->name, 30) }}</h5>
                                 <span class="session-details">{{ $session->date->diffForHumans() }} ({{ $session->date->format('d/M/Y') }}), <a href="{{ route('users.show', $session->user->id) }}">{{ $session->user->name }}</a></span>

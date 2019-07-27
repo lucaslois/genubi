@@ -57,7 +57,9 @@
                 @forelse($campaigns as $campaign)
                     <div class="col-md-4">
                         <div class="card campaign">
-                            <img class="card-img-top" src="{{ $campaign->getImageMini() }}" alt="{{ $campaign->name }}">
+                            <div style="background-image: url('{{ $campaign->getImageMini() }}')"
+                                 class="campaign-card-header">
+                            </div>
                             <div class="card-body">
                                 <h5 class="card-title">{{ $campaign->name }}</h5>
                                 <span class="campaign_details">{{ $campaign->game->name }}, por <a href="">{{ $campaign->user->name }}</a></span>

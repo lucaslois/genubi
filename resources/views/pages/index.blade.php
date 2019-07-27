@@ -47,7 +47,9 @@
                 @foreach($campaigns as $campaign)
                     <div class="col-md-4">
                         <div class="card campaign">
-                            <img class="card-img-top" src="{{ $campaign->getImageMini() }}" alt="{{ $campaign->name }}">
+                            <div style="background-image: url('{{ $campaign->getImageMini() }}')"
+                                 class="campaign-card-header">
+                            </div>
                             <div class="card-body">
                                 <h5 class="card-title">{{ $campaign->name }}</h5>
                                 <span class="campaign_details">{{ $campaign->game->name }}, por <a href="">{{ $campaign->user->name }}</a></span>
@@ -76,7 +78,9 @@
                 @foreach($sessions as $session)
                     <div class="col-md-4">
                         <div class="card session">
-                            <img class="card-img-top" src="{{ $session->getImage() }}" alt="Card image cap">
+                            <div style="background-image: url('{{ $session->getImage() }}')"
+                                 class="campaign-card-header">
+                            </div>
                             <div class="card-body">
                                 <h5 class="session-title">{{ str_limit($session->name, 30) }}</h5>
                                 <span class="session-details">{{ $session->date->diffForHumans() }} ({{ $session->date->format('d/M/Y') }}), <a href="{{ route('users.show', $session->user->id) }}">{{ $session->user->name }}</a></span>
