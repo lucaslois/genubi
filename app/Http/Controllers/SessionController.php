@@ -67,7 +67,7 @@ class SessionController extends Controller
         $user = Auth::user();
         $session = new Session;
         $session->fill($request->all());
-        $session->user_id = 1;
+        $session->user_id = $user->id;
 
         $session->save();
 

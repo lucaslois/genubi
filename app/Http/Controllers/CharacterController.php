@@ -57,7 +57,7 @@ class CharacterController extends Controller
             $character->save();
         }
 
-        Activity::send($user, "<b>$user->name</b> ha creado al personaje <b>{{ $character->name}}</b>");
+        Activity::send($user, "<b>$user->name</b> ha creado al personaje <b>$character->name</b>");
         Alert::send('El personaje se ha creado correctamente');
 
         return redirect()->route('characters.me', $character->id);
