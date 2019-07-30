@@ -5,10 +5,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item partida">
-                        <a class="nav-link"><b>{{ $selected_campaign->name }}</b></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('campaigns.show', $selected_campaign->id) }}">Página principal</a>
+                        <a class="nav-link" href="{{ route('campaigns.show', $selected_campaign->id) }}"><b>{{ $selected_campaign->name }}</b></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('campaigns.sessions.index', $selected_campaign->id) }}">Sesiones</a>

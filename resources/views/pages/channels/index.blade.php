@@ -7,17 +7,17 @@
     <section class="main news">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ url('') }}"><i class="fa fa-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="{{ route('campaigns.index') }}">Partidas</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('campaigns.show', $selected_campaign->id) }}">Antiguo Mal</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('campaigns.show', $selected_campaign->id) }}">{{ $selected_campaign->name }}</a></li>
                             <li class="breadcrumb-item active">Canales</li>
                         </ol>
                     </nav>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-6">
                     <div class="buttons float-md-right">
                         <a href="{{ route('channels.create') }}" class="btn btn-success btn-square">Crear nuevo canal</a>
 

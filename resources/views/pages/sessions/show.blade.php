@@ -158,7 +158,7 @@
                              data-target="#journal_{{ str_slug($post->character->name) }}">
                             <div class="row">
                                 <div class="col-md-1">
-                                    <img class="journal-image-little img-thumbnail" src="{{ $post->character->getImage() }}"  alt="Zaheera">
+                                    <img class="journal-image-little img-thumbnail" src="{{ $post->character->getImage() }}"  alt="{{ $post->character->name }}">
                                 </div>
                                 <div class="col-11">
                                     <div class="float-right">
@@ -170,7 +170,7 @@
                                         </div>
                                         @endif
                                     </div>
-                                    <h3 class="journal-character">{{ $post->character->name }}</h3>
+                                    <h3 class="journal-character mt-2">{{ $post->character->name }}</h3>
                                     <h4 class="journal-user">{{ $post->user->name }}</h4>
                                 </div>
                             </div>

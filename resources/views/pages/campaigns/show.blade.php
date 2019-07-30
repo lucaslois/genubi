@@ -11,7 +11,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="fa fa-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="{{ route('campaigns.index') }}">Partidas</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Antiguo Mal</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ $selected_campaign->name }}</li>
                         </ol>
                     </nav>
                 </div>

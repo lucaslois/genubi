@@ -324,12 +324,6 @@ hr {
   margin-bottom: 20px;
 }
 
-.campaign-card-header {
-  height: 160px;
-  background-position: center;
-  background-size: 100%;
-}
-
 .campaign h5 {
   margin: 0;
 }
@@ -746,6 +740,11 @@ hr {
 }
 
 .activity-date {
+  font-size: 0.8em;
+  color: #888;
+}
+
+.mini {
   font-size: 0.8em;
   color: #888;
 }

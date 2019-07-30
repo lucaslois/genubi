@@ -112,6 +112,53 @@
                                 {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
                             </div>
 
+                            <div class="form-group">
+                                <label for="desc_mentality">Mentalidad <span class="mini">(opcional)</span></label>
+                                <textarea
+                                        id="desc_mentality"
+                                        name="desc_mentality"
+                                        type="text"
+                                        class="form-control {!! $errors->first('desc_mentality', 'is-invalid') !!}"
+                                        placeholder="La mentalidad de tu personaje. Cómo imagina. Cómo piensa. Qué dice su cerebro antes de actuar."
+                                >{{ old('desc_mentality', $character) }}</textarea>
+                                {!! $errors->first('desc_mentality', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="desc_appearance">Apariencia <span class="mini">(opcional)</span></label>
+                                <textarea
+                                        id="desc_appearance"
+                                        name="desc_appearance"
+                                        type="text"
+                                        class="form-control {!! $errors->first('desc_appearance', 'is-invalid') !!}"
+                                        placeholder="Cómo se ve tu personaje. ¡Descripción física y atuendo!"
+                                >{{ old('desc_appearance', $character) }}</textarea>
+                                {!! $errors->first('desc_appearance', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="desc_social_status">Status social <span class="mini">(opcional)</span></label>
+                                <textarea
+                                        id="desc_social_status"
+                                        name="desc_social_status"
+                                        type="text"
+                                        class="form-control {!! $errors->first('desc_social_status', 'is-invalid') !!}"
+                                        placeholder="Cómo se relaciona tu personaje. Cómo lo ven los demás. Cómo habla. Cómo se expresa."
+                                >{{ old('desc_social_status', $character) }}</textarea>
+                                {!! $errors->first('desc_social_status', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+                            <div class="form-group">
+                                <label for="famous_phrase">Frases célebres <span class="mini">(opcional)</span></label>
+                                <textarea
+                                        id="famous_phrase"
+                                        name="famous_phrase"
+                                        type="text"
+                                        class="form-control {!! $errors->first('famous_phrase', 'is-invalid') !!}"
+                                        placeholder="'Detrás de mí...'"
+                                >{{ old('famous_phrase', $character) }}</textarea>
+                                {!! $errors->first('famous_phrase', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+
                             <input type="submit" value="Guardar" class="btn btn-primary">
                         </form>
                     </div>
