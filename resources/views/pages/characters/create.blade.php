@@ -22,12 +22,16 @@
     <section>
         <div class="container">
             <h1>Creación de nuevo personaje</h1>
+            @if($campaign_to_join)
+                <div class="alert alert-success"><b>Atención</b>: Tu personaje será automaticamente vinculado a la partida {{ $campaign_to_join->name }}</div>
+            @endif
             <div class="box box-border-top">
                 <div class="row">
                     <div class="col-8">
                         <form action="{{ route('characters.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method("POST")
+                            <input type="text" name="join_link" value="{{ $campaign_to_join->token }}" hidden>
                             <div class="form-group">
                                 <label for="name">Nombre</label>
                                 <input

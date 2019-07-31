@@ -759,8 +759,27 @@ hr {
   color: #888;
 }
 
+.mention-li {
+  padding: 3px 6px;
+}
+
 .mini-image {
   width: 1.2em;
+}
+
+.mention-image {
+  width: 24px;
+  float: left;
+  margin-right: 4px;
+}
+
+.mention-name {
+  display: block;
+}
+
+.mention-slug {
+  display: block;
+  color: #888;
 }
 
 /*# sourceMappingURL=custom.css.map */

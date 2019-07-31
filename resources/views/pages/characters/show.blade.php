@@ -27,8 +27,11 @@
 
     <section class="character-profile">
         <div class="container">
-            <h1>Personaje: {{ $character->name }}</h1>
-            <div class="box box-border-top">
+            <h1 class="mb-0">Personaje: {{ $character->name }}</h1>
+            @if($character->slug)
+                <h5 class="mini mb-0">{{ "@$character->slug" }}</h5>
+            @endif
+            <div class="box box-border-top mt-1">
                 <div class="row">
                     <div class="col-3">
                         <div class="character-sidebar text-center">
@@ -173,7 +176,7 @@
                                         <th>Título</th>
                                         <th></th>
                                     </tr>
-                                    @foreach($character->posts->reverse()->take(10) as $post)
+                                    @forelse($character->posts->reverse()->take(10) as $post)
                                         <tr>
                                             <td>{{ $post->created_at->format('d M Y') }}</td>
                                             <td>{{ $post->session->name }}</td>
@@ -182,7 +185,11 @@
                                                 <a href="{{ route('sessions.show', $post->session->id) }}">Entrar</a>
                                             </td>
                                         </tr>
-                                    @endforeach
+                                    @empty
+                                        <tr>
+                                            <td rowspan="4">Aun no hay diarios para este personaje</td>
+                                        </tr>
+                                    @endforelse
                                     </thead>
                                 </table>
                             </div>

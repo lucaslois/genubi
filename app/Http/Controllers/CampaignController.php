@@ -185,7 +185,7 @@ class CampaignController extends Controller
             'link' => route('campaigns.show', $campaign->id)
         ]);
 
-        Activity::send($user, "<b>$user->name</b> ha entrado a la campaña <b>$campaign->name</b> con <b>{{ $character->name}}</b>");
+        Activity::send($user, "<b>$user->name</b> ha entrado a la campaña <b>$campaign->name</b> con <b>$character->name</b>");
 
 
         return redirect()->route('campaigns.show', $campaign->id);

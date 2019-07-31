@@ -22,11 +22,11 @@
         <div class="container">
             <h1>Entrar a una partida</h1>
             <div class="box box-border-top">
-                <p>Estás a punto de entrar a la partida <b>{{ $campaign->name }}</b>, dirigida por <a href="#">{{ $campaign->user->name }}</a>.</p>
+                <p>Estás a punto de entrar a la partida <b>{{ $campaign->name }}</b>, dirigida por <a href="{{ route('users.show', $campaign->user->id) }}">{{ $campaign->user->name }}</a>.</p>
                 @if($characters->count() > 0)
                 <p>Selecciona con qué personaje deseas entrar</p>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <form action="{{ route('campaigns.join.store', $campaign->token) }}" method="POST">
                                 @csrf
                                 @method("POST")
@@ -37,14 +37,14 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <p>Si el personaje que quieres ingresar no está en esta lista, <a href="{{ route('characters.create') }}">has click aquí</a> para ir a crearlo y luego vuelve a este lugar</p>
+                                <p>Si el personaje que quieres ingresar no está en esta lista, <a href="{{ route('characters.create', ['join_link' => $campaign->token]) }}">has click aquí</a> para ir a crearlo y luego vuelve a este lugar</p>
 
                                 <input class="btn btn-success" type="submit" value="¡Entrar a la aventura!">
                             </form>
                         </div>
                     </div>
                 @else
-                <p>Aun no tienes creado ningún personaje. <a href="{{ route('characters.create') }}">Has click aquí</a> para ir a la página de creación de personajes y cuando termines regresa a este lugar</p>
+                <p>Aun no tienes creado ningún personaje. <a href="{{ route('characters.create', ['join_link' => $campaign->token]) }}">Has click aquí</a> para ir a la página de creación de personajes y cuando termines regresa a este lugar</p>
                 @endif
 
             </div>

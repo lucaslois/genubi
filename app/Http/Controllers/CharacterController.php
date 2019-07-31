@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Facades\Alert;
 use App\Models\Activity;
+use App\Models\Campaign;
 use App\Models\Character;
+use App\Models\Notification;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\CharacterClass;
@@ -27,8 +29,9 @@ class CharacterController extends Controller
         return view('pages.characters.me', compact('characters'));
     }
 
-    public function create() {
-        return view('pages.characters.create');
+    public function create(Request $request) {
+        $campaign_to_join = Campaign::whereToken($request->join_link)->first();
+        return view('pages.characters.create', compact('campaign_to_join'));
     }
 
     public function store(Request $request) {
@@ -43,7 +46,21 @@ class CharacterController extends Controller
         $character->fill($request->all());
         $character->user_id = $user->id;
         $character->state_id = 1;
+        $character->slug = $character->generateSlug();
         $character->save();
+
+        $campaign_to_join = Campaign::whereToken($request->join_link)->first();
+        if($campaign_to_join) {
+            $character->campaign()->associate($campaign_to_join);
+            $character->save();
+
+            Notification::create([
+                'user_id' => $campaign_to_join->user->id,
+                'text' => "{$user->name} ha ingresado en {$campaign_to_join->name} como $character->name usando un link de acceso",
+                'image' => $character->getImage(),
+                'link' => route('campaigns.show', $campaign_to_join->id)
+            ]);
+        }
 
         if($request->avatar) {
             $ext = $request->avatar->getClientOriginalExtension();

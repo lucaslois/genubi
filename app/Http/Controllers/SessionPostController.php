@@ -68,4 +68,17 @@ class SessionPostController extends Controller
 
         return redirect()->route('sessions.show', $post->session->id);
     }
+
+    public function remove($id){
+        $post = SessionPost::findOrFail($id);
+        $user = Auth::user();
+        if($post->user->isNot($user))
+            abort(403);
+
+        $post->delete();
+
+        Alert::send('El post se ha borrado correctamente');
+
+        return back();
+    }
 }

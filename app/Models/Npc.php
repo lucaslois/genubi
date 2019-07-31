@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
-class Npc extends Model implements CanParticipateInChannel
+class Npc extends Model implements CanParticipateInChannel, CanBeFormatted
 {
     use SoftDeletes;
 
@@ -36,5 +37,13 @@ class Npc extends Model implements CanParticipateInChannel
     public function getColor()
     {
         return $this->color;
+    }
+
+    // CAN BE FORMATTED INTERFACE
+    public function generateSlug() {
+        return Str::slug($this->name) . $this->id;
+    }
+    public function formattedLink() {
+        return route('npcs.show', $this->id);
     }
 }

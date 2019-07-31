@@ -30,7 +30,7 @@
             <h1>Editar sesión</h1>
             <div class="box box-border-top">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-12">
                         <form action="{{ route('sessions.update', $session->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method("PUT")
@@ -84,7 +84,6 @@
                                 <textarea
                                         id="text"
                                         name="text"
-                                        type="text"
                                         class="form-control {!! $errors->first('text', 'is-invalid') !!}">{{ old('text', $session->text) }}</textarea>
                                 {!! $errors->first('text', '<div class="invalid-feedback">:message</div>') !!}
                             </div>
@@ -96,19 +95,71 @@
             </div>
         </div>
     </section>
-
 @endsection
 
+@push('css')
+    <link rel="stylesheet" href="{{ asset('plugins/tributejs/tribute.css') }}">
+@endpush
+
 @push('js')
-    <script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
+    {{--    <script src="{{ asset('plugins/ckeditor/ckeditor.js') }}"></script>--}}
+    {{--    <script src="{{ asset('plugins/ckeditor/customCkEditor.js') }}"></script>--}}
+    <script src="https://cdn.ckeditor.com/4.12.1/standard-all/ckeditor.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
-        ClassicEditor
-            .create( document.querySelector( '#text' ) )
-            .then( editor => {
-                console.log( editor );
-            } )
-            .catch( error => {
-                console.error( error );
-            } );
+        var users = [{
+            id: 1,
+            avatar: 'm_1',
+            fullname: 'Charles Flores',
+            username: 'cflores'
+        },
+            {
+                id: 2,
+                avatar: 'm_2',
+                fullname: 'Gerald Jackson',
+                username: 'gjackson'
+            },
+        ];
+        CKEDITOR.replace('text', {
+            plugins: 'mentions,basicstyles,undo,link,wysiwygarea,toolbar',
+            contentsCss: [
+                'http://cdn.ckeditor.com/4.12.1/full-all/contents.css',
+                'https://ckeditor.com/docs/vendors/4.12.1/ckeditor/assets/mentions/contents.css'
+            ],
+            height: 200,
+            toolbar: [{
+                name: 'document',
+                items: ['Undo', 'Redo']
+            },
+                {
+                    name: 'basicstyles',
+                    items: ['Bold', 'Italic', 'Strike']
+                },
+                {
+                    name: 'links',
+                    items: ['EmojiPanel', 'Link', 'Unlink']
+                }
+            ],
+            mentions: [{
+                feed: madeMention,
+                itemTemplate: '<li data-id="{id}" class="mention-li">' +
+                    '<img class="mention-image" src="{avatar}" />' +
+                    '<div class="mention-data">' +
+                    '<span class="mention-slug">{name}</span>' +
+                    '<span class="mention-name">{slug}</span>' +
+                    '</div>' +
+                    '</li>',
+                outputTemplate: '@{slug}',
+                minChars: 2
+            }]
+        });
+
+        function madeMention(opts, callback) {
+            axios.defaults.baseURL = 'http://genubireborn.local';
+            axios.get('api/autocomplete?search=' + opts.query).then(res => {
+                var data = res.data.characters;
+                callback(data);
+            });
+        }
     </script>
 @endpush

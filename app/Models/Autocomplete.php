@@ -11,7 +11,7 @@ class Autocomplete
         foreach($group[0] as $mention) {
             $character = self::search($mention);
             if(!$character) continue;
-            $link = "<a href='".route('characters.show', $character->id)."'><img class='mini-image'src='".$character->getImage()."' /> $character->name</a>";
+            $link = "<a href='{$character->formattedLink()}'><img class='mini-image'src='".$character->getImage()."' /> $character->name</a>";
             $new = str_replace($mention, "$link", $new);
         }
         return $new;

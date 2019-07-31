@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
-class Character extends Model implements CanParticipateInChannel
+class Character extends Model implements CanParticipateInChannel, CanBeFormatted
 {
     use XpTrait, SoftDeletes;
 
@@ -62,5 +63,15 @@ class Character extends Model implements CanParticipateInChannel
     public function getColor()
     {
         return $this->color;
+    }
+
+
+    // CAN BE FORMATTED INTERFACE
+    public function generateSlug() {
+        return Str::slug($this->name) . $this->id;
+    }
+
+    public function formattedLink() {
+        return route('characters.show', $this->id);
     }
 }
