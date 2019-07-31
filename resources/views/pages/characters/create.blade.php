@@ -120,7 +120,7 @@
                                         type="text"
                                         class="form-control {!! $errors->first('desc_mentality', 'is-invalid') !!}"
                                         placeholder="La mentalidad de tu personaje. Cómo imagina. Cómo piensa. Qué dice su cerebro antes de actuar."
-                                >{{ old('desc_mentality', $character) }}</textarea>
+                                >{{ old('desc_mentality') }}</textarea>
                                 {!! $errors->first('desc_mentality', '<div class="invalid-feedback">:message</div>') !!}
                             </div>
 
@@ -132,7 +132,7 @@
                                         type="text"
                                         class="form-control {!! $errors->first('desc_appearance', 'is-invalid') !!}"
                                         placeholder="Cómo se ve tu personaje. ¡Descripción física y atuendo!"
-                                >{{ old('desc_appearance', $character) }}</textarea>
+                                >{{ old('desc_appearance') }}</textarea>
                                 {!! $errors->first('desc_appearance', '<div class="invalid-feedback">:message</div>') !!}
                             </div>
 
@@ -144,7 +144,7 @@
                                         type="text"
                                         class="form-control {!! $errors->first('desc_social_status', 'is-invalid') !!}"
                                         placeholder="Cómo se relaciona tu personaje. Cómo lo ven los demás. Cómo habla. Cómo se expresa."
-                                >{{ old('desc_social_status', $character) }}</textarea>
+                                >{{ old('desc_social_status') }}</textarea>
                                 {!! $errors->first('desc_social_status', '<div class="invalid-feedback">:message</div>') !!}
                             </div>
                             <div class="form-group">
@@ -155,7 +155,7 @@
                                         type="text"
                                         class="form-control {!! $errors->first('famous_phrase', 'is-invalid') !!}"
                                         placeholder="'Detrás de mí...'"
-                                >{{ old('famous_phrase', $character) }}</textarea>
+                                >{{ old('famous_phrase') }}</textarea>
                                 {!! $errors->first('famous_phrase', '<div class="invalid-feedback">:message</div>') !!}
                             </div>
 

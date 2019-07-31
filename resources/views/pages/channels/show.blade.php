@@ -124,7 +124,7 @@
                             @if($post->only_dm == true && $selected_campaign->user->isNot(auth()->user()))
                             <p class="only-dm">Tirada visible sólo para el DM</p>
                             @else
-                            <p>{!! $post->text !!}</p>
+                            <p>{!! $post->formattedText() !!}</p>
                             @endif
                         </div>
                     </div>

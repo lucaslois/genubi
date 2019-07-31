@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ChannelPost extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasFormattedText;
 
     protected $fillable = [
         'campaign_id',

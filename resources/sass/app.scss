@@ -164,6 +164,11 @@ hr {
   z-index: 1;
 }
 
+.campaign-card-header {
+  background-size: 100%;
+  height: 160px;
+}
+
 .overlay {
   width: 100%;
   height: 100%;
@@ -304,6 +309,11 @@ hr {
   background: #f2f2f2;
   padding: 2px;
   margin-bottom: 6px;
+}
+
+.journal-title {
+  font-size: 1.6em;
+  font-weight: 500;
 }
 
 .journal-opener {
@@ -578,4 +588,8 @@ hr {
 .mini {
   font-size: 0.8em;
   color: #888;
+}
+
+.mini-image {
+  width: 1.2em;
 }

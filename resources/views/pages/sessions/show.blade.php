@@ -65,7 +65,7 @@
                         <dd>{{ $session->date->format('d F Y') }}</dd>
                     </dl>
                     <h4>Resumen</h4>
-                    {!! $session->text !!}
+                    {!! $session->formattedText() !!}
                 </div>
             </div>
         </div>
@@ -176,7 +176,8 @@
                             </div>
                         </div>
                         <div id="journal_{{ str_slug($post->character->name) }}" class="collapse journal-content">
-                            {!! $post->text !!}
+                            <h2 class="journal-title">{{ $post->title }}</h2>
+                            {!! $post->formattedText() !!}
                         </div>
                     </div>
                 @empty

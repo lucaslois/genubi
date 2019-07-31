@@ -37,7 +37,17 @@
                                 <label for="character_id">Personaje</label>
                                 <input type="text" class="form-control" value="{{ $post->character->name }}" disabled>
                             </div>
-
+                            <div class="form-group">
+                                <label for="title">Título</label>
+                                <input
+                                        name="title"
+                                        id="title"
+                                        value="{{ old('title', $post->title) }}"
+                                        placeholder="Una aventura increible"
+                                        class="form-control {!! $errors->first('title', 'is-invalid') !!}"
+                                >
+                                {!! $errors->first('title', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
                             <div class="form-group">
                                 <label for="text">Diario</label>
                                 <textarea name="text" id="text" class="form-control">{{ old('text', $post->text) }}</textarea>
@@ -54,15 +64,17 @@
 @endsection
 
 @push('js')
-    <script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
+    <script src="{{ asset('plugins/ckeditor/ckeditor.js') }}"></script>
     <script>
         ClassicEditor
-            .create( document.querySelector( '#text' ) )
+            .create( document.querySelector( '#text' ),{
+            } )
             .then( editor => {
                 console.log( editor );
             } )
             .catch( error => {
                 console.error( error );
             } );
+
     </script>
 @endpush

@@ -6,10 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class SessionPost extends Model
 {
+    use HasFormattedText;
+
     protected $fillable = [
         'user_id',
         'character_id',
         'session_id',
+        'title',
         'text'
     ];
 
@@ -24,4 +27,6 @@ class SessionPost extends Model
     public function session() {
         return $this->belongsTo('App\\Models\\Session');
     }
+
+
 }

@@ -47,11 +47,23 @@
                                 </select>
                                 {!! $errors->first('character_id', '<div class="invalid-feedback">:message</div>') !!}
                             </div>
+                            <div class="form-group">
+                                <label for="title">Título</label>
+                                <input
+                                        name="title"
+                                        id="title"
+                                        value="{{ old('title') }}"
+                                        placeholder="Una aventura increible"
+                                        class="form-control {!! $errors->first('title', 'is-invalid') !!}"
+                                >
+                                {!! $errors->first('title', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
 
                             <div class="form-group">
                                 <label for="text">Diario</label>
                                 <textarea name="text" id="text"
                                           class="form-control {!! $errors->first('text', 'is-invalid') !!}"
+                                          placeholder="El diario de la sesión anima a los personajes a contar sus experiencias en el rol. Puedes extenderte todo lo que quieras. Es importante que cuentes el diario desde la perspectiva de tu personaje (narrado preferentemente en primera persona). Recuerda que no puedes modificar los hechos que ocurrieron durante la sesión, solo narrarlos según tu perspectiva."
                                 >{{ old('text') }}</textarea>
                                 {!! $errors->first('text', '<div class="invalid-feedback">:message</div>') !!}
                             </div>

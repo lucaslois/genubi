@@ -60,4 +60,8 @@ class Session extends Model
     public function visites() {
         return $this->belongsToMany('App\\Models\\User', 'session_visites');
     }
+
+    public function formattedText() {
+        return Autocomplete::format($this->text);
+    }
 }

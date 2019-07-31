@@ -102,3 +102,5 @@ Route::put('characters/{id}/edit-dm', 'CharacterController@updateDm')->name('cha
 
 // USERS
 Route::resource('/users', 'UserController');
+
+Route::get('/test', 'AutocompleteController@index');

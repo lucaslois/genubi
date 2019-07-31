@@ -24,7 +24,8 @@ class SessionPostController extends Controller
     public function store($id, Request $request) {
         $this->validate($request, [
             'character_id' => 'required',
-            'text' => 'required'
+            'text' => 'required',
+            'title' => 'required'
         ]);
         $session = Session::findOrFail($id);
         $selected_campaign = $session->campaign;
@@ -52,9 +53,15 @@ class SessionPostController extends Controller
     }
 
     public function update($id, Request $request) {
+        $this->validate($request, [
+            'text' => 'required',
+            'title' => 'required'
+        ]);
+
         $user = Auth::user();
         $post = $user->sessionPosts()->findOrFail($id);
         $post->text = $request->text;
+        $post->title = $request->title;
         $post->save();
 
         Alert::send('El post se ha guardado correctamente');

@@ -69,7 +69,7 @@ class CampaignController extends Controller
             $campaign->background_image = Storage::url("public/campaigns/$name");
             $img = Image::make($request->background_image);
             $img->fit(350, 200);
-            $path = "public/characters/$name_mini";
+            $path = "public/campaigns/$name_mini";
             Storage::put($path, $img->stream());
 
             $campaign->background_image_mini = Storage::url($path);
@@ -118,7 +118,7 @@ class CampaignController extends Controller
 
             $img = Image::make($request->background_image);
             $img->fit(350, 200);
-            $path = "public/characters/$name_mini";
+            $path = "public/campaigns/$name_mini";
             Storage::put($path, $img->stream());
 
             $campaign->background_image_mini = Storage::url($path);
