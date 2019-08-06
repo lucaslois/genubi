@@ -43,12 +43,13 @@ function createCkEditor(elem) {
                 '</div>' +
                 '</li>',
             outputTemplate: '@{slug}',
-            minChars: 2
+            minChars: 3
         }]
     });
 
     function madeMention(opts, callback) {
-        axios.defaults.baseURL = window.location;
+        axios.defaults.baseURL = window.location.origin;
+        console.log(axios.defaults.baseURL);
         axios.get('api/autocomplete?search=' + opts.query).then(res => {
             var data = res.data.characters;
             callback(data);

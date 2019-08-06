@@ -30,7 +30,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/layouts/components/navbar.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
+            <state relative-caret-position="1628">
               <caret line="74" column="18" selection-start-line="74" selection-start-column="18" selection-end-line="74" selection-end-column="18" />
             </state>
           </provider>
@@ -39,17 +39,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/css/custom.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="131" lean-forward="true" selection-start-line="131" selection-end-line="131" />
+            <state relative-caret-position="2882">
+              <caret line="131" selection-start-line="131" selection-end-line="131" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/pages/sessions/create_post.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1804">
+              <caret line="82" column="54" selection-start-line="82" selection-start-column="54" selection-end-line="82" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/plugins/ckeditor/customCkEditor.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="924">
+              <caret line="45" column="23" lean-forward="true" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/pages/sessions/create_post.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/pages/campaigns/me.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="703">
-              <caret line="86" column="13" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="13" />
+            <state relative-caret-position="352">
+              <caret line="70" column="38" selection-start-line="70" selection-start-column="38" selection-end-line="70" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -57,7 +75,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/pages/sessions/edit_post.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
+            <state relative-caret-position="1452">
               <caret line="66" selection-start-line="66" selection-end-line="71" selection-end-column="13" />
             </state>
           </provider>
@@ -105,7 +123,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/migrations/2019_07_30_204851_add_more_data_to_characters_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_07_30_212514_add_title_to_session_posts_table.php" />
         <option value="$PROJECT_DIR$/resources/js/ckeditor/ckeditor5-build-classic/src/ckeditor.js" />
         <option value="$PROJECT_DIR$/routes/api.php" />
@@ -131,7 +148,6 @@
         <option value="$PROJECT_DIR$/resources/views/pages/sessions/edit_post.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/sessions/edit.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Resources/CharacterResource.php" />
-        <option value="$PROJECT_DIR$/public/plugins/ckeditor/customCkEditor.js" />
         <option value="$PROJECT_DIR$/resources/views/pages/npcs/show.blade.php" />
         <option value="$PROJECT_DIR$/app/Models/Npc.php" />
         <option value="$PROJECT_DIR$/app/Models/Autocomplete.php" />
@@ -148,7 +164,6 @@
         <option value="$PROJECT_DIR$/resources/views/pages/npcs/create.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_07_31_015058_add_data_to_npcs_table.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/index.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/pages/campaigns/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/sessions/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/sessions/show.blade.php" />
         <option value="$PROJECT_DIR$/resources/sass/app.scss" />
@@ -156,6 +171,9 @@
         <option value="$PROJECT_DIR$/resources/sass/components/_navbars.scss" />
         <option value="$PROJECT_DIR$/resources/views/layouts/components/navbar.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/sessions/create_post.blade.php" />
+        <option value="$PROJECT_DIR$/public/plugins/ckeditor/customCkEditor.js" />
+        <option value="$PROJECT_DIR$/resources/views/pages/campaigns/index.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/pages/campaigns/me.blade.php" />
       </list>
     </option>
   </component>
@@ -400,11 +418,12 @@
       <workItem from="1564791960659" duration="8262000" />
       <workItem from="1564880833970" duration="112000" />
       <workItem from="1565131766542" duration="2051000" />
+      <workItem from="1565135115217" duration="259000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="163605000" />
+    <option name="totallyTimeSpent" value="164108000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -417,8 +436,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22228146" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22441365" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -433,7 +453,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.2692703" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.23843782" />
       <window_info anchor="bottom" id="Inspection Results" order="12" weight="0.3299075" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -446,13 +466,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_25_174927_create_games_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="27" column="11" lean-forward="true" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
@@ -591,13 +604,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
           <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/plugins/ckeditor/customCkEditor.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="39" column="64" selection-start-line="39" selection-start-column="64" selection-end-line="39" selection-end-column="64" />
         </state>
       </provider>
     </entry>
@@ -750,13 +756,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/pages/campaigns/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="77" column="26" lean-forward="true" selection-start-line="77" selection-start-column="26" selection-end-line="77" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/pages/sessions/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
@@ -786,29 +785,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/components/navbar.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
+        <state relative-caret-position="1628">
           <caret line="74" column="18" selection-start-line="74" selection-start-column="18" selection-end-line="74" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/css/custom.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="131" lean-forward="true" selection-start-line="131" selection-end-line="131" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/pages/sessions/edit_post.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="66" selection-start-line="66" selection-end-line="71" selection-end-column="13" />
+        <state relative-caret-position="2882">
+          <caret line="131" selection-start-line="131" selection-end-line="131" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/pages/sessions/create_post.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="703">
-          <caret line="86" column="13" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="13" />
+        <state relative-caret-position="1804">
+          <caret line="82" column="54" selection-start-line="82" selection-start-column="54" selection-end-line="82" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/pages/sessions/edit_post.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1452">
+          <caret line="66" selection-start-line="66" selection-end-line="71" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/pages/campaigns/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="71" column="25" selection-start-line="71" selection-start-column="25" selection-end-line="74" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/plugins/ckeditor/customCkEditor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="924">
+          <caret line="45" column="23" lean-forward="true" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/pages/campaigns/me.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="70" column="38" selection-start-line="70" selection-start-column="38" selection-end-line="70" selection-end-column="38" />
         </state>
       </provider>
     </entry>
