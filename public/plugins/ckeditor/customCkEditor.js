@@ -48,7 +48,7 @@ function createCkEditor(elem) {
     });
 
     function madeMention(opts, callback) {
-        axios.defaults.baseURL = 'http://genubireborn.local';
+        axios.defaults.baseURL = window.location;
         axios.get('api/autocomplete?search=' + opts.query).then(res => {
             var data = res.data.characters;
             callback(data);
