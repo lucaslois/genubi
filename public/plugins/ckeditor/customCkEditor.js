@@ -19,7 +19,7 @@ function createCkEditor(elem) {
     CKEDITOR.replace(elem, {
         plugins: 'mentions,basicstyles,undo,link,wysiwygarea,toolbar,dialogDash',
         contentsCss: [
-            'http://cdn.ckeditor.com/4.12.1/full-all/contents.css',
+            'https://cdn.ckeditor.com/4.12.1/full-all/contents.css',
             'https://ckeditor.com/docs/vendors/4.12.1/ckeditor/assets/mentions/contents.css'
         ],
         height: 200,
