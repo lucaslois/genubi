@@ -79,15 +79,10 @@
 @endsection
 
 @push('js')
-    <script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/4.12.1/standard-all/ckeditor.js"></script>
+    <script src="{{ asset('plugins/ckeditor/customCkEditor.js') }}"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
-        ClassicEditor
-            .create( document.querySelector( '#text' ) )
-            .then( editor => {
-                console.log( editor );
-            } )
-            .catch( error => {
-                console.error( error );
-            } );
+        createCkEditor('text')
     </script>
 @endpush
