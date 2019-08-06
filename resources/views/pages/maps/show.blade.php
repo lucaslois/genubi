@@ -13,16 +13,14 @@
                             <li class="breadcrumb-item"><a href="{{ url('') }}"><i class="fa fa-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="{{ route('campaigns.index') }}">Partidas</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('campaigns.show', $selected_campaign->id) }}">{{ $selected_campaign->name }}</a></li>
-                            <li class="breadcrumb-item"><a
-                                        href="{{ route('campaigns.npcs.index', $selected_campaign->id) }}">Npcs</a></li>
-                            <li class="breadcrumb-item active">{{ $npc->name }}</li>
+
                         </ol>
                     </nav>
                 </div>
-                @if($npc->campaign->user->is(auth()->user()))
+                @if($map->campaign->user->is(auth()->user()))
                 <div class="col-6">
                     <div class="buttons float-md-right">
-                        <a href="{{ route('npcs.edit', $npc->id) }}" class="btn btn-yellow btn-upper">Editar npc</a>
+                        <a href="{{ route('npcs.edit', $map->id) }}" class="btn btn-yellow btn-upper">Editar npc</a>
                     </div>
                 </div>
                 @endif
@@ -33,12 +31,9 @@
 
     <section class="character-profile">
         <div class="container">
-            <h1>{{ $npc->name }}</h1>
+            <h1>{{ $map->name }}</h1>
             <div class="box box-border-top">
-                <img src="{{ $npc->getImage() }}" alt="">
-                <div class="text mt-3">
-                    {!! $npc->formattedText() !!}
-                </div>
+                <div id="map"></div>
             </div>
         </div>
     </section>
@@ -51,3 +46,17 @@
         </div>
     </section>
 @endsection
+
+@push('css')
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" />
+@endpush
+
+@push('js')
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map', {
+            center: [51.505, -0.09],
+            zoom: 13
+        });
+    </script>
+@endpush

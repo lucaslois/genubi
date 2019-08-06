@@ -12,7 +12,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ url('') }}"><i class="fa fa-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="{{ route('campaigns.index') }}">Partidas</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('campaigns.show', $campaign->id) }}">{{ $campaign->name }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('campaigns.show', $selected_campaign->id) }}">{{ $selected_campaign->name }}</a></li>
                             <li class="breadcrumb-item active">Npcs</li>
                         </ol>
                     </nav>
@@ -20,7 +20,7 @@
                 @if($selected_campaign->user->is(auth()->user()))
                 <div class="col-md-6">
                     <div class="buttons float-md-right">
-                        <a href="{{ route('npcs.create', ['campaign_id' => $selected_campaign->id]) }}" class="btn btn-success btn-square btn-upper">Crear NPC</a>
+                        <a href="{{ route('npcs.create') }}" class="btn btn-success btn-square btn-upper">Crear Mapa</a>
                     </div>
                 </div>
                 @endif
@@ -31,7 +31,7 @@
 
     <section>
         <div class="container">
-            <h1>NPCs</h1>
+            <h1>Mapas</h1>
             <div class="box box-border-top">
                 <p>Aquí se listan todos los NPCs dados de alta en el sistema. Todos los NPCs públicos podrán ser @mencionados en cualquier artículo del mundo.</p>
             </div>
@@ -60,7 +60,7 @@
             <div class="box box-border-top">
                 <div class="row">
                     <div class="col-12">
-                        {{ $npcs->links() }}
+                        {{ $maps->links() }}
                         <table class="table">
                             <thead>
                             <tr>
@@ -69,19 +69,12 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @forelse($npcs as $npc)
+                            @forelse($maps as $map)
                                 <tr>
-                                    <td><img class="img-thumbnail npc-avatar" src="{{ $npc->getImage() }}" alt=""></td>
                                     <td>
-                                        <div class="square" style="background-color: {{ $npc->color }}"></div>
-                                        <span class="npc-name"><a href="{{ route('npcs.show', $npc->id) }}">{{ $npc->name }}</a></span>
-                                        @if($npc->enemy)
-                                            <span class="badge badge-danger">Enemigo</span>
-                                        @endif
-                                        @if(!$npc->public)
-                                            <span class="badge badge-primary">Privado</span>
-                                        @endif
-                                        <span class="npc-description">{{ $npc->description }}</span>
+                                        <div class="square" style="background-color: {{ $map->color }}"></div>
+                                        <span class="npc-name"><a href="{{ route('maps.show', $map->id) }}">{{ $map->name }}</a></span>
+                                        <span class="npc-description">{{ $map->description }}</span>
                                     </td>
                                 </tr>
                             @empty
@@ -92,7 +85,7 @@
                             </tbody>
                         </table>
 
-                        {{ $npcs->links() }}
+                        {{ $maps->links() }}
                     </div>
                 </div>
             </div>

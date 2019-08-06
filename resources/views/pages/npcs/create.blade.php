@@ -2,15 +2,19 @@
 
 
 @section('content')
+    @include('layouts.components.selected_campaign')
 
     <section class="main news">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-8">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i></a></li>
-                            <li class="breadcrumb-item active">Crear NPC</li>
+                            <li class="breadcrumb-item"><a href="{{ url('') }}"><i class="fa fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('campaigns.index') }}">Partidas</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('campaigns.show', $selected_campaign->id) }}">{{ $selected_campaign->name }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('campaigns.npcs.index', $selected_campaign->id) }}">Npcs</a></li>
+                            <li class="breadcrumb-item active">Crear Npc</li>
                         </ol>
                     </nav>
                 </div>
@@ -28,19 +32,7 @@
                         <form action="{{ route('npcs.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method("POST")
-                            <div class="form-group">
-                                <label for="campaign_id">Partida</label>
-                                <select
-                                        id="campaign_id"
-                                        name="campaign_id"
-                                        type="text"
-                                        class="form-control {!! $errors->first('campaign_id', 'is-invalid') !!}">
-                                    @foreach($campaigns as $campaign)
-                                        <option value="{{ $campaign->id }}">{{ $campaign->name }}</option>
-                                    @endforeach
-                                </select>
-                                {!! $errors->first('campaign_id', '<div class="invalid-feedback">:message</div>') !!}
-                            </div>
+                            <input type="text" name="campaign_id" value="{{ $selected_campaign->id }}" hidden>
 
                             <div class="form-group">
                                 <label for="name">Nombre</label>
@@ -111,7 +103,7 @@
                                     </div>
                                 </div>
                                 {!! $errors->first('public', '<div class="invalid-feedback">:message</div>') !!}
-                                <div class="checkbox-mini">* Si el personaje es público, aparecerá en la lista de NPCs de tu campaña.</div>
+                                <div class="checkbox-mini">* Si el personaje es público, aparecerá en la lista de NPCs de tu campaña y el resto de jugadores podrán mencionarlo en sus posteos.</div>
                             </div>
 
                             <div class="form-group">
@@ -121,7 +113,7 @@
                                         name="description"
                                         type="text"
                                         class="form-control {!! $errors->first('description', 'is-invalid') !!}"
-                                        placeholder="Contanos brevemente quién es este NPC"
+                                        placeholder="Su nombre es Lyrette, pricesa de Celeria. Hija de Rodolphus Flint y Myrcella Gingar. Su trabajo es gobernar la ciudad de Celeria con mano firme y justa"
                                 >{{ old('description') }}</textarea>
                                 {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
                             </div>

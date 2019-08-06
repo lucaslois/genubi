@@ -1,71 +1,57 @@
 function createCkEditor(elem) {
-    return ClassicEditor
-        .create(document.querySelector(elem), {
-            mention: {
-                feeds: [
-                    {
-                        marker: '@',
-                        feed: ['@Barney', '@Lily', '@Marshall', '@Robin', '@Ted'],
-                        minimumCharacters: 1
-                    }
-                ]
-            }
-        })
-        .then(editor => {
-            console.log(editor);
-        })
-        .catch(error => {
-            console.error(error);
-        });
-
-    function MentionCustomization(editor) {
-        // The upcast converter will convert view <a class="mention" href="" data-user-id="">
-        // elements to the model 'mention' text attribute.
-        editor.conversion.for('upcast').elementToAttribute({
-            view: {
-                name: 'a',
-                key: 'data-mention',
-                classes: 'mention',
-                attributes: {
-                    href: true,
-                    'data-user-id': true
+    CKEDITOR.plugins.add('dialogDash', {
+        icons: 'https://raw.githubusercontent.com/ckeditor/ckeditor-docs-samples/master/tutorial-timestamp/timestamp/icons/timestamp.png',
+        init: function( editor ) {
+            editor.addCommand( 'dialogDash', {
+                exec: function( editor ) {
+                    var now = new Date();
+                    editor.insertHtml( '—' );
                 }
-            },
-            model: {
-                key: 'mention',
-                value: viewItem => {
-                    // The mention feature expects that the mention attribute value
-                    // in the model is a plain object with a set of additional attributes.
-                    // In order to create a proper object use the toMentionAttribute() helper method:
-                    const mentionAttribute = editor.plugins.get('Mention').toMentionAttribute(viewItem, {
-                        // Add any other properties that you need.
-                        link: viewItem.getAttribute('href'),
-                        userId: viewItem.getAttribute('data-user-id')
-                    });
+            });
+            editor.ui.addButton( 'DialogDash', {
+                label: 'Raya de dialogo',
+                command: 'dialogDash',
+                toolbar: 'insert'
+            });
+        }
+    });
 
-                    return mentionAttribute;
-                }
-            },
-            converterPriority: 'high'
-        });
+    CKEDITOR.replace(elem, {
+        plugins: 'mentions,basicstyles,undo,link,wysiwygarea,toolbar,dialogDash',
+        contentsCss: [
+            'http://cdn.ckeditor.com/4.12.1/full-all/contents.css',
+            'https://ckeditor.com/docs/vendors/4.12.1/ckeditor/assets/mentions/contents.css'
+        ],
+        height: 200,
+        extraPlugins: 'dialogDash',
+        toolbar: [{
+            name: 'document',
+            items: ['Undo', 'Redo']
+        },
+        {
+            name: 'basicstyles',
+            items: ['Bold', 'Italic', 'Strike', 'DialogDash']
+        }],
+        mentions: [{
+            feed: madeMention,
+            itemTemplate: '<li data-id="{id}" class="mention-li">' +
+                '<img class="mention-image" src="{avatar}" />' +
+                '<div class="mention-data">' +
+                '<span class="mention-right">Character</span>' +
+                '<span class="mention-slug">{name}</span>' +
+                '<span class="mention-name">{slug}</span>' +
+                '</div>' +
+                '</li>',
+            outputTemplate: '@{slug}',
+            minChars: 2
+        }]
+    });
 
-        // Downcast the model 'mention' text attribute to a view <a> element.
-        editor.conversion.for('downcast').attributeToElement({
-            model: 'mention',
-            view: (modelAttributeValue, viewWriter) => {
-                // Do not convert empty attributes (lack of value means no mention).
-                if (!modelAttributeValue) {
-                    return;
-                }
-
-                return viewWriter.createAttributeElement('a', {
-                    class: 'mention',
-                    'data-mention': modelAttributeValue.id,
-                    'data-user-id': modelAttributeValue.userId,
-                    'href': modelAttributeValue.link
-                });
-            },
-            converterPriority: 'high'
+    function madeMention(opts, callback) {
+        axios.defaults.baseURL = 'http://genubireborn.local';
+        axios.get('api/autocomplete?search=' + opts.query).then(res => {
+            var data = res.data.characters;
+            callback(data);
         });
     }
 }

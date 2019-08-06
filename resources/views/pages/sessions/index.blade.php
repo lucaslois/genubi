@@ -20,7 +20,7 @@
                 @if($campaign->user->is(auth()->user()))
                 <div class="col-md-6">
                     <div class="buttons float-md-right">
-                        <a href="{{ route('sessions.create') }}" class="btn btn-success btn-upper">Crear sesión</a>
+                        <a href="{{ route('sessions.create', ['campaign_id' => $selected_campaign->id]) }}" class="btn btn-success btn-upper">Crear sesión</a>
                     </div>
                 </div>
                 @endif
@@ -75,8 +75,8 @@
                             <div class="card-footer">
                                 <a href="{{ route('sessions.show', $session->id) }}" class="btn btn-primary btn-sm">Ver sesión</a>
                                 <div class="float-md-right">
-                                    <span class="badge bg-success reaction"><i class="fa fa-thumbs-up"></i> {{ $session->positives()->count() }}</span>
-                                    <span class="badge bg-danger reaction"><i class="fa fa-thumbs-down"></i> {{ $session->negatives()->count() }}</span>
+                                    <span class="badge text-success reaction"><i class="fa fa-thumbs-up"></i> {{ $session->positives()->count() }}</span>
+                                    <span class="badge text-danger reaction"><i class="fa fa-thumbs-down"></i> {{ $session->negatives()->count() }}</span>
                                 </div>
                             </div>
                         </div>

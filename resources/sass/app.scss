@@ -591,17 +591,38 @@ hr {
 }
 
 .mention-li {
-  padding: 3px 6px;
+  padding: 16px 8px !important;
+  border-radius: 2px;
+  background: #eee;
+  border: 0;
+  min-width: 250px;
+}
+.mention-li:hover {
+  background: #ddd !important;
+}
+
+.cke_autocomplete_panel {
+  width: inherit !important;
+  max-height: unset;
+  border: 0 !important;
+  box-sizing: unset;
+  padding: 8px !important;
 }
 
 .mini-image {
   width: 1.2em;
+  margin-top: -2px;
+}
+
+.mention-data {
+  padding-top: 4px;
 }
 
 .mention-image {
-  width: 24px;
+  width: 36px;
   float: left;
-  margin-right: 4px;
+  margin-right: 12px;
+  border-radius: 50%;
 }
 
 .mention-name {
@@ -610,4 +631,14 @@ hr {
 .mention-slug {
   display: block;
   color: #888;
+}
+.mention-right {
+  float: right;
+  font-size: 0.8em;
+  color: #888;
+}
+
+.bg-outline-success {
+  border: 1px solid #2CA856;
+  color: #2CA856;
 }

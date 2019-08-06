@@ -86,16 +86,26 @@
   background-color: #26282a;
   border: 0;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
-  padding: 0;
+  padding: 24px;
+  position: relative;
+  left: -40px;
+}
+
+.dropdown-600 {
+  width: 600px;
+}
+
+.dropdown-200 {
+  width: 300px;
 }
 
 .dropdown-grey .dropdown-item {
   padding: 0.6rem 1.2rem;
-  border-bottom: 1px solid #333537;
 }
 
 .dropdown-grey .dropdown-item:hover {
   background: #daa520;
+  border-radius: 2px;
 }
 
 .dropdown-grey .disabled {
@@ -104,6 +114,24 @@
 
 .dropdown-grey .disabled:hover {
   cursor: not-allowed;
+}
+
+.dropdown-grey-icon {
+  width: 2em;
+  fill: white;
+  margin-right: 4px;
+}
+
+.col-border-right {
+  border-right: 1px solid rgba(238, 238, 238, 0.2);
+}
+
+.disabled {
+  background: rgba(255, 255, 255, 0.02) !important;
+}
+
+.disabled:hover {
+  background: rgba(255, 255, 255, 0.04) !important;
 }
 
 .notify-drop {
@@ -760,17 +788,39 @@ hr {
 }
 
 .mention-li {
-  padding: 3px 6px;
+  padding: 16px 8px !important;
+  border-radius: 2px;
+  background: #eee;
+  border: 0;
+  min-width: 250px;
+}
+
+.mention-li:hover {
+  background: #ddd !important;
+}
+
+.cke_autocomplete_panel {
+  width: inherit !important;
+  max-height: unset;
+  border: 0 !important;
+  box-sizing: unset;
+  padding: 8px !important;
 }
 
 .mini-image {
   width: 1.2em;
+  margin-top: -2px;
+}
+
+.mention-data {
+  padding-top: 4px;
 }
 
 .mention-image {
-  width: 24px;
+  width: 36px;
   float: left;
-  margin-right: 4px;
+  margin-right: 12px;
+  border-radius: 50%;
 }
 
 .mention-name {
@@ -780,6 +830,17 @@ hr {
 .mention-slug {
   display: block;
   color: #888;
+}
+
+.mention-right {
+  float: right;
+  font-size: 0.8em;
+  color: #888;
+}
+
+.bg-outline-success {
+  border: 1px solid #2CA856;
+  color: #2CA856;
 }
 
 /*# sourceMappingURL=custom.css.map */

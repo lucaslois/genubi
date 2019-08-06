@@ -44,11 +44,12 @@ class SessionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $user = Auth::user();
         $campaigns = $user->campaigns;
-        return view('pages.sessions.create', compact('campaigns'));
+        $selected_campaign = Campaign::findOrFail($request->campaign_id);
+        return view('pages.sessions.create', compact('campaigns', 'selected_campaign'));
     }
 
     /**

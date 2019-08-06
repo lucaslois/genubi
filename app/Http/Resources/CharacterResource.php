@@ -18,7 +18,8 @@ class CharacterResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'slug' => $this->slug,
-            'avatar' => $this->getImage()
+            'avatar' => $this->getImage(),
+            'type' => get_class($this)
         ];
     }
 }

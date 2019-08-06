@@ -46,4 +46,7 @@ class Npc extends Model implements CanParticipateInChannel, CanBeFormatted
     public function formattedLink() {
         return route('npcs.show', $this->id);
     }
+    public function formattedText() {
+        return Autocomplete::format($this->text);
+    }
 }

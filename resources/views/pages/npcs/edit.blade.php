@@ -14,6 +14,7 @@
                             <li class="breadcrumb-item"><a href="{{ route('campaigns.index') }}">Partidas</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('campaigns.show', $selected_campaign->id) }}">{{ $selected_campaign->name }}</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('campaigns.npcs.index', $selected_campaign->id) }}">Npcs</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('npcs.show', $npc->id) }}">{{ $npc->name }}</a></li>
                             <li class="breadcrumb-item active">Editar Npc</li>
                         </ol>
                     </nav>
@@ -28,7 +29,7 @@
             <h1>Edición de NPC</h1>
             <div class="box box-border-top">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-9">
                         <form action="{{ route('npcs.update', $npc->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method("PUT")
@@ -116,19 +117,80 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="text">Lore</label>
+                                <label for="desc_mentality">Mentalidad <span class="mini">(opcional)</span></label>
+                                <textarea
+                                        id="desc_mentality"
+                                        name="desc_mentality"
+                                        type="text"
+                                        class="form-control {!! $errors->first('desc_mentality', 'is-invalid') !!}"
+                                        placeholder="La mentalidad del npc. Cómo imagina. Cómo piensa. Qué dice su cerebro antes de actuar."
+                                >{{ old('desc_mentality', $npc->desc_mentality) }}</textarea>
+                                {!! $errors->first('desc_mentality', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="desc_appearance">Apariencia <span class="mini">(opcional)</span></label>
+                                <textarea
+                                        id="desc_appearance"
+                                        name="desc_appearance"
+                                        type="text"
+                                        class="form-control {!! $errors->first('desc_appearance', 'is-invalid') !!}"
+                                        placeholder="Cómo se ve el npc. ¡Descripción física y atuendo!"
+                                >{{ old('desc_appearance', $npc->desc_appearance) }}</textarea>
+                                {!! $errors->first('desc_appearance', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="desc_social_status">Status social <span class="mini">(opcional)</span></label>
+                                <textarea
+                                        id="desc_social_status"
+                                        name="desc_social_status"
+                                        type="text"
+                                        class="form-control {!! $errors->first('desc_social_status', 'is-invalid') !!}"
+                                        placeholder="Cómo se relaciona el npc. Cómo lo ven los demás. Cómo habla. Cómo se expresa."
+                                >{{ old('desc_social_status', $npc->desc_social_status) }}</textarea>
+                                {!! $errors->first('desc_social_status', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+                            <div class="form-group">
+                                <label for="famous_phrase">El NPC en 3 palabras <span class="mini">(opcional)</span></label>
+                                <textarea
+                                        id="famous_phrase"
+                                        name="famous_phrase"
+                                        type="text"
+                                        class="form-control {!! $errors->first('famous_phrase', 'is-invalid') !!}"
+                                        placeholder="Intrépido, curioso, inteligente"
+                                >{{ old('famous_phrase', $npc->famous_phrase) }}</textarea>
+                                {!! $errors->first('famous_phrase', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="private_note">Información privada <span class="mini">(opcional)</span></label>
+                                <textarea
+                                        id="private_note"
+                                        name="private_note"
+                                        type="text"
+                                        class="form-control {!! $errors->first('private_note', 'is-invalid') !!}"
+                                        placeholder="Es un peligroso nigromante..."
+                                >{{ old('private_note', $npc->private_note) }}</textarea>
+                                {!! $errors->first('private_note', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="text">Lore <span class="mini">(opcional)</span></label>
                                 <textarea
                                         id="text"
                                         name="text"
                                         type="text"
-                                        class="form-control {!! $errors->first('text', 'is-invalid') !!}">{{ old('text', $npc->text) }}</textarea>
+                                        class="form-control {!! $errors->first('text', 'is-invalid') !!}"
+                                        placeholder="Es un peligroso nigromante..."
+                                >{{ old('text', $npc->text) }}</textarea>
                                 {!! $errors->first('text', '<div class="invalid-feedback">:message</div>') !!}
                             </div>
 
                             <input type="submit" value="Guardar" class="btn btn-primary">
                         </form>
                     </div>
-                    <div class="col-4">
+                    <div class="col-3 text-center">
                         <img class="img-thumbnail" src="{{ $npc->getImage() }}" alt="">
                     </div>
                 </div>
@@ -139,15 +201,10 @@
 @endsection
 
 @push('js')
-    <script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/4.12.1/standard-all/ckeditor.js"></script>
+    <script src="{{ asset('plugins/ckeditor/customCkEditor.js') }}"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
-        ClassicEditor
-            .create( document.querySelector( '#text' ) )
-            .then( editor => {
-                console.log( editor );
-            } )
-            .catch( error => {
-                console.error( error );
-            } );
+        createCkEditor('text')
     </script>
 @endpush

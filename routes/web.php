@@ -69,6 +69,9 @@ Route::get('sessions/{id}/vote-negative', 'VoteController@negative')->name('sess
 Route::resource('npcs', 'NpcController');
 Route::get('campaigns/{id}/npcs', 'NpcController@index')->name('campaigns.npcs.index');
 
+// MAPS
+Route::resource('maps', 'MapController');
+
 // HOMEBREWS
 Route::resource('homebrews', 'HomebrewController');
 Route::get('homebrews/{id}/remove', 'HomebrewController@remove')->name('homebrews.remove');

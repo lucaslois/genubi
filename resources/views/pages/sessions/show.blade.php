@@ -52,8 +52,10 @@
                             <i class="fa fa-thumbs-down"></i> {{ $session->negatives()->count() }}
                         </a>
                     @else
-                        <span class="btn btn-success btn-square"><i class="fa fa-thumbs-up"></i> {{ $session->positives()->count() }}</span>
-                        <span class="btn btn-danger btn-square"><i class="fa fa-thumbs-down"></i> {{ $session->negatives()->count() }}</span>
+                        <div style="font-size: 24px;">
+                            <span class="text-success"><i class="fa fa-thumbs-up"></i> {{ $session->positives()->count() }}</span>
+                            <span class="text-danger"><i class="fa fa-thumbs-down"></i> {{ $session->negatives()->count() }}</span>
+                        </div>
                     @endif
                 </div>
                 <img class="img-thumbnail session-image" src="{{ $session->getImage() }}" alt="">

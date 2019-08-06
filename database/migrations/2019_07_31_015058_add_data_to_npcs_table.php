@@ -14,14 +14,14 @@ class AddDataToNpcsTable extends Migration
     public function up()
     {
         Schema::table('npcs', function (Blueprint $table) {
-            $table->string('family');
-            $table->string('race');
-            $table->string('age');
-            $table->string('desc_mentality');
-            $table->string('desc_appearance');
-            $table->string('desc_social_status');
-            $table->string('famous_phrase');
-            $table->string('nationality');
+            $table->string('family')->nullable();
+            $table->string('race')->nullable();
+            $table->string('age')->nullable();
+            $table->string('desc_mentality')->nullable();
+            $table->string('desc_appearance')->nullable();
+            $table->string('desc_social_status')->nullable();
+            $table->string('famous_phrase')->nullable();
+            $table->string('nationality')->nullable();
         });
     }
 
@@ -33,7 +33,14 @@ class AddDataToNpcsTable extends Migration
     public function down()
     {
         Schema::table('npcs', function (Blueprint $table) {
-            //
+            $table->dropColumn('family');
+            $table->dropColumn('race');
+            $table->dropColumn('age');
+            $table->dropColumn('desc_mentality');
+            $table->dropColumn('desc_appearance');
+            $table->dropColumn('desc_social_status');
+            $table->dropColumn('famous_phrase');
+            $table->dropColumn('nationality');
         });
     }
 }
