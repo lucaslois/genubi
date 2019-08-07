@@ -30,40 +30,53 @@
         <div class="container">
             <h1>Gestor de experiencias</h1>
             <div class="box box-border-top">
-                <form action="{{ route('campaigns.experiences.store', $selected_campaign->id) }}" method="POST">
-                    @csrf
-                    @method("POST")
-                    <table class="table table-bordered">
-                        <thead>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th rowspan="2">Personaje</th>
+                        <th rowspan="2">Acumulada</th>
+                        <th colspan="{{ $last_sessions->count() }}">Sesiones</th>
+                    </tr>
+                    <tr>
+                        @foreach($last_sessions as $session)
+                            <th>{{ str_limit($session->name, 10) }}</th>
+                        @endforeach
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($characters as $character)
+                        @php
+                            $xp_percentage = round($character->currentXp() * 100 / $character->xpForNextLevel($character->currentLevel()));
+                        @endphp
                         <tr>
-                            <th rowspan="2">Personaje</th>
-                            <th rowspan="2">Acumulada</th>
-                            <th colspan="{{ $last_sessions->count() }}">Sesiones</th>
-                        </tr>
-                        <tr>
+                            <td>{{ $character->name }}</td>
+                            <td>{{ mile_separator($character->experiences()->sum('value')) }}</td>
                             @foreach($last_sessions as $session)
-                                <th>{{ str_limit($session->name, 10) }}</th>
+                                <td>{{ mile_separator($character->experiences()->whereSessionId($session->id)->value('value')) }}</td>
                             @endforeach
                         </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($characters as $character)
-                            @php
-                                $xp_percentage = round($character->currentXp() * 100 / $character->xpForNextLevel($character->currentLevel()));
-                            @endphp
-                            <tr>
-                                <td>{{ $character->name }}</td>
-                                <td>{{ mile_separator($character->experiences()->sum('value')) }}</td>
-                                @foreach($last_sessions as $session)
-                                    <td>{{ mile_separator($character->experiences()->whereSessionId($session->id)->value('value')) }}</td>
-                                @endforeach
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
 
-                    <input type="submit" class="btn btn-primary" value="Confirmar">
-                </form>
+            <h1>Tabla de progresión</h1>
+            <div class="box box-border-top">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Nivel</th>
+                        <th>Experiencia necesaria para el proximo nivel</th>
+                    </tr>
+                    <tbody>
+                    @foreach($progressions as $level => $xp)
+                       <tr>
+                           <td>{{ $level }}</td>
+                           <td>{{ $xp }}</td>
+                       </tr>
+                    @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>

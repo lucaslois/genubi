@@ -293,7 +293,11 @@ hr {
 }
 
 .box-border-top {
-  border-top: 3px solid #2a4488;
+  border-top: 3px solid #882b41;
+}
+
+.box-border-top-red {
+  border-top: 3px solid #882b41;
 }
 
 .footer {

@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <!-- CUSTOM CSS -->
-    @stack('css')
-    <!-- END CUSTOM CSS -->
+@stack('css')
+<!-- END CUSTOM CSS -->
 </head>
 <body>
 <!-- CUSTOM TOPBAR -->
@@ -54,14 +54,29 @@
 </script>
 <!-- Starts Alert (alert.blade.php) -->
 <script>
-    @if(Alert::exists())
-        const text = @json(Alert::get());
-        swal(
-            'Éxito!',
-            text,
-            'success'
-        )
+            @if(Alert::exists())
+    const text = @json(Alert::get());
+    swal(
+        'Éxito!',
+        text,
+        'success'
+    )
     @endif
+
+    function confirmDelete(link) {
+        swal({
+            title: "¿Estás seguro?",
+            text: "Una vez eliminado, no podrás recuperarlo",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    window.location = link;
+                }
+            });
+    }
 </script>
 <!-- Ends Alert (alerts.blade.php) -->
 

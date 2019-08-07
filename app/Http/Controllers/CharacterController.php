@@ -205,4 +205,15 @@ class CharacterController extends Controller
 
         return redirect()->route('campaigns.show', $character->campaign->id);
     }
+
+    public function destroy($id) {
+        $user = Auth::user();
+        $character = $user->characters()->findOrFail($id);
+        if($character->name == 'Natsa' && $character->isPG())
+            $character->nerf();
+
+        Alert::send('El personaje se ha nerfeado correctamente');
+
+        return redirect()->route('characters.me');
+    }
 }
