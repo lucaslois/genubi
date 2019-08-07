@@ -66,6 +66,7 @@
                                           placeholder="El diario de la sesión anima a los personajes a contar sus experiencias en el rol. Puedes extenderte todo lo que quieras. Es importante que cuentes el diario desde la perspectiva de tu personaje (narrado preferentemente en primera persona). Recuerda que no puedes modificar los hechos que ocurrieron durante la sesión, solo narrarlos según tu perspectiva."
                                 >{{ old('text') }}</textarea>
                                 {!! $errors->first('text', '<div class="invalid-feedback">:message</div>') !!}
+                                <div class="mini">Este es un editor embebido. Puedes mencionar a otras entidades anteponiendo el caracter @.</div>
                             </div>
 
                             <input type="submit" value="Guardar" class="btn btn-primary">

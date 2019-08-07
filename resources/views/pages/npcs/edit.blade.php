@@ -29,7 +29,10 @@
             <h1>Edición de NPC</h1>
             <div class="box box-border-top">
                 <div class="row">
-                    <div class="col-9">
+                    <div class="col-12">
+                        <div class="text-center">
+                            <img class="img-thumbnail" src="{{ $npc->getImage() }}" alt="">
+                        </div>
                         <form action="{{ route('npcs.update', $npc->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method("PUT")
@@ -85,6 +88,7 @@
                                         placeholder="Por ejemplo: Director de Arcania, Herrero de Molten, Miembro de los Espada Plateada, etc."
                                         class="form-control {!! $errors->first('description', 'is-invalid') !!}">{{ old('description', $npc->description) }}</textarea>
                                 {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
+                                <div class="mini">Este es un editor embebido. Puedes mencionar a otras entidades anteponiendo el caracter @.</div>
                             </div>
 
                             <div class="form-group">
@@ -185,13 +189,11 @@
                                         placeholder="Es un peligroso nigromante..."
                                 >{{ old('text', $npc->text) }}</textarea>
                                 {!! $errors->first('text', '<div class="invalid-feedback">:message</div>') !!}
+                                <div class="mini">Este es un editor embebido. Puedes mencionar a otras entidades anteponiendo el caracter @.</div>
                             </div>
 
                             <input type="submit" value="Guardar" class="btn btn-primary">
                         </form>
-                    </div>
-                    <div class="col-3 text-center">
-                        <img class="img-thumbnail" src="{{ $npc->getImage() }}" alt="">
                     </div>
                 </div>
             </div>
@@ -205,6 +207,6 @@
     <script src="{{ asset('plugins/ckeditor/customCkEditor.js') }}"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
-        createCkEditor('text')
+        createCkEditor('text');
     </script>
 @endpush

@@ -89,6 +89,7 @@
                                         placeholder="Su nombre es Lyrette, pricesa de Celeria. Hija de Rodolphus Flint y Myrcella Gingar. Su trabajo es gobernar la ciudad de Celeria con mano firme y justa"
                                 >{{ old('description') }}</textarea>
                                 {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
+                                <div class="mini">Este es un editor embebido. Puedes mencionar a otras entidades anteponiendo el caracter @.</div>
                             </div>
 
                             <input type="submit" value="Guardar" class="btn btn-primary">
@@ -106,6 +107,6 @@
     <script src="{{ asset('plugins/ckeditor/customCkEditor.js') }}"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
-        createCkEditor('description')
+        createCkEditor('description');
     </script>
 @endpush

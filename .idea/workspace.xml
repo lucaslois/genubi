@@ -27,56 +27,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/layouts/components/navbar.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1628">
-              <caret line="74" column="18" selection-start-line="74" selection-start-column="18" selection-end-line="74" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/css/custom.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2882">
-              <caret line="131" selection-start-line="131" selection-end-line="131" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/pages/sessions/create_post.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1804">
-              <caret line="82" column="54" selection-start-line="82" selection-start-column="54" selection-end-line="82" selection-end-column="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/pages/npcs/create.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="254">
+              <caret line="78" selection-start-line="78" selection-end-line="78" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/pages/npcs/edit.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="591">
+              <caret line="192" column="34" lean-forward="true" selection-start-line="181" selection-start-column="26" selection-end-line="192" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/pages/sessions/create.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="643">
+              <caret line="109" selection-start-line="109" selection-end-line="109" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/plugins/ckeditor/customCkEditor.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="52" column="37" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/pages/campaigns/me.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="70" column="38" selection-start-line="70" selection-start-column="38" selection-end-line="70" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/pages/sessions/edit_post.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1452">
-              <caret line="66" selection-start-line="66" selection-end-line="71" selection-end-column="13" />
+            <state relative-caret-position="657">
+              <caret line="45" column="23" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -85,8 +67,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>dropdown-men</find>
-      <find>npc-</find>
       <find>store</find>
       <find>Activity</find>
       <find>like</find>
@@ -115,6 +95,8 @@
       <find>dropdown-hover</find>
       <find>.disabled</find>
       <find>edit_</find>
+      <find>dialogDash</find>
+      <find>este es un edi</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -146,22 +128,18 @@
         <option value="$PROJECT_DIR$/app/Models/Character.php" />
         <option value="$PROJECT_DIR$/app/Models/CanBeFormatted.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/sessions/edit_post.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/pages/sessions/edit.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Resources/CharacterResource.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/npcs/show.blade.php" />
         <option value="$PROJECT_DIR$/app/Models/Npc.php" />
         <option value="$PROJECT_DIR$/app/Models/Autocomplete.php" />
-        <option value="$PROJECT_DIR$/resources/views/pages/npcs/edit.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_08_03_023610_create_maps_table.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/maps/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/maps/show.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MapController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SessionController.php" />
-        <option value="$PROJECT_DIR$/resources/views/pages/sessions/create.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/npcs/index.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/NpcController.php" />
-        <option value="$PROJECT_DIR$/resources/views/pages/npcs/create.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_07_31_015058_add_data_to_npcs_table.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/sessions/index.blade.php" />
@@ -170,10 +148,14 @@
         <option value="$PROJECT_DIR$/public/css/custom.css" />
         <option value="$PROJECT_DIR$/resources/sass/components/_navbars.scss" />
         <option value="$PROJECT_DIR$/resources/views/layouts/components/navbar.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/pages/sessions/create_post.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/campaigns/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/campaigns/me.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/pages/sessions/create_post.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/pages/sessions/edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/pages/sessions/create.blade.php" />
         <option value="$PROJECT_DIR$/public/plugins/ckeditor/customCkEditor.js" />
+        <option value="$PROJECT_DIR$/resources/views/pages/npcs/edit.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/pages/npcs/create.blade.php" />
       </list>
     </option>
   </component>
@@ -418,12 +400,12 @@
       <workItem from="1564791960659" duration="8262000" />
       <workItem from="1564880833970" duration="112000" />
       <workItem from="1565131766542" duration="2051000" />
-      <workItem from="1565135115217" duration="524000" />
+      <workItem from="1565135115217" duration="1329000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="164373000" />
+    <option name="totallyTimeSpent" value="165178000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -453,7 +435,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.23843782" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.24049331" />
       <window_info anchor="bottom" id="Inspection Results" order="12" weight="0.3299075" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -690,31 +672,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/pages/sessions/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="110" selection-start-line="110" selection-end-line="115" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/pages/sessions/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="777">
-          <caret line="109" column="13" lean-forward="true" selection-start-line="109" selection-start-column="13" selection-end-line="109" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/pages/npcs/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="4" selection-start-line="4" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/pages/npcs/edit.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="17" selection-end-column="78" />
         </state>
       </provider>
     </entry>
@@ -739,13 +700,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
           <caret line="52" selection-start-line="52" selection-end-line="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/pages/npcs/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="30" column="39" lean-forward="true" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -797,13 +751,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/pages/sessions/create_post.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1804">
-          <caret line="82" column="54" selection-start-line="82" selection-start-column="54" selection-end-line="82" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/pages/sessions/edit_post.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1452">
@@ -825,10 +772,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/pages/sessions/create_post.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="68" selection-start-line="68" selection-end-line="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/pages/sessions/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="92" column="34" selection-start-line="92" selection-start-column="34" selection-end-line="92" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/pages/sessions/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="643">
+          <caret line="109" selection-start-line="109" selection-end-line="109" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/plugins/ckeditor/customCkEditor.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="52" column="37" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="37" />
+        <state relative-caret-position="657">
+          <caret line="45" column="23" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/pages/npcs/edit.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="591">
+          <caret line="192" column="34" lean-forward="true" selection-start-line="181" selection-start-column="26" selection-end-line="192" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/pages/npcs/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="78" selection-start-line="78" selection-end-line="78" />
         </state>
       </provider>
     </entry>

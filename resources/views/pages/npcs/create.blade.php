@@ -28,7 +28,7 @@
             <h1>Creación de nuevo NPC</h1>
             <div class="box box-border-top">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-12">
                         <form action="{{ route('npcs.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method("POST")
@@ -175,8 +175,21 @@
                                         placeholder="Es un peligroso nigromante..."
                                 >{{ old('private_note') }}</textarea>
                                 {!! $errors->first('private_note', '<div class="invalid-feedback">:message</div>') !!}
+
                             </div>
 
+                            <div class="form-group">
+                                <label for="text">Lore <span class="mini">(opcional)</span></label>
+                                <textarea
+                                        id="text"
+                                        name="text"
+                                        type="text"
+                                        class="form-control {!! $errors->first('text', 'is-invalid') !!}"
+                                        placeholder="Es un peligroso nigromante..."
+                                >{{ old('text') }}</textarea>
+                                {!! $errors->first('text', '<div class="invalid-feedback">:message</div>') !!}
+                                <div class="mini">Este es un editor embebido. Puedes mencionar a otras entidades anteponiendo el caracter @.</div>
+                            </div>
 
                             <input type="submit" value="Guardar" class="btn btn-primary">
                         </form>
@@ -188,3 +201,11 @@
 
 @endsection
 
+@push('js')
+    <script src="https://cdn.ckeditor.com/4.12.1/standard-all/ckeditor.js"></script>
+    <script src="{{ asset('plugins/ckeditor/customCkEditor.js') }}"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        createCkEditor('text')
+    </script>
+@endpush
