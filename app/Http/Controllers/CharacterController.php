@@ -209,10 +209,9 @@ class CharacterController extends Controller
     public function destroy($id) {
         $user = Auth::user();
         $character = $user->characters()->findOrFail($id);
-        if($character->name == 'Natsa' && $character->isPG())
-            $character->nerf();
+        $character->delete();
 
-        Alert::send('El personaje se ha nerfeado correctamente');
+        Alert::send('El personaje se ha borrado correctamente');
 
         return redirect()->route('characters.me');
     }
