@@ -42,6 +42,7 @@ Route::get('campaigns/{id}/create-link/disable', 'CampaignController@linkDisable
 Route::resource('/campaigns', 'CampaignController');
 Route::get('campaigns/{id}/remove', 'CampaignController@remove')->name('campaigns.remove');
 
+Route::get('/campaigns/{id}/experiences-panel', 'ExperienceController@panel')->name('campaigns.experiences.panel');
 Route::get('/campaigns/{id}/experiences', 'ExperienceController@index')->name('campaigns.experiences.index');
 Route::post('/campaigns/{id}/experiences', 'ExperienceController@store')->name('campaigns.experiences.store');
 
@@ -69,6 +70,7 @@ Route::get('sessions/{id}/vote-negative', 'VoteController@negative')->name('sess
 Route::resource('npcs', 'NpcController');
 Route::get('campaigns/{id}/npcs', 'NpcController@index')->name('campaigns.npcs.index');
 
+// MAPS
 // MAPS
 Route::resource('maps', 'MapController');
 

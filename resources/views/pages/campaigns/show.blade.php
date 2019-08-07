@@ -23,8 +23,8 @@
                             <span class="dropdown">
                                 <a href="" data-toggle="dropdown" class="btn btn-warning btn-square"><i class="fas fa-caret-down"></i></a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="{{ route('campaigns.experiences.index', $campaign->id) }}">Repartir experiencias</a>
-                                    <a class="dropdown-item" href="{{ route('campaigns.link.index', $campaign->id) }}">Crear enlace de invitación</a>
+                                    <a class="dropdown-item" href="{{ route('campaigns.experiences.panel', $campaign->id) }}"><i class="fas fa-chart-line"></i> Gestor de experiencias</a>
+                                    <a class="dropdown-item" href="{{ route('campaigns.link.index', $campaign->id) }}"><i class="fas fa-link"></i> Crear enlace de invitación</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('campaigns.remove', $campaign->id) }}"><i class="fas fa-trash"></i> Eliminar partida</a>
                                 </div>
@@ -89,8 +89,8 @@
                         <dd>{{ $campaign->sessions->count() }} sesiones</dd>
                         <dt>Votos</dt>
                         <dd>
-                            <span class="badge bg-success reaction"><i class="fa fa-thumbs-up"></i> {{ $campaign->positives() }}</span>
-                            <span class="badge bg-danger reaction"><i class="fa fa-thumbs-down"></i> {{ $campaign->negatives() }}</span>
+                            <span class="text-success reaction"><i class="fa fa-thumbs-up"></i> {{ $campaign->positives() }}</span>
+                            <span class="text-danger reaction"><i class="fa fa-thumbs-down"></i> {{ $campaign->negatives() }}</span>
                         </dd>
                     </div>
                 </div>

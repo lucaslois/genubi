@@ -13,6 +13,17 @@ use Illuminate\Support\Facades\Auth;
 
 class ExperienceController extends Controller
 {
+    public function panel($id) {
+        $user = Auth::user();
+        $selected_campaign = Campaign::findOrFail($id);
+        abort_if($selected_campaign->user->isNot($user), 401);
+
+        $last_sessions = $selected_campaign->sessions->take(7);
+        $characters = $selected_campaign->activeCharacters();
+
+        return view('pages.campaigns.experiences_panel', compact('selected_campaign', 'last_sessions', 'characters'));
+    }
+
     public function index($id) {
         $user = Auth::user();
         $selected_campaign = Campaign::findOrFail($id);

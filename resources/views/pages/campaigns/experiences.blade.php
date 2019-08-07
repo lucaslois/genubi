@@ -6,13 +6,14 @@
     <section class="main news">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="fa fa-home"></i></a></li>
                             <li class="breadcrumb-item"><a href="{{ route('campaigns.index') }}">Partidas</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('campaigns.show', $selected_campaign->id) }}">{{ $selected_campaign->name }}</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Repartir experiencias</li>
+                            <li class="breadcrumb-item"><a href="{{ route('campaigns.experiences.panel', $selected_campaign->id) }}">Gestor de experiencias</a></li>
+                            <li class="breadcrumb-item active">Repartir experiencias</li>
                         </ol>
                     </nav>
                 </div>
