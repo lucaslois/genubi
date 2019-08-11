@@ -205,4 +205,14 @@ class CharacterController extends Controller
 
         return redirect()->route('campaigns.show', $character->campaign->id);
     }
+
+    public function destroy($id) {
+        $user = Auth::user();
+        $character = $user->characters()->findOrFail($id);
+        $character->delete();
+
+        Alert::send('El personaje se ha borrado correctamente');
+
+        return redirect()->route('characters.me');
+    }
 }

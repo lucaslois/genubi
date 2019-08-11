@@ -17,7 +17,6 @@
                 </div>
             </div>
         </div>
-
     </section>
 
     <section>
@@ -25,7 +24,7 @@
             <h1>Edición de partida</h1>
             <div class="box box-border-top">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-12">
                         <form action="{{ route('campaigns.update', $campaign->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method("PUT")
@@ -110,5 +109,4 @@
             </div>
         </div>
     </section>
-
 @endsection

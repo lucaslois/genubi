@@ -182,6 +182,9 @@
                                     </div>
 
                                     <input type="submit" value="Guardar" class="btn btn-primary">
+                                    <div class="float-right">
+                                        <a href="javascript:confirmDelete('{{ route('characters.remove', $character->id) }}')" class="btn btn-danger">Borrar personaje</a>
+                                    </div>
                                 </form>
                             </div>
                             <div class="col-4">

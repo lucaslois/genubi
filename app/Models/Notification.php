@@ -12,7 +12,8 @@ class Notification extends Model
         'image',
         'link',
         'viewed',
-        'clicked'
+        'clicked',
+        'code'
     ];
 
     public function user() {

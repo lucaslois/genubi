@@ -6,7 +6,7 @@ namespace App\Models;
 
 class Progress
 {
-    private static $progreso_experiencia = array(
+    const TABLE = array(
         1 => 100,
         2 => 400,
         3 => 1000,
@@ -41,7 +41,7 @@ class Progress
 
     public static function get($num = null) {
         if($num !== null)
-            return static::$progreso_experiencia[$num];
-        return static::$progreso_experiencia;
+            return static::TABLE[$num];
+        return static::TABLE;
     }
 }

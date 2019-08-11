@@ -150,8 +150,6 @@
 
 .notify-bar {
   background: #eee;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
   color: #888;
   font-size: 12px;
   text-transform: uppercase;
@@ -168,6 +166,7 @@
   padding: 6px 6px;
   font-size: 14px;
   font-weight: 400;
+  position: relative;
 }
 
 .notify-notif:hover {
@@ -175,10 +174,17 @@
 }
 
 .notify-icon {
-  width: 100%;
   border-radius: 50%;
-  display: block;
-  margin: 0 auto;
+  height: 48px;
+  width: 48px;
+  position: absolute;
+  left: 6px;
+  top: 6px;
+}
+
+.notify-text {
+  margin-left: 55px;
+  margin-top: 2px;
 }
 
 .notify-link {
@@ -293,7 +299,11 @@ hr {
 }
 
 .box-border-top {
-  border-top: 3px solid #2a4488;
+  border-top: 3px solid #423c88;
+}
+
+.box-border-top-red {
+  border-top: 3px solid #882B41;
 }
 
 .footer {
@@ -841,6 +851,23 @@ hr {
 .bg-outline-success {
   border: 1px solid #2CA856;
   color: #2CA856;
+}
+
+.knowledge {
+  position: relative;
+  font-size: 14px;
+}
+
+.knowledge-image {
+  border-radius: 50%;
+  height: 48px;
+  width: 48px;
+  position: absolute;
+  left: 0;
+}
+
+.knowledge-username {
+  margin-left: 55px;
 }
 
 /*# sourceMappingURL=custom.css.map */

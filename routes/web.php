@@ -42,6 +42,7 @@ Route::get('campaigns/{id}/create-link/disable', 'CampaignController@linkDisable
 Route::resource('/campaigns', 'CampaignController');
 Route::get('campaigns/{id}/remove', 'CampaignController@remove')->name('campaigns.remove');
 
+Route::get('/campaigns/{id}/experiences-panel', 'ExperienceController@panel')->name('campaigns.experiences.panel');
 Route::get('/campaigns/{id}/experiences', 'ExperienceController@index')->name('campaigns.experiences.index');
 Route::post('/campaigns/{id}/experiences', 'ExperienceController@store')->name('campaigns.experiences.store');
 
@@ -70,12 +71,15 @@ Route::resource('npcs', 'NpcController');
 Route::get('campaigns/{id}/npcs', 'NpcController@index')->name('campaigns.npcs.index');
 
 // MAPS
+// MAPS
 Route::resource('maps', 'MapController');
 
 // HOMEBREWS
 Route::resource('homebrews', 'HomebrewController');
 Route::get('homebrews/{id}/remove', 'HomebrewController@remove')->name('homebrews.remove');
 Route::get('campaigns/{id}/homebrews', 'HomebrewController@index')->name('campaigns.homebrews.index');
+
+Route::resource('knowledges', 'KnowledgeController');
 
 // CANALES
 Route::resource('channels', 'ChannelController');
@@ -99,11 +103,10 @@ Route::get('characters/me', 'CharacterController@me')->name('characters.me');
 Route::post('characters/{id}/class', 'CharacterController@addClass')->name('characters.addclass');
 Route::get('characters/{id}/class/{class_id}/delete', 'CharacterController@removeClass')->name('characters.removeclass');
 Route::resource('/characters', 'CharacterController');
+Route::get('/characters/{id}/remove', 'CharacterController@destroy')->name('characters.remove');
 
 Route::get('characters/{id}/edit-dm', 'CharacterController@editDm')->name('characters.dm.edit');
 Route::put('characters/{id}/edit-dm', 'CharacterController@updateDm')->name('characters.dm.update');
 
 // USERS
 Route::resource('/users', 'UserController');
-
-Route::get('/test', 'AutocompleteController@index');

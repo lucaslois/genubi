@@ -19,7 +19,7 @@ function createCkEditor(elem) {
     CKEDITOR.replace(elem, {
         plugins: 'mentions,basicstyles,undo,link,wysiwygarea,toolbar,dialogDash',
         contentsCss: [
-            'http://cdn.ckeditor.com/4.12.1/full-all/contents.css',
+            'https://cdn.ckeditor.com/4.12.1/full-all/contents.css',
             'https://ckeditor.com/docs/vendors/4.12.1/ckeditor/assets/mentions/contents.css'
         ],
         height: 200,
@@ -40,12 +40,13 @@ function createCkEditor(elem) {
                 '</div>' +
                 '</li>',
             outputTemplate: '@{slug}',
-            minChars: 2
+            minChars: 3
         }]
     });
 
     function madeMention(opts, callback) {
-        axios.defaults.baseURL = 'http://genubireborn.local';
+        axios.defaults.baseURL = window.location.origin;
+        console.log(axios.defaults.baseURL);
         axios.get('api/autocomplete?search=' + opts.query).then(res => {
             var data = res.data.characters;
             callback(data);

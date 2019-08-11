@@ -36,7 +36,8 @@
     },
     "autoload": {
         "files": [
-            "app/Helpers/FormInputs.php"
+            "app/Helpers/FormInputs.php",
+            "app/Helpers/helpers.php"
         ],
         "psr-4": {
             "App\\": "app/"

@@ -19,8 +19,6 @@
 
 .notify-bar {
   background: #eee;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
   color: #888;
   font-size: 12px;
   text-transform: uppercase;
@@ -37,6 +35,7 @@
   padding: 6px 6px;
   font-size: 14px;
   font-weight: 400;
+  position: relative;
 }
 
 .notify-notif:hover {
@@ -44,10 +43,17 @@
 }
 
 .notify-icon {
-  width: 100%;
   border-radius: 50%;
-  display: block;
-  margin: 0 auto;
+  height: 48px;
+  width: 48px;
+  position: absolute;
+  left: 6px;
+  top: 6px;
+}
+
+.notify-text {
+  margin-left: 55px;
+  margin-top: 2px;
 }
 
 .notify-link {

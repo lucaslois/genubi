@@ -15,7 +15,7 @@
                             <li class="breadcrumb-item"><a href="{{ route('campaigns.index') }}">Partidas</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('campaigns.show', $selected_campaign->id) }}">Antiguo Mal</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('campaigns.sessions.index', $selected_campaign->id) }}">Sesiones</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('sessions.show', $selected_campaign->id) }}">{{ $session->name }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('sessions.show', $session->id) }}">{{ $session->name }}</a></li>
                             <li class="breadcrumb-item active">Editar</li>
                         </ol>
                     </nav>
@@ -89,9 +89,8 @@
                                         placeholder="Su nombre es Lyrette, pricesa de Celeria. Hija de Rodolphus Flint y Myrcella Gingar. Su trabajo es gobernar la ciudad de Celeria con mano firme y justa"
                                 >{{ old('description', $session->text) }}</textarea>
                                 {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
+                                <div class="mini">Este es un editor embebido. Puedes mencionar a otras entidades anteponiendo el caracter @.</div>
                             </div>
-
-
 
                             <input type="submit" value="Guardar" class="btn btn-primary">
                         </form>
@@ -107,11 +106,10 @@
 @endpush
 
 @push('js')
-    {{--    <script src="{{ asset('plugins/ckeditor/ckeditor.js') }}"></script>--}}
     <script src="https://cdn.ckeditor.com/4.12.1/standard-all/ckeditor.js"></script>
     <script src="{{ asset('plugins/ckeditor/customCkEditor.js') }}"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
-       createCkEditor('text')
+        createCkEditor('description')
     </script>
 @endpush
