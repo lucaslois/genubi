@@ -60,9 +60,13 @@ class Campaign extends Model
         return $this->hasMany('App\\Models\\Channel')->orderByDesc('order');
     }
 
+    public function knowledges() {
+        return $this->hasMany('App\\Models\\Knowledge');
+    }
+
     public function usersPlaying() {
         return $this->characters->map(function($character) {
-            return $this->user;
+            return $character->user;
         })->unique('id');
     }
 

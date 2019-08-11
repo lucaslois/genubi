@@ -77,4 +77,43 @@ class User extends Authenticatable
     public function activities() {
         return $this->hasMany('App\\Models\\Activity')->orderByDesc('id');
     }
+
+    public function canCreateKnowledge(Campaign $campaign) {
+        return $this->isPlayingCampaign($campaign) || $campaign->user->is($this);
+    }
+
+    public function knowledges() {
+        return $this->hasMany('App\\Models\\Knowledge');
+    }
+
+    /**
+     * @param Campaign $campaign
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function knowledgesOf(Campaign $campaign) {
+        $list_of_characters = $this->characters->pluck('id');
+
+        $query = $campaign->knowledges()->select('knowledges.*');
+        $query->leftJoin('knowledge_character', 'knowledge_character.knowledge_id', '=', 'knowledges.id');
+        $query->where(function($query) use($list_of_characters) {
+            $query->orWhere('knowledges.user_id', $this->id)
+                ->orWhere('knowledges.share_everyone', true)
+                ->orWhereIn('knowledge_character.character_id', $list_of_characters);
+        });
+
+        return $query;
+    }
+
+    public function sendNotification($code, $text, $image, $link) {
+        if($this->notifications()->whereCode($code)->count() > 0)
+            return null;
+
+        return Notification::create([
+            'code' => $code,
+            'user_id' => $this->id,
+            'text' => $text,
+            'image' => $image,
+            'link' => $link
+        ]);
+    }
 }

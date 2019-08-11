@@ -22,11 +22,8 @@
                                     <a class="dropdown-item" href="{{ route('campaigns.homebrews.index', $selected_campaign->id) }}">
                                         <img class="dropdown-grey-icon" src="{{ asset('images/icons/dices.svg') }}" alt=""> Reglas de la casa
                                     </a>
-                                    <a class="dropdown-item disabled" href="#">
-                                        <img class="dropdown-grey-icon" src="{{ asset('images/icons/gem.svg') }}" alt=""> Descubrimientos
-                                    </a>
-                                    <a class="dropdown-item disabled" href="#">
-                                        <img class="dropdown-grey-icon" src="{{ asset('images/icons/book_bookmark.svg') }}" alt=""> Capítulos
+                                    <a class="dropdown-item" href="{{ route('knowledges.index', ['campaign_id' => $selected_campaign->id]) }}">
+                                        <img class="dropdown-grey-icon" src="{{ asset('images/icons/open_book.svg') }}" alt=""> Conocimientos
                                     </a>
                                 </div>
                             </div>

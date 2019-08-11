@@ -57,7 +57,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="avatar">Imagen de fondo</label>
+                                <label for="avatar">Imagen</label>
                                 <input
                                         id="avatar"
                                         name="avatar"

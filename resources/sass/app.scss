@@ -76,7 +76,7 @@ hr {
   border-top: 3px solid $main_blue;
 }
 .box-border-top-red {
-  border-top: 3px solid $main_blue;
+  border-top: 3px solid #882B41;
 }
 
 .footer {
@@ -644,4 +644,19 @@ hr {
 .bg-outline-success {
   border: 1px solid #2CA856;
   color: #2CA856;
+}
+
+.knowledge {
+  position: relative;
+  font-size: 14px;
+}
+.knowledge-image {
+  border-radius: 50%;
+  height: 48px;
+  width: 48px;
+  position: absolute;
+  left: 0;
+}
+.knowledge-username {
+  margin-left: 55px;
 }

@@ -79,6 +79,8 @@ Route::resource('homebrews', 'HomebrewController');
 Route::get('homebrews/{id}/remove', 'HomebrewController@remove')->name('homebrews.remove');
 Route::get('campaigns/{id}/homebrews', 'HomebrewController@index')->name('campaigns.homebrews.index');
 
+Route::resource('knowledges', 'KnowledgeController');
+
 // CANALES
 Route::resource('channels', 'ChannelController');
 Route::get('channels/{id}/suscribe', 'ChannelController@suscribe')->name('channels.suscribe');
@@ -108,5 +110,3 @@ Route::put('characters/{id}/edit-dm', 'CharacterController@updateDm')->name('cha
 
 // USERS
 Route::resource('/users', 'UserController');
-
-Route::get('/test', 'AutocompleteController@index');

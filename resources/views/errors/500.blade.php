@@ -9,7 +9,7 @@
                 <img style="width: 700px" src="{{ asset('images/broken.png') }}" alt="">
                 <div class="mt-2">
                     <p>Ooops! Algo en la página se rompió. Será conveniente que te contactes con el Administrador</p>
-                    <p><a href="#">Ir a la página principal</a></p>
+                    <p><a href="{{ url('/') }}">Ir a la página principal</a></p>
                 </div>
             </div>
         </div>
