@@ -24,14 +24,11 @@ function createCkEditor(elem) {
         ],
         height: 200,
         extraPlugins: 'dialogDash',
-        toolbar: [{
-            name: 'document',
-            items: ['Undo', 'Redo']
-        },
-        {
-            name: 'basicstyles',
-            items: ['Bold', 'Italic', 'Strike', 'DialogDash']
-        }],
+        toolbar: [
+            {name: 'document', items: ['Source', 'Undo', 'Redo']},
+            {name: 'basicstyles', items: ['Bold', 'Italic', 'Strike','Blockquote', 'DialogDash', '-']},
+            {name: 'paragraph', items: ['Blockquote']}
+        ],
         mentions: [{
             feed: madeMention,
             itemTemplate: '<li data-id="{id}" class="mention-li">' +
