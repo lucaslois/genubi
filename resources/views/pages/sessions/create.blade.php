@@ -80,15 +80,15 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="description">Resumen</label>
+                                <label for="text">Resumen</label>
                                 <textarea
-                                        id="description"
-                                        name="description"
+                                        id="text"
+                                        name="text"
                                         type="text"
-                                        class="form-control {!! $errors->first('description', 'is-invalid') !!}"
+                                        class="form-control {!! $errors->first('text', 'is-invalid') !!}"
                                         placeholder="Su nombre es Lyrette, pricesa de Celeria. Hija de Rodolphus Flint y Myrcella Gingar. Su trabajo es gobernar la ciudad de Celeria con mano firme y justa"
-                                >{{ old('description') }}</textarea>
-                                {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
+                                >{{ old('text') }}</textarea>
+                                {!! $errors->first('text', '<div class="invalid-feedback">:message</div>') !!}
                                 <div class="mini">Este es un editor embebido. Puedes mencionar a otras entidades anteponiendo el caracter @.</div>
                             </div>
 
@@ -107,6 +107,6 @@
     <script src="{{ asset('plugins/ckeditor/customCkEditor.js') }}"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
-        createCkEditor('description');
+        createCkEditor('text');
     </script>
 @endpush

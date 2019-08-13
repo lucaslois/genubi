@@ -74,4 +74,11 @@ class Character extends Model implements CanParticipateInChannel, CanBeFormatted
     public function formattedLink() {
         return route('characters.show', $this->id);
     }
+
+    public function delete() {
+        $this->posts()->delete();
+        $this->posts()->delete();
+        parent::delete();
+
+    }
 }
