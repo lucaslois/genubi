@@ -7,11 +7,14 @@
     <section class="main news">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-12">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ url('/') }}"><i class="fa fa-home"></i></a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Crear sesión</li>
+                            <li class="breadcrumb-item"><a href="{{ url('') }}"><i class="fa fa-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('campaigns.index') }}">Partidas</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('campaigns.show', $selected_campaign->id) }}">{{ $selected_campaign->name }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('campaigns.channels.index', $selected_campaign->id) }}">Canales</a></li>
+                            <li class="breadcrumb-item active">{{ $channel->name }}</li>
                         </ol>
                     </nav>
                 </div>
@@ -25,7 +28,7 @@
             <h1>Edición canal</h1>
             <div class="box box-border-top">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-12">
                         <form action="{{ route('channels.update', $channel->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method("PUT")
@@ -92,15 +95,10 @@
 @endsection
 
 @push('js')
-    <script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/4.12.1/standard-all/ckeditor.js"></script>
+    <script src="{{ asset('plugins/ckeditor/customCkEditor.js') }}"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
-        ClassicEditor
-            .create( document.querySelector( '#text' ) )
-            .then( editor => {
-                console.log( editor );
-            } )
-            .catch( error => {
-                console.error( error );
-            } );
+        createCkEditor('text');
     </script>
 @endpush

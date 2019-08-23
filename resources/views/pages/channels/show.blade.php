@@ -87,7 +87,7 @@
 
                     <div class="description">
                         <b>Resumen</b>
-                        {!! $channel->text  !!}
+                        {!! $channel->formattedText()  !!}
                     </div>
 
                     @auth
