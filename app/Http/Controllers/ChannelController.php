@@ -19,11 +19,12 @@ class ChannelController extends Controller
         return view('pages.channels.index', compact('channels', 'selected_campaign'));
     }
 
-    public function create() {
+    public function create(Request $request) {
+        $selected_campaign = Campaign::findOrFail($request->campaign_id);
         $user = Auth::user();
         $campaigns = $user->campaigns;
 
-        return view('pages.channels.create', compact('campaigns'));
+        return view('pages.channels.create', compact('campaigns', 'selected_campaign'));
     }
 
     public function store(Request $request) {

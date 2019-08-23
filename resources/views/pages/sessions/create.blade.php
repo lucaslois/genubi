@@ -1,6 +1,5 @@
 @extends('layouts.main')
 
-
 @section('content')
     @include('layouts.components.selected_campaign')
 

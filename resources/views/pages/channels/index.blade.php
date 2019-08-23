@@ -19,7 +19,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="buttons float-md-right">
-                        <a href="{{ route('channels.create') }}" class="btn btn-success btn-square">Crear nuevo canal</a>
+                        <a href="{{ route('channels.create', ['campaign_id' => $selected_campaign->id]) }}" class="btn btn-success btn-square">Crear nuevo canal</a>
 
                     </div>
                 </div>
