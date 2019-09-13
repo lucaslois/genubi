@@ -13,6 +13,12 @@
                 </ul>
             </div>
             <div class="col-md-3">
+                <h6>CONTENIDO</h6>
+                <ul>
+                    <li><a href="{{ route('users.index') }}">Usuarios</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
                 <h6>SÍGUENOS</h6>
                 <ul>
                     <li><a href="https://www.facebook.com/groups/319115168263033/">Facebook</a></li>

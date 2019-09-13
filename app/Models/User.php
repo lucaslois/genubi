@@ -28,6 +28,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $dates = ['last_login'];
+
     public function campaigns() {
         return $this->hasMany('App\\Models\\Campaign');
     }
@@ -115,5 +117,9 @@ class User extends Authenticatable
             'image' => $image,
             'link' => $link
         ]);
+    }
+
+    public function isAdmin() {
+        return $this->is_admin == true;
     }
 }

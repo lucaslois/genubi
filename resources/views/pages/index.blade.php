@@ -53,8 +53,8 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ $campaign->name }}</h5>
                                 <span class="campaign_details">{{ $campaign->game->name }}, por <a href="">{{ $campaign->user->name }}</a></span>
-                                <p class="card-text campaign campaign_description">
-                                    {{ $campaign->description }}
+                                <p class="card-text campaign campaign_description short_text">
+                                    {{ str_limit($campaign->description, 150) }}
                                 </p>
                             </div>
                             <div class="card-footer">
