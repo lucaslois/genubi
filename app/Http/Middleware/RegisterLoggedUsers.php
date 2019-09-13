@@ -20,6 +20,8 @@ class RegisterLoggedUsers
         $user = Auth::user();
         if($user) {
             Cache::put("$user->id:is-logged", true, 300);
+            $user->last_login = now();
+            $user->save();
         }
 
         return $next($request);
