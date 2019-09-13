@@ -306,9 +306,18 @@ hr {
   border-top: 3px solid #882B41;
 }
 
+.footer-online {
+  background: #eee;
+  border-top: #ddd;
+  margin-top: 80px;
+  margin-bottom: -15px;
+  font-size: 14px;
+  color: #222;
+  padding: 6px 0;
+}
+
 .footer {
   padding: 40px 0;
-  margin-top: 80px;
   background: #242527;
   min-height: 160px;
   color: #979aa4;

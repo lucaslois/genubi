@@ -60,7 +60,11 @@
                         <tr>
                             <td><img class="img-thumbnail img-mini" src="{{ $user->getImage() }}" alt=""></td>
                             <td>
-                                {{ $user->name }} <br>
+                                {{ $user->name }}
+                                @if($user->isLogged())
+                                    <span class="mini text-success"><i class="fa fa-circle"></i> En línea</span>
+                                @endif
+                                <br>
                                 @if($user->isAdmin())
                                     <span class="badge badge-danger">Administrador</span>
                                 @endif

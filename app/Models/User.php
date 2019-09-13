@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Cache;
 
 class User extends Authenticatable
 {
@@ -121,5 +122,17 @@ class User extends Authenticatable
 
     public function isAdmin() {
         return $this->is_admin == true;
+    }
+
+    public static function usersOnline() {
+        $users = User::all();
+
+        return $users->filter(function($user) {
+            return $user->isLogged();
+        });
+    }
+
+    public function isLogged() {
+        return Cache::has("$this->id:is-logged");
     }
 }

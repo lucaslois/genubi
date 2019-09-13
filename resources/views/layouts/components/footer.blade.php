@@ -1,3 +1,11 @@
+<div class="footer-online">
+    <div class="container">
+        <p>
+            <b>Usuarios online:</b> {{ $usersOnline->pluck('name')->implode(', ') }}
+        </p>
+    </div>
+</div>
+
 <footer class="footer">
     <div class="container">
         <div class="row">
@@ -15,6 +23,7 @@
             <div class="col-md-3">
                 <h6>CONTENIDO</h6>
                 <ul>
+                    <li><a href="{{ route('campaigns.index') }}">Partidas</a></li>
                     <li><a href="{{ route('users.index') }}">Usuarios</a></li>
                 </ul>
             </div>
@@ -22,6 +31,7 @@
                 <h6>SÍGUENOS</h6>
                 <ul>
                     <li><a href="https://www.facebook.com/groups/319115168263033/">Facebook</a></li>
+                    <li><a href="https://wiki.genubi.com.ar">Wiki</a></li>
                 </ul>
             </div>
         </div>
