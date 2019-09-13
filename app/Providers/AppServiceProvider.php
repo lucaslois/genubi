@@ -21,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
 
         $users = User::usersOnline();
         View::share ( 'usersOnline', $users);
+        View::share ( 'version', config('app.version'));
     }
 
     /**

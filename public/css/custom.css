@@ -337,15 +337,17 @@ hr {
 .subfooter {
   min-height: 50px;
   background: #191a1b;
-  padding: 5px 0;
+  padding: 20px 0;
 }
 .subfooter p {
-  position: relative;
-  top: 10px;
   color: #979aa4;
   font-size: 14px;
   height: 0;
   text-align: center;
+  margin-bottom: 1.3rem;
+}
+.subfooter a {
+  color: white;
 }
 
 .breadcrumb {

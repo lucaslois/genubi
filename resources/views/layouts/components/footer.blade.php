@@ -15,7 +15,7 @@
             <div class="col-md-3">
                 <h6>MI CUENTA</h6>
                 <ul>
-{{--                    <li><a href="">Mi perfil</a></li>--}}
+                    {{--                    <li><a href="">Mi perfil</a></li>--}}
                     <li><a href="{{ route('characters.me') }}">Mis personajes</a></li>
                     <li><a href="{{ route('campaigns.me') }}">Mis partidas</a></li>
                 </ul>
@@ -40,10 +40,8 @@
 
 <footer class="subfooter">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <p>www.genubi.com.ar | {{ now()->year }}</p>
-            </div>
-        </div>
+        <p><i class="fa fa-code"></i> con <i class="fa fa-dice"></i> por <a href="https://lucaslois.com">Lucas Lois</a> y el grupo de
+            <a href="{{ route('campaigns.show', 2) }}">Antiguo Mal</a></p>
+        <p><a href="{{ url('/') }}">Genubi</a> {{ now()->year }} | V{{ $version }}</p>
     </div>
 </footer>
