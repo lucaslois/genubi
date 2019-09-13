@@ -58,7 +58,7 @@
                     </tr>
                     @forelse($users as $user)
                         <tr>
-                            <td><img class="img-thumbnail img-mini" src="{{ $user->avatar }}" alt=""></td>
+                            <td><img class="img-thumbnail img-mini" src="{{ $user->getImage() }}" alt=""></td>
                             <td>
                                 {{ $user->name }} <br>
                                 @if($user->isAdmin())
