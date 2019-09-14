@@ -677,3 +677,14 @@ hr {
   width: 4em;
 }
 
+.table-material {
+
+  tr td {
+    border: 0;
+    padding: .4em;
+  }
+  tr:nth-child(even) {
+    background: #efefef;
+  }
+}
+

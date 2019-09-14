@@ -79,11 +79,23 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="short_description">Tu partida en pocas palabras</label>
+                                <textarea
+                                        id="short_description"
+                                        name="short_description"
+                                        type="text"
+                                        placeholder="Un grupo de aventureros que no comparten nada en común se reunen para derrotar al mal cósmico más peligroso de todos los tiempos"
+                                        class="form-control {!! $errors->first('short_description', 'is-invalid') !!}">{{ old('short_description') }}</textarea>
+                                {!! $errors->first('short_description', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+
+                            <div class="form-group">
                                 <label for="description">Resumen</label>
                                 <textarea
                                         id="description"
                                         name="description"
                                         type="text"
+                                        placeholder="Acá podés explayarte todo lo que quieras con la descripción de tu partida"
                                         class="form-control {!! $errors->first('description', 'is-invalid') !!}">{{ old('description', $campaign->description) }}</textarea>
                                 {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
                             </div>

@@ -885,4 +885,12 @@ hr {
   width: 4em;
 }
 
+.table-material tr td {
+  border: 0;
+  padding: 0.4em;
+}
+.table-material tr:nth-child(even) {
+  background: #efefef;
+}
+
 /*# sourceMappingURL=custom.css.map */

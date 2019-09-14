@@ -14,7 +14,7 @@
                 </div>
                 <div class="campaign_description">
                     <p>
-                        {{ $selected_campaign->description }}
+                        {{ $selected_campaign->short_description }}
                     </p>
                 </div>
             </div>

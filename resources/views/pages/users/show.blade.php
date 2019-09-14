@@ -34,12 +34,17 @@
                         <img class="user-avatar" src="{{ $user->getImage() }}" alt="">
                     </div>
                     <div class="col-9">
-                        <h2 class="user-title">{{ $user->name }}</h2>
+                        <h2 class="user-title">
+                            {{ $user->name }}
+                            @if($user->isLogged())
+                                <span class="mini text-success"><i class="fa fa-circle"></i> En línea</span>
+                            @endif
+                        </h2>
                         @if($user->is_admin)
                             <h3 class="user-staff">Administrador de Genubi</h3>
                         @endif
-                        <p class="user-desc">Miembro desde el {{ $user->created_at->format('d F Y') }}</p>
-{{--                        <p>Última actividad {{ $user->last_activity->format('d F Y') }}</p>--}}
+                        <p class="user-desc">Miembro desde el {{ $user->created_at->isoFormat('d MMM Y') }} <br>
+                            Última actividad el {{ $user->last_login->isoFormat('d MMM Y') }}</p>
                     </div>
                 </div>
 
@@ -56,7 +61,7 @@
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="tab-default" role="tabpanel">
-                        <table class="table table-sm table-striped">
+                        <table class="table table-sm table-material">
                             <tbody>
                             @forelse($user->activities->take(20) as $activity)
                             <tr>

@@ -11,6 +11,7 @@ class Campaign extends Model
     protected $fillable = [
         'name',
         'description',
+        'short_description',
         'game_id',
         'mode_id',
         'state_id',
