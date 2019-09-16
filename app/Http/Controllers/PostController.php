@@ -32,11 +32,12 @@ class PostController extends Controller
             'character_id' => 'required',
             'text' => 'required'
         ]);
+        $user = Auth::user();
+        abort_if(!$user, 401);
 
         $letter = substr($request->character_id, 0, 1);
         $charid = substr($request->character_id, 1);
 
-        $user = Auth::user();
         $channel = Channel::findOrFail($id);
         $campaign = $channel->campaign;
 
