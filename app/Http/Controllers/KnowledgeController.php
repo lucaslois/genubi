@@ -14,7 +14,10 @@ class KnowledgeController extends Controller
         $user = Auth::user();
         $selected_campaign = Campaign::findOrFail($request->campaign_id);
 
-        $query = $user->knowledgesOf($selected_campaign);
+        if($user)
+            $query = $user->knowledgesOf($selected_campaign);
+        else
+            $query = Knowledge::whereShareEveryone(true);
 
         $knowledges = $query->paginate(10);
 
