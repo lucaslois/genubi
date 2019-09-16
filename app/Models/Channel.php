@@ -53,7 +53,7 @@ class Channel extends Model implements CanBeTaggable
 
     public function getImage()
     {
-        return asset('images/channels_icon.png');
+        return asset('images/icon_channel.png');
     }
 
     public function getCampaign()

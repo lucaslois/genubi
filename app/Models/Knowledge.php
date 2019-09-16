@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Knowledge extends Model
+class Knowledge extends Model implements CanBeTaggable
 {
-    use HasFormattedText;
+    use HasFormattedText, Taggable;
 
     protected $table = 'knowledges';
 
@@ -53,5 +53,35 @@ class Knowledge extends Model
                 $user->getImage(),
                 $link);
         }
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getType()
+    {
+        return "Conocimiento";
+    }
+
+    public function getImage()
+    {
+        return asset('images/icon_book.png');
+    }
+
+    public function getCampaign()
+    {
+        return $this->campaign;
+    }
+
+    public function generateSlug()
+    {
+        return str_slug($this->name) . "#" . $this->id;
+    }
+
+    public function formattedLink()
+    {
+        return route('knowledges.show', $this->id);
     }
 }

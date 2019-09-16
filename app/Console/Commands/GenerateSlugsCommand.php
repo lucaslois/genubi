@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Campaign;
 use App\Models\Channel;
 use App\Models\Character;
+use App\Models\Knowledge;
 use App\Models\Npc;
 use App\Models\Session;
 use App\Models\User;
@@ -50,6 +51,7 @@ class GenerateSlugsCommand extends Command
             Campaign::class,
             Channel::class,
             Session::class,
+            Knowledge::class,
         ];
 
         $items = collect();

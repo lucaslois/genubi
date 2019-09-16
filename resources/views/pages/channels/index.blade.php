@@ -19,8 +19,9 @@
                 </div>
                 <div class="col-md-6">
                     <div class="buttons float-md-right">
-                        <a href="{{ route('channels.create', ['campaign_id' => $selected_campaign->id]) }}" class="btn btn-success btn-square">Crear nuevo canal</a>
-
+                        @if(auth()->check())
+                            <a href="{{ route('channels.create', ['campaign_id' => $selected_campaign->id]) }}" class="btn btn-success btn-square">Crear nuevo canal</a>
+                        @endif
                     </div>
                 </div>
             </div>

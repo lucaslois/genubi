@@ -136,7 +136,9 @@
                     @if($post->is_roll == false  && $post->user->is(auth()->user()))
                         <a href="{{ route('posts.edit', $post->id) }}" class="float-right ml-4"><i class="fas fa-edit"></i> Editar</a>
                     @endif
+                    @if(auth()->check())
                     <a href="{{ route('channels.posts.create', [$channel->id, 'post_id' => $post->id]) }}" class="float-right"><i class="fas fa-reply"></i> Responder</a>
+                    @endif
                 </div>
             </div>
             @endforeach
