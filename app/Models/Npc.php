@@ -41,7 +41,7 @@ class Npc extends Model implements CanParticipateInChannel, CanBeTaggable
 
     // CAN BE FORMATTED INTERFACE
     public function generateSlug() {
-        return Str::slug($this->name) . $this->id;
+        return Str::slug($this->name) . "#" . $this->id;
     }
     public function formattedLink() {
         return route('npcs.show', $this->id);
