@@ -16,6 +16,7 @@ class AutocompleteController extends Controller
     public function index(Request $request) {
         $query = Tag::query();
         $query->where('tag', 'LIKE', "%$request->search%");
+        $query->where('active', true);
         $query->limit(10);
 
         $result = $query->get();
