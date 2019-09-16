@@ -2,7 +2,7 @@
     <div class="secondbar">
     <nav id="secondbar" class="navbar nav-main navbar-expand">
         <div class="container">
-            <div class="" id="secondBar">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item partida">
                         <a class="nav-link" href="{{ route('campaigns.show', $selected_campaign->id) }}"><b>{{ $selected_campaign->name }}</b></a>
