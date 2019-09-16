@@ -27,7 +27,7 @@
 
     <section class="character-profile">
         <div class="container">
-            <h1>Perfil de {{ $user->name }}</h1>
+            <h1 class="mb-0">Perfil de {{ $user->name }}</h1>
             @if($user->activeTag())
                 <h5 class="mini mb-0">{{ "@{$user->activeTag()->tag}" }}</h5>
             @endif

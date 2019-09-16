@@ -15,6 +15,8 @@ class PostController extends Controller
 {
     public function create($id, Request $request) {
         $user = Auth::user();
+        abort_if(!$user, 401);
+
         $channel = Channel::findOrFail($id);
         $selected_campaign = $channel->campaign;
 
