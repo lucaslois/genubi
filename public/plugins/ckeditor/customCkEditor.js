@@ -35,8 +35,8 @@ function createCkEditor(elem) {
                 '<img class="mention-image" src="{image}" />' +
                 '<div class="mention-data">' +
                 '<span class="mention-right">{type}</span>' +
-                '<span class="mention-slug">{name}</span>' +
-                '<span class="mention-name">{tag}</span>' +
+                '<span class="mention-slug">{tag}</span>' +
+                '<span class="mention-name">{name}</span>' +
                 '</div>' +
                 '</li>',
             outputTemplate: '@{tag}',
