@@ -40,7 +40,10 @@
             <h1>
                 {{ $session->name }}
             </h1>
-            <div class="box box-border-top session-summary">
+            @if($session->activeTag())
+                <h5 class="mini mb-0">{{ "@{$session->activeTag()->tag}" }}</h5>
+            @endif
+            <div class="box box-border-top session-summary mt-1">
                 <div class="votes text-center mb-2">
                     @if(auth()->check() && now()->diffInDays($session->date)  < 10)
                         <a href="{{ route('sessions.vote.positive', $session->id) }}"

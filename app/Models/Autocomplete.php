@@ -9,9 +9,10 @@ class Autocomplete
         $new = $text;
 
         foreach($group[0] as $mention) {
-            $character = self::search($mention);
-            if(!$character) continue;
-            $link = "<a href='{$character->formattedLink()}'><img class='mini-image'src='".$character->getImage()."' /> $character->name</a>";
+            $tag = self::search($mention);
+            if(!$tag) continue;
+            $taggable = $tag->taggable;
+            $link = "<a href='{$taggable->formattedLink()}'><img class='mini-image'src='".$taggable->getImage()."' /> {$taggable->getName()}</a>";
             $new = str_replace($mention, "$link", $new);
         }
         return $new;
@@ -19,13 +20,8 @@ class Autocomplete
 
     public static function search($slug) {
         $word = str_replace("@", "", $slug);
-        $character = Character::whereSlug("$word")->first();
-        if($character)
-            return $character;
-        $npc = Npc::whereSlug("$word")->first();
-        if($npc)
-            return $npc;
+        $tag = Tag::where('tag', "$word")->first();
 
-        return null;
+        return $tag;
     }
 }

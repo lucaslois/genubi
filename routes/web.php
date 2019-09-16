@@ -108,5 +108,7 @@ Route::get('/characters/{id}/remove', 'CharacterController@destroy')->name('char
 Route::get('characters/{id}/edit-dm', 'CharacterController@editDm')->name('characters.dm.edit');
 Route::put('characters/{id}/edit-dm', 'CharacterController@updateDm')->name('characters.dm.update');
 
+Route::get('search', 'SearchController@index')->name('search');
+
 // USERS
 Route::resource('/users', 'UserController');

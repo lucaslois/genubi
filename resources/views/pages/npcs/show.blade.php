@@ -34,8 +34,8 @@
     <section class="character-profile">
         <div class="container">
             <h1 class="mb-0">{{ $npc->name }}</h1>
-            @if($npc->slug)
-                <h5 class="mini mb-0">{{ "@$npc->slug" }}</h5>
+            @if($npc->activeTag())
+                <h5 class="mini mb-0">{{ "@{$npc->activeTag()->tag}" }}</h5>
             @endif
             <div class="box box-border-top mt-1">
                 <img src="{{ $npc->getImage() }}" alt="">

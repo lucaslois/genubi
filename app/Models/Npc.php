@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 
-class Npc extends Model implements CanParticipateInChannel, CanBeFormatted
+class Npc extends Model implements CanParticipateInChannel, CanBeTaggable
 {
-    use SoftDeletes;
+    use SoftDeletes, Taggable;
 
     protected $fillable = [
         'name',
@@ -48,5 +48,11 @@ class Npc extends Model implements CanParticipateInChannel, CanBeFormatted
     }
     public function formattedText() {
         return Autocomplete::format($this->text);
+    }
+    public function getType() {
+        return "NPC";
+    }
+    public function getCampaign() {
+        return $this->campaign;
     }
 }

@@ -54,6 +54,11 @@
 .topbar .nav-main .dropdown-menu {
   padding: 0 0;
 }
+.topbar .topbar-searcher {
+  background: none;
+  border: 0;
+  border-bottom: 1px solid white;
+}
 
 .secondbar .nav-main {
   background: #26282a;
@@ -306,9 +311,18 @@ hr {
   border-top: 3px solid #882B41;
 }
 
+.footer-online {
+  background: #eee;
+  border-top: #ddd;
+  margin-top: 80px;
+  margin-bottom: -15px;
+  font-size: 14px;
+  color: #222;
+  padding: 6px 0;
+}
+
 .footer {
   padding: 40px 0;
-  margin-top: 80px;
   background: #242527;
   min-height: 160px;
   color: #979aa4;
@@ -328,15 +342,17 @@ hr {
 .subfooter {
   min-height: 50px;
   background: #191a1b;
-  padding: 5px 0;
+  padding: 20px 0;
 }
 .subfooter p {
-  position: relative;
-  top: 10px;
   color: #979aa4;
   font-size: 14px;
   height: 0;
   text-align: center;
+  margin-bottom: 1.3rem;
+}
+.subfooter a {
+  color: white;
 }
 
 .breadcrumb {
@@ -871,7 +887,15 @@ hr {
 }
 
 .img-mini {
-  width: 1.1em;
+  width: 4em;
+}
+
+.table-material tr td {
+  border: 0;
+  padding: 0.4em;
+}
+.table-material tr:nth-child(even) {
+  background: #efefef;
 }
 
 /*# sourceMappingURL=app.css.map */

@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 
-class Character extends Model implements CanParticipateInChannel, CanBeFormatted
+class Character extends Model implements CanParticipateInChannel, CanBeTaggable
 {
-    use XpTrait, SoftDeletes;
+    use XpTrait, SoftDeletes, Taggable;
 
     protected $fillable = [
         'name',
@@ -68,17 +68,22 @@ class Character extends Model implements CanParticipateInChannel, CanBeFormatted
 
     // CAN BE FORMATTED INTERFACE
     public function generateSlug() {
-        return Str::slug($this->name) . $this->id;
+        return Str::slug($this->name) . '#' . $this->id;
     }
-
     public function formattedLink() {
         return route('characters.show', $this->id);
+    }
+    public function getType() {
+        return "Personaje";
+    }
+    public function getCampaign() {
+        return $this->campaign;
     }
 
     public function delete() {
         $this->posts()->delete();
         $this->posts()->delete();
         parent::delete();
-
     }
+
 }

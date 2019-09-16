@@ -56,7 +56,10 @@
                 @endif
                 {{ $channel->name }}
             </h1>
-            <div class="box box-border-top">
+            @if($channel->activeTag())
+                <h5 class="mini mb-0">{{ "@{$channel->activeTag()->tag}" }}</h5>
+            @endif
+            <div class="box box-border-top mt-1">
                 <div class="content">
                     <div class="row">
                         <div class="col-6">

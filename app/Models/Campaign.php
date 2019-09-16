@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Campaign extends Model
+class Campaign extends Model implements CanBeTaggable
 {
-    use SoftDeletes;
+    use SoftDeletes, Taggable;
+
     protected $fillable = [
         'name',
         'description',
@@ -99,5 +100,30 @@ class Campaign extends Model
             ->where('sessions.campaign_id', $this->id)
             ->where('session_votes.vote', -1)
             ->count();
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getType()
+    {
+        return "Campaña";
+    }
+
+    public function getCampaign()
+    {
+        return null;
+    }
+
+    public function generateSlug()
+    {
+        return str_slug($this->name) . "#" . $this->id;
+    }
+
+    public function formattedLink()
+    {
+        return route('campaigns.show', $this->id);
     }
 }

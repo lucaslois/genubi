@@ -32,14 +32,14 @@ function createCkEditor(elem) {
         mentions: [{
             feed: madeMention,
             itemTemplate: '<li data-id="{id}" class="mention-li">' +
-                '<img class="mention-image" src="{avatar}" />' +
+                '<img class="mention-image" src="{image}" />' +
                 '<div class="mention-data">' +
-                '<span class="mention-right">Character</span>' +
+                '<span class="mention-right">{type}</span>' +
                 '<span class="mention-slug">{name}</span>' +
-                '<span class="mention-name">{slug}</span>' +
+                '<span class="mention-name">{tag}</span>' +
                 '</div>' +
                 '</li>',
-            outputTemplate: '@{slug}',
+            outputTemplate: '@{tag}',
             minChars: 3
         }]
     });
@@ -48,7 +48,16 @@ function createCkEditor(elem) {
         axios.defaults.baseURL = window.location.origin;
         console.log(axios.defaults.baseURL);
         axios.get('api/autocomplete?search=' + opts.query).then(res => {
-            var data = res.data.characters;
+            var data = res.data.tags.map(tag => {
+                return {
+                    id: tag.id,
+                    name: tag.name,
+                    image: tag.taggable.image,
+                    type: tag.taggable.type,
+                    tag: tag.tag
+                }
+            });
+            console.log(data);
             callback(data);
         });
     }

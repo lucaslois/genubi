@@ -2,8 +2,12 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Campaign;
+use App\Models\Channel;
 use App\Models\Character;
 use App\Models\Npc;
+use App\Models\Session;
+use App\Models\User;
 use Illuminate\Console\Command;
 
 class GenerateSlugsCommand extends Command
@@ -39,12 +43,23 @@ class GenerateSlugsCommand extends Command
      */
     public function handle()
     {
-        $characters = Character::all();
-        $npcs = Npc::all();
-        $list = $characters->merge($npcs);
-        foreach($list as $node) {
-            $node->slug = $node->generateSlug();
-            $node->save();
+        $clases = [
+            Character::class,
+            Npc::class,
+            User::class,
+            Campaign::class,
+            Channel::class,
+            Session::class,
+        ];
+
+        $items = collect();
+        foreach($clases as $class) {
+            $this->line("Generando para $class");
+            $items = $items->merge($class::all());
+        }
+
+        foreach($items as $item) {
+            $item->generateTag();
         }
 
         $this->info('done');

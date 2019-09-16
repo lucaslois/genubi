@@ -7,9 +7,9 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Cache;
 
-class User extends Authenticatable
+class User extends Authenticatable implements CanBeTaggable
 {
-    use Notifiable;
+    use Notifiable, Taggable;
 
     /**
      * The attributes that are mass assignable.
@@ -134,5 +134,30 @@ class User extends Authenticatable
 
     public function isLogged() {
         return Cache::has("$this->id:is-logged");
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getType()
+    {
+        return "Usuario";
+    }
+
+    public function getCampaign()
+    {
+        return null;
+    }
+
+    public function generateSlug()
+    {
+        return str_slug($this->name) . '#' . $this->id;
+    }
+
+    public function formattedLink()
+    {
+        return route('users.show', $this->id);
     }
 }

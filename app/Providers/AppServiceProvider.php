@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Npc;
 use App\Models\User;
+use App\Observers\NpcObserver;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -22,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
         $users = User::usersOnline();
         View::share ( 'usersOnline', $users);
         View::share ( 'version', config('app.version'));
+
+        Npc::observe(NpcObserver::class);
     }
 
     /**

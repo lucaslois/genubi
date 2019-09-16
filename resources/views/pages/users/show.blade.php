@@ -14,11 +14,11 @@
                     </nav>
                 </div>
                 @if($user->is(auth()->user()))
-                <div class="col-md-6">
-                    <div class="buttons float-md-right">
-                        <a href="{{ route('profile.edit') }}" class="btn btn-success btn-square btn-upper">Editar perfil</a>
+                    <div class="col-md-6">
+                        <div class="buttons float-md-right">
+                            <a href="{{ route('profile.edit') }}" class="btn btn-success btn-square btn-upper">Editar perfil</a>
+                        </div>
                     </div>
-                </div>
                 @endif
             </div>
         </div>
@@ -28,7 +28,10 @@
     <section class="character-profile">
         <div class="container">
             <h1>Perfil de {{ $user->name }}</h1>
-            <div class="box box-border-top">
+            @if($user->activeTag())
+                <h5 class="mini mb-0">{{ "@{$user->activeTag()->tag}" }}</h5>
+            @endif
+            <div class="box box-border-top mt-1">
                 <div class="row">
                     <div class="col-3">
                         <img class="user-avatar" src="{{ $user->getImage() }}" alt="">
@@ -44,7 +47,7 @@
                             <h3 class="user-staff">Administrador de Genubi</h3>
                         @endif
                         <p class="user-desc">Miembro desde el {{ $user->created_at->isoFormat('d MMM Y') }} <br>
-                            Última actividad el {{ $user->last_login->isoFormat('d MMM Y') }}</p>
+                            Última actividad el {{ $user->last_login ? $user->last_login->isoFormat('D MMM Y') : 'Nunca' }}</p>
                     </div>
                 </div>
 
@@ -64,9 +67,9 @@
                         <table class="table table-sm table-material">
                             <tbody>
                             @forelse($user->activities->take(20) as $activity)
-                            <tr>
-                                <td>{!! $activity->formatted_text !!}, <span class="activity-date">{{ $activity->created_at->diffForHumans() }}</span></td>
-                            </tr>
+                                <tr>
+                                    <td>{!! $activity->formatted_text !!}, <span class="activity-date">{{ $activity->created_at->diffForHumans() }}</span></td>
+                                </tr>
                             @empty
                                 <tr>
                                     <td>Aun no hay actividad registrada para este usuario</td>
@@ -113,39 +116,39 @@
                             @endforelse
                         </div>
                     </div>
-                <div class="tab-pane fade" id="tab-campaigns" role="tabpanel">
-                    <div class="row">
-                        @forelse($user->campaigns as $campaign)
-                            <div class="col-md-4">
-                                <div class="card campaign">
-                                    <img class="card-img-top" src="{{ $campaign->getImageMini() }}" alt="{{ $campaign->name }}">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ $campaign->name }}</h5>
-                                        <span class="campaign_details">{{ $campaign->game->name }}, por <a href="">{{ $campaign->user->name }}</a></span>
-                                        <p class="card-text campaign campaign_description">
-                                            {{ $campaign->description }}
-                                        </p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <a href="{{ route('campaigns.show', $campaign->id) }}" class="btn btn-primary btn-sm">Ver partida</a>
-                                        <div class="float-md-right">
-                                            <span class="badge bg-success reaction"><i class="fa fa-thumbs-up"></i> {{ $campaign->positives() }}</span>
-                                            <span class="badge bg-danger reaction"><i class="fa fa-thumbs-down"></i> {{ $campaign->negatives() }}</span>
+                    <div class="tab-pane fade" id="tab-campaigns" role="tabpanel">
+                        <div class="row">
+                            @forelse($user->campaigns as $campaign)
+                                <div class="col-md-4">
+                                    <div class="card campaign">
+                                        <img class="card-img-top" src="{{ $campaign->getImageMini() }}" alt="{{ $campaign->name }}">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ $campaign->name }}</h5>
+                                            <span class="campaign_details">{{ $campaign->game->name }}, por <a href="">{{ $campaign->user->name }}</a></span>
+                                            <p class="card-text campaign campaign_description">
+                                                {{ $campaign->description }}
+                                            </p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <a href="{{ route('campaigns.show', $campaign->id) }}" class="btn btn-primary btn-sm">Ver partida</a>
+                                            <div class="float-md-right">
+                                                <span class="badge bg-success reaction"><i class="fa fa-thumbs-up"></i> {{ $campaign->positives() }}</span>
+                                                <span class="badge bg-danger reaction"><i class="fa fa-thumbs-down"></i> {{ $campaign->negatives() }}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        @empty
-                            <div class="col-12">
-                                <div class="box">
-                                    <p>Aun no has creado ningúna partida. ¡Puedes hacer <a href="{{ route('campaigns.create') }}">click aquí</a> para crear una!</p>
+                            @empty
+                                <div class="col-12">
+                                    <div class="box">
+                                        <p>Aun no has creado ningúna partida. ¡Puedes hacer <a href="{{ route('campaigns.create') }}">click aquí</a> para crear una!</p>
+                                    </div>
                                 </div>
-                            </div>
-                        @endforelse
+                            @endforelse
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
     <section class="main campaigns">

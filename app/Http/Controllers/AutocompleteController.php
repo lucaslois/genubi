@@ -3,20 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\CharacterResource;
+use App\Http\Resources\TagResource;
 use App\Models\Autocomplete;
 use App\Models\Character;
 use App\Models\Npc;
 use App\Models\SessionPost;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class AutocompleteController extends Controller
 {
     public function index(Request $request) {
-        $characters = Character::where('slug', 'LIKE', "%$request->search%")->get();
-        $npcs = Npc::where('slug', 'LIKE', "%$request->search%")->get();
+        $query = Tag::query();
+        $query->where('tag', 'LIKE', "%$request->search%");
+        $query->limit(10);
 
-        $result = $characters->merge($npcs);
+        $result = $query->get();
 
-        return response()->json(['characters' => CharacterResource::collection($result)]);
+        return response()->json(['tags' => TagResource::collection($result)]);
     }
 }

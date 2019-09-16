@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Session extends Model
+class Session extends Model implements CanBeTaggable
 {
-    use SoftDeletes;
+    use SoftDeletes, Taggable;
 
     protected $fillable = [
         'name',
@@ -63,5 +63,30 @@ class Session extends Model
 
     public function formattedText() {
         return Autocomplete::format($this->text);
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getType()
+    {
+        return "Sesión";
+    }
+
+    public function getCampaign()
+    {
+        return $this->campaign;
+    }
+
+    public function generateSlug()
+    {
+        return str_slug($this->name) . "#" . $this->id;
+    }
+
+    public function formattedLink()
+    {
+        return route('sessions.show', $this->id);
     }
 }

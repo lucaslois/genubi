@@ -10,21 +10,23 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     @auth
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Mi contenido
-                        </a>
-                        <div class="dropdown-menu navbar-dropdown-black">
-                            <a class="dropdown-item" href="{{ route('characters.me') }}">Mis Personajes</a>
-                            <a class="dropdown-item" href="{{ route('campaigns.me') }}">Mis Partidas</a>
-                        </div>
-                    </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Mi contenido
+                            </a>
+                            <div class="dropdown-menu navbar-dropdown-black">
+                                <a class="dropdown-item" href="{{ route('characters.me') }}">Mis Personajes</a>
+                                <a class="dropdown-item" href="{{ route('campaigns.me') }}">Mis Partidas</a>
+                            </div>
+                        </li>
                     @endauth
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('campaigns.index') }}">Partidas</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank" href="http://wiki.genubi.com.ar">Wiki</a>
+                        <form action="{{ route('search') }}">
+                            <input name="global_search" value="{{ request()->global_search }}" type="text" class='form-control topbar-searcher' placeholder="Buscador...">
+                        </form>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
@@ -32,12 +34,12 @@
                         @include('layouts.components.navbar_user_login')
                     @endauth
                     @guest
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login.index') }}">Ingresar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register.index') }}">Registrarse</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login.index') }}">Ingresar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register.index') }}">Registrarse</a>
+                        </li>
                     @endguest
                 </ul>
             </div>

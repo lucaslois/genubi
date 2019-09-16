@@ -54,6 +54,12 @@
 .topbar .nav-main .dropdown-menu {
   padding: 0 0;
 }
+.topbar .topbar-searcher {
+  background: none;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  margin-top: 10px;
+}
 
 .secondbar .nav-main {
   background: #26282a;
