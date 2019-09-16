@@ -26,6 +26,10 @@
   margin-left: 3px;
   height: 100%;
 }
+.topbar .navbar-toggler-icon {
+  margin-top: 12px;
+  font-size: 24px;
+}
 .topbar .nav-main .nav-link {
   color: #d5d9dc;
   height: 100%;
@@ -61,6 +65,10 @@
   margin-top: 10px;
 }
 
+.secondbar {
+  overflow: scroll;
+  background: #26282a;
+}
 .secondbar .nav-main {
   background: #26282a;
 }
@@ -81,6 +89,10 @@
 }
 .secondbar .nav-item {
   margin-left: 6px;
+}
+.secondbar .navbar-toggler-icon {
+  margin-top: 10px;
+  font-size: 24px;
 }
 
 .nav-item.partida {

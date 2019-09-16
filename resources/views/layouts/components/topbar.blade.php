@@ -3,11 +3,11 @@
     <nav class="navbar nav-main navbar-expand-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}"><img class="logo" src="{{ asset('images/logo.png') }}" alt=""></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topbarContent">
+                <span class="navbar-toggler-icon" style="color: white"><i class="fa fa-bars"></i></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse" id="topbarContent">
                 <ul class="navbar-nav mr-auto">
                     @auth
                         <li class="nav-item dropdown">
