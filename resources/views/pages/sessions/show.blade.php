@@ -37,9 +37,7 @@
     </section>
     <section class="section-sessions">
         <div class="container">
-            <h1>
-                {{ $session->name }}
-            </h1>
+            <h1 class="mb-0">{{ $session->name }}</h1>
             @if($session->activeTag())
                 <h5 class="mini mb-0">{{ "@{$session->activeTag()->tag}" }}</h5>
             @endif

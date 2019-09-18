@@ -1,6 +1,6 @@
 <div class="footer-online">
     <div class="container">
-        <p>
+        <p class='visites'>
             <b>Usuarios online:</b> {{ $usersOnline->pluck('name')->implode(', ') }}
         </p>
     </div>
@@ -15,7 +15,6 @@
             <div class="col-md-3">
                 <h6>MI CUENTA</h6>
                 <ul>
-                    {{--                    <li><a href="">Mi perfil</a></li>--}}
                     <li><a href="{{ route('characters.me') }}">Mis personajes</a></li>
                     <li><a href="{{ route('campaigns.me') }}">Mis partidas</a></li>
                 </ul>

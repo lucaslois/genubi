@@ -98,6 +98,12 @@
   border-right: 1px solid #353739;
 }
 
+@media screen and (max-width: 768px) {
+  .dropdown {
+    position: static !important;
+  }
+}
+
 .dropdown-grey {
   margin: 0 0;
   background-color: #26282a;
@@ -107,13 +113,30 @@
   position: relative;
   left: -40px;
 }
+@media screen and (max-width: 768px) {
+  .dropdown-grey {
+    position: absolute !important;
+    left: 0 !important;
+    width: 100%;
+  }
+}
 
 .dropdown-600 {
   width: 600px;
 }
+@media screen and (max-width: 768px) {
+  .dropdown-600 {
+    max-width: 400px;
+  }
+}
 
 .dropdown-200 {
   width: 300px;
+}
+@media screen and (max-width: 768px) {
+  .dropdown-200 {
+    max-width: 400px;
+  }
 }
 
 .dropdown-grey .dropdown-item {
@@ -324,10 +347,7 @@ hr {
 }
 
 .footer-online {
-  background: #eee;
-  border-top: #ddd;
-  margin-top: 80px;
-  margin-bottom: -15px;
+  margin-top: 10px;
   font-size: 14px;
   color: #222;
   padding: 6px 0;
@@ -339,6 +359,9 @@ hr {
   min-height: 160px;
   color: #979aa4;
 }
+.footer h6 {
+  margin-bottom: 8px;
+}
 .footer ul {
   list-style: none;
   margin: 0;
@@ -346,6 +369,7 @@ hr {
   font-size: 14px;
   text-transform: uppercase;
   font-weight: 600;
+  margin-bottom: 24px;
 }
 .footer a {
   color: white;
@@ -593,7 +617,7 @@ hr {
 
 .box-login {
   margin: 200px auto;
-  width: 600px;
+  max-width: 600px;
 }
 
 .square {
@@ -823,6 +847,12 @@ hr {
 .mini {
   font-size: 0.8em;
   color: #888;
+}
+
+.mini-2 {
+  font-size: 0.6em;
+  color: #888;
+  font-weight: 400;
 }
 
 .mention-li {

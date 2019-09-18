@@ -61,25 +61,8 @@
             <div class="row">
                 @forelse($sessions as $session)
                     <div class="col-md-4">
-                        <div class="card session">
-                            <div style="background-image: url('{{ $session->getImage() }}')"
-                                 class="campaign-card-header">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="session-title">{{ str_limit($session->name, 30) }}</h5>
-                                <span class="session-details">{{ $session->date->diffForHumans() }} ({{ $session->date->format('d/M/Y') }}), <a href="{{ route('users.show', $session->user->id) }}">{{ $session->user->name }}</a></span>
-                                <p class="card-text session-description">
-                                    {{ str_limit(strip_tags($session->text), 100) }}
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="{{ route('sessions.show', $session->id) }}" class="btn btn-primary btn-sm">Ver sesión</a>
-                                <div class="float-md-right">
-                                    <span class="badge text-success reaction"><i class="fa fa-thumbs-up"></i> {{ $session->positives()->count() }}</span>
-                                    <span class="badge text-danger reaction"><i class="fa fa-thumbs-down"></i> {{ $session->negatives()->count() }}</span>
-                                </div>
-                            </div>
-                        </div>
+                        @component('layouts/components/session_card', ['session' => $session])
+                        @endcomponent
                     </div>
                 @empty
                     <div class="col-12">

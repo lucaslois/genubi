@@ -80,10 +80,7 @@ hr {
 }
 
 .footer-online {
-  background: #eee;
-  border-top: #ddd;
-  margin-top: 80px;
-  margin-bottom: -15px;
+  margin-top: 10px;
   font-size: 14px;
   color: #222;
   padding: 6px 0;
@@ -96,7 +93,7 @@ hr {
   color: #979aa4;
 
   h6 {
-
+    margin-bottom: 8px;
   }
 
   ul {
@@ -106,6 +103,7 @@ hr {
     font-size: 14px;
     text-transform: uppercase;
     font-weight: 600;
+    margin-bottom: 24px;
   }
 
   a {
@@ -370,7 +368,7 @@ hr {
 
 .box-login {
   margin: 200px auto;
-  width: 600px;
+  max-width: 600px;
 }
 
 .square {
@@ -603,6 +601,12 @@ hr {
 .mini {
   font-size: 0.8em;
   color: #888;
+}
+
+.mini-2 {
+  font-size: 0.6em;
+  color: #888;
+  font-weight: 400;
 }
 
 .mention-li {

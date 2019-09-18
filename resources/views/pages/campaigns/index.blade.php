@@ -16,7 +16,7 @@
                 <div class="col-md-8">
                     <div class="buttons float-md-right">
                         @auth
-                        <a href="{{ route('campaigns.create') }}" class="btn btn-success btn-square btn-upper">Crear campaña</a>
+                            <a href="{{ route('campaigns.create') }}" class="btn btn-success btn-square btn-upper">Crear campaña</a>
                         @endauth
                     </div>
                 </div>
@@ -56,25 +56,8 @@
             <div class="row">
                 @forelse($campaigns as $campaign)
                     <div class="col-md-4">
-                        <div class="card campaign">
-                            <div style="background-image: url('{{ $campaign->getImageMini() }}')"
-                                 class="campaign-card-header">
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $campaign->name }}</h5>
-                                <span class="campaign_details">{{ $campaign->game->name }}, por <a href="">{{ $campaign->user->name }}</a></span>
-                                <p class="card-text campaign campaign_description">
-                                    {{ str_limit($campaign->short_description, 150) }}
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                                <a href="{{ route('campaigns.show', $campaign->id) }}" class="btn btn-primary btn-sm">Ver partida</a>
-                                <div class="float-md-right">
-                                    <span class="badge text-success reaction"><i class="fa fa-thumbs-up"></i> {{ $campaign->positives() }}</span>
-                                    <span class="badge text-danger reaction"><i class="fa fa-thumbs-down"></i> {{ $campaign->negatives() }}</span>
-                                </div>
-                            </div>
-                        </div>
+                        @component('layouts/components/campaign_card', ['campaign' => $campaign])
+                        @endcomponent
                     </div>
                 @empty
                     <div class="col-12">
