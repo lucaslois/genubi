@@ -159,7 +159,7 @@ class CampaignController extends Controller
         abort_if(is_null($user), 401);
 
         $campaign = Campaign::whereToken($token)->first();
-        abort_if(is_null($campaign), 404);
+        abort_if(is_null($campaign), 404, 'Token de acceso inexistente');
 
         $characters = $user->characters()->whereNull('campaign_id')->get();
         return view('pages.campaigns.join', compact('campaign', 'characters'));
