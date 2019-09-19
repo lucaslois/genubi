@@ -161,4 +161,12 @@ class User extends Authenticatable implements CanBeTaggable
     {
         return route('users.show', $this->id);
     }
+
+    public function isTimeToVote($session) {
+        $campaign = $session->campaign;
+        return  $campaign->user->isNot(auth()->user()) &&
+            $this->sessionVotes()->whereSessionId($session->id)->count() == 0 &&
+            $this->isPlayingCampaign($campaign) &&
+            now()->diffInDays($session->date)  < 30;
+    }
 }

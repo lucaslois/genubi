@@ -43,7 +43,7 @@
             @endif
             <div class="box box-border-top session-summary mt-1">
                 <div class="votes text-center mb-2">
-                    @if(auth()->check() && now()->diffInDays($session->date)  < 10)
+                    @if(auth()->check() && auth()->user()->isTimeToVote($session))
                         <a href="{{ route('sessions.vote.positive', $session->id) }}"
                            class="btn btn-success btn-square">
                             <i class="fa fa-thumbs-up"></i> {{ $session->positives()->count() }}
@@ -249,12 +249,7 @@
 @push('js')
     <script>
         @auth
-            @if(
-            $selected_campaign->user->isNot(auth()->user()) &&
-            auth()->user()->sessionVotes()->whereSessionId($session->id)->count() == 0 &&
-            auth()->user()->isPlayingCampaign($selected_campaign) &&
-            now()->diffInDays($session->date)  < 30
-            )
+            @if(auth()->user()->isTimeToVote($session))
             $('#voteModal').modal();
             @endif
         @endauth
