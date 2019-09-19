@@ -156,7 +156,7 @@ class CampaignController extends Controller
 
     public function joinIndex($token) {
         $user = Auth::user();
-        abort_if(is_null($user), 401);
+        abort_if(is_null($user), 401, "Debes iniciar sesión!");
 
         $campaign = Campaign::whereToken($token)->first();
         abort_if(is_null($campaign), 404, 'Token de acceso inexistente');
