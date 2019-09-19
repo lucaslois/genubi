@@ -249,9 +249,12 @@
 @push('js')
     <script>
         @auth
-            @if($selected_campaign->user->isNot(auth()->user()) &&
+            @if(
+            $selected_campaign->user->isNot(auth()->user()) &&
             auth()->user()->sessionVotes()->whereSessionId($session->id)->count() == 0 &&
-            now()->diffInDays($session->date)  < 10)
+            auth()->user()->isPlayingCampaign($selected_campaign) &&
+            now()->diffInDays($session->date)  < 30
+            )
             $('#voteModal').modal();
             @endif
         @endauth

@@ -64,7 +64,8 @@ class User extends Authenticatable implements CanBeTaggable
     }
 
     public function isPlayingCampaign(Campaign $campaign) {
-        foreach($this->characters as $character)
+        $characters = $this->characters()->whereStateId(1)->get();
+        foreach($characters as $character)
             if($character->campaign && $character->campaign->is($campaign))
                 return true;
 
