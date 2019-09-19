@@ -156,7 +156,7 @@ class CampaignController extends Controller
 
     public function joinIndex($token) {
         $user = Auth::user();
-        abort_if(!$user, 401);
+        abort_if(is_null($user), 401);
 
         $campaign = Campaign::whereToken($token)->first();
         abort_if(is_null($campaign), 404);
