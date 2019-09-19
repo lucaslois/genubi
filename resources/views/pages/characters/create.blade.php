@@ -1,4 +1,4 @@
-@extends('layouts.main')
+ç@extends('layouts.main')
 
 
 @section('content')
@@ -31,7 +31,9 @@
                         <form action="{{ route('characters.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method("POST")
-                            <input type="text" name="join_link" value="{{ $campaign_to_join->token }}" hidden>
+                            @if($campaign_to_join)
+                                <input type="text" name="join_link" value="{{ $campaign_to_join->token }}" hidden>
+                            @endif
                             <div class="form-group">
                                 <label for="name">Nombre</label>
                                 <input
