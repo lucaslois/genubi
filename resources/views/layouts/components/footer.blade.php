@@ -1,7 +1,7 @@
 <div class="footer-online">
     <div class="container">
         <p class='visites'>
-            <b>Usuarios online:</b> {{ $usersOnline->pluck('name')->implode(', ') }}
+            <b>Usuarios online:</b> {{ usersOnline()->pluck('name')->implode(', ') }}
         </p>
     </div>
 </div>
