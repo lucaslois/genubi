@@ -7,9 +7,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Channel extends Model implements CanBeTaggable
 {
-    use HasFormattedText, Taggable;
+    use HasFormattedText, Taggable, SoftDeletes;
 
-    use SoftDeletes;
     protected $fillable = [
         'name',
         'campaign_id',

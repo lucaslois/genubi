@@ -95,6 +95,8 @@ Route::post('channels/{id}/create-post', 'PostController@store')->name('channels
 Route::get('channels/{id}/roll-dices', 'PostController@createDices')->name('channels.dices.create');
 Route::post('channels/{id}/roll-dices', 'PostController@storeDices')->name('channels.dices.store');
 
+Route::get('channels/{id}/remove', 'ChannelController@remove')->name('channels.remove');
+
 Route::get('posts/{id}', 'PostController@edit')->name('posts.edit');
 Route::put('posts/{id}', 'PostController@update')->name('posts.update');
 
