@@ -1,6 +1,6 @@
 <div class="card card-session mb-3">
     <div style="background-image: url('{{ $session->getImage() }}')"
-         class="campaign-card-header">
+         class="card-session-header">
     </div>
     <div class="card-body">
         <h5 class="session-title">{{ str_limit($session->name, 30) }}</h5>
