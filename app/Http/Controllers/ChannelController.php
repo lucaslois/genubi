@@ -150,4 +150,16 @@ class ChannelController extends Controller
 
         return back();
     }
+
+    public function remove($id)
+    {
+        $user = Auth::user();
+        $channel = Channel::findOrFail($id);
+        $campaign = $channel->campaign;
+        $channel->delete();
+
+        Alert::send("El canal se ha borrado correctamente");
+
+        return redirect()->route('campaigns.channels.index', $campaign->id);
+    }
 }

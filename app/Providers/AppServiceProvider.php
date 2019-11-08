@@ -21,8 +21,6 @@ class AppServiceProvider extends ServiceProvider
         setlocale(LC_ALL, 'es_ES');
         date_default_timezone_set('America/Argentina/Buenos_Aires');
 
-        $users = User::usersOnline();
-        View::share ( 'usersOnline', $users);
         View::share ( 'version', config('app.version'));
 
         Npc::observe(NpcObserver::class);

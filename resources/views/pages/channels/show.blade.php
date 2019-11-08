@@ -37,7 +37,7 @@
                                     <a class="dropdown-item" href="{{ route('channels.close', $channel->id) }}"><i class="fas fa-lock"></i> Cerrar canal</a>
                                 @endif
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ route('channels.remove', $channel->id) }}"><i class="fas fa-trash"></i> Eliminar canal</a>
+                                <a class="dropdown-item" href="javascript:confirmDelete('{{ route('channels.remove', $channel->id) }}')"><i class="fas fa-trash"></i> Eliminar canal</a>
                             </div>
                         </span>
                         @endif
