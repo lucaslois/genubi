@@ -54,7 +54,7 @@
                     @forelse($knowledges as $knowledge)
                         <tr>
                             <td>{{ $knowledge->name }}</td>
-                            <td>{{ $knowledge->type->name }}</td>
+                            <td>{{ $knowledge->type->name ?? '-' }}</td>
                             <td>
                                 @if($knowledge->character)
                                     {{ $knowledge->character->name }} <span class="mini">({{ $knowledge->user->name }})</span>
