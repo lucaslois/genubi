@@ -1,15 +1,11 @@
 <div class="footer-online">
     <div class="container">
         <p class='visites'>
-<<<<<<< HEAD
             @if($usersOnline->count() > 0)
             <b>Usuarios online:</b> {{ $usersOnline->pluck('name')->implode(', ') }}
             @else
             No hay usuarios online en este momento
             @endif
-=======
-            <b>Usuarios online:</b> {{ usersOnline()->pluck('name')->implode(', ') }}
->>>>>>> 8c3a539df91877517b5da1a6dd17ddec8aaf1e4f
         </p>
     </div>
 </div>
