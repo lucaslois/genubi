@@ -20,21 +20,23 @@ class KnowledgeController extends Controller
         else
             $query = Knowledge::whereShareEveryone(true);
 
-        switch($request->visibility) {
-            case "me":
-                $query->where('knowledges.user_id', $user->id);
-                break;
-            case "shared":
-                $list_of_characters = $user->characters->pluck('id');
-                $query->where(function($query) use($list_of_characters) {
-                    $query->orWhereIn('knowledge_character.character_id', $list_of_characters)
-                        ->orWhere('knowledges.share_everyone', true);
-                })
-                    ->where('is_official', false);
-                break;
-            case "dm":
-                $query->where('is_official', true);
-                break;
+        if($user) {
+            switch ($request->visibility) {
+                case "me":
+                    $query->where('knowledges.user_id', $user->id);
+                    break;
+                case "shared":
+                    $list_of_characters = $user->characters->pluck('id');
+                    $query->where(function ($query) use ($list_of_characters) {
+                        $query->orWhereIn('knowledge_character.character_id', $list_of_characters)
+                            ->orWhere('knowledges.share_everyone', true);
+                    })
+                        ->where('is_official', false);
+                    break;
+                case "dm":
+                    $query->where('is_official', true);
+                    break;
+            }
         }
 
         if($request->type) {
