@@ -18,7 +18,7 @@ class KnowledgeController extends Controller
         if($user)
             $query = $user->knowledgesOf($selected_campaign);
         else
-            $query = Knowledge::whereShareEveryone(true);
+            $query = Knowledge::whereShareEveryone(true)->whereCampaignId($selected_campaign->id);
 
         if($user) {
             switch ($request->visibility) {
@@ -92,8 +92,15 @@ class KnowledgeController extends Controller
         $knowledge = Knowledge::findOrFail($id);
         $selected_campaign = $knowledge->campaign;
 
-        if($user->knowledgesOf($selected_campaign)->get()->contains($knowledge) == false)
-            abort(403);
+        if($user) {
+            if($user->knowledgesOf($selected_campaign)->get()->contains($knowledge) == false)
+                abort(403, 'No tienes permiso para ver esto');
+        }
+        else {
+            if($knowledge->share_everyone == false)
+                abort(403, 'No tienes permiso para ver esto');
+        }
+
 
         return view('pages.knowledges.show', compact('selected_campaign', 'knowledge'));
     }
