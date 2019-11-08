@@ -16,7 +16,8 @@ class Knowledge extends Model implements CanBeTaggable
         'user_id',
         'name',
         'text',
-        'share_everyone'
+        'share_everyone',
+        'type_id'
     ];
 
     public function user() {
@@ -35,8 +36,13 @@ class Knowledge extends Model implements CanBeTaggable
         return $this->belongsToMany('App\\Models\\Character', 'knowledge_character');
     }
 
-    public function isDM() {
-        return $this->user->is($this->campaign->user);
+    public function type()
+    {
+        return $this->belongsTo('App\\Models\\KnowledgeType');
+    }
+
+    public function isOfficial() {
+        return $this->is_official;
     }
 
     public function notifyAllUsers() {

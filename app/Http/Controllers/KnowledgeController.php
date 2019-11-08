@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Facades\Alert;
 use App\Models\Campaign;
 use App\Models\Knowledge;
+use App\Models\KnowledgeType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,6 +19,28 @@ class KnowledgeController extends Controller
             $query = $user->knowledgesOf($selected_campaign);
         else
             $query = Knowledge::whereShareEveryone(true);
+
+        switch($request->visibility) {
+            case "me":
+                $query->where('knowledges.user_id', $user->id);
+                break;
+            case "shared":
+                $list_of_characters = $user->characters->pluck('id');
+                $query->where(function($query) use($list_of_characters) {
+                    $query->orWhereIn('knowledge_character.character_id', $list_of_characters)
+                        ->orWhere('knowledges.share_everyone', true);
+                })
+                    ->where('is_official', false);
+                break;
+            case "dm":
+                $query->where('is_official', true);
+                break;
+        }
+
+        if($request->type) {
+            $type = KnowledgeType::whereSlug($request->type)->firstOrFail();
+            $query->where('knowledges.type_id', $type->id);
+        }
 
         $knowledges = $query->paginate(10);
 
@@ -36,7 +59,9 @@ class KnowledgeController extends Controller
         $characters = $user->characters()->whereCampaignId($selected_campaign->id)->get();
         $shared_with = $selected_campaign->activeCharacters();
 
-        return view('pages.knowledges.create', compact( 'selected_campaign', 'shared_with', 'characters'));
+        $types = KnowledgeType::all();
+
+        return view('pages.knowledges.create', compact( 'selected_campaign', 'shared_with', 'characters', 'types'));
     }
 
     public function store(Request $request) {
@@ -78,7 +103,9 @@ class KnowledgeController extends Controller
         $characters = $user->characters()->whereCampaignId($selected_campaign->id)->get();
         $shared_with = $selected_campaign->activeCharacters();
 
-        return view('pages.knowledges.edit', compact( 'knowledge', 'selected_campaign', 'shared_with', 'characters'));
+        $types = KnowledgeType::all();
+
+        return view('pages.knowledges.edit', compact( 'knowledge', 'selected_campaign', 'shared_with', 'characters', 'types'));
     }
 
     public function update($id, Request $request) {

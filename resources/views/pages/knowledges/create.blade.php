@@ -61,6 +61,19 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="name">Tipo</label>
+                                <select
+                                    id="type_id"
+                                    name="type_id"
+                                    class="form-control {!! $errors->first('type_id', 'is-invalid') !!}">
+                                    @foreach($types as $type)
+                                        <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                    @endforeach
+                                </select>
+                                {!! $errors->first('type_id', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+
+                            <div class="form-group">
                                 <label for="text">Texto</label>
                                 <textarea
                                         id="text"

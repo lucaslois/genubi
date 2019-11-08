@@ -5,7 +5,7 @@ namespace App\Models;
 class Autocomplete
 {
     public static function format($text) {
-        $regex = preg_match_all("(@[a-zA-Z0-9\-]*)", $text, $group);
+        $regex = preg_match_all("(@[a-zA-Z0-9\-\#]*)", $text, $group);
         $new = $text;
 
         foreach($group[0] as $mention) {

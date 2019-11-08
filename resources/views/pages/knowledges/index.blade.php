@@ -28,13 +28,23 @@
     </section>
     <section class="section-sessions">
         <div class="container">
-            <h1>Conocimientos</h1>
+            <h1>
+                Conocimientos
+                @if(request()->visibility == 'me')
+                    propios
+                @elseif(request()->visibility == 'shared')
+                    de otros
+                @elseif(request()->visibility == 'dm')
+                    del DM
+                @endif
+            </h1>
             <div class="box box-border-top">
                 {{ $knowledges->links() }}
                 <table class="table">
                     <thead>
                     <tr>
                         <th>Título</th>
+                        <th>Tipo</th>
                         <th>Creador</th>
                         <th>Compartido con</th>
                         <th></th>
@@ -44,13 +54,14 @@
                     @forelse($knowledges as $knowledge)
                         <tr>
                             <td>{{ $knowledge->name }}</td>
+                            <td>{{ $knowledge->type->name }}</td>
                             <td>
                                 @if($knowledge->character)
                                     {{ $knowledge->character->name }} <span class="mini">({{ $knowledge->user->name }})</span>
                                 @else
                                     {{ $knowledge->user->name }}
-                                    @if($knowledge->isDM())
-                                        <span class="badge badge-warning">Conocimiento del DM</span>
+                                    @if($knowledge->isOfficial())
+                                        <span class="badge badge-warning">Conocimiento Oficial</span>
                                     @endif
                                 @endif
                             </td>

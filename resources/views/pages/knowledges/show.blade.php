@@ -21,7 +21,7 @@
                 @if($knowledge->user->is(auth()->user()))
                     <div class="col-4">
                         <div class="buttons float-md-right">
-                            <a href="{{ route('knowledges.edit', $knowledge->id) }}" class="btn btn-yellow btn-upper">Editar descubrimiento</a>
+                            <a href="{{ route('knowledges.edit', $knowledge->id) }}" class="btn btn-yellow btn-upper">Editar conocimiento</a>
                         </div>
                     </div>
                 @endif
@@ -63,8 +63,8 @@
                             <img class="knowledge-image" src="{{ $knowledge->user->getImage() }}" alt="">
                             <p class="knowledge-username">
                                 por <a href="{{ route('users.show', $knowledge->user->id) }}">{{ $knowledge->user->name }}</a>
-                                @if($knowledge->isDM())
-                                    <span class="badge badge-warning">Conocimiento del DM</span>
+                                @if($knowledge->isOfficial())
+                                    <span class="badge badge-warning">Conocimiento Oficial</span>
                                 @endif
                                 <br>
                                 {{ $knowledge->created_at->diffForHumans() }}

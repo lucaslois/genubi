@@ -1,10 +1,10 @@
 <div class="footer-online">
     <div class="container">
         <p class='visites'>
-            @if($usersOnline->count() > 0)
-            <b>Usuarios online:</b> {{ $usersOnline->pluck('name')->implode(', ') }}
+            @if(usersOnline()->count() > 0)
+                <b>Usuarios online:</b> {{ usersOnline()->pluck('name')->implode(', ') }}
             @else
-            No hay usuarios online en este momento
+                No hay usuarios online en este momento
             @endif
         </p>
     </div>
@@ -43,7 +43,8 @@
 
 <footer class="subfooter">
     <div class="container">
-        <p><i class="fa fa-code"></i> con <i class="fa fa-dice"></i> por <a href="https://lucaslois.com">Lucas Lois</a> y el grupo de
+        <p><i class="fa fa-code"></i> con <i class="fa fa-dice"></i> por <a href="https://lucaslois.com">Lucas Lois</a>
+            y el grupo de
             <a href="{{ route('campaigns.show', 2) }}">Antiguo Mal</a></p>
         <p><a href="{{ url('/') }}">Genubi</a> {{ now()->year }} | V{{ $version }}</p>
     </div>
