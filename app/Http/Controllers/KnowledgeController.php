@@ -39,6 +39,7 @@ class KnowledgeController extends Controller
             }
         }
 
+        $type = null;
         if($request->type) {
             $type = KnowledgeType::whereSlug($request->type)->firstOrFail();
             $query->where('knowledges.type_id', $type->id);
@@ -46,7 +47,7 @@ class KnowledgeController extends Controller
 
         $knowledges = $query->paginate(10);
 
-        return view('pages.knowledges.index', compact('selected_campaign', 'knowledges'));
+        return view('pages.knowledges.index', compact('selected_campaign', 'knowledges', 'type'));
     }
 
     /**

@@ -37,6 +37,9 @@
                 @elseif(request()->visibility == 'dm')
                     del DM
                 @endif
+                @if($type)
+                    ({{ $type->name }})
+                @endif
             </h1>
             <div class="box box-border-top">
                 {{ $knowledges->links() }}

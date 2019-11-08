@@ -15,7 +15,7 @@
                             <li class="breadcrumb-item"><a href="{{ route('campaigns.index') }}">Partidas</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('campaigns.show', $selected_campaign->id) }}">{{ $selected_campaign->name }}</a></li>
                             <li class="breadcrumb-item"><a href="{{ route('campaigns.sessions.index', $selected_campaign->id) }}">Sesiones</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('sessions.show', $selected_campaign->id) }}">{{ $session->name }}</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('sessions.show', $session->id) }}">{{ $session->name }}</a></li>
                             <li class="breadcrumb-item active">Hitos</li>
                         </ol>
                     </nav>
