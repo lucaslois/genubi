@@ -88,7 +88,6 @@
                                         placeholder="Por ejemplo: Director de Arcania, Herrero de Molten, Miembro de los Espada Plateada, etc."
                                         class="form-control {!! $errors->first('description', 'is-invalid') !!}">{{ old('description', $npc->description) }}</textarea>
                                 {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
-                                <div class="mini">Este es un editor embebido. Puedes mencionar a otras entidades anteponiendo el caracter @.</div>
                             </div>
 
                             <div class="form-group">

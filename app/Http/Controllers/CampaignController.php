@@ -159,7 +159,7 @@ class CampaignController extends Controller
         abort_if(is_null($user), 401, "Debes iniciar sesión!");
 
         $campaign = Campaign::whereToken($token)->first();
-        abort_if(is_null($campaign), 404, 'Token de acceso inexistente');
+        abort_if(is_null($campaign), 404, 'El link de acceso expiró. Pídele un nuevo link de acceso a tu DM');
 
         $characters = $user->characters()->whereNull('campaign_id')->get();
         return view('pages.campaigns.join', compact('campaign', 'characters'));

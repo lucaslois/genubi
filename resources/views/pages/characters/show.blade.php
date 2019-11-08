@@ -16,7 +16,7 @@
                 @if($character->user->is(auth()->user()))
                     <div class="col-6">
                         <div class="buttons float-md-right">
-                            <a href="{{ route('characters.edit', $character->id) }}" class="btn btn-warning btn-square"><i class="fas fa-edit"></i> Editar personaje</a>
+                            <a href="{{ route('characters.edit', $character->id) }}" class="btn btn-upper btn-warning btn-square"><i class="fas fa-edit"></i> Editar personaje</a>
                         </div>
                     </div>
                 @endif
@@ -62,7 +62,7 @@
                                     <div class="col-4">
                                         <dl>
                                             <dt>Nombre</dt>
-                                            <dd>
+                                            <dd>5
                                                 @if($character->family)
                                                     {{ $character->family }},
                                                 @endif
@@ -102,7 +102,9 @@
                                 </div>
 
                                 <h2 class="character-profile-title">¿Quién soy?</h2>
-                                {!! $character->description !!}
+                                <div class="font-3">
+                                    {!! $character->description !!}
+                                </div>
                                 @if($character->desc_mentality)
                                     <h2 class="character-profile-title mt-3">Mentalidad</h2>
                                     {!! $character->desc_mentality !!}
@@ -141,7 +143,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <table class="table">
+                                <table class="table table-stripped-pro">
                                     <thead>
                                     <tr>
                                         <th>Fecha</th>
@@ -168,7 +170,7 @@
                             </div>
                             <div class="tab-pane fade" id="tab-posts">
                                 <h2 class="character-profile-title">Listado de posts</h2>
-                                <table class="table">
+                                <table class="table table-stripped-pro">
                                     <thead>
                                     <tr>
                                         <th>Fecha</th>
@@ -176,6 +178,8 @@
                                         <th>Título</th>
                                         <th></th>
                                     </tr>
+                                    </thead>
+                                    <tbody>
                                     @forelse($character->posts->reverse()->take(10) as $post)
                                         <tr>
                                             <td>{{ $post->created_at->format('d M Y') }}</td>
@@ -190,7 +194,7 @@
                                             <td rowspan="4">Aun no hay diarios para este personaje</td>
                                         </tr>
                                     @endforelse
-                                    </thead>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>

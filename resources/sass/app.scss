@@ -6,6 +6,7 @@
 @import 'components/navbars.scss';
 @import 'components/notifications.scss';
 @import 'components/buttons.scss';
+@import 'components/cards.scss';
 
 body {
   font-family: "Roboto Condensed", sans-serif;
@@ -21,6 +22,10 @@ h1 {
 hr {
   background: rgba(255, 255, 255, 0.05);
   margin: 40px 0;
+}
+
+.font-3 {
+  font-family: 'Roboto', sans-serif;
 }
 
 .form-control {
@@ -149,71 +154,6 @@ hr {
   top: 1px;
 }
 
-.campaigns .card {
-  margin-bottom: 20px;
-}
-
-.campaign h5 {
-  margin: 0;
-}
-
-.campaign .campaign_description {
-  margin-top: 6px;
-  font-size: 14px;
-  width: 100%;
-}
-
-.campaign .campaign_details {
-  color: #888;
-  font-size: 14px;
-}
-
-.campaign_background {
-  background-position: top center;
-  height: 450px;
-  color: white;
-  padding: 0px 30px;
-  position: relative;
-  z-index: 1;
-}
-
-.campaign-card-header {
-  background-size: 100%;
-  height: 160px;
-}
-
-.overlay {
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  position: absolute;
-  z-index: 2;
-}
-
-.campaign_title {
-  font-size: 40px;
-}
-
-.campaign_description {
-  width: 70%;
-  font-size: 20px;
-  margin-top: 8px;
-}
-
-.campaign_content {
-  position: relative;
-  top: 150px;
-  z-index: 3;
-}
-
-.campaign_badge {
-  font-size: 0.4em;
-  position: relative;
-  top: -5px;
-}
-
 .badge-state {
   color: white;
   font-weight: 400;
@@ -223,13 +163,6 @@ hr {
   margin-bottom: 20px;
 }
 
-.campaign_aditional {
-  background: rgba(0, 0, 0, 0.8);
-  display: inline;
-  padding: 6px 22px;
-  border-radius: 3px;
-  font-size: 15px;
-}
 
 .token {
   background: #FEFEFE;
@@ -237,79 +170,6 @@ hr {
   padding: 8px;
   font-size: 16px;
   color: #444;
-}
-
-.character-list {
-  .character {
-    border-top: 3px solid #1b4b72;
-    padding: 1px;
-    margin-bottom: 10px;
-  }
-
-  .character-title {
-    font-size: 20px;
-    margin: 0;
-    font-weight: 800;
-  }
-
-  .character-data {
-    font-size: 12px;
-    margin: 2px 0;
-    color: #888;
-  }
-
-  .character-data-owner {
-    margin-top: 0px;
-  }
-
-  .character-level {
-    text-transform: uppercase;
-    font-size: 0.75em;
-    color: $main_dark_yellow;
-  }
-
-  .character-desc {
-    font-size: 14px;
-    margin: 2px 0;
-    color: #444;
-  }
-
-  .character-avatar {
-    margin: auto auto;
-    display: block;
-  }
-
-  .character-owner {
-    color: #888;
-    font-size: 0.7em;
-    font-weight: 400;
-  }
-
-  .character-profile-avatar {
-    display: block;
-    margin: 10px 0;
-  }
-}
-
-.section-sessions {
-  .session {
-    margin-bottom: 9px;
-  }
-  .session-title {
-    margin: 0;
-  }
-  .session-details {
-    font-size: 12px;
-    color: #888;
-  }
-  .session-description {
-    font-size: 14px;
-  }
-  .session-image {
-    width: 500px;
-    display: block;
-    margin: 0 auto;
-  }
 }
 
 .reaction {
@@ -392,7 +252,7 @@ hr {
 
 .milestone{
   border: 1px dashed goldenrod;
-  width: 600px;
+  max-width: 600px;
   border-radius: 6px;
   margin: 4px auto;
   padding: 8px;
@@ -410,17 +270,18 @@ hr {
 
 .character-profile-title {
   font-size:  20px;
-  font-weight: 800;
-  font-family: 'Nunito', serif;
+  font-weight: 400;
+  font-family: 'Roboto', serif;
+  margin-bottom: 12px;
 }
 
 .character-profile-title::after {
   display: block;
   content: ' ';
-  background: #2a4488;
-  width: 80px;
-  height: 3px;
-  margin: 8px 0;
+  background: #ffc107;
+  width: 100%;
+  height: 1px;
+  margin: 6px 0;
 }
 
 .channel-icon {
@@ -682,13 +543,29 @@ hr {
 }
 
 .table-material {
-
   tr td {
     border: 0;
     padding: .4em;
   }
   tr:nth-child(even) {
     background: #efefef;
+  }
+}
+
+.table-stripped-pro {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+
+  tr:nth-child(odd) td {
+    background: #faf8f7;
+  }
+
+  tr th,
+  tr td {
+    border: 1px solid #d0cac5;
+  }
+  tr th {
+    border-bottom: 3px solid #d0cac5;
   }
 }
 

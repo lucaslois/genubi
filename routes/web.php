@@ -33,9 +33,9 @@ Route::post('profile/change-password', 'PasswordController@store')->name('passwo
 Route::get('notifications/{id}', 'NotificationController@click')->name('notifications.click');
 
 // CAMPAIGNS
-Route::get('campaigns/me', 'CampaignController@me')->name('campaigns.me');
-Route::get('campaigns/join/{token}', 'CampaignController@joinIndex')->name('campaigns.join.index');
-Route::post('campaigns/join/{token}', 'CampaignController@joinStore')->name('campaigns.join.store');
+Route::get('campaigns/me', 'CampaignController@me')->name('campaigns.me')->middleware('auth');
+Route::get('campaigns/join/{token}', 'CampaignController@joinIndex')->name('campaigns.join.index')->middleware('auth');
+Route::post('campaigns/join/{token}', 'CampaignController@joinStore')->name('campaigns.join.store')->middleware('auth');
 Route::get('campaigns/{id}/create-link', 'CampaignController@linkIndex')->name('campaigns.link.index');
 Route::get('campaigns/{id}/create-link/regenerate', 'CampaignController@linkRegenerate')->name('campaigns.link.regenerate');
 Route::get('campaigns/{id}/create-link/disable', 'CampaignController@linkDisable')->name('campaigns.link.disable');
@@ -99,14 +99,14 @@ Route::get('posts/{id}', 'PostController@edit')->name('posts.edit');
 Route::put('posts/{id}', 'PostController@update')->name('posts.update');
 
 // CHARACTERS
-Route::get('characters/me', 'CharacterController@me')->name('characters.me');
+Route::get('characters/me', 'CharacterController@me')->name('characters.me')->middleware('auth');
 Route::post('characters/{id}/class', 'CharacterController@addClass')->name('characters.addclass');
-Route::get('characters/{id}/class/{class_id}/delete', 'CharacterController@removeClass')->name('characters.removeclass');
-Route::resource('/characters', 'CharacterController');
-Route::get('/characters/{id}/remove', 'CharacterController@destroy')->name('characters.remove');
+Route::get('characters/{id}/class/{class_id}/delete', 'CharacterController@removeClass')->name('characters.removeclass')->middleware('auth');
+Route::resource('/characters', 'CharacterController')->middleware('auth');
+Route::get('/characters/{id}/remove', 'CharacterController@destroy')->name('characters.remove')->middleware('auth');
 
-Route::get('characters/{id}/edit-dm', 'CharacterController@editDm')->name('characters.dm.edit');
-Route::put('characters/{id}/edit-dm', 'CharacterController@updateDm')->name('characters.dm.update');
+Route::get('characters/{id}/edit-dm', 'CharacterController@editDm')->name('characters.dm.edit')->middleware('auth');
+Route::put('characters/{id}/edit-dm', 'CharacterController@updateDm')->name('characters.dm.update')->middleware('auth');
 
 Route::get('search', 'SearchController@index')->name('search');
 

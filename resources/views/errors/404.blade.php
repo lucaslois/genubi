@@ -9,6 +9,9 @@
                 <img class="img-thumbnail" src="{{ asset('images/belial.webp') }}" alt="">
                 <div class="mt-2">
                     <p>Ooops! Parece que nos tropezamos y caímos en los confines del infierno. Claramente no encontramos lo que buscabas...</p>
+                    @if($exception->getMessage())
+                    <p class="alert alert-warning">{{ $exception->getMessage() }}</p>
+                    @endif
                     <p><a href="{{ url('/') }}">Ir a la página principal</a></p>
                 </div>
             </div>

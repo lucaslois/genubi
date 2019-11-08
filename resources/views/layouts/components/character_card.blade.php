@@ -1,4 +1,4 @@
-<div class="card character">
+<div class="card card-character">
     <div class="card-body">
         <div class="row">
             <div class="col-4">
@@ -14,7 +14,7 @@
                     <p class="character-data">Oriundo de {{ $character->nationality }}</p>
                 @endif
                 <p class="character-desc">{{ str_limit($character->description, 200) }}</p>
-                <a href="{{ route('characters.show', $character->id) }}" class="btn btn-primary btn-sm">Ver personaje</a>
+                <a href="{{ route('characters.show', $character->id) }}" class="btn btn-primary btn-sm mt-2">Ver personaje</a>
             </div>
         </div>
     </div>

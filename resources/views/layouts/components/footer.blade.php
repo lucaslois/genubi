@@ -1,7 +1,11 @@
 <div class="footer-online">
     <div class="container">
         <p class='visites'>
+            @if($usersOnline->count() > 0)
             <b>Usuarios online:</b> {{ $usersOnline->pluck('name')->implode(', ') }}
+            @else
+            No hay usuarios online en este momento
+            @endif
         </p>
     </div>
 </div>
@@ -9,7 +13,7 @@
 <footer class="footer">
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3 mb-4">
                 <img src="{{ asset('images/logo.png') }}" alt="">
             </div>
             <div class="col-md-3">

@@ -65,7 +65,7 @@
                         <dt>Autor</dt>
                         <dd>{{ $session->user->name }}</dd>
                         <dt>Fecha de juego</dt>
-                        <dd>{{ $session->date->format('d F Y') }}</dd>
+                        <dd>{{ $session->date->isoFormat('D MMM YYYY') }}</dd>
                     </dl>
                     <h4>Resumen</h4>
                     {!! $session->formattedText() !!}
@@ -82,10 +82,10 @@
                 @foreach($session->milestones as $milestone)
                     <div class="milestone">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-4">
                                 <img style="width: 128px" src="{{ $milestone->getImage() }}" alt="">
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-8">
                                 <div class="milestone-title">{{ $milestone->name }}</div>
                                 <div class="milestone-desc">{{ $milestone->description }}</div>
                             </div>

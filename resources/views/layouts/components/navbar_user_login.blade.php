@@ -47,6 +47,8 @@
     <div class="dropdown-menu navbar-dropdown-black" aria-labelledby="navbarDropdown">
         {{--        <a class="dropdown-item" href="{{ route('profile.show') }}">Mi perfil</a>--}}
         <a class="dropdown-item" href="{{ route('users.show', auth()->user()->id) }}">Mi perfil</a>
+        <a class="dropdown-item" href="{{ route('characters.me', auth()->user()->id) }}">Mis personajes</a>
+        <a class="dropdown-item" href="{{ route('campaigns.me', auth()->user()->id) }}">Mis partidas</a>
         <a class="dropdown-item" href="{{ route('logout') }}">Cerrar sesión</a>
     </div>
 </li>

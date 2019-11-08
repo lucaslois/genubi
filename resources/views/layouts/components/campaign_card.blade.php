@@ -1,13 +1,13 @@
-<div class="card campaign mb-3">
+<div class="card card-campaign mb-3">
     <div style="background-image: url('{{ $campaign->getImageMini() }}')"
-         class="campaign-card-header">
+         class="card-campaign-header">
     </div>
     <div class="card-body">
-        <h5 class="card-title">{{ $campaign->name }} <span class="mini-2" style="color: {{ $campaign->state->color }}">{{ $campaign->state->name }}</span></h5>
-        <span class="campaign_details">
+        <h5 class="card-title card-campaign-title">{{ $campaign->name }} <span class="mini-2" style="color: {{ $campaign->state->color }}">{{ $campaign->state->name }}</span></h5>
+        <span class="card-campaign-details">
             {{ $campaign->game->name }}, por <a href="">{{ $campaign->user->name }}</a>
         </span>
-        <p class="card-text campaign campaign_description short_text">
+        <p class="card-text card-campaign-description">
             {{ str_limit($campaign->short_description, 150) }}
         </p>
     </div>

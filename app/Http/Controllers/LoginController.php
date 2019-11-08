@@ -35,6 +35,13 @@ class LoginController extends Controller
         if(Hash::check('genubi', $user->password))
             return redirect()->route('password.index');
 
+        if(session('last_page')) {
+            $url = session('last_page');
+            session()->forget('last_page');
+
+            return redirect()->to($url);
+        }
+
         return redirect()->route('index');
     }
 

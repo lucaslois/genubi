@@ -9,24 +9,18 @@
 
             <div class="collapse navbar-collapse" id="topbarContent">
                 <ul class="navbar-nav mr-auto">
-                    @auth
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Mi contenido
-                            </a>
-                            <div class="dropdown-menu navbar-dropdown-black">
-                                <a class="dropdown-item" href="{{ route('characters.me') }}">Mis Personajes</a>
-                                <a class="dropdown-item" href="{{ route('campaigns.me') }}">Mis Partidas</a>
-                            </div>
-                        </li>
-                    @endauth
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('campaigns.index') }}">Partidas</a>
-                    </li>
                     <li class="nav-item">
                         <form action="{{ route('search') }}">
-                            <input name="global_search" value="{{ request()->global_search }}" type="text" class='form-control topbar-searcher' placeholder="Buscador...">
+                            <div class="input-group">
+                                <input name="global_search" value="{{ request()->global_search }}" type="text" class='form-control topbar-searcher' placeholder="Buscador...">
+                                <div class="input-group-append">
+                                    <span class="search-icon"><i class="fas fa-search"></i></span>
+                                </div>
+                            </div>
                         </form>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('campaigns.index') }}">Partidas</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">

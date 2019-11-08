@@ -1,10 +1,10 @@
-<div class="card session mb-3">
+<div class="card card-session mb-3">
     <div style="background-image: url('{{ $session->getImage() }}')"
          class="campaign-card-header">
     </div>
     <div class="card-body">
         <h5 class="session-title">{{ str_limit($session->name, 30) }}</h5>
-        <span class="session-details">{{ $session->date->diffForHumans() }} ({{ $session->date->format('d/M/Y') }}), <a href="{{ route('users.show', $session->user->id) }}">{{ $session->user->name }}</a></span>
+        <span class="session-details">{{ $session->date->diffForHumans() }} ({{ $session->date->isoFormat('D MMM YYYY') }}), <a href="{{ route('users.show', $session->user->id) }}">{{ $session->user->name }}</a></span>
         <p class="card-text session-description">
             {{ str_limit(strip_tags($session->text), 100) }}
         </p>

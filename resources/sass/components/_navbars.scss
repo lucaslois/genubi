@@ -65,8 +65,17 @@
   .topbar-searcher {
     background: none;
     border: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    //border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    font-weight: 800;
     margin-top: 10px;
+
+    :focus {
+      box-shadow: none;
+    }
+  }
+  .search-icon {
+    position: relative;
+    top: 20px;
   }
 }
 .secondbar {
