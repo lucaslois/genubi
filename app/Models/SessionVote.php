@@ -11,4 +11,8 @@ class SessionVote extends Model
         'session_id',
         'vote'
     ];
+
+    public function user() {
+        return $this->belongsTo('App\\Models\\User');
+    }
 }

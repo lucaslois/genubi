@@ -89,4 +89,23 @@ class Session extends Model implements CanBeTaggable
     {
         return route('sessions.show', $this->id);
     }
+
+    public function textForLikes() {
+        if($this->positives()->count() == 0)
+            return "Nadie dio <me gusta>";
+
+        return $this->positives()->map(function($vote) {
+            return $vote->user->name;
+        })->implode(', ') . " han dado <me gusta>";
+    }
+
+    public function textForDislikes()
+    {
+        if($this->negatives()->count() == 0)
+            return "Nadie dio <no me gusta>";
+
+        return $this->negatives()->map(function($vote) {
+                return $vote->user->name;
+            })->implode(', ') . " han dado <no me gussta>";
+    }
 }

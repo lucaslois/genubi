@@ -64,6 +64,10 @@
         else
             secondbar.removeClass('fixed-top');
     });
+
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 </script>
 <!-- Starts Alert (alert.blade.php) -->
 <script>

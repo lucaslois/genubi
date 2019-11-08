@@ -54,8 +54,8 @@
                         </a>
                     @else
                         <div style="font-size: 24px;">
-                            <span class="text-success"><i class="fa fa-thumbs-up"></i> {{ $session->positives()->count() }}</span>
-                            <span class="text-danger"><i class="fa fa-thumbs-down"></i> {{ $session->negatives()->count() }}</span>
+                            <span class="text-success" data-toggle="tooltip" data-placement="top" title="{{ $session->textForLikes() }}"><i class="fa fa-thumbs-up"></i> {{ $session->positives()->count() }}</span>
+                            <span class="text-danger" data-toggle="tooltip" data-placement="top" title="{{ $session->textForDislikes() }}"><i class="fa fa-thumbs-down"></i> {{ $session->negatives()->count() }}</span>
                         </div>
                     @endif
                 </div>
