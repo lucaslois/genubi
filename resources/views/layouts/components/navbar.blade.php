@@ -17,13 +17,15 @@
                                href="{{ route('campaigns.npcs.index', $selected_campaign->id) }}">
                                 Campaña <i class="fas fa-caret-down"></i>
                             </a>
-                            <div class="dropdown-menu dropdown-grey dropdown-200" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item"
-                                   href="{{ route('campaigns.homebrews.index', $selected_campaign->id) }}">
-                                    <img class="dropdown-grey-icon" src="{{ asset('images/icons/dices.svg') }}" alt="">
-                                    Reglas de la casa
-                                </a>
-                                <div class="dropdown-submenu">
+                            <ul class="dropdown-menu dropdown-grey dropdown-200">
+                                <li>
+                                    <a class="dropdown-item"
+                                       href="{{ route('campaigns.homebrews.index', $selected_campaign->id) }}">
+                                        <img class="dropdown-grey-icon" src="{{ asset('images/icons/dices.svg') }}" alt="">
+                                        Reglas de la casa
+                                    </a>
+                                </li>
+                                <li class="dropdown-submenu">
                                     <a class="dropdown-item dropdown-toggle"
                                        href="{{ route('knowledges.index', ['campaign_id' => $selected_campaign->id]) }}">
                                         <img class="dropdown-grey-icon" src="{{ asset('images/icons/open_book.svg') }}"
@@ -39,7 +41,6 @@
                                             <a class="dropdown-item dropdown-toggle"
                                                href="{{ route('knowledges.index', ['campaign_id' => $selected_campaign->id, 'visibility' => 'shared']) }}">De otros jugadores</a>
                                             @include('layouts.components.dropdown_knowledge', ['visibility' => 'shared'])
-
                                         </li>
                                         <li class="dropdown-submenu">
                                             <a class="dropdown-item dropdown-toggle"
@@ -47,8 +48,8 @@
                                             @include('layouts.components.dropdown_knowledge', ['visibility' => 'dm'])
                                         </li>
                                     </ul>
-                                </div>
-                            </div>
+                                </li>
+                            </ul>
                         </li>
                         <li class="nav-item dropdown">
                             <a data-toggle="dropdown"

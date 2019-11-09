@@ -6,7 +6,7 @@
         <h5 class="session-title">{{ str_limit($session->name, 30) }}</h5>
         <span class="session-details">{{ $session->date->diffForHumans() }} ({{ $session->date->isoFormat('D MMM YYYY') }}), <a href="{{ route('users.show', $session->user->id) }}">{{ $session->user->name }}</a></span>
         <p class="card-text session-description">
-            {{ str_limit(strip_tags($session->text), 100) }}
+            {{ str_limit(strip_tags(html_entity_decode($session->text)), 100) }}
         </p>
     </div>
     <div class="card-footer">
