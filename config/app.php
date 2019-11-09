@@ -136,6 +136,29 @@ return [
     |
     */
 
+    'xp_progressions' => [
+        'default' => [
+            'name' => 'Default',
+            'class' => \App\Models\Experiences\CustomDydProgress::class,
+        ],
+        'dyd-3.5-custom' => [
+            'name' => 'Dungeons and Dragons 3.5 (custom)',
+            'class' => \App\Models\Experiences\CustomDydProgress::class,
+        ],
+        'pathfinder-easy' => [
+            'name' => 'Pathfinder 1 Rapida',
+            'class' => \App\Models\Experiences\PathfinderEasy::class,
+        ],
+        'pathfinder-medium' => [
+            'name' => 'Pathfinder 1 Media',
+            'class' => \App\Models\Experiences\PathfinderMedium::class,
+        ],
+        'pathfinder-hard' => [
+            'name' => 'Pathfinder 1 Lenta',
+            'class' => \App\Models\Experiences\PathfinderHard::class,
+        ]
+    ],
+
     'providers' => [
 
         /*

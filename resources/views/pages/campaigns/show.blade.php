@@ -47,8 +47,8 @@
                 <div class="row">
                     <div class="col-md-3">
                         <dl>
-                            <dt>Director</dt>
-                            <dd>{{ $campaign->user->name }}</dd>
+                            <dt>Progreso de experiencia</dt>
+                            <dd>{{ $progress['name'] }}</dd>
                             <dt>Cantidad de personajes</dt>
                             <dd>{{ $characters->count() }}</dd>
                         </dl>
@@ -72,7 +72,7 @@
                             <dt>Fecha de la última sesión</dt>
                             <dd>
                                 @if($campaign->sessions()->count() > 0)
-                                    {{ $campaign->sessions->last()->date->format('d F Y') }} ({{ $campaign->sessions->last()->date->diffForHumans() }})
+                                    {{ $campaign->sessions->first()->date->format('d F Y') }} ({{ $campaign->sessions->first()->date->diffForHumans() }})
                                 @else
                                     Aun no hay sesiones
                                 @endif

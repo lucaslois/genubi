@@ -34,8 +34,8 @@ class CampaignController extends Controller
         $selected_campaign = $campaign;
 
         $characters = $campaign->activeCharacters();
-
-        return view('pages.campaigns.show', compact('campaign', 'selected_campaign', 'characters'));
+        $progress = config('app.xp_progressions')[$campaign->progress];
+        return view('pages.campaigns.show', compact('campaign', 'selected_campaign', 'characters', 'progress'));
     }
 
     public function create() {
@@ -89,10 +89,11 @@ class CampaignController extends Controller
         $games = Game::all();
         $modes = Mode::all();
         $states = CampaignState::all();
+        $progressions = config('app.xp_progressions');
 
         abort_if($campaign->user->isNot($user), 401);
 
-        return view('pages.campaigns.edit', compact('campaign', 'games', 'modes', 'states'));
+        return view('pages.campaigns.edit', compact('campaign', 'games', 'modes', 'states', 'progressions'));
     }
 
     public function update($id, Request $request) {

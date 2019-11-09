@@ -114,6 +114,19 @@
                                 {!! $errors->first('state_id', '<div class="invalid-feedback">:message</div>') !!}
                             </div>
 
+                            <div class="form-group">
+                                <label for="state_id">Progresión de experiencia</label>
+                                <select
+                                    id="progress"
+                                    name="progress"
+                                    class="form-control {!! $errors->first('progress', 'is-invalid') !!}">
+                                    @foreach($progressions as $key => $progress)
+                                        <option value="{{ $key }}" {{ $key == $campaign->progress ? 'selected' : '' }}>{{ $progress['name'] }}</option>
+                                    @endforeach
+                                </select>
+                                {!! $errors->first('progress', '<div class="invalid-feedback">:message</div>') !!}
+                            </div>
+
                             <input type="submit" value="Guardar" class="btn btn-primary">
                         </form>
                     </div>

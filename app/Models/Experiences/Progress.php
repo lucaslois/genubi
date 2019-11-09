@@ -1,12 +1,12 @@
 <?php
 
 
-namespace App\Models;
+namespace App\Models\Experiences;
 
 
-class Progress
+abstract class Progress
 {
-    const TABLE = array(
+    protected $table = array(
         1 => 100,
         2 => 400,
         3 => 1000,
@@ -39,9 +39,27 @@ class Progress
         30 => 435000
     );
 
-    public static function get($num = null) {
+    public function get($num = null) {
         if($num !== null)
-            return static::TABLE[$num];
-        return static::TABLE;
+            return $this->table[$num];
+
+        return $this->table;
+    }
+
+    /**
+     * @param $progress
+     * @return Progress
+     * @throws \Exception
+     */
+    public static function getProgression($progress) {
+        $group = config('app.xp_progressions');
+        try {
+            $class = new $group[$progress]['class'];
+        }
+        catch(\Exception $e) {
+            throw new \Exception("'$progress' not found in config files. {$e->getMessage()}");
+        }
+
+        return $class;
     }
 }

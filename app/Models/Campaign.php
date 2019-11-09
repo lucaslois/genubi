@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Experiences\Progress;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -16,6 +17,7 @@ class Campaign extends Model implements CanBeTaggable
         'game_id',
         'mode_id',
         'state_id',
+        'progress'
     ];
 
     public function user() {
@@ -125,5 +127,10 @@ class Campaign extends Model implements CanBeTaggable
     public function formattedLink()
     {
         return route('campaigns.show', $this->id);
+    }
+
+    public function progress($number = null) {
+        $progress = Progress::getProgression($this->progress);
+        return $progress->get($number);
     }
 }

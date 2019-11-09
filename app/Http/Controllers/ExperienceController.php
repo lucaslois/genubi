@@ -8,7 +8,6 @@ use App\Models\Campaign;
 use App\Models\Character;
 use App\Models\CharacterExperience;
 use App\Models\Notification;
-use App\Models\Progress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,7 +21,7 @@ class ExperienceController extends Controller
         $last_sessions = $selected_campaign->sessions->take(7);
         $characters = $selected_campaign->activeCharacters();
 
-        $progressions = Progress::TABLE;
+        $progressions = $selected_campaign->progress();
 
         return view('pages.campaigns.experiences_panel', compact('selected_campaign', 'last_sessions', 'characters', 'progressions'));
     }
