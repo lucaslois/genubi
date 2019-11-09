@@ -85,7 +85,7 @@
                                         name="short_description"
                                         type="text"
                                         placeholder="Un grupo de aventureros que no comparten nada en común se reunen para derrotar al mal cósmico más peligroso de todos los tiempos"
-                                        class="form-control {!! $errors->first('short_description', 'is-invalid') !!}">{{ old('short_description') }}</textarea>
+                                        class="form-control {!! $errors->first('short_description', 'is-invalid') !!}">{{ old('short_description', $campaign->short_description) }}</textarea>
                                 {!! $errors->first('short_description', '<div class="invalid-feedback">:message</div>') !!}
                             </div>
 
