@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Facades\Alert;
 use App\Mail\RegisterConfirmationMail;
 use App\Models\User;
+use App\Models\UserToken;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -35,8 +36,9 @@ class RegisterController extends Controller
         $user->save();
 
         $token = Str::random(10);
-
-        Cache::put($token, $user->id, 1);
+        $user->tokens()->create([
+            'token' => $token
+        ]);
 
         Mail::to($user)->send(new RegisterConfirmationMail($user, $token));
 
@@ -46,20 +48,21 @@ class RegisterController extends Controller
     }
 
     public function check($token) {
-        if(Cache::has($token) === false)
-            abort(404);
+        $token = UserToken::whereToken($token)->first();
 
-        $id = Cache::get($token);
+        abort_if($token == null, 404, 'El token ingresado no se ha encontrado en el sistema');
+        abort_if($token->used_at, 404, 'El token ingresado ya fue utilizado');
 
-        $user = User::findOrFail($id);
+        $user = $token->user;
         $user->email_verified_at = now();
         $user->save();
+
+        $token->used_at = now();
+        $token->save();
 
         Alert::send('El correo electrónico se ha validado correctamente. ¡Bienvenido!');
 
         Auth::login($user);
-
-        Cache::forget($token);
 
         return redirect()->route('index');
     }

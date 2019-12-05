@@ -31,6 +31,10 @@ class User extends Authenticatable implements CanBeTaggable
 
     protected $dates = ['last_login'];
 
+    public function tokens() {
+        return $this->hasMany('App\\Models\\UserToken');
+    }
+
     public function campaigns() {
         return $this->hasMany('App\\Models\\Campaign');
     }
