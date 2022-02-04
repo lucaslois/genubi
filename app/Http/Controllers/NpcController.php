@@ -162,8 +162,12 @@ class NpcController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function remove($id)
     {
-        //
+        $npc = Npc::findOrFail($id);
+        $campaign = $npc->campaign;
+        $npc->delete();
+
+        return redirect()->route('campaigns.npcs.index', $campaign->id);
     }
 }

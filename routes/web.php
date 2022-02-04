@@ -68,6 +68,7 @@ Route::get('sessions/{id}/vote-negative', 'VoteController@negative')->name('sess
 
 // NPCS
 Route::resource('npcs', 'NpcController');
+Route::get('npcs/{id}/remove', 'NpcController@remove')->name('npcs.remove');
 Route::get('campaigns/{id}/npcs', 'NpcController@index')->name('campaigns.npcs.index');
 
 // MAPS

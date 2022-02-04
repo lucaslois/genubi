@@ -23,6 +23,7 @@
                 <div class="col-6">
                     <div class="buttons float-md-right">
                         <a href="{{ route('npcs.edit', $npc->id) }}" class="btn btn-yellow btn-upper">Editar npc</a>
+                        <a href="javascript:confirmDelete('{{ route('npcs.remove', $npc->id) }}')" class="btn btn-danger btn-upper">Borrar npc</a>
                     </div>
                 </div>
                 @endif

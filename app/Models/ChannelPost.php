@@ -22,11 +22,11 @@ class ChannelPost extends Model
     }
 
     public function character() {
-        return $this->belongsTo('App\\Models\\Character');
+        return $this->belongsTo('App\\Models\\Character')->withTrashed();
     }
 
     public function npc() {
-        return $this->belongsTo('App\\Models\\Npc');
+        return $this->belongsTo('App\\Models\\Npc')->withTrashed();
     }
 
     public function user() {
@@ -43,6 +43,6 @@ class ChannelPost extends Model
         if($this->npc)
             return $this->npc;
 
-        throw new Exception("Participant '$this->character_id' is not defined");
+        throw new Exception("Participant with <Character $this->character_id> or <Npc $this->npc_id> is not defined");
     }
 }
