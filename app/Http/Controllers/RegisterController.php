@@ -26,8 +26,6 @@ class RegisterController extends Controller
             'password' => 'required|min:8',
         ]);
 
-        return back();
-
         if(User::whereEmail($request->email)->count() > 0)
             return back()->withInput()->withErrors(['email' => 'El correo electrónico ya existe']);
 
