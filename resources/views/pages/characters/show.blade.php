@@ -191,7 +191,7 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td rowspan="4">Aun no hay diarios para este personaje</td>
+                                            <td colspan="4">Aun no hay diarios para este personaje</td>
                                         </tr>
                                     @endforelse
                                     </tbody>

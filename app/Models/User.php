@@ -29,6 +29,9 @@ class User extends Authenticatable implements CanBeTaggable
         'password', 'remember_token',
     ];
 
+    protected $casts = [
+        'last_login' => 'date'
+    ];
     protected $dates = ['last_login'];
 
     public function tokens() {

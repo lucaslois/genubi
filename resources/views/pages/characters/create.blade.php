@@ -1,8 +1,6 @@
-ç@extends('layouts.main')
-
+@extends('layouts.main')
 
 @section('content')
-
     <section class="main news">
         <div class="container">
             <div class="row">

@@ -16,6 +16,9 @@ class Session extends Model implements CanBeTaggable
         'campaign_id'
     ];
 
+    protected $casts = [
+      'date' => 'date'
+    ];
     protected $dates = ['date'];
 
     public function campaign() {
