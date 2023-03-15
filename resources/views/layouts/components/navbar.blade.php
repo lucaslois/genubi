@@ -14,6 +14,10 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('campaigns.channels.index', $selected_campaign->id) }}">Canales</a>
                         </li>
+                        <li class="nav-item">
+                            
+                            <a class="nav-link" href="{{ route('campaigns.npcs.index', $selected_campaign->id) }}">NPC's</a>
+                        </li>
                     </ul>
                 </div>
             </div>
