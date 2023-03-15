@@ -63,7 +63,8 @@ class SessionController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|min:3|string',
-            'date' => 'required|date'
+            'date' => 'required|date',
+            'background_image' => 'file|mimes:jpeg,jpg,png'
         ]);
         $user = Auth::user();
         $session = new Session;
@@ -138,7 +139,8 @@ class SessionController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|min:3|string',
-            'date' => 'required|date'
+            'date' => 'required|date',
+            'background_image' => 'file|mimes:jpeg,jpg,png'
         ]);
         $session = Session::findOrFail($id);
         $session->fill($request->all());

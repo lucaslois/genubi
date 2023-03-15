@@ -64,7 +64,8 @@ class NpcController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|min:1'
+            'name' => 'required|min:1',
+            'avatar' => 'file|mimes:jpg,jpeg,png',
         ]);
         $user = Auth::user();
         abort_if(!$user, 401);
@@ -120,7 +121,8 @@ class NpcController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required|min:1'
+            'name' => 'required|min:1',
+            'avatar' => 'file|mimes:jpg,jpeg,png',
         ]);
         $npc = Npc::findOrFail($id);
         $user = Auth::user();
