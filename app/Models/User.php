@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Cache;
 
 class User extends Authenticatable implements CanBeTaggable
 {
-    use Notifiable, Taggable;
+    use Notifiable, Taggable, HasFactory;
 
     /**
      * The attributes that are mass assignable.

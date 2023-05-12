@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 
 class Character extends Model implements CanParticipateInChannel, CanBeTaggable
 {
-    use XpTrait, SoftDeletes, Taggable;
+    use XpTrait, SoftDeletes, Taggable, HasFactory;
 
     protected $fillable = [
         'name',

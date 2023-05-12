@@ -10,20 +10,24 @@ trait XpTrait
 {
     protected $progress = 'default';
 
-    public function progress($number = null)  {
+    public function progress($number = null)
+    {
+        if (!$this->campaign) {
+            return 0;
+        }
         return $this->campaign->progress($number);
     }
 
     public function currentXp()
     {
-        if($this->currentLevel() == 1) return $this->quantityOfExperience();
+        if ($this->currentLevel() == 1) return $this->quantityOfExperience();
         return $this->quantityOfExperience() - $this->progress($this->currentLevel() - 1);
     }
 
     public function quantityOfExperience()
     {
         $total = 0;
-        foreach($this->experiences as $experience)
+        foreach ($this->experiences as $experience)
             $total += $experience->value;
 
         return $total;
@@ -31,7 +35,7 @@ trait XpTrait
 
     public function xpForNextLevel($level)
     {
-        if($level == 1) return $this->progress(1);
+        if ($level == 1) return $this->progress(1);
         return $this->progress($level) - $this->progress($level - 1);
     }
 
@@ -39,7 +43,7 @@ trait XpTrait
     {
         $actual = $this->quantityOfExperience();
         $ant = 1;
-        foreach($this->progress() as $key => $value) {
+        foreach ($this->progress() as $key => $value) {
             $ant = $key;
             if ($actual < $value) {
                 return $ant;

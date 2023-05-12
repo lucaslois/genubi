@@ -14,3 +14,5 @@ use Illuminate\Http\Request;
 */
 
 Route::get('autocomplete', 'AutocompleteController@index');
+
+Route::get('characters', [\App\Http\Controllers\API\CharacterController::class, 'index']);
