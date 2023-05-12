@@ -15,18 +15,23 @@ use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         return view('pages.register.index');
     }
 
-    public function register(Request $request) {
+    public function register(Request $request)
+    {
         $this->validate($request, [
             'name' => 'required|min:3',
             'email' => 'required|email',
             'password' => 'required|min:8',
+            'captcha' => 'required|captcha'
+        ], [
+            'captcha.captcha' => "El captcha es incorrecto. Intentalo de nuevo"
         ]);
 
-        if(User::whereEmail($request->email)->count() > 0)
+        if (User::whereEmail($request->email)->count() > 0)
             return back()->withInput()->withErrors(['email' => 'El correo electrónico ya existe']);
 
         $user = new User;
@@ -47,7 +52,8 @@ class RegisterController extends Controller
         return redirect()->route('login.index');
     }
 
-    public function check($token) {
+    public function check($token)
+    {
         $token = UserToken::whereToken($token)->first();
 
         abort_if($token == null, 404, 'El token ingresado no se ha encontrado en el sistema');

@@ -40,6 +40,20 @@
                     {!! $errors->first('password', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
 
+                <div class="form-group">
+                    <label for="captcha">Ingrese el captcha</label>
+                    <input
+                        id="captcha"
+                        name="captcha"
+                        type="text"
+                        value="{{ old('captcha') }}"
+                        class="form-control {!! $errors->first('captcha', 'is-invalid') !!}">
+                    {!! $errors->first('captcha', '<div class="invalid-feedback">:message</div>') !!}
+                    <div class="mt-2">
+                        {!! captcha_img() !!}
+                    </div>
+                </div>
+
                 <input type="submit" class="btn btn-primary" value="Registrarme!">
 
             </form>
