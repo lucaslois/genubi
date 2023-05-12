@@ -6,9 +6,9 @@
         <div class="container">
             <h1>Error 500</h1>
             <div class="box box-border-top-red text-center">
-                <img style="width: 700px" src="{{ asset('images/broken.png') }}" alt="">
+                <img class="error-image" src="{{ asset('images/500.jpeg') }}" alt="">
                 <div class="mt-2">
-                    <p>Ooops! Algo en la página se rompió. Será conveniente que te contactes con el Administrador</p>
+                    <p>¡Algo se rompió! Quizás sea un buen momento para tomar un descanso, o pedir ayuda.</p>
                     <p><a href="{{ url('/') }}">Ir a la página principal</a></p>
                 </div>
             </div>

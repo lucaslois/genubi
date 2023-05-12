@@ -6,9 +6,9 @@
         <div class="container">
             <h1>Error 404</h1>
             <div class="box box-border-top-red text-center">
-                <img class="img-thumbnail" src="{{ asset('images/belial.webp') }}" alt="">
+                <img class="error-image" src="{{ asset('images/404.jpeg') }}" alt="">
                 <div class="mt-2">
-                    <p>Ooops! Parece que nos tropezamos y caímos en los confines del infierno. Claramente no encontramos lo que buscabas...</p>
+                    <p>¡Nos hemos perdido! Pero no te preocupes, a los mejores guerreros también les pasa.</p>
                     @if($exception->getMessage())
                     <p class="alert alert-warning">{{ $exception->getMessage() }}</p>
                     @endif
